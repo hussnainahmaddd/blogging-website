@@ -1,0 +1,111 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.logoImage {
+    object-fit: contain;
+}
+
+.brandName {
+    letter-spacing: -0.02em;
+}
+
+.desktopMenu {
+    display: none;
+    gap: 2rem;
+}
+
+.navLink {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--foreground);
+    opacity: 0.8;
+}
+
+.navLink:hover,
+.navLinkActive {
+    opacity: 1;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.4);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    color: var(--foreground);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.iconBtn:hover {
+    color: var(--primary);
+}
+
+.mobileToggle {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 10, 20, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.mobileLink {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .desktopMenu {
+        display: flex;
+    }
+
+    .mobileToggle {
+        display: none;
+    }
+}

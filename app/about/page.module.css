@@ -1,0 +1,38 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 140px 1.5rem 4rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.intro {
+    font-size: 1.5rem;
+    color: #94a3b8;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section {
+    text-align: left;
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--card-border);
+}
+
+.section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.section p {
+    line-height: 1.8;
+    color: #cbd5e1;
+}
