@@ -36,8 +36,9 @@ export const metadata: Metadata = {
     creator: "@nexawell",
   },
   icons: {
-    icon: '/icon.png',
-    apple: '/apple-icon.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/icon.png',
   },
 };
 

@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/blog/layout,_N_T_/blog/breast-cancer/layout,_N_T_/blog/breast-cancer/page,_N_T_/blog/breast-cancer"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/blog/breast-cancer/__PAGE__",
+    "/blog/breast-cancer",
+    "/blog",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -21,11 +21,11 @@ export default function Home() {
               NexaWell is your premium source for the latest breakthroughs in health technology, bio-hacking, and digital wellness.
             </p>
             <div className={styles.ctaGroup}>
-              <a href="/blog" className="btn btn-primary">
+              <a href="/blog/health" className="btn btn-primary">
                 Read Articles <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
               </a>
               <a href="/about" className="btn btn-outline">
-                Our Mission
+                About Us
               </a>
             </div>
           </div>
