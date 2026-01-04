@@ -1,0 +1,109 @@
+/* [project]/components/HorizontalScrollSection.module.css [app-client] (css) */
+.HorizontalScrollSection-module__V3mMcW__section {
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+.HorizontalScrollSection-module__V3mMcW__header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-right: 1rem;
+  display: flex;
+}
+
+.HorizontalScrollSection-module__V3mMcW__title {
+  color: #fff;
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.HorizontalScrollSection-module__V3mMcW__viewAll {
+  color: var(--primary);
+  align-items: center;
+  gap: .5rem;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: opacity .2s;
+  display: flex;
+}
+
+.HorizontalScrollSection-module__V3mMcW__viewAll:hover {
+  opacity: .8;
+}
+
+.HorizontalScrollSection-module__V3mMcW__scrollContainer {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  overflow-x: auto;
+}
+
+.HorizontalScrollSection-module__V3mMcW__scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.HorizontalScrollSection-module__V3mMcW__card {
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  flex: 0 0 300px;
+  text-decoration: none;
+  transition: transform .3s, border-color .3s;
+  overflow: hidden;
+}
+
+.HorizontalScrollSection-module__V3mMcW__card:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.HorizontalScrollSection-module__V3mMcW__imageWrapper {
+  width: 100%;
+  height: 180px;
+  position: relative;
+}
+
+.HorizontalScrollSection-module__V3mMcW__image {
+  object-fit: cover;
+}
+
+.HorizontalScrollSection-module__V3mMcW__overlay {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background: #0009;
+  border-radius: 4px;
+  padding: .25rem .5rem;
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}
+
+.HorizontalScrollSection-module__V3mMcW__readTime {
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.HorizontalScrollSection-module__V3mMcW__content {
+  padding: 1.25rem;
+}
+
+.HorizontalScrollSection-module__V3mMcW__cardTitle {
+  color: #fff;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=components_HorizontalScrollSection_module_css_bad6b30c._.single.css.map*/

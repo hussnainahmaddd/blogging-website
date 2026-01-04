@@ -1,22 +1,24 @@
 # Disable directory browsing
 Options -Indexes
 
-# Rewrite engine for SPA routing
+# Rewrite engine
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   
+  # Remove trailing slash and redirect
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+  
+  # Serve .html files without extension
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+  
   # Serve existing files/directories as-is
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
   
   # Route everything else to index.html
   RewriteRule . /index.html [L]
-</IfModule>
-
-# Security headers
-<IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
 </IfModule>

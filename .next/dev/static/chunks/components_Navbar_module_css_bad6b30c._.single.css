@@ -1,0 +1,114 @@
+/* [project]/components/Navbar.module.css [app-client] (css) */
+.Navbar-module__nuAbfa__navbar {
+  z-index: 1000;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Navbar-module__nuAbfa__inner {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.Navbar-module__nuAbfa__logo {
+  font-family: var(--font-heading);
+  color: #fff;
+  align-items: center;
+  gap: .75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.Navbar-module__nuAbfa__logoImage {
+  object-fit: contain;
+}
+
+.Navbar-module__nuAbfa__brandName {
+  letter-spacing: -.02em;
+}
+
+.Navbar-module__nuAbfa__desktopMenu {
+  gap: 2rem;
+  display: none;
+}
+
+.Navbar-module__nuAbfa__navLink {
+  color: var(--foreground);
+  opacity: .8;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.Navbar-module__nuAbfa__navLink:hover, .Navbar-module__nuAbfa__navLinkActive {
+  opacity: 1;
+  color: var(--primary);
+  text-shadow: 0 0 10px #00ff9d66;
+}
+
+.Navbar-module__nuAbfa__actions {
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.Navbar-module__nuAbfa__iconBtn {
+  color: var(--foreground);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: .5rem;
+  transition: color .2s;
+}
+
+.Navbar-module__nuAbfa__iconBtn:hover {
+  color: var(--primary);
+}
+
+.Navbar-module__nuAbfa__mobileToggle {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block;
+}
+
+.Navbar-module__nuAbfa__mobileMenu {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+  background: #050a14f2;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  position: absolute;
+  top: 80px;
+  left: 0;
+}
+
+.Navbar-module__nuAbfa__mobileLink {
+  color: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .Navbar-module__nuAbfa__desktopMenu {
+    display: flex;
+  }
+
+  .Navbar-module__nuAbfa__mobileToggle {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=components_Navbar_module_css_bad6b30c._.single.css.map*/

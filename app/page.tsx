@@ -20,14 +20,7 @@ export default function Home() {
             <p className={styles.subtitle}>
               NexaWell is your premium source for the latest breakthroughs in health technology, bio-hacking, and digital wellness.
             </p>
-            <div className={styles.ctaGroup}>
-              <a href="/blog/health" className="btn btn-primary">
-                Read Articles <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
-              </a>
-              <a href="/about" className="btn btn-outline">
-                About Us
-              </a>
-            </div>
+
           </div>
         </div>
 
@@ -42,7 +35,7 @@ export default function Home() {
         category="Latest"
         title="Latest Insights"
         posts={[...blogPosts].reverse().slice(0, 6)}
-        viewAllLink="/blog"
+        viewAllLink="/blog/health"
       />
 
       {/* Featured Health Slider */}
