@@ -1,0 +1,118 @@
+/* [project]/app/blog/[slug]/page.module.css [app-client] (css) */
+.page-module__hUlLAq__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 1.5rem 4rem;
+}
+
+.page-module__hUlLAq__backLink {
+  color: #94a3b8;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  display: inline-flex;
+}
+
+.page-module__hUlLAq__backLink:hover {
+  color: var(--primary);
+}
+
+.page-module__hUlLAq__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-module__hUlLAq__category {
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 1rem;
+  font-size: .875rem;
+  font-weight: 600;
+  display: block;
+}
+
+.page-module__hUlLAq__title {
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.page-module__hUlLAq__meta {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.page-module__hUlLAq__imageWrapper {
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.page-module__hUlLAq__heroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-module__hUlLAq__content {
+  color: #cbd5e1;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.page-module__hUlLAq__content p {
+  margin-bottom: 1.5rem;
+}
+
+.page-module__hUlLAq__content h2 {
+  color: #fff;
+  border-bottom: 1px solid var(--card-border);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: .5rem;
+  font-size: 2rem;
+}
+
+.page-module__hUlLAq__content h3 {
+  color: var(--primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.page-module__hUlLAq__content ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.page-module__hUlLAq__content li {
+  margin-bottom: .5rem;
+}
+
+.page-module__hUlLAq__contentImgWrapper {
+  border: 1px solid var(--card-border);
+  border-radius: .5rem;
+  margin: 2rem 0;
+  display: block;
+  overflow: hidden;
+}
+
+.page-module__hUlLAq__adUnit {
+  text-align: center;
+  color: #666;
+  background: #ffffff05;
+  border: 1px dashed #333;
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .page-module__hUlLAq__title {
+    font-size: 2rem;
+  }
+}
+
+/*# sourceMappingURL=app_blog_%5Bslug%5D_page_module_css_bad6b30c._.single.css.map*/
