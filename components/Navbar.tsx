@@ -43,9 +43,7 @@ const Navbar = () => {
                         <button className={styles.iconBtn} aria-label="Search">
                             <Search size={20} />
                         </button>
-                        <Link href="/subscribe" className="btn btn-primary">
-                            Subscribe
-                        </Link>
+
 
                         {/* Mobile Toggle */}
                         <button
