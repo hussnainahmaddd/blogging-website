@@ -1,0 +1,66 @@
+/* [project]/components/AdBlockDetector.module.css [app-client] (css) */
+.AdBlockDetector-module__KvD_aW__overlay {
+  z-index: 99999;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: #000000f2;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.AdBlockDetector-module__KvD_aW__modal {
+  text-align: center;
+  color: #f8fafc;
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+  max-width: 500px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px #00000080;
+}
+
+.AdBlockDetector-module__KvD_aW__icon {
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+}
+
+.AdBlockDetector-module__KvD_aW__modal h2 {
+  background: linear-gradient(to right, #f8fafc, #94a3b8);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.AdBlockDetector-module__KvD_aW__modal p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.AdBlockDetector-module__KvD_aW__button {
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: none;
+  border-radius: 9999px;
+  padding: .75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.AdBlockDetector-module__KvD_aW__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px #2563eb4d;
+}
+
+/*# sourceMappingURL=components_AdBlockDetector_module_css_bad6b30c._.single.css.map*/

@@ -6,6 +6,7 @@ import { blogPosts, BlogPost } from "@/lib/blog-data";
 import HorizontalScrollSection from "@/components/HorizontalScrollSection";
 import ReactMarkdown from 'react-markdown';
 import { notFound } from "next/navigation";
+import AdPlaceholder from "@/components/AdPlaceholder";
 
 // Generate Static Params for SSG - using a standard async function for Next.js 13+
 export async function generateStaticParams() {
@@ -126,6 +127,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
                 {/* Content */}
                 <div className={styles.content}>
+                    {/* Ad: Top of Content */}
+                    <AdPlaceholder id={106} />
+
                     <ReactMarkdown
                         components={{
                             img: ({ node, ...props }) => (
@@ -144,9 +148,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                         {post.content}
                     </ReactMarkdown>
 
-                    {/* AdSense Unit */}
+                    {/* AdSense Unit / Bottom Ad */}
                     <div className={styles.adUnit}>
-                        <span>Advertisement - Recommended for You</span>
+                        <AdPlaceholder id={107} />
                     </div>
                 </div>
             </article>
@@ -158,6 +162,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 posts={blogPosts.filter(p => p.slug !== slug && p.category === post.category).slice(0, 4)}
                 viewAllLink={`/blog/${post.category?.toLowerCase()}`}
             />
+            {/* Ad: Below Related Posts */}
+            <AdPlaceholder id={108} />
         </>
     );
 }

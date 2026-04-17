@@ -1,41 +1,136 @@
 /* [project]/app/about/page.module.css [app-client] (css) */
 .page-module__xgPmsG__container {
-  text-align: center;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 140px 1.5rem 4rem;
 }
 
 .page-module__xgPmsG__title {
+  text-align: center;
   margin-bottom: 2rem;
   font-size: 3.5rem;
 }
 
 .page-module__xgPmsG__intro {
   color: #94a3b8;
-  max-width: 600px;
+  text-align: center;
+  max-width: 700px;
   margin-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
   font-size: 1.5rem;
+  line-height: 1.6;
 }
 
-.page-module__xgPmsG__section {
-  text-align: left;
+.page-module__xgPmsG__badges {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+  display: grid;
+}
+
+.page-module__xgPmsG__badge {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  text-align: center;
   border-radius: 1rem;
-  padding: 3rem;
+  padding: 2rem;
+  transition: transform .2s;
 }
 
-.page-module__xgPmsG__section h2 {
+.page-module__xgPmsG__badge:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.page-module__xgPmsG__icon {
   color: var(--primary);
   margin-bottom: 1rem;
 }
 
-.page-module__xgPmsG__section p {
+.page-module__xgPmsG__content, .page-module__xgPmsG__team, .page-module__xgPmsG__disclaimer {
+  margin-bottom: 4rem;
+}
+
+.page-module__xgPmsG__content h2, .page-module__xgPmsG__team h2 {
+  color: #fff;
+  border-bottom: 2px solid var(--card-border);
+  margin-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.page-module__xgPmsG__content p {
   color: #cbd5e1;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
   line-height: 1.8;
+}
+
+.page-module__xgPmsG__teamGrid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  display: grid;
+}
+
+.page-module__xgPmsG__member {
+  border: 1px solid var(--card-border);
+  background: #0f172a;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.page-module__xgPmsG__memberAvatar {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+}
+
+.page-module__xgPmsG__role {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+  display: block;
+}
+
+.page-module__xgPmsG__member p {
+  color: #94a3b8;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.page-module__xgPmsG__disclaimerBox {
+  background: #ff00000d;
+  border: 1px solid #ff646433;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.page-module__xgPmsG__disclaimerBox h3 {
+  color: #f87171;
+  margin-bottom: .5rem;
+}
+
+.page-module__xgPmsG__disclaimerBox p {
+  color: #fecaca;
+  margin: 0;
+  font-size: .9rem;
+}
+
+@media (max-width: 768px) {
+  .page-module__xgPmsG__title {
+    font-size: 2.5rem;
+  }
 }
 
 /*# sourceMappingURL=app_about_page_module_9e459b3c.css.map*/

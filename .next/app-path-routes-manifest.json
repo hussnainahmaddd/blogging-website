@@ -6,6 +6,7 @@
   "/blog/breast-cancer/page": "/blog/breast-cancer",
   "/blog/health/page": "/blog/health",
   "/blog/tech/page": "/blog/tech",
+  "/contact/page": "/contact",
   "/page": "/",
   "/sitemap.xml/route": "/sitemap.xml"
 }

@@ -146,7 +146,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/blog/best-file-utility-website-2026-fileutilitypro": {
+    "/blog/anxiety-disorders-explained-types-triggers-coping-2026": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -160,7 +160,31 @@
       ],
       "initialRevalidateSeconds": false,
       "srcRoute": "/blog/[slug]",
-      "dataRoute": "/blog/best-file-utility-website-2026-fileutilitypro.rsc",
+      "dataRoute": "/blog/anxiety-disorders-explained-types-triggers-coping-2026.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/blog/breaking-stress-anxiety-depression-cycle-holistic-recovery-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/breaking-stress-anxiety-depression-cycle-holistic-recovery-2026.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -266,6 +290,54 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/blog/building-mental-resilience-prevent-stress-decline-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/building-mental-resilience-prevent-stress-decline-2026.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/blog/complete-guide-depression-warning-signs-treatment-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/complete-guide-depression-warning-signs-treatment-2026.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/blog/cycle-syncing-nutrition-fitness-guide": {
       "experimentalBypassFor": [
         {
@@ -281,6 +353,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/blog/[slug]",
       "dataRoute": "/blog/cycle-syncing-nutrition-fitness-guide.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/blog/dopamine-scrolling-reset-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/dopamine-scrolling-reset-2026.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -626,6 +722,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/blog/natural-remedies-anxiety-depression-science-backed-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/natural-remedies-anxiety-depression-science-backed-2026.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/blog/pcos-endometriosis-diagnosis-symptoms": {
       "experimentalBypassFor": [
         {
@@ -866,6 +986,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/blog/understanding-chronic-stress-management-strategies-2026": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/[slug]",
+      "dataRoute": "/blog/understanding-chronic-stress-management-strategies-2026.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/blog/urinary-incontinence-menopause-urge-prolapse": {
       "experimentalBypassFor": [
         {
@@ -1034,6 +1178,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/contact": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/contact",
+      "dataRoute": "/contact.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -1119,8 +1287,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "5eefa54ec2c6cebd962c9812d610aff0",
-    "previewModeSigningKey": "635bb657e31e09a61e6e58f37d353004c279036e38f05828f8137e322efa3800",
-    "previewModeEncryptionKey": "86eb795e12740f4a45657b9ffd148ed92d2d8ed93db9cab3d3ce1ce8a5b54ff6"
+    "previewModeId": "f5d6e80b70c06c91ea93fac5f7be9150",
+    "previewModeSigningKey": "91803a72e69fbfb014e914751a1d3984e953e1cb99eb6257eddea19e597985c5",
+    "previewModeEncryptionKey": "cba20621716fa80e4993e7788c318d93e3a5014835ea73bdb8dedcff9e4f0867"
   }
 }

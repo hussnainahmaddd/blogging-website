@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { BlogPost } from "@/lib/blog-data";
@@ -15,6 +17,11 @@ interface HorizontalScrollSectionProps {
 export default function HorizontalScrollSection({ category, title, posts, className, viewAllLink }: HorizontalScrollSectionProps) {
     const linkHref = viewAllLink || `/blog/${category.toLowerCase()}`;
 
+    const handleAdClick = () => {
+        // Trigger the direct link ad
+        window.open("https://otieu.com/4/10509165", "_blank");
+    };
+
     return (
         <section className={`${styles.section} ${className || ''}`}>
             <div className="container">
@@ -27,7 +34,12 @@ export default function HorizontalScrollSection({ category, title, posts, classN
 
                 <div className={styles.scrollContainer}>
                     {posts.map((post) => (
-                        <Link href={`/blog/${post.slug}`} key={post.slug} className={styles.card}>
+                        <Link
+                            href={`/blog/${post.slug}`}
+                            key={post.slug}
+                            className={styles.card}
+                            onClick={handleAdClick}
+                        >
                             <div className={styles.imageWrapper} style={{ position: 'relative', width: '100%', height: '180px' }}>
                                 <Image
                                     src={post.heroImage}

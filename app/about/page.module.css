@@ -1,38 +1,137 @@
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 140px 1.5rem 4rem;
-    text-align: center;
 }
 
 .title {
     font-size: 3.5rem;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .intro {
     font-size: 1.5rem;
     color: #94a3b8;
     margin-bottom: 4rem;
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    line-height: 1.6;
 }
 
-.section {
-    text-align: left;
+/* Trust Badges */
+.badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.badge {
     background: var(--card-bg);
-    padding: 3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--card-border);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.badge:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.icon {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Content Sections */
+.content, .team, .disclaimer {
+    margin-bottom: 4rem;
+}
+
+.content h2, .team h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    border-bottom: 2px solid var(--card-border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+}
+
+/* Team Grid */
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.member {
+    background: #0f172a;
+    padding: 2rem;
     border-radius: 1rem;
     border: 1px solid var(--card-border);
 }
 
-.section h2 {
+.memberAvatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--primary);
+    color: white;
 }
 
-.section p {
-    line-height: 1.8;
-    color: #cbd5e1;
+.role {
+    display: block;
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.member p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Disclaimer */
+.disclaimerBox {
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px solid rgba(255, 100, 100, 0.2);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.disclaimerBox h3 {
+    color: #f87171;
+    margin-bottom: 0.5rem;
+}
+
+.disclaimerBox p {
+    color: #fecaca;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
 }

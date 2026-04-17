@@ -1,0 +1,143 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 1.5rem 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.intro {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 4rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+}
+
+/* Card Styles */
+.card,
+.formCard {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--card-border);
+}
+
+.card h2,
+.formCard h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 1rem;
+}
+
+/* Info Items */
+.infoItem {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.icon {
+    color: var(--primary);
+    min-width: 24px;
+    margin-top: 5px;
+}
+
+.infoItem h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.infoItem p {
+    color: #cbd5e1;
+    margin-bottom: 0.2rem;
+    line-height: 1.5;
+}
+
+.link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: #0f172a;
+    border: 1px solid var(--card-border);
+    border-radius: 0.5rem;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
+}
+
+.note {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

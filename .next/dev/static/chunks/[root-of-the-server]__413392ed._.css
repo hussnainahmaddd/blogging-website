@@ -377,6 +377,23 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 
+.Footer-module__EZoWya__links {
+  gap: 2rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.Footer-module__EZoWya__links a {
+  color: var(--text-secondary);
+  font-size: .95rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.Footer-module__EZoWya__links a:hover {
+  color: var(--primary);
+}
+
 .Footer-module__EZoWya__divider {
   background: #ffffff0d;
   width: 100%;

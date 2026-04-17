@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { BlogPost, blogPosts } from "@/lib/blog-data";
@@ -11,13 +13,22 @@ interface FeaturedPostsProps {
 }
 
 export default function FeaturedPosts({ posts = blogPosts, title = "Latest Insights", className }: FeaturedPostsProps) {
+    const handleAdClick = () => {
+        window.open("https://otieu.com/4/10509165", "_blank");
+    };
+
     return (
         <section className={`${styles.section} ${className || ''}`}>
             <div className="container">
                 <h2 className={styles.title}>{title}</h2>
                 <div className={styles.grid}>
                     {posts.map((post) => (
-                        <Link href={`/blog/${post.slug}`} key={post.slug} className={styles.card}>
+                        <Link
+                            href={`/blog/${post.slug}`}
+                            key={post.slug}
+                            className={styles.card}
+                            onClick={handleAdClick}
+                        >
                             <div className={styles.imageWrapper}>
                                 <Image
                                     src={post.heroImage}

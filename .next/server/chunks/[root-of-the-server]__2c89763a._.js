@@ -1,37 +1,37 @@
-module.exports=[61724,(e,t,r)=>{t.exports=e.x("next/dist/compiled/next-server/app-route-turbo.runtime.prod.js",()=>require("next/dist/compiled/next-server/app-route-turbo.runtime.prod.js"))},47909,(e,t,r)=>{t.exports=e.r(61724)},17413,(e,t,r)=>{(()=>{"use strict";let r,a,o,n,i;var s,l,u,c,h,d,g,p,m,f,y,b,v,w,T,S,P={491:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ContextAPI=void 0;let a=r(223),o=r(172),n=r(930),i="context",s=new a.NoopContextManager;class l{static getInstance(){return this._instance||(this._instance=new l),this._instance}setGlobalContextManager(e){return(0,o.registerGlobal)(i,e,n.DiagAPI.instance())}active(){return this._getContextManager().active()}with(e,t,r,...a){return this._getContextManager().with(e,t,r,...a)}bind(e,t){return this._getContextManager().bind(e,t)}_getContextManager(){return(0,o.getGlobal)(i)||s}disable(){this._getContextManager().disable(),(0,o.unregisterGlobal)(i,n.DiagAPI.instance())}}t.ContextAPI=l},930:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagAPI=void 0;let a=r(56),o=r(912),n=r(957),i=r(172);class s{constructor(){function e(e){return function(...t){let r=(0,i.getGlobal)("diag");if(r)return r[e](...t)}}const t=this;t.setLogger=(e,r={logLevel:n.DiagLogLevel.INFO})=>{var a,s,l;if(e===t){let e=Error("Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation");return t.error(null!=(a=e.stack)?a:e.message),!1}"number"==typeof r&&(r={logLevel:r});let u=(0,i.getGlobal)("diag"),c=(0,o.createLogLevelDiagLogger)(null!=(s=r.logLevel)?s:n.DiagLogLevel.INFO,e);if(u&&!r.suppressOverrideMessage){let e=null!=(l=Error().stack)?l:"<failed to generate stacktrace>";u.warn(`Current logger will be overwritten from ${e}`),c.warn(`Current logger will overwrite one already registered from ${e}`)}return(0,i.registerGlobal)("diag",c,t,!0)},t.disable=()=>{(0,i.unregisterGlobal)("diag",t)},t.createComponentLogger=e=>new a.DiagComponentLogger(e),t.verbose=e("verbose"),t.debug=e("debug"),t.info=e("info"),t.warn=e("warn"),t.error=e("error")}static instance(){return this._instance||(this._instance=new s),this._instance}}t.DiagAPI=s},653:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.MetricsAPI=void 0;let a=r(660),o=r(172),n=r(930),i="metrics";class s{static getInstance(){return this._instance||(this._instance=new s),this._instance}setGlobalMeterProvider(e){return(0,o.registerGlobal)(i,e,n.DiagAPI.instance())}getMeterProvider(){return(0,o.getGlobal)(i)||a.NOOP_METER_PROVIDER}getMeter(e,t,r){return this.getMeterProvider().getMeter(e,t,r)}disable(){(0,o.unregisterGlobal)(i,n.DiagAPI.instance())}}t.MetricsAPI=s},181:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.PropagationAPI=void 0;let a=r(172),o=r(874),n=r(194),i=r(277),s=r(369),l=r(930),u="propagation",c=new o.NoopTextMapPropagator;class h{constructor(){this.createBaggage=s.createBaggage,this.getBaggage=i.getBaggage,this.getActiveBaggage=i.getActiveBaggage,this.setBaggage=i.setBaggage,this.deleteBaggage=i.deleteBaggage}static getInstance(){return this._instance||(this._instance=new h),this._instance}setGlobalPropagator(e){return(0,a.registerGlobal)(u,e,l.DiagAPI.instance())}inject(e,t,r=n.defaultTextMapSetter){return this._getGlobalPropagator().inject(e,t,r)}extract(e,t,r=n.defaultTextMapGetter){return this._getGlobalPropagator().extract(e,t,r)}fields(){return this._getGlobalPropagator().fields()}disable(){(0,a.unregisterGlobal)(u,l.DiagAPI.instance())}_getGlobalPropagator(){return(0,a.getGlobal)(u)||c}}t.PropagationAPI=h},997:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.TraceAPI=void 0;let a=r(172),o=r(846),n=r(139),i=r(607),s=r(930),l="trace";class u{constructor(){this._proxyTracerProvider=new o.ProxyTracerProvider,this.wrapSpanContext=n.wrapSpanContext,this.isSpanContextValid=n.isSpanContextValid,this.deleteSpan=i.deleteSpan,this.getSpan=i.getSpan,this.getActiveSpan=i.getActiveSpan,this.getSpanContext=i.getSpanContext,this.setSpan=i.setSpan,this.setSpanContext=i.setSpanContext}static getInstance(){return this._instance||(this._instance=new u),this._instance}setGlobalTracerProvider(e){let t=(0,a.registerGlobal)(l,this._proxyTracerProvider,s.DiagAPI.instance());return t&&this._proxyTracerProvider.setDelegate(e),t}getTracerProvider(){return(0,a.getGlobal)(l)||this._proxyTracerProvider}getTracer(e,t){return this.getTracerProvider().getTracer(e,t)}disable(){(0,a.unregisterGlobal)(l,s.DiagAPI.instance()),this._proxyTracerProvider=new o.ProxyTracerProvider}}t.TraceAPI=u},277:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.deleteBaggage=t.setBaggage=t.getActiveBaggage=t.getBaggage=void 0;let a=r(491),o=(0,r(780).createContextKey)("OpenTelemetry Baggage Key");function n(e){return e.getValue(o)||void 0}t.getBaggage=n,t.getActiveBaggage=function(){return n(a.ContextAPI.getInstance().active())},t.setBaggage=function(e,t){return e.setValue(o,t)},t.deleteBaggage=function(e){return e.deleteValue(o)}},993:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.BaggageImpl=void 0;class r{constructor(e){this._entries=e?new Map(e):new Map}getEntry(e){let t=this._entries.get(e);if(t)return Object.assign({},t)}getAllEntries(){return Array.from(this._entries.entries()).map(([e,t])=>[e,t])}setEntry(e,t){let a=new r(this._entries);return a._entries.set(e,t),a}removeEntry(e){let t=new r(this._entries);return t._entries.delete(e),t}removeEntries(...e){let t=new r(this._entries);for(let r of e)t._entries.delete(r);return t}clear(){return new r}}t.BaggageImpl=r},830:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.baggageEntryMetadataSymbol=void 0,t.baggageEntryMetadataSymbol=Symbol("BaggageEntryMetadata")},369:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.baggageEntryMetadataFromString=t.createBaggage=void 0;let a=r(930),o=r(993),n=r(830),i=a.DiagAPI.instance();t.createBaggage=function(e={}){return new o.BaggageImpl(new Map(Object.entries(e)))},t.baggageEntryMetadataFromString=function(e){return"string"!=typeof e&&(i.error(`Cannot create baggage metadata from unknown type: ${typeof e}`),e=""),{__TYPE__:n.baggageEntryMetadataSymbol,toString:()=>e}}},67:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.context=void 0,t.context=r(491).ContextAPI.getInstance()},223:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopContextManager=void 0;let a=r(780);t.NoopContextManager=class{active(){return a.ROOT_CONTEXT}with(e,t,r,...a){return t.call(r,...a)}bind(e,t){return t}enable(){return this}disable(){return this}}},780:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ROOT_CONTEXT=t.createContextKey=void 0,t.createContextKey=function(e){return Symbol.for(e)};class r{constructor(e){const t=this;t._currentContext=e?new Map(e):new Map,t.getValue=e=>t._currentContext.get(e),t.setValue=(e,a)=>{let o=new r(t._currentContext);return o._currentContext.set(e,a),o},t.deleteValue=e=>{let a=new r(t._currentContext);return a._currentContext.delete(e),a}}}t.ROOT_CONTEXT=new r},506:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.diag=void 0,t.diag=r(930).DiagAPI.instance()},56:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagComponentLogger=void 0;let a=r(172);function o(e,t,r){let o=(0,a.getGlobal)("diag");if(o)return r.unshift(t),o[e](...r)}t.DiagComponentLogger=class{constructor(e){this._namespace=e.namespace||"DiagComponentLogger"}debug(...e){return o("debug",this._namespace,e)}error(...e){return o("error",this._namespace,e)}info(...e){return o("info",this._namespace,e)}warn(...e){return o("warn",this._namespace,e)}verbose(...e){return o("verbose",this._namespace,e)}}},972:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagConsoleLogger=void 0;let r=[{n:"error",c:"error"},{n:"warn",c:"warn"},{n:"info",c:"info"},{n:"debug",c:"debug"},{n:"verbose",c:"trace"}];t.DiagConsoleLogger=class{constructor(){for(let e=0;e<r.length;e++)this[r[e].n]=function(e){return function(...t){if(console){let r=console[e];if("function"!=typeof r&&(r=console.log),"function"==typeof r)return r.apply(console,t)}}}(r[e].c)}}},912:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createLogLevelDiagLogger=void 0;let a=r(957);t.createLogLevelDiagLogger=function(e,t){function r(r,a){let o=t[r];return"function"==typeof o&&e>=a?o.bind(t):function(){}}return e<a.DiagLogLevel.NONE?e=a.DiagLogLevel.NONE:e>a.DiagLogLevel.ALL&&(e=a.DiagLogLevel.ALL),t=t||{},{error:r("error",a.DiagLogLevel.ERROR),warn:r("warn",a.DiagLogLevel.WARN),info:r("info",a.DiagLogLevel.INFO),debug:r("debug",a.DiagLogLevel.DEBUG),verbose:r("verbose",a.DiagLogLevel.VERBOSE)}}},957:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.DiagLogLevel=void 0,(r=t.DiagLogLevel||(t.DiagLogLevel={}))[r.NONE=0]="NONE",r[r.ERROR=30]="ERROR",r[r.WARN=50]="WARN",r[r.INFO=60]="INFO",r[r.DEBUG=70]="DEBUG",r[r.VERBOSE=80]="VERBOSE",r[r.ALL=9999]="ALL"},172:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.unregisterGlobal=t.getGlobal=t.registerGlobal=void 0;let a=r(200),o=r(521),n=r(130),i=o.VERSION.split(".")[0],s=Symbol.for(`opentelemetry.js.api.${i}`),l=a._globalThis;t.registerGlobal=function(e,t,r,a=!1){var n;let i=l[s]=null!=(n=l[s])?n:{version:o.VERSION};if(!a&&i[e]){let t=Error(`@opentelemetry/api: Attempted duplicate registration of API: ${e}`);return r.error(t.stack||t.message),!1}if(i.version!==o.VERSION){let t=Error(`@opentelemetry/api: Registration of version v${i.version} for ${e} does not match previously registered API v${o.VERSION}`);return r.error(t.stack||t.message),!1}return i[e]=t,r.debug(`@opentelemetry/api: Registered a global for ${e} v${o.VERSION}.`),!0},t.getGlobal=function(e){var t,r;let a=null==(t=l[s])?void 0:t.version;if(a&&(0,n.isCompatible)(a))return null==(r=l[s])?void 0:r[e]},t.unregisterGlobal=function(e,t){t.debug(`@opentelemetry/api: Unregistering a global for ${e} v${o.VERSION}.`);let r=l[s];r&&delete r[e]}},130:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.isCompatible=t._makeCompatibilityCheck=void 0;let a=r(521),o=/^(\d+)\.(\d+)\.(\d+)(-(.+))?$/;function n(e){let t=new Set([e]),r=new Set,a=e.match(o);if(!a)return()=>!1;let n={major:+a[1],minor:+a[2],patch:+a[3],prerelease:a[4]};if(null!=n.prerelease)return function(t){return t===e};function i(e){return r.add(e),!1}return function(e){if(t.has(e))return!0;if(r.has(e))return!1;let a=e.match(o);if(!a)return i(e);let s={major:+a[1],minor:+a[2],patch:+a[3],prerelease:a[4]};if(null!=s.prerelease||n.major!==s.major)return i(e);if(0===n.major)return n.minor===s.minor&&n.patch<=s.patch?(t.add(e),!0):i(e);return n.minor<=s.minor?(t.add(e),!0):i(e)}}t._makeCompatibilityCheck=n,t.isCompatible=n(a.VERSION)},886:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.metrics=void 0,t.metrics=r(653).MetricsAPI.getInstance()},901:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.ValueType=void 0,(r=t.ValueType||(t.ValueType={}))[r.INT=0]="INT",r[r.DOUBLE=1]="DOUBLE"},102:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createNoopMeter=t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC=t.NOOP_OBSERVABLE_GAUGE_METRIC=t.NOOP_OBSERVABLE_COUNTER_METRIC=t.NOOP_UP_DOWN_COUNTER_METRIC=t.NOOP_HISTOGRAM_METRIC=t.NOOP_COUNTER_METRIC=t.NOOP_METER=t.NoopObservableUpDownCounterMetric=t.NoopObservableGaugeMetric=t.NoopObservableCounterMetric=t.NoopObservableMetric=t.NoopHistogramMetric=t.NoopUpDownCounterMetric=t.NoopCounterMetric=t.NoopMetric=t.NoopMeter=void 0;class r{createHistogram(e,r){return t.NOOP_HISTOGRAM_METRIC}createCounter(e,r){return t.NOOP_COUNTER_METRIC}createUpDownCounter(e,r){return t.NOOP_UP_DOWN_COUNTER_METRIC}createObservableGauge(e,r){return t.NOOP_OBSERVABLE_GAUGE_METRIC}createObservableCounter(e,r){return t.NOOP_OBSERVABLE_COUNTER_METRIC}createObservableUpDownCounter(e,r){return t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC}addBatchObservableCallback(e,t){}removeBatchObservableCallback(e){}}t.NoopMeter=r;class a{}t.NoopMetric=a;class o extends a{add(e,t){}}t.NoopCounterMetric=o;class n extends a{add(e,t){}}t.NoopUpDownCounterMetric=n;class i extends a{record(e,t){}}t.NoopHistogramMetric=i;class s{addCallback(e){}removeCallback(e){}}t.NoopObservableMetric=s;class l extends s{}t.NoopObservableCounterMetric=l;class u extends s{}t.NoopObservableGaugeMetric=u;class c extends s{}t.NoopObservableUpDownCounterMetric=c,t.NOOP_METER=new r,t.NOOP_COUNTER_METRIC=new o,t.NOOP_HISTOGRAM_METRIC=new i,t.NOOP_UP_DOWN_COUNTER_METRIC=new n,t.NOOP_OBSERVABLE_COUNTER_METRIC=new l,t.NOOP_OBSERVABLE_GAUGE_METRIC=new u,t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC=new c,t.createNoopMeter=function(){return t.NOOP_METER}},660:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NOOP_METER_PROVIDER=t.NoopMeterProvider=void 0;let a=r(102);class o{getMeter(e,t,r){return a.NOOP_METER}}t.NoopMeterProvider=o,t.NOOP_METER_PROVIDER=new o},200:function(e,t,r){var a=this&&this.__createBinding||(Object.create?function(e,t,r,a){void 0===a&&(a=r),Object.defineProperty(e,a,{enumerable:!0,get:function(){return t[r]}})}:function(e,t,r,a){void 0===a&&(a=r),e[a]=t[r]}),o=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||a(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),o(r(46),t)},651:(t,r)=>{Object.defineProperty(r,"__esModule",{value:!0}),r._globalThis=void 0,r._globalThis="object"==typeof globalThis?globalThis:e.g},46:function(e,t,r){var a=this&&this.__createBinding||(Object.create?function(e,t,r,a){void 0===a&&(a=r),Object.defineProperty(e,a,{enumerable:!0,get:function(){return t[r]}})}:function(e,t,r,a){void 0===a&&(a=r),e[a]=t[r]}),o=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||a(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),o(r(651),t)},939:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.propagation=void 0,t.propagation=r(181).PropagationAPI.getInstance()},874:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTextMapPropagator=void 0,t.NoopTextMapPropagator=class{inject(e,t){}extract(e,t){return e}fields(){return[]}}},194:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.defaultTextMapSetter=t.defaultTextMapGetter=void 0,t.defaultTextMapGetter={get(e,t){if(null!=e)return e[t]},keys:e=>null==e?[]:Object.keys(e)},t.defaultTextMapSetter={set(e,t,r){null!=e&&(e[t]=r)}}},845:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.trace=void 0,t.trace=r(997).TraceAPI.getInstance()},403:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NonRecordingSpan=void 0;let a=r(476);t.NonRecordingSpan=class{constructor(e=a.INVALID_SPAN_CONTEXT){this._spanContext=e}spanContext(){return this._spanContext}setAttribute(e,t){return this}setAttributes(e){return this}addEvent(e,t){return this}setStatus(e){return this}updateName(e){return this}end(e){}isRecording(){return!1}recordException(e,t){}}},614:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTracer=void 0;let a=r(491),o=r(607),n=r(403),i=r(139),s=a.ContextAPI.getInstance();t.NoopTracer=class{startSpan(e,t,r=s.active()){var a;if(null==t?void 0:t.root)return new n.NonRecordingSpan;let l=r&&(0,o.getSpanContext)(r);return"object"==typeof(a=l)&&"string"==typeof a.spanId&&"string"==typeof a.traceId&&"number"==typeof a.traceFlags&&(0,i.isSpanContextValid)(l)?new n.NonRecordingSpan(l):new n.NonRecordingSpan}startActiveSpan(e,t,r,a){let n,i,l;if(arguments.length<2)return;2==arguments.length?l=t:3==arguments.length?(n=t,l=r):(n=t,i=r,l=a);let u=null!=i?i:s.active(),c=this.startSpan(e,n,u),h=(0,o.setSpan)(u,c);return s.with(h,l,void 0,c)}}},124:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTracerProvider=void 0;let a=r(614);t.NoopTracerProvider=class{getTracer(e,t,r){return new a.NoopTracer}}},125:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ProxyTracer=void 0;let a=new(r(614)).NoopTracer;t.ProxyTracer=class{constructor(e,t,r,a){this._provider=e,this.name=t,this.version=r,this.options=a}startSpan(e,t,r){return this._getTracer().startSpan(e,t,r)}startActiveSpan(e,t,r,a){let o=this._getTracer();return Reflect.apply(o.startActiveSpan,o,arguments)}_getTracer(){if(this._delegate)return this._delegate;let e=this._provider.getDelegateTracer(this.name,this.version,this.options);return e?(this._delegate=e,this._delegate):a}}},846:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ProxyTracerProvider=void 0;let a=r(125),o=new(r(124)).NoopTracerProvider;t.ProxyTracerProvider=class{getTracer(e,t,r){var o;return null!=(o=this.getDelegateTracer(e,t,r))?o:new a.ProxyTracer(this,e,t,r)}getDelegate(){var e;return null!=(e=this._delegate)?e:o}setDelegate(e){this._delegate=e}getDelegateTracer(e,t,r){var a;return null==(a=this._delegate)?void 0:a.getTracer(e,t,r)}}},996:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SamplingDecision=void 0,(r=t.SamplingDecision||(t.SamplingDecision={}))[r.NOT_RECORD=0]="NOT_RECORD",r[r.RECORD=1]="RECORD",r[r.RECORD_AND_SAMPLED=2]="RECORD_AND_SAMPLED"},607:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.getSpanContext=t.setSpanContext=t.deleteSpan=t.setSpan=t.getActiveSpan=t.getSpan=void 0;let a=r(780),o=r(403),n=r(491),i=(0,a.createContextKey)("OpenTelemetry Context Key SPAN");function s(e){return e.getValue(i)||void 0}function l(e,t){return e.setValue(i,t)}t.getSpan=s,t.getActiveSpan=function(){return s(n.ContextAPI.getInstance().active())},t.setSpan=l,t.deleteSpan=function(e){return e.deleteValue(i)},t.setSpanContext=function(e,t){return l(e,new o.NonRecordingSpan(t))},t.getSpanContext=function(e){var t;return null==(t=s(e))?void 0:t.spanContext()}},325:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.TraceStateImpl=void 0;let a=r(564);class o{constructor(e){this._internalState=new Map,e&&this._parse(e)}set(e,t){let r=this._clone();return r._internalState.has(e)&&r._internalState.delete(e),r._internalState.set(e,t),r}unset(e){let t=this._clone();return t._internalState.delete(e),t}get(e){return this._internalState.get(e)}serialize(){return this._keys().reduce((e,t)=>(e.push(t+"="+this.get(t)),e),[]).join(",")}_parse(e){!(e.length>512)&&(this._internalState=e.split(",").reverse().reduce((e,t)=>{let r=t.trim(),o=r.indexOf("=");if(-1!==o){let n=r.slice(0,o),i=r.slice(o+1,t.length);(0,a.validateKey)(n)&&(0,a.validateValue)(i)&&e.set(n,i)}return e},new Map),this._internalState.size>32&&(this._internalState=new Map(Array.from(this._internalState.entries()).reverse().slice(0,32))))}_keys(){return Array.from(this._internalState.keys()).reverse()}_clone(){let e=new o;return e._internalState=new Map(this._internalState),e}}t.TraceStateImpl=o},564:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.validateValue=t.validateKey=void 0;let r="[_0-9a-z-*/]",a=`[a-z]${r}{0,255}`,o=`[a-z0-9]${r}{0,240}@[a-z]${r}{0,13}`,n=RegExp(`^(?:${a}|${o})$`),i=/^[ -~]{0,255}[!-~]$/,s=/,|=/;t.validateKey=function(e){return n.test(e)},t.validateValue=function(e){return i.test(e)&&!s.test(e)}},98:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createTraceState=void 0;let a=r(325);t.createTraceState=function(e){return new a.TraceStateImpl(e)}},476:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.INVALID_SPAN_CONTEXT=t.INVALID_TRACEID=t.INVALID_SPANID=void 0;let a=r(475);t.INVALID_SPANID="0000000000000000",t.INVALID_TRACEID="00000000000000000000000000000000",t.INVALID_SPAN_CONTEXT={traceId:t.INVALID_TRACEID,spanId:t.INVALID_SPANID,traceFlags:a.TraceFlags.NONE}},357:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SpanKind=void 0,(r=t.SpanKind||(t.SpanKind={}))[r.INTERNAL=0]="INTERNAL",r[r.SERVER=1]="SERVER",r[r.CLIENT=2]="CLIENT",r[r.PRODUCER=3]="PRODUCER",r[r.CONSUMER=4]="CONSUMER"},139:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.wrapSpanContext=t.isSpanContextValid=t.isValidSpanId=t.isValidTraceId=void 0;let a=r(476),o=r(403),n=/^([0-9a-f]{32})$/i,i=/^[0-9a-f]{16}$/i;function s(e){return n.test(e)&&e!==a.INVALID_TRACEID}function l(e){return i.test(e)&&e!==a.INVALID_SPANID}t.isValidTraceId=s,t.isValidSpanId=l,t.isSpanContextValid=function(e){return s(e.traceId)&&l(e.spanId)},t.wrapSpanContext=function(e){return new o.NonRecordingSpan(e)}},847:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SpanStatusCode=void 0,(r=t.SpanStatusCode||(t.SpanStatusCode={}))[r.UNSET=0]="UNSET",r[r.OK=1]="OK",r[r.ERROR=2]="ERROR"},475:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.TraceFlags=void 0,(r=t.TraceFlags||(t.TraceFlags={}))[r.NONE=0]="NONE",r[r.SAMPLED=1]="SAMPLED"},521:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.VERSION=void 0,t.VERSION="1.6.0"}},k={};function _(e){var t=k[e];if(void 0!==t)return t.exports;var r=k[e]={exports:{}},a=!0;try{P[e].call(r.exports,r,r.exports,_),a=!1}finally{a&&delete k[e]}return r.exports}_.ab="/ROOT/node_modules/next/dist/compiled/@opentelemetry/api/";var E={};Object.defineProperty(E,"__esModule",{value:!0}),E.trace=E.propagation=E.metrics=E.diag=E.context=E.INVALID_SPAN_CONTEXT=E.INVALID_TRACEID=E.INVALID_SPANID=E.isValidSpanId=E.isValidTraceId=E.isSpanContextValid=E.createTraceState=E.TraceFlags=E.SpanStatusCode=E.SpanKind=E.SamplingDecision=E.ProxyTracerProvider=E.ProxyTracer=E.defaultTextMapSetter=E.defaultTextMapGetter=E.ValueType=E.createNoopMeter=E.DiagLogLevel=E.DiagConsoleLogger=E.ROOT_CONTEXT=E.createContextKey=E.baggageEntryMetadataFromString=void 0,s=_(369),Object.defineProperty(E,"baggageEntryMetadataFromString",{enumerable:!0,get:function(){return s.baggageEntryMetadataFromString}}),l=_(780),Object.defineProperty(E,"createContextKey",{enumerable:!0,get:function(){return l.createContextKey}}),Object.defineProperty(E,"ROOT_CONTEXT",{enumerable:!0,get:function(){return l.ROOT_CONTEXT}}),u=_(972),Object.defineProperty(E,"DiagConsoleLogger",{enumerable:!0,get:function(){return u.DiagConsoleLogger}}),c=_(957),Object.defineProperty(E,"DiagLogLevel",{enumerable:!0,get:function(){return c.DiagLogLevel}}),h=_(102),Object.defineProperty(E,"createNoopMeter",{enumerable:!0,get:function(){return h.createNoopMeter}}),d=_(901),Object.defineProperty(E,"ValueType",{enumerable:!0,get:function(){return d.ValueType}}),g=_(194),Object.defineProperty(E,"defaultTextMapGetter",{enumerable:!0,get:function(){return g.defaultTextMapGetter}}),Object.defineProperty(E,"defaultTextMapSetter",{enumerable:!0,get:function(){return g.defaultTextMapSetter}}),p=_(125),Object.defineProperty(E,"ProxyTracer",{enumerable:!0,get:function(){return p.ProxyTracer}}),m=_(846),Object.defineProperty(E,"ProxyTracerProvider",{enumerable:!0,get:function(){return m.ProxyTracerProvider}}),f=_(996),Object.defineProperty(E,"SamplingDecision",{enumerable:!0,get:function(){return f.SamplingDecision}}),y=_(357),Object.defineProperty(E,"SpanKind",{enumerable:!0,get:function(){return y.SpanKind}}),b=_(847),Object.defineProperty(E,"SpanStatusCode",{enumerable:!0,get:function(){return b.SpanStatusCode}}),v=_(475),Object.defineProperty(E,"TraceFlags",{enumerable:!0,get:function(){return v.TraceFlags}}),w=_(98),Object.defineProperty(E,"createTraceState",{enumerable:!0,get:function(){return w.createTraceState}}),T=_(139),Object.defineProperty(E,"isSpanContextValid",{enumerable:!0,get:function(){return T.isSpanContextValid}}),Object.defineProperty(E,"isValidTraceId",{enumerable:!0,get:function(){return T.isValidTraceId}}),Object.defineProperty(E,"isValidSpanId",{enumerable:!0,get:function(){return T.isValidSpanId}}),S=_(476),Object.defineProperty(E,"INVALID_SPANID",{enumerable:!0,get:function(){return S.INVALID_SPANID}}),Object.defineProperty(E,"INVALID_TRACEID",{enumerable:!0,get:function(){return S.INVALID_TRACEID}}),Object.defineProperty(E,"INVALID_SPAN_CONTEXT",{enumerable:!0,get:function(){return S.INVALID_SPAN_CONTEXT}}),r=_(67),Object.defineProperty(E,"context",{enumerable:!0,get:function(){return r.context}}),a=_(506),Object.defineProperty(E,"diag",{enumerable:!0,get:function(){return a.diag}}),o=_(886),Object.defineProperty(E,"metrics",{enumerable:!0,get:function(){return o.metrics}}),n=_(939),Object.defineProperty(E,"propagation",{enumerable:!0,get:function(){return n.propagation}}),i=_(845),Object.defineProperty(E,"trace",{enumerable:!0,get:function(){return i.trace}}),E.default={context:r.context,diag:a.diag,metrics:o.metrics,propagation:n.propagation,trace:i.trace},t.exports=E})()},42315,(e,t,r)=>{"use strict";t.exports=e.r(18622)},47540,(e,t,r)=>{"use strict";t.exports=e.r(42315).vendored["react-rsc"].React},19481,(e,t,r)=>{"use strict";var a=Object.defineProperty,o=Object.getOwnPropertyDescriptor,n=Object.getOwnPropertyNames,i=Object.prototype.hasOwnProperty,s={},l={RequestCookies:()=>m,ResponseCookies:()=>f,parseCookie:()=>h,parseSetCookie:()=>d,stringifyCookie:()=>c};for(var u in l)a(s,u,{get:l[u],enumerable:!0});function c(e){var t;let r=["path"in e&&e.path&&`Path=${e.path}`,"expires"in e&&(e.expires||0===e.expires)&&`Expires=${("number"==typeof e.expires?new Date(e.expires):e.expires).toUTCString()}`,"maxAge"in e&&"number"==typeof e.maxAge&&`Max-Age=${e.maxAge}`,"domain"in e&&e.domain&&`Domain=${e.domain}`,"secure"in e&&e.secure&&"Secure","httpOnly"in e&&e.httpOnly&&"HttpOnly","sameSite"in e&&e.sameSite&&`SameSite=${e.sameSite}`,"partitioned"in e&&e.partitioned&&"Partitioned","priority"in e&&e.priority&&`Priority=${e.priority}`].filter(Boolean),a=`${e.name}=${encodeURIComponent(null!=(t=e.value)?t:"")}`;return 0===r.length?a:`${a}; ${r.join("; ")}`}function h(e){let t=new Map;for(let r of e.split(/; */)){if(!r)continue;let e=r.indexOf("=");if(-1===e){t.set(r,"true");continue}let[a,o]=[r.slice(0,e),r.slice(e+1)];try{t.set(a,decodeURIComponent(null!=o?o:"true"))}catch{}}return t}function d(e){if(!e)return;let[[t,r],...a]=h(e),{domain:o,expires:n,httponly:i,maxage:s,path:l,samesite:u,secure:c,partitioned:d,priority:m}=Object.fromEntries(a.map(([e,t])=>[e.toLowerCase().replace(/-/g,""),t]));{var f,y,b={name:t,value:decodeURIComponent(r),domain:o,...n&&{expires:new Date(n)},...i&&{httpOnly:!0},..."string"==typeof s&&{maxAge:Number(s)},path:l,...u&&{sameSite:g.includes(f=(f=u).toLowerCase())?f:void 0},...c&&{secure:!0},...m&&{priority:p.includes(y=(y=m).toLowerCase())?y:void 0},...d&&{partitioned:!0}};let e={};for(let t in b)b[t]&&(e[t]=b[t]);return e}}t.exports=((e,t,r,s)=>{if(t&&"object"==typeof t||"function"==typeof t)for(let l of n(t))i.call(e,l)||l===r||a(e,l,{get:()=>t[l],enumerable:!(s=o(t,l))||s.enumerable});return e})(a({},"__esModule",{value:!0}),s);var g=["strict","lax","none"],p=["low","medium","high"],m=class{constructor(e){this._parsed=new Map,this._headers=e;const t=e.get("cookie");if(t)for(const[e,r]of h(t))this._parsed.set(e,{name:e,value:r})}[Symbol.iterator](){return this._parsed[Symbol.iterator]()}get size(){return this._parsed.size}get(...e){let t="string"==typeof e[0]?e[0]:e[0].name;return this._parsed.get(t)}getAll(...e){var t;let r=Array.from(this._parsed);if(!e.length)return r.map(([e,t])=>t);let a="string"==typeof e[0]?e[0]:null==(t=e[0])?void 0:t.name;return r.filter(([e])=>e===a).map(([e,t])=>t)}has(e){return this._parsed.has(e)}set(...e){let[t,r]=1===e.length?[e[0].name,e[0].value]:e,a=this._parsed;return a.set(t,{name:t,value:r}),this._headers.set("cookie",Array.from(a).map(([e,t])=>c(t)).join("; ")),this}delete(e){let t=this._parsed,r=Array.isArray(e)?e.map(e=>t.delete(e)):t.delete(e);return this._headers.set("cookie",Array.from(t).map(([e,t])=>c(t)).join("; ")),r}clear(){return this.delete(Array.from(this._parsed.keys())),this}[Symbol.for("edge-runtime.inspect.custom")](){return`RequestCookies ${JSON.stringify(Object.fromEntries(this._parsed))}`}toString(){return[...this._parsed.values()].map(e=>`${e.name}=${encodeURIComponent(e.value)}`).join("; ")}},f=class{constructor(e){var t,r,a;this._parsed=new Map,this._headers=e;const o=null!=(a=null!=(r=null==(t=e.getSetCookie)?void 0:t.call(e))?r:e.get("set-cookie"))?a:[];for(const e of Array.isArray(o)?o:function(e){if(!e)return[];var t,r,a,o,n,i=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(a=s,s+=1,l(),o=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=o,i.push(e.substring(t,a)),t=s):s=a+1}else s+=1;(!n||s>=e.length)&&i.push(e.substring(t,e.length))}return i}(o)){const t=d(e);t&&this._parsed.set(t.name,t)}}get(...e){let t="string"==typeof e[0]?e[0]:e[0].name;return this._parsed.get(t)}getAll(...e){var t;let r=Array.from(this._parsed.values());if(!e.length)return r;let a="string"==typeof e[0]?e[0]:null==(t=e[0])?void 0:t.name;return r.filter(e=>e.name===a)}has(e){return this._parsed.has(e)}set(...e){let[t,r,a]=1===e.length?[e[0].name,e[0].value,e[0]]:e,o=this._parsed;return o.set(t,function(e={name:"",value:""}){return"number"==typeof e.expires&&(e.expires=new Date(e.expires)),e.maxAge&&(e.expires=new Date(Date.now()+1e3*e.maxAge)),(null===e.path||void 0===e.path)&&(e.path="/"),e}({name:t,value:r,...a})),function(e,t){for(let[,r]of(t.delete("set-cookie"),e)){let e=c(r);t.append("set-cookie",e)}}(o,this._headers),this}delete(...e){let[t,r]="string"==typeof e[0]?[e[0]]:[e[0].name,e[0]];return this.set({...r,name:t,value:"",expires:new Date(0)})}[Symbol.for("edge-runtime.inspect.custom")](){return`ResponseCookies ${JSON.stringify(Object.fromEntries(this._parsed))}`}toString(){return[...this._parsed.values()].map(c).join("; ")}}},93118,(e,t,r)=>{(()=>{"use strict";"undefined"!=typeof __nccwpck_require__&&(__nccwpck_require__.ab="/ROOT/node_modules/next/dist/compiled/cookie/");var e,r,a,o,n={};n.parse=function(t,r){if("string"!=typeof t)throw TypeError("argument str must be a string");for(var o={},n=t.split(a),i=(r||{}).decode||e,s=0;s<n.length;s++){var l=n[s],u=l.indexOf("=");if(!(u<0)){var c=l.substr(0,u).trim(),h=l.substr(++u,l.length).trim();'"'==h[0]&&(h=h.slice(1,-1)),void 0==o[c]&&(o[c]=function(e,t){try{return t(e)}catch(t){return e}}(h,i))}}return o},n.serialize=function(e,t,a){var n=a||{},i=n.encode||r;if("function"!=typeof i)throw TypeError("option encode is invalid");if(!o.test(e))throw TypeError("argument name is invalid");var s=i(t);if(s&&!o.test(s))throw TypeError("argument val is invalid");var l=e+"="+s;if(null!=n.maxAge){var u=n.maxAge-0;if(isNaN(u)||!isFinite(u))throw TypeError("option maxAge is invalid");l+="; Max-Age="+Math.floor(u)}if(n.domain){if(!o.test(n.domain))throw TypeError("option domain is invalid");l+="; Domain="+n.domain}if(n.path){if(!o.test(n.path))throw TypeError("option path is invalid");l+="; Path="+n.path}if(n.expires){if("function"!=typeof n.expires.toUTCString)throw TypeError("option expires is invalid");l+="; Expires="+n.expires.toUTCString()}if(n.httpOnly&&(l+="; HttpOnly"),n.secure&&(l+="; Secure"),n.sameSite)switch("string"==typeof n.sameSite?n.sameSite.toLowerCase():n.sameSite){case!0:case"strict":l+="; SameSite=Strict";break;case"lax":l+="; SameSite=Lax";break;case"none":l+="; SameSite=None";break;default:throw TypeError("option sameSite is invalid")}return l},e=decodeURIComponent,r=encodeURIComponent,a=/; */,o=/^[\u0009\u0020-\u007e\u0080-\u00ff]+$/,t.exports=n})()},47114,(e,t,r)=>{"use strict";function a(e,t,r){if(e){for(let a of(r&&(r=r.toLowerCase()),e))if(t===a.domain?.split(":",1)[0].toLowerCase()||r===a.defaultLocale.toLowerCase()||a.locales?.some(e=>e.toLowerCase()===r))return a}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"detectDomainLocale",{enumerable:!0,get:function(){return a}})},49084,(e,t,r)=>{"use strict";function a(e){return e.replace(/\/$/,"")||"/"}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"removeTrailingSlash",{enumerable:!0,get:function(){return a}})},97741,(e,t,r)=>{"use strict";function a(e){let t=e.indexOf("#"),r=e.indexOf("?"),a=r>-1&&(t<0||r<t);return a||t>-1?{pathname:e.substring(0,a?r:t),query:a?e.substring(r,t>-1?t:void 0):"",hash:t>-1?e.slice(t):""}:{pathname:e,query:"",hash:""}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"parsePath",{enumerable:!0,get:function(){return a}})},34292,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addPathPrefix",{enumerable:!0,get:function(){return o}});let a=e.r(97741);function o(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:o,hash:n}=(0,a.parsePath)(e);return`${t}${r}${o}${n}`}},87622,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addPathSuffix",{enumerable:!0,get:function(){return o}});let a=e.r(97741);function o(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:o,hash:n}=(0,a.parsePath)(e);return`${r}${t}${o}${n}`}},98389,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"pathHasPrefix",{enumerable:!0,get:function(){return o}});let a=e.r(97741);function o(e,t){if("string"!=typeof e)return!1;let{pathname:r}=(0,a.parsePath)(e);return r===t||r.startsWith(t+"/")}},95414,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addLocale",{enumerable:!0,get:function(){return n}});let a=e.r(34292),o=e.r(98389);function n(e,t,r,n){if(!t||t===r)return e;let i=e.toLowerCase();return!n&&((0,o.pathHasPrefix)(i,"/api")||(0,o.pathHasPrefix)(i,`/${t.toLowerCase()}`))?e:(0,a.addPathPrefix)(e,`/${t}`)}},25627,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"formatNextPathnameInfo",{enumerable:!0,get:function(){return s}});let a=e.r(49084),o=e.r(34292),n=e.r(87622),i=e.r(95414);function s(e){let t=(0,i.addLocale)(e.pathname,e.locale,e.buildId?void 0:e.defaultLocale,e.ignorePrefix);return(e.buildId||!e.trailingSlash)&&(t=(0,a.removeTrailingSlash)(t)),e.buildId&&(t=(0,n.addPathSuffix)((0,o.addPathPrefix)(t,`/_next/data/${e.buildId}`),"/"===e.pathname?"index.json":".json")),t=(0,o.addPathPrefix)(t,e.basePath),!e.buildId&&e.trailingSlash?t.endsWith("/")?t:(0,n.addPathSuffix)(t,"/"):(0,a.removeTrailingSlash)(t)}},64512,(e,t,r)=>{"use strict";function a(e,t){let r;if(t?.host&&!Array.isArray(t.host))r=t.host.toString().split(":",1)[0];else{if(!e.hostname)return;r=e.hostname}return r.toLowerCase()}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"getHostname",{enumerable:!0,get:function(){return a}})},13545,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"normalizeLocalePath",{enumerable:!0,get:function(){return o}});let a=new WeakMap;function o(e,t){let r;if(!t)return{pathname:e};let o=a.get(t);o||(o=t.map(e=>e.toLowerCase()),a.set(t,o));let n=e.split("/",2);if(!n[1])return{pathname:e};let i=n[1].toLowerCase(),s=o.indexOf(i);return s<0?{pathname:e}:(r=t[s],{pathname:e=e.slice(r.length+1)||"/",detectedLocale:r})}},50955,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"removePathPrefix",{enumerable:!0,get:function(){return o}});let a=e.r(98389);function o(e,t){if(!(0,a.pathHasPrefix)(e,t))return e;let r=e.slice(t.length);return r.startsWith("/")?r:`/${r}`}},60622,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"getNextPathnameInfo",{enumerable:!0,get:function(){return i}});let a=e.r(13545),o=e.r(50955),n=e.r(98389);function i(e,t){let{basePath:r,i18n:i,trailingSlash:s}=t.nextConfig??{},l={pathname:e,trailingSlash:"/"!==e?e.endsWith("/"):s};r&&(0,n.pathHasPrefix)(l.pathname,r)&&(l.pathname=(0,o.removePathPrefix)(l.pathname,r),l.basePath=r);let u=l.pathname;if(l.pathname.startsWith("/_next/data/")&&l.pathname.endsWith(".json")){let e=l.pathname.replace(/^\/_next\/data\//,"").replace(/\.json$/,"").split("/");l.buildId=e[0],u="index"!==e[1]?`/${e.slice(1).join("/")}`:"/",!0===t.parseData&&(l.pathname=u)}if(i){let e=t.i18nProvider?t.i18nProvider.analyze(l.pathname):(0,a.normalizeLocalePath)(l.pathname,i.locales);l.locale=e.detectedLocale,l.pathname=e.pathname??l.pathname,!e.detectedLocale&&l.buildId&&(e=t.i18nProvider?t.i18nProvider.analyze(u):(0,a.normalizeLocalePath)(u,i.locales)).detectedLocale&&(l.locale=e.detectedLocale)}return l}},99536,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"NextURL",{enumerable:!0,get:function(){return c}});let a=e.r(47114),o=e.r(25627),n=e.r(64512),i=e.r(60622),s=/(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|\[::1\]|localhost)/;function l(e,t){return new URL(String(e).replace(s,"localhost"),t&&String(t).replace(s,"localhost"))}let u=Symbol("NextURLInternal");class c{constructor(e,t,r){let a,o;"object"==typeof t&&"pathname"in t||"string"==typeof t?(a=t,o=r||{}):o=r||t||{},this[u]={url:l(e,a??o.base),options:o,basePath:""},this.analyze()}analyze(){var e,t,r,o,s;let l=(0,i.getNextPathnameInfo)(this[u].url.pathname,{nextConfig:this[u].options.nextConfig,parseData:!0,i18nProvider:this[u].options.i18nProvider}),c=(0,n.getHostname)(this[u].url,this[u].options.headers);this[u].domainLocale=this[u].options.i18nProvider?this[u].options.i18nProvider.detectDomainLocale(c):(0,a.detectDomainLocale)(null==(t=this[u].options.nextConfig)||null==(e=t.i18n)?void 0:e.domains,c);let h=(null==(r=this[u].domainLocale)?void 0:r.defaultLocale)||(null==(s=this[u].options.nextConfig)||null==(o=s.i18n)?void 0:o.defaultLocale);this[u].url.pathname=l.pathname,this[u].defaultLocale=h,this[u].basePath=l.basePath??"",this[u].buildId=l.buildId,this[u].locale=l.locale??h,this[u].trailingSlash=l.trailingSlash}formatPathname(){return(0,o.formatNextPathnameInfo)({basePath:this[u].basePath,buildId:this[u].buildId,defaultLocale:this[u].options.forceLocale?void 0:this[u].defaultLocale,locale:this[u].locale,pathname:this[u].url.pathname,trailingSlash:this[u].trailingSlash})}formatSearch(){return this[u].url.search}get buildId(){return this[u].buildId}set buildId(e){this[u].buildId=e}get locale(){return this[u].locale??""}set locale(e){var t,r;if(!this[u].locale||!(null==(r=this[u].options.nextConfig)||null==(t=r.i18n)?void 0:t.locales.includes(e)))throw Object.defineProperty(TypeError(`The NextURL configuration includes no locale "${e}"`),"__NEXT_ERROR_CODE",{value:"E597",enumerable:!1,configurable:!0});this[u].locale=e}get defaultLocale(){return this[u].defaultLocale}get domainLocale(){return this[u].domainLocale}get searchParams(){return this[u].url.searchParams}get host(){return this[u].url.host}set host(e){this[u].url.host=e}get hostname(){return this[u].url.hostname}set hostname(e){this[u].url.hostname=e}get port(){return this[u].url.port}set port(e){this[u].url.port=e}get protocol(){return this[u].url.protocol}set protocol(e){this[u].url.protocol=e}get href(){let e=this.formatPathname(),t=this.formatSearch();return`${this.protocol}//${this.host}${e}${t}${this.hash}`}set href(e){this[u].url=l(e),this.analyze()}get origin(){return this[u].url.origin}get pathname(){return this[u].url.pathname}set pathname(e){this[u].url.pathname=e}get hash(){return this[u].url.hash}set hash(e){this[u].url.hash=e}get search(){return this[u].url.search}set search(e){this[u].url.search=e}get password(){return this[u].url.password}set password(e){this[u].url.password=e}get username(){return this[u].url.username}set username(e){this[u].url.username=e}get basePath(){return this[u].basePath}set basePath(e){this[u].basePath=e.startsWith("/")?e:`/${e}`}toString(){return this.href}toJSON(){return this.href}[Symbol.for("edge-runtime.inspect.custom")](){return{href:this.href,origin:this.origin,protocol:this.protocol,username:this.username,password:this.password,host:this.host,hostname:this.hostname,port:this.port,pathname:this.pathname,search:this.search,searchParams:this.searchParams,hash:this.hash}}clone(){return new c(String(this),this[u].options)}}},91401,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={ACTION_SUFFIX:function(){return f},APP_DIR_ALIAS:function(){return B},CACHE_ONE_YEAR:function(){return x},DOT_NEXT_ALIAS:function(){return L},ESLINT_DEFAULT_DIRS:function(){return eo},GSP_NO_RETURNED_VALUE:function(){return Q},GSSP_COMPONENT_MEMBER_ERROR:function(){return et},GSSP_NO_RETURNED_VALUE:function(){return Z},HTML_CONTENT_TYPE_HEADER:function(){return i},INFINITE_CACHE:function(){return I},INSTRUMENTATION_HOOK_FILENAME:function(){return M},JSON_CONTENT_TYPE_HEADER:function(){return s},MATCHED_PATH_HEADER:function(){return c},MIDDLEWARE_FILENAME:function(){return A},MIDDLEWARE_LOCATION_REGEXP:function(){return C},NEXT_BODY_SUFFIX:function(){return v},NEXT_CACHE_IMPLICIT_TAG_ID:function(){return R},NEXT_CACHE_REVALIDATED_TAGS_HEADER:function(){return T},NEXT_CACHE_REVALIDATE_TAG_TOKEN_HEADER:function(){return S},NEXT_CACHE_SOFT_TAG_MAX_LENGTH:function(){return E},NEXT_CACHE_TAGS_HEADER:function(){return w},NEXT_CACHE_TAG_MAX_ITEMS:function(){return k},NEXT_CACHE_TAG_MAX_LENGTH:function(){return _},NEXT_DATA_SUFFIX:function(){return y},NEXT_INTERCEPTION_MARKER_PREFIX:function(){return u},NEXT_META_SUFFIX:function(){return b},NEXT_QUERY_PARAM_PREFIX:function(){return l},NEXT_RESUME_HEADER:function(){return P},NON_STANDARD_NODE_ENV:function(){return er},PAGES_DIR_ALIAS:function(){return D},PRERENDER_REVALIDATE_HEADER:function(){return h},PRERENDER_REVALIDATE_ONLY_GENERATED_HEADER:function(){return d},PROXY_FILENAME:function(){return O},PROXY_LOCATION_REGEXP:function(){return N},PUBLIC_DIR_MIDDLEWARE_CONFLICT:function(){return V},ROOT_DIR_ALIAS:function(){return j},RSC_ACTION_CLIENT_WRAPPER_ALIAS:function(){return $},RSC_ACTION_ENCRYPTION_ALIAS:function(){return Y},RSC_ACTION_PROXY_ALIAS:function(){return W},RSC_ACTION_VALIDATE_ALIAS:function(){return F},RSC_CACHE_WRAPPER_ALIAS:function(){return U},RSC_DYNAMIC_IMPORT_WRAPPER_ALIAS:function(){return G},RSC_MOD_REF_PROXY_ALIAS:function(){return H},RSC_SEGMENTS_DIR_SUFFIX:function(){return g},RSC_SEGMENT_SUFFIX:function(){return p},RSC_SUFFIX:function(){return m},SERVER_PROPS_EXPORT_ERROR:function(){return J},SERVER_PROPS_GET_INIT_PROPS_CONFLICT:function(){return z},SERVER_PROPS_SSG_CONFLICT:function(){return X},SERVER_RUNTIME:function(){return en},SSG_FALLBACK_EXPORT_ERROR:function(){return ea},SSG_GET_INITIAL_PROPS_CONFLICT:function(){return q},STATIC_STATUS_PAGE_GET_INITIAL_PROPS_ERROR:function(){return K},TEXT_PLAIN_CONTENT_TYPE_HEADER:function(){return n},UNSTABLE_REVALIDATE_RENAME_ERROR:function(){return ee},WEBPACK_LAYERS:function(){return el},WEBPACK_RESOURCE_QUERIES:function(){return eu},WEB_SOCKET_MAX_RECONNECTIONS:function(){return ei}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n="text/plain",i="text/html; charset=utf-8",s="application/json; charset=utf-8",l="nxtP",u="nxtI",c="x-matched-path",h="x-prerender-revalidate",d="x-prerender-revalidate-if-generated",g=".segments",p=".segment.rsc",m=".rsc",f=".action",y=".json",b=".meta",v=".body",w="x-next-cache-tags",T="x-next-revalidated-tags",S="x-next-revalidate-tag-token",P="next-resume",k=128,_=256,E=1024,R="_N_T_",x=31536e3,I=0xfffffffe,A="middleware",C=`(?:src/)?${A}`,O="proxy",N=`(?:src/)?${O}`,M="instrumentation",D="private-next-pages",L="private-dot-next",j="private-next-root-dir",B="private-next-app-dir",H="private-next-rsc-mod-ref-proxy",F="private-next-rsc-action-validate",W="private-next-rsc-server-reference",U="private-next-rsc-cache-wrapper",G="private-next-rsc-track-dynamic-import",Y="private-next-rsc-action-encryption",$="private-next-rsc-action-client-wrapper",V="You can not have a '_next' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-next-folder-conflict",q="You can not use getInitialProps with getStaticProps. To use SSG, please remove your getInitialProps",z="You can not use getInitialProps with getServerSideProps. Please remove getInitialProps.",X="You can not use getStaticProps or getStaticPaths with getServerSideProps. To use SSG, please remove getServerSideProps",K="can not have getInitialProps/getServerSideProps, https://nextjs.org/docs/messages/404-get-initial-props",J="pages with `getServerSideProps` can not be exported. See more info here: https://nextjs.org/docs/messages/gssp-export",Q="Your `getStaticProps` function did not return an object. Did you forget to add a `return`?",Z="Your `getServerSideProps` function did not return an object. Did you forget to add a `return`?",ee="The `unstable_revalidate` property is available for general use.\nPlease use `revalidate` instead.",et="can not be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member",er='You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env',ea="Pages with `fallback` enabled in `getStaticPaths` can not be exported. See more info here: https://nextjs.org/docs/messages/ssg-fallback-true-export",eo=["app","pages","components","lib","src"],en={edge:"edge",experimentalEdge:"experimental-edge",nodejs:"nodejs"},ei=12,es={shared:"shared",reactServerComponents:"rsc",serverSideRendering:"ssr",actionBrowser:"action-browser",apiNode:"api-node",apiEdge:"api-edge",middleware:"middleware",instrument:"instrument",edgeAsset:"edge-asset",appPagesBrowser:"app-pages-browser",pagesDirBrowser:"pages-dir-browser",pagesDirEdge:"pages-dir-edge",pagesDirNode:"pages-dir-node"},el={...es,GROUP:{builtinReact:[es.reactServerComponents,es.actionBrowser],serverOnly:[es.reactServerComponents,es.actionBrowser,es.instrument,es.middleware],neutralTarget:[es.apiNode,es.apiEdge],clientOnly:[es.serverSideRendering,es.appPagesBrowser],bundled:[es.reactServerComponents,es.actionBrowser,es.serverSideRendering,es.appPagesBrowser,es.shared,es.instrument,es.middleware],appPages:[es.reactServerComponents,es.serverSideRendering,es.appPagesBrowser,es.actionBrowser]}},eu={edgeSSREntry:"__next_edge_ssr_entry__",metadata:"__next_metadata__",metadataRoute:"__next_metadata_route__",metadataImageMeta:"__next_metadata_image_meta__"}},80333,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={fromNodeOutgoingHttpHeaders:function(){return i},normalizeNextQueryParam:function(){return c},splitCookiesString:function(){return s},toNodeOutgoingHttpHeaders:function(){return l},validateURL:function(){return u}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e.r(91401);function i(e){let t=new Headers;for(let[r,a]of Object.entries(e))for(let e of Array.isArray(a)?a:[a])void 0!==e&&("number"==typeof e&&(e=e.toString()),t.append(r,e));return t}function s(e){var t,r,a,o,n,i=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(a=s,s+=1,l(),o=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=o,i.push(e.substring(t,a)),t=s):s=a+1}else s+=1;(!n||s>=e.length)&&i.push(e.substring(t,e.length))}return i}function l(e){let t={},r=[];if(e)for(let[a,o]of e.entries())"set-cookie"===a.toLowerCase()?(r.push(...s(o)),t[a]=1===r.length?r[0]:r):t[a]=o;return t}function u(e){try{return String(new URL(String(e)))}catch(t){throw Object.defineProperty(Error(`URL is malformed "${String(e)}". Please use only absolute URLs - https://nextjs.org/docs/messages/middleware-relative-urls`,{cause:t}),"__NEXT_ERROR_CODE",{value:"E61",enumerable:!1,configurable:!0})}}function c(e){for(let t of[n.NEXT_QUERY_PARAM_PREFIX,n.NEXT_INTERCEPTION_MARKER_PREFIX])if(e!==t&&e.startsWith(t))return e.substring(t.length);return null}},47389,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={PageSignatureError:function(){return n},RemovedPageError:function(){return i},RemovedUAError:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});class n extends Error{constructor({page:e}){super(`The middleware "${e}" accepts an async API directly with the form:
+module.exports=[61724,(e,t,r)=>{t.exports=e.x("next/dist/compiled/next-server/app-route-turbo.runtime.prod.js",()=>require("next/dist/compiled/next-server/app-route-turbo.runtime.prod.js"))},47909,(e,t,r)=>{t.exports=e.r(61724)},17413,(e,t,r)=>{(()=>{"use strict";let r,i,a,n,o;var s,l,c,u,d,h,g,p,m,f,y,b,v,w,T,S,k={491:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ContextAPI=void 0;let i=r(223),a=r(172),n=r(930),o="context",s=new i.NoopContextManager;class l{static getInstance(){return this._instance||(this._instance=new l),this._instance}setGlobalContextManager(e){return(0,a.registerGlobal)(o,e,n.DiagAPI.instance())}active(){return this._getContextManager().active()}with(e,t,r,...i){return this._getContextManager().with(e,t,r,...i)}bind(e,t){return this._getContextManager().bind(e,t)}_getContextManager(){return(0,a.getGlobal)(o)||s}disable(){this._getContextManager().disable(),(0,a.unregisterGlobal)(o,n.DiagAPI.instance())}}t.ContextAPI=l},930:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagAPI=void 0;let i=r(56),a=r(912),n=r(957),o=r(172);class s{constructor(){function e(e){return function(...t){let r=(0,o.getGlobal)("diag");if(r)return r[e](...t)}}const t=this;t.setLogger=(e,r={logLevel:n.DiagLogLevel.INFO})=>{var i,s,l;if(e===t){let e=Error("Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation");return t.error(null!=(i=e.stack)?i:e.message),!1}"number"==typeof r&&(r={logLevel:r});let c=(0,o.getGlobal)("diag"),u=(0,a.createLogLevelDiagLogger)(null!=(s=r.logLevel)?s:n.DiagLogLevel.INFO,e);if(c&&!r.suppressOverrideMessage){let e=null!=(l=Error().stack)?l:"<failed to generate stacktrace>";c.warn(`Current logger will be overwritten from ${e}`),u.warn(`Current logger will overwrite one already registered from ${e}`)}return(0,o.registerGlobal)("diag",u,t,!0)},t.disable=()=>{(0,o.unregisterGlobal)("diag",t)},t.createComponentLogger=e=>new i.DiagComponentLogger(e),t.verbose=e("verbose"),t.debug=e("debug"),t.info=e("info"),t.warn=e("warn"),t.error=e("error")}static instance(){return this._instance||(this._instance=new s),this._instance}}t.DiagAPI=s},653:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.MetricsAPI=void 0;let i=r(660),a=r(172),n=r(930),o="metrics";class s{static getInstance(){return this._instance||(this._instance=new s),this._instance}setGlobalMeterProvider(e){return(0,a.registerGlobal)(o,e,n.DiagAPI.instance())}getMeterProvider(){return(0,a.getGlobal)(o)||i.NOOP_METER_PROVIDER}getMeter(e,t,r){return this.getMeterProvider().getMeter(e,t,r)}disable(){(0,a.unregisterGlobal)(o,n.DiagAPI.instance())}}t.MetricsAPI=s},181:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.PropagationAPI=void 0;let i=r(172),a=r(874),n=r(194),o=r(277),s=r(369),l=r(930),c="propagation",u=new a.NoopTextMapPropagator;class d{constructor(){this.createBaggage=s.createBaggage,this.getBaggage=o.getBaggage,this.getActiveBaggage=o.getActiveBaggage,this.setBaggage=o.setBaggage,this.deleteBaggage=o.deleteBaggage}static getInstance(){return this._instance||(this._instance=new d),this._instance}setGlobalPropagator(e){return(0,i.registerGlobal)(c,e,l.DiagAPI.instance())}inject(e,t,r=n.defaultTextMapSetter){return this._getGlobalPropagator().inject(e,t,r)}extract(e,t,r=n.defaultTextMapGetter){return this._getGlobalPropagator().extract(e,t,r)}fields(){return this._getGlobalPropagator().fields()}disable(){(0,i.unregisterGlobal)(c,l.DiagAPI.instance())}_getGlobalPropagator(){return(0,i.getGlobal)(c)||u}}t.PropagationAPI=d},997:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.TraceAPI=void 0;let i=r(172),a=r(846),n=r(139),o=r(607),s=r(930),l="trace";class c{constructor(){this._proxyTracerProvider=new a.ProxyTracerProvider,this.wrapSpanContext=n.wrapSpanContext,this.isSpanContextValid=n.isSpanContextValid,this.deleteSpan=o.deleteSpan,this.getSpan=o.getSpan,this.getActiveSpan=o.getActiveSpan,this.getSpanContext=o.getSpanContext,this.setSpan=o.setSpan,this.setSpanContext=o.setSpanContext}static getInstance(){return this._instance||(this._instance=new c),this._instance}setGlobalTracerProvider(e){let t=(0,i.registerGlobal)(l,this._proxyTracerProvider,s.DiagAPI.instance());return t&&this._proxyTracerProvider.setDelegate(e),t}getTracerProvider(){return(0,i.getGlobal)(l)||this._proxyTracerProvider}getTracer(e,t){return this.getTracerProvider().getTracer(e,t)}disable(){(0,i.unregisterGlobal)(l,s.DiagAPI.instance()),this._proxyTracerProvider=new a.ProxyTracerProvider}}t.TraceAPI=c},277:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.deleteBaggage=t.setBaggage=t.getActiveBaggage=t.getBaggage=void 0;let i=r(491),a=(0,r(780).createContextKey)("OpenTelemetry Baggage Key");function n(e){return e.getValue(a)||void 0}t.getBaggage=n,t.getActiveBaggage=function(){return n(i.ContextAPI.getInstance().active())},t.setBaggage=function(e,t){return e.setValue(a,t)},t.deleteBaggage=function(e){return e.deleteValue(a)}},993:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.BaggageImpl=void 0;class r{constructor(e){this._entries=e?new Map(e):new Map}getEntry(e){let t=this._entries.get(e);if(t)return Object.assign({},t)}getAllEntries(){return Array.from(this._entries.entries()).map(([e,t])=>[e,t])}setEntry(e,t){let i=new r(this._entries);return i._entries.set(e,t),i}removeEntry(e){let t=new r(this._entries);return t._entries.delete(e),t}removeEntries(...e){let t=new r(this._entries);for(let r of e)t._entries.delete(r);return t}clear(){return new r}}t.BaggageImpl=r},830:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.baggageEntryMetadataSymbol=void 0,t.baggageEntryMetadataSymbol=Symbol("BaggageEntryMetadata")},369:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.baggageEntryMetadataFromString=t.createBaggage=void 0;let i=r(930),a=r(993),n=r(830),o=i.DiagAPI.instance();t.createBaggage=function(e={}){return new a.BaggageImpl(new Map(Object.entries(e)))},t.baggageEntryMetadataFromString=function(e){return"string"!=typeof e&&(o.error(`Cannot create baggage metadata from unknown type: ${typeof e}`),e=""),{__TYPE__:n.baggageEntryMetadataSymbol,toString:()=>e}}},67:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.context=void 0,t.context=r(491).ContextAPI.getInstance()},223:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopContextManager=void 0;let i=r(780);t.NoopContextManager=class{active(){return i.ROOT_CONTEXT}with(e,t,r,...i){return t.call(r,...i)}bind(e,t){return t}enable(){return this}disable(){return this}}},780:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ROOT_CONTEXT=t.createContextKey=void 0,t.createContextKey=function(e){return Symbol.for(e)};class r{constructor(e){const t=this;t._currentContext=e?new Map(e):new Map,t.getValue=e=>t._currentContext.get(e),t.setValue=(e,i)=>{let a=new r(t._currentContext);return a._currentContext.set(e,i),a},t.deleteValue=e=>{let i=new r(t._currentContext);return i._currentContext.delete(e),i}}}t.ROOT_CONTEXT=new r},506:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.diag=void 0,t.diag=r(930).DiagAPI.instance()},56:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagComponentLogger=void 0;let i=r(172);function a(e,t,r){let a=(0,i.getGlobal)("diag");if(a)return r.unshift(t),a[e](...r)}t.DiagComponentLogger=class{constructor(e){this._namespace=e.namespace||"DiagComponentLogger"}debug(...e){return a("debug",this._namespace,e)}error(...e){return a("error",this._namespace,e)}info(...e){return a("info",this._namespace,e)}warn(...e){return a("warn",this._namespace,e)}verbose(...e){return a("verbose",this._namespace,e)}}},972:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DiagConsoleLogger=void 0;let r=[{n:"error",c:"error"},{n:"warn",c:"warn"},{n:"info",c:"info"},{n:"debug",c:"debug"},{n:"verbose",c:"trace"}];t.DiagConsoleLogger=class{constructor(){for(let e=0;e<r.length;e++)this[r[e].n]=function(e){return function(...t){if(console){let r=console[e];if("function"!=typeof r&&(r=console.log),"function"==typeof r)return r.apply(console,t)}}}(r[e].c)}}},912:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createLogLevelDiagLogger=void 0;let i=r(957);t.createLogLevelDiagLogger=function(e,t){function r(r,i){let a=t[r];return"function"==typeof a&&e>=i?a.bind(t):function(){}}return e<i.DiagLogLevel.NONE?e=i.DiagLogLevel.NONE:e>i.DiagLogLevel.ALL&&(e=i.DiagLogLevel.ALL),t=t||{},{error:r("error",i.DiagLogLevel.ERROR),warn:r("warn",i.DiagLogLevel.WARN),info:r("info",i.DiagLogLevel.INFO),debug:r("debug",i.DiagLogLevel.DEBUG),verbose:r("verbose",i.DiagLogLevel.VERBOSE)}}},957:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.DiagLogLevel=void 0,(r=t.DiagLogLevel||(t.DiagLogLevel={}))[r.NONE=0]="NONE",r[r.ERROR=30]="ERROR",r[r.WARN=50]="WARN",r[r.INFO=60]="INFO",r[r.DEBUG=70]="DEBUG",r[r.VERBOSE=80]="VERBOSE",r[r.ALL=9999]="ALL"},172:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.unregisterGlobal=t.getGlobal=t.registerGlobal=void 0;let i=r(200),a=r(521),n=r(130),o=a.VERSION.split(".")[0],s=Symbol.for(`opentelemetry.js.api.${o}`),l=i._globalThis;t.registerGlobal=function(e,t,r,i=!1){var n;let o=l[s]=null!=(n=l[s])?n:{version:a.VERSION};if(!i&&o[e]){let t=Error(`@opentelemetry/api: Attempted duplicate registration of API: ${e}`);return r.error(t.stack||t.message),!1}if(o.version!==a.VERSION){let t=Error(`@opentelemetry/api: Registration of version v${o.version} for ${e} does not match previously registered API v${a.VERSION}`);return r.error(t.stack||t.message),!1}return o[e]=t,r.debug(`@opentelemetry/api: Registered a global for ${e} v${a.VERSION}.`),!0},t.getGlobal=function(e){var t,r;let i=null==(t=l[s])?void 0:t.version;if(i&&(0,n.isCompatible)(i))return null==(r=l[s])?void 0:r[e]},t.unregisterGlobal=function(e,t){t.debug(`@opentelemetry/api: Unregistering a global for ${e} v${a.VERSION}.`);let r=l[s];r&&delete r[e]}},130:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.isCompatible=t._makeCompatibilityCheck=void 0;let i=r(521),a=/^(\d+)\.(\d+)\.(\d+)(-(.+))?$/;function n(e){let t=new Set([e]),r=new Set,i=e.match(a);if(!i)return()=>!1;let n={major:+i[1],minor:+i[2],patch:+i[3],prerelease:i[4]};if(null!=n.prerelease)return function(t){return t===e};function o(e){return r.add(e),!1}return function(e){if(t.has(e))return!0;if(r.has(e))return!1;let i=e.match(a);if(!i)return o(e);let s={major:+i[1],minor:+i[2],patch:+i[3],prerelease:i[4]};if(null!=s.prerelease||n.major!==s.major)return o(e);if(0===n.major)return n.minor===s.minor&&n.patch<=s.patch?(t.add(e),!0):o(e);return n.minor<=s.minor?(t.add(e),!0):o(e)}}t._makeCompatibilityCheck=n,t.isCompatible=n(i.VERSION)},886:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.metrics=void 0,t.metrics=r(653).MetricsAPI.getInstance()},901:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.ValueType=void 0,(r=t.ValueType||(t.ValueType={}))[r.INT=0]="INT",r[r.DOUBLE=1]="DOUBLE"},102:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createNoopMeter=t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC=t.NOOP_OBSERVABLE_GAUGE_METRIC=t.NOOP_OBSERVABLE_COUNTER_METRIC=t.NOOP_UP_DOWN_COUNTER_METRIC=t.NOOP_HISTOGRAM_METRIC=t.NOOP_COUNTER_METRIC=t.NOOP_METER=t.NoopObservableUpDownCounterMetric=t.NoopObservableGaugeMetric=t.NoopObservableCounterMetric=t.NoopObservableMetric=t.NoopHistogramMetric=t.NoopUpDownCounterMetric=t.NoopCounterMetric=t.NoopMetric=t.NoopMeter=void 0;class r{createHistogram(e,r){return t.NOOP_HISTOGRAM_METRIC}createCounter(e,r){return t.NOOP_COUNTER_METRIC}createUpDownCounter(e,r){return t.NOOP_UP_DOWN_COUNTER_METRIC}createObservableGauge(e,r){return t.NOOP_OBSERVABLE_GAUGE_METRIC}createObservableCounter(e,r){return t.NOOP_OBSERVABLE_COUNTER_METRIC}createObservableUpDownCounter(e,r){return t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC}addBatchObservableCallback(e,t){}removeBatchObservableCallback(e){}}t.NoopMeter=r;class i{}t.NoopMetric=i;class a extends i{add(e,t){}}t.NoopCounterMetric=a;class n extends i{add(e,t){}}t.NoopUpDownCounterMetric=n;class o extends i{record(e,t){}}t.NoopHistogramMetric=o;class s{addCallback(e){}removeCallback(e){}}t.NoopObservableMetric=s;class l extends s{}t.NoopObservableCounterMetric=l;class c extends s{}t.NoopObservableGaugeMetric=c;class u extends s{}t.NoopObservableUpDownCounterMetric=u,t.NOOP_METER=new r,t.NOOP_COUNTER_METRIC=new a,t.NOOP_HISTOGRAM_METRIC=new o,t.NOOP_UP_DOWN_COUNTER_METRIC=new n,t.NOOP_OBSERVABLE_COUNTER_METRIC=new l,t.NOOP_OBSERVABLE_GAUGE_METRIC=new c,t.NOOP_OBSERVABLE_UP_DOWN_COUNTER_METRIC=new u,t.createNoopMeter=function(){return t.NOOP_METER}},660:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NOOP_METER_PROVIDER=t.NoopMeterProvider=void 0;let i=r(102);class a{getMeter(e,t,r){return i.NOOP_METER}}t.NoopMeterProvider=a,t.NOOP_METER_PROVIDER=new a},200:function(e,t,r){var i=this&&this.__createBinding||(Object.create?function(e,t,r,i){void 0===i&&(i=r),Object.defineProperty(e,i,{enumerable:!0,get:function(){return t[r]}})}:function(e,t,r,i){void 0===i&&(i=r),e[i]=t[r]}),a=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||i(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),a(r(46),t)},651:(t,r)=>{Object.defineProperty(r,"__esModule",{value:!0}),r._globalThis=void 0,r._globalThis="object"==typeof globalThis?globalThis:e.g},46:function(e,t,r){var i=this&&this.__createBinding||(Object.create?function(e,t,r,i){void 0===i&&(i=r),Object.defineProperty(e,i,{enumerable:!0,get:function(){return t[r]}})}:function(e,t,r,i){void 0===i&&(i=r),e[i]=t[r]}),a=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||i(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),a(r(651),t)},939:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.propagation=void 0,t.propagation=r(181).PropagationAPI.getInstance()},874:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTextMapPropagator=void 0,t.NoopTextMapPropagator=class{inject(e,t){}extract(e,t){return e}fields(){return[]}}},194:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.defaultTextMapSetter=t.defaultTextMapGetter=void 0,t.defaultTextMapGetter={get(e,t){if(null!=e)return e[t]},keys:e=>null==e?[]:Object.keys(e)},t.defaultTextMapSetter={set(e,t,r){null!=e&&(e[t]=r)}}},845:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.trace=void 0,t.trace=r(997).TraceAPI.getInstance()},403:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NonRecordingSpan=void 0;let i=r(476);t.NonRecordingSpan=class{constructor(e=i.INVALID_SPAN_CONTEXT){this._spanContext=e}spanContext(){return this._spanContext}setAttribute(e,t){return this}setAttributes(e){return this}addEvent(e,t){return this}setStatus(e){return this}updateName(e){return this}end(e){}isRecording(){return!1}recordException(e,t){}}},614:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTracer=void 0;let i=r(491),a=r(607),n=r(403),o=r(139),s=i.ContextAPI.getInstance();t.NoopTracer=class{startSpan(e,t,r=s.active()){var i;if(null==t?void 0:t.root)return new n.NonRecordingSpan;let l=r&&(0,a.getSpanContext)(r);return"object"==typeof(i=l)&&"string"==typeof i.spanId&&"string"==typeof i.traceId&&"number"==typeof i.traceFlags&&(0,o.isSpanContextValid)(l)?new n.NonRecordingSpan(l):new n.NonRecordingSpan}startActiveSpan(e,t,r,i){let n,o,l;if(arguments.length<2)return;2==arguments.length?l=t:3==arguments.length?(n=t,l=r):(n=t,o=r,l=i);let c=null!=o?o:s.active(),u=this.startSpan(e,n,c),d=(0,a.setSpan)(c,u);return s.with(d,l,void 0,u)}}},124:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.NoopTracerProvider=void 0;let i=r(614);t.NoopTracerProvider=class{getTracer(e,t,r){return new i.NoopTracer}}},125:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ProxyTracer=void 0;let i=new(r(614)).NoopTracer;t.ProxyTracer=class{constructor(e,t,r,i){this._provider=e,this.name=t,this.version=r,this.options=i}startSpan(e,t,r){return this._getTracer().startSpan(e,t,r)}startActiveSpan(e,t,r,i){let a=this._getTracer();return Reflect.apply(a.startActiveSpan,a,arguments)}_getTracer(){if(this._delegate)return this._delegate;let e=this._provider.getDelegateTracer(this.name,this.version,this.options);return e?(this._delegate=e,this._delegate):i}}},846:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.ProxyTracerProvider=void 0;let i=r(125),a=new(r(124)).NoopTracerProvider;t.ProxyTracerProvider=class{getTracer(e,t,r){var a;return null!=(a=this.getDelegateTracer(e,t,r))?a:new i.ProxyTracer(this,e,t,r)}getDelegate(){var e;return null!=(e=this._delegate)?e:a}setDelegate(e){this._delegate=e}getDelegateTracer(e,t,r){var i;return null==(i=this._delegate)?void 0:i.getTracer(e,t,r)}}},996:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SamplingDecision=void 0,(r=t.SamplingDecision||(t.SamplingDecision={}))[r.NOT_RECORD=0]="NOT_RECORD",r[r.RECORD=1]="RECORD",r[r.RECORD_AND_SAMPLED=2]="RECORD_AND_SAMPLED"},607:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.getSpanContext=t.setSpanContext=t.deleteSpan=t.setSpan=t.getActiveSpan=t.getSpan=void 0;let i=r(780),a=r(403),n=r(491),o=(0,i.createContextKey)("OpenTelemetry Context Key SPAN");function s(e){return e.getValue(o)||void 0}function l(e,t){return e.setValue(o,t)}t.getSpan=s,t.getActiveSpan=function(){return s(n.ContextAPI.getInstance().active())},t.setSpan=l,t.deleteSpan=function(e){return e.deleteValue(o)},t.setSpanContext=function(e,t){return l(e,new a.NonRecordingSpan(t))},t.getSpanContext=function(e){var t;return null==(t=s(e))?void 0:t.spanContext()}},325:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.TraceStateImpl=void 0;let i=r(564);class a{constructor(e){this._internalState=new Map,e&&this._parse(e)}set(e,t){let r=this._clone();return r._internalState.has(e)&&r._internalState.delete(e),r._internalState.set(e,t),r}unset(e){let t=this._clone();return t._internalState.delete(e),t}get(e){return this._internalState.get(e)}serialize(){return this._keys().reduce((e,t)=>(e.push(t+"="+this.get(t)),e),[]).join(",")}_parse(e){!(e.length>512)&&(this._internalState=e.split(",").reverse().reduce((e,t)=>{let r=t.trim(),a=r.indexOf("=");if(-1!==a){let n=r.slice(0,a),o=r.slice(a+1,t.length);(0,i.validateKey)(n)&&(0,i.validateValue)(o)&&e.set(n,o)}return e},new Map),this._internalState.size>32&&(this._internalState=new Map(Array.from(this._internalState.entries()).reverse().slice(0,32))))}_keys(){return Array.from(this._internalState.keys()).reverse()}_clone(){let e=new a;return e._internalState=new Map(this._internalState),e}}t.TraceStateImpl=a},564:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.validateValue=t.validateKey=void 0;let r="[_0-9a-z-*/]",i=`[a-z]${r}{0,255}`,a=`[a-z0-9]${r}{0,240}@[a-z]${r}{0,13}`,n=RegExp(`^(?:${i}|${a})$`),o=/^[ -~]{0,255}[!-~]$/,s=/,|=/;t.validateKey=function(e){return n.test(e)},t.validateValue=function(e){return o.test(e)&&!s.test(e)}},98:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createTraceState=void 0;let i=r(325);t.createTraceState=function(e){return new i.TraceStateImpl(e)}},476:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.INVALID_SPAN_CONTEXT=t.INVALID_TRACEID=t.INVALID_SPANID=void 0;let i=r(475);t.INVALID_SPANID="0000000000000000",t.INVALID_TRACEID="00000000000000000000000000000000",t.INVALID_SPAN_CONTEXT={traceId:t.INVALID_TRACEID,spanId:t.INVALID_SPANID,traceFlags:i.TraceFlags.NONE}},357:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SpanKind=void 0,(r=t.SpanKind||(t.SpanKind={}))[r.INTERNAL=0]="INTERNAL",r[r.SERVER=1]="SERVER",r[r.CLIENT=2]="CLIENT",r[r.PRODUCER=3]="PRODUCER",r[r.CONSUMER=4]="CONSUMER"},139:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.wrapSpanContext=t.isSpanContextValid=t.isValidSpanId=t.isValidTraceId=void 0;let i=r(476),a=r(403),n=/^([0-9a-f]{32})$/i,o=/^[0-9a-f]{16}$/i;function s(e){return n.test(e)&&e!==i.INVALID_TRACEID}function l(e){return o.test(e)&&e!==i.INVALID_SPANID}t.isValidTraceId=s,t.isValidSpanId=l,t.isSpanContextValid=function(e){return s(e.traceId)&&l(e.spanId)},t.wrapSpanContext=function(e){return new a.NonRecordingSpan(e)}},847:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.SpanStatusCode=void 0,(r=t.SpanStatusCode||(t.SpanStatusCode={}))[r.UNSET=0]="UNSET",r[r.OK=1]="OK",r[r.ERROR=2]="ERROR"},475:(e,t)=>{var r;Object.defineProperty(t,"__esModule",{value:!0}),t.TraceFlags=void 0,(r=t.TraceFlags||(t.TraceFlags={}))[r.NONE=0]="NONE",r[r.SAMPLED=1]="SAMPLED"},521:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.VERSION=void 0,t.VERSION="1.6.0"}},P={};function x(e){var t=P[e];if(void 0!==t)return t.exports;var r=P[e]={exports:{}},i=!0;try{k[e].call(r.exports,r,r.exports,x),i=!1}finally{i&&delete P[e]}return r.exports}x.ab="/ROOT/node_modules/next/dist/compiled/@opentelemetry/api/";var R={};Object.defineProperty(R,"__esModule",{value:!0}),R.trace=R.propagation=R.metrics=R.diag=R.context=R.INVALID_SPAN_CONTEXT=R.INVALID_TRACEID=R.INVALID_SPANID=R.isValidSpanId=R.isValidTraceId=R.isSpanContextValid=R.createTraceState=R.TraceFlags=R.SpanStatusCode=R.SpanKind=R.SamplingDecision=R.ProxyTracerProvider=R.ProxyTracer=R.defaultTextMapSetter=R.defaultTextMapGetter=R.ValueType=R.createNoopMeter=R.DiagLogLevel=R.DiagConsoleLogger=R.ROOT_CONTEXT=R.createContextKey=R.baggageEntryMetadataFromString=void 0,s=x(369),Object.defineProperty(R,"baggageEntryMetadataFromString",{enumerable:!0,get:function(){return s.baggageEntryMetadataFromString}}),l=x(780),Object.defineProperty(R,"createContextKey",{enumerable:!0,get:function(){return l.createContextKey}}),Object.defineProperty(R,"ROOT_CONTEXT",{enumerable:!0,get:function(){return l.ROOT_CONTEXT}}),c=x(972),Object.defineProperty(R,"DiagConsoleLogger",{enumerable:!0,get:function(){return c.DiagConsoleLogger}}),u=x(957),Object.defineProperty(R,"DiagLogLevel",{enumerable:!0,get:function(){return u.DiagLogLevel}}),d=x(102),Object.defineProperty(R,"createNoopMeter",{enumerable:!0,get:function(){return d.createNoopMeter}}),h=x(901),Object.defineProperty(R,"ValueType",{enumerable:!0,get:function(){return h.ValueType}}),g=x(194),Object.defineProperty(R,"defaultTextMapGetter",{enumerable:!0,get:function(){return g.defaultTextMapGetter}}),Object.defineProperty(R,"defaultTextMapSetter",{enumerable:!0,get:function(){return g.defaultTextMapSetter}}),p=x(125),Object.defineProperty(R,"ProxyTracer",{enumerable:!0,get:function(){return p.ProxyTracer}}),m=x(846),Object.defineProperty(R,"ProxyTracerProvider",{enumerable:!0,get:function(){return m.ProxyTracerProvider}}),f=x(996),Object.defineProperty(R,"SamplingDecision",{enumerable:!0,get:function(){return f.SamplingDecision}}),y=x(357),Object.defineProperty(R,"SpanKind",{enumerable:!0,get:function(){return y.SpanKind}}),b=x(847),Object.defineProperty(R,"SpanStatusCode",{enumerable:!0,get:function(){return b.SpanStatusCode}}),v=x(475),Object.defineProperty(R,"TraceFlags",{enumerable:!0,get:function(){return v.TraceFlags}}),w=x(98),Object.defineProperty(R,"createTraceState",{enumerable:!0,get:function(){return w.createTraceState}}),T=x(139),Object.defineProperty(R,"isSpanContextValid",{enumerable:!0,get:function(){return T.isSpanContextValid}}),Object.defineProperty(R,"isValidTraceId",{enumerable:!0,get:function(){return T.isValidTraceId}}),Object.defineProperty(R,"isValidSpanId",{enumerable:!0,get:function(){return T.isValidSpanId}}),S=x(476),Object.defineProperty(R,"INVALID_SPANID",{enumerable:!0,get:function(){return S.INVALID_SPANID}}),Object.defineProperty(R,"INVALID_TRACEID",{enumerable:!0,get:function(){return S.INVALID_TRACEID}}),Object.defineProperty(R,"INVALID_SPAN_CONTEXT",{enumerable:!0,get:function(){return S.INVALID_SPAN_CONTEXT}}),r=x(67),Object.defineProperty(R,"context",{enumerable:!0,get:function(){return r.context}}),i=x(506),Object.defineProperty(R,"diag",{enumerable:!0,get:function(){return i.diag}}),a=x(886),Object.defineProperty(R,"metrics",{enumerable:!0,get:function(){return a.metrics}}),n=x(939),Object.defineProperty(R,"propagation",{enumerable:!0,get:function(){return n.propagation}}),o=x(845),Object.defineProperty(R,"trace",{enumerable:!0,get:function(){return o.trace}}),R.default={context:r.context,diag:i.diag,metrics:a.metrics,propagation:n.propagation,trace:o.trace},t.exports=R})()},42315,(e,t,r)=>{"use strict";t.exports=e.r(18622)},47540,(e,t,r)=>{"use strict";t.exports=e.r(42315).vendored["react-rsc"].React},19481,(e,t,r)=>{"use strict";var i=Object.defineProperty,a=Object.getOwnPropertyDescriptor,n=Object.getOwnPropertyNames,o=Object.prototype.hasOwnProperty,s={},l={RequestCookies:()=>m,ResponseCookies:()=>f,parseCookie:()=>d,parseSetCookie:()=>h,stringifyCookie:()=>u};for(var c in l)i(s,c,{get:l[c],enumerable:!0});function u(e){var t;let r=["path"in e&&e.path&&`Path=${e.path}`,"expires"in e&&(e.expires||0===e.expires)&&`Expires=${("number"==typeof e.expires?new Date(e.expires):e.expires).toUTCString()}`,"maxAge"in e&&"number"==typeof e.maxAge&&`Max-Age=${e.maxAge}`,"domain"in e&&e.domain&&`Domain=${e.domain}`,"secure"in e&&e.secure&&"Secure","httpOnly"in e&&e.httpOnly&&"HttpOnly","sameSite"in e&&e.sameSite&&`SameSite=${e.sameSite}`,"partitioned"in e&&e.partitioned&&"Partitioned","priority"in e&&e.priority&&`Priority=${e.priority}`].filter(Boolean),i=`${e.name}=${encodeURIComponent(null!=(t=e.value)?t:"")}`;return 0===r.length?i:`${i}; ${r.join("; ")}`}function d(e){let t=new Map;for(let r of e.split(/; */)){if(!r)continue;let e=r.indexOf("=");if(-1===e){t.set(r,"true");continue}let[i,a]=[r.slice(0,e),r.slice(e+1)];try{t.set(i,decodeURIComponent(null!=a?a:"true"))}catch{}}return t}function h(e){if(!e)return;let[[t,r],...i]=d(e),{domain:a,expires:n,httponly:o,maxage:s,path:l,samesite:c,secure:u,partitioned:h,priority:m}=Object.fromEntries(i.map(([e,t])=>[e.toLowerCase().replace(/-/g,""),t]));{var f,y,b={name:t,value:decodeURIComponent(r),domain:a,...n&&{expires:new Date(n)},...o&&{httpOnly:!0},..."string"==typeof s&&{maxAge:Number(s)},path:l,...c&&{sameSite:g.includes(f=(f=c).toLowerCase())?f:void 0},...u&&{secure:!0},...m&&{priority:p.includes(y=(y=m).toLowerCase())?y:void 0},...h&&{partitioned:!0}};let e={};for(let t in b)b[t]&&(e[t]=b[t]);return e}}t.exports=((e,t,r,s)=>{if(t&&"object"==typeof t||"function"==typeof t)for(let l of n(t))o.call(e,l)||l===r||i(e,l,{get:()=>t[l],enumerable:!(s=a(t,l))||s.enumerable});return e})(i({},"__esModule",{value:!0}),s);var g=["strict","lax","none"],p=["low","medium","high"],m=class{constructor(e){this._parsed=new Map,this._headers=e;const t=e.get("cookie");if(t)for(const[e,r]of d(t))this._parsed.set(e,{name:e,value:r})}[Symbol.iterator](){return this._parsed[Symbol.iterator]()}get size(){return this._parsed.size}get(...e){let t="string"==typeof e[0]?e[0]:e[0].name;return this._parsed.get(t)}getAll(...e){var t;let r=Array.from(this._parsed);if(!e.length)return r.map(([e,t])=>t);let i="string"==typeof e[0]?e[0]:null==(t=e[0])?void 0:t.name;return r.filter(([e])=>e===i).map(([e,t])=>t)}has(e){return this._parsed.has(e)}set(...e){let[t,r]=1===e.length?[e[0].name,e[0].value]:e,i=this._parsed;return i.set(t,{name:t,value:r}),this._headers.set("cookie",Array.from(i).map(([e,t])=>u(t)).join("; ")),this}delete(e){let t=this._parsed,r=Array.isArray(e)?e.map(e=>t.delete(e)):t.delete(e);return this._headers.set("cookie",Array.from(t).map(([e,t])=>u(t)).join("; ")),r}clear(){return this.delete(Array.from(this._parsed.keys())),this}[Symbol.for("edge-runtime.inspect.custom")](){return`RequestCookies ${JSON.stringify(Object.fromEntries(this._parsed))}`}toString(){return[...this._parsed.values()].map(e=>`${e.name}=${encodeURIComponent(e.value)}`).join("; ")}},f=class{constructor(e){var t,r,i;this._parsed=new Map,this._headers=e;const a=null!=(i=null!=(r=null==(t=e.getSetCookie)?void 0:t.call(e))?r:e.get("set-cookie"))?i:[];for(const e of Array.isArray(a)?a:function(e){if(!e)return[];var t,r,i,a,n,o=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(i=s,s+=1,l(),a=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=a,o.push(e.substring(t,i)),t=s):s=i+1}else s+=1;(!n||s>=e.length)&&o.push(e.substring(t,e.length))}return o}(a)){const t=h(e);t&&this._parsed.set(t.name,t)}}get(...e){let t="string"==typeof e[0]?e[0]:e[0].name;return this._parsed.get(t)}getAll(...e){var t;let r=Array.from(this._parsed.values());if(!e.length)return r;let i="string"==typeof e[0]?e[0]:null==(t=e[0])?void 0:t.name;return r.filter(e=>e.name===i)}has(e){return this._parsed.has(e)}set(...e){let[t,r,i]=1===e.length?[e[0].name,e[0].value,e[0]]:e,a=this._parsed;return a.set(t,function(e={name:"",value:""}){return"number"==typeof e.expires&&(e.expires=new Date(e.expires)),e.maxAge&&(e.expires=new Date(Date.now()+1e3*e.maxAge)),(null===e.path||void 0===e.path)&&(e.path="/"),e}({name:t,value:r,...i})),function(e,t){for(let[,r]of(t.delete("set-cookie"),e)){let e=u(r);t.append("set-cookie",e)}}(a,this._headers),this}delete(...e){let[t,r]="string"==typeof e[0]?[e[0]]:[e[0].name,e[0]];return this.set({...r,name:t,value:"",expires:new Date(0)})}[Symbol.for("edge-runtime.inspect.custom")](){return`ResponseCookies ${JSON.stringify(Object.fromEntries(this._parsed))}`}toString(){return[...this._parsed.values()].map(u).join("; ")}}},93118,(e,t,r)=>{(()=>{"use strict";"undefined"!=typeof __nccwpck_require__&&(__nccwpck_require__.ab="/ROOT/node_modules/next/dist/compiled/cookie/");var e,r,i,a,n={};n.parse=function(t,r){if("string"!=typeof t)throw TypeError("argument str must be a string");for(var a={},n=t.split(i),o=(r||{}).decode||e,s=0;s<n.length;s++){var l=n[s],c=l.indexOf("=");if(!(c<0)){var u=l.substr(0,c).trim(),d=l.substr(++c,l.length).trim();'"'==d[0]&&(d=d.slice(1,-1)),void 0==a[u]&&(a[u]=function(e,t){try{return t(e)}catch(t){return e}}(d,o))}}return a},n.serialize=function(e,t,i){var n=i||{},o=n.encode||r;if("function"!=typeof o)throw TypeError("option encode is invalid");if(!a.test(e))throw TypeError("argument name is invalid");var s=o(t);if(s&&!a.test(s))throw TypeError("argument val is invalid");var l=e+"="+s;if(null!=n.maxAge){var c=n.maxAge-0;if(isNaN(c)||!isFinite(c))throw TypeError("option maxAge is invalid");l+="; Max-Age="+Math.floor(c)}if(n.domain){if(!a.test(n.domain))throw TypeError("option domain is invalid");l+="; Domain="+n.domain}if(n.path){if(!a.test(n.path))throw TypeError("option path is invalid");l+="; Path="+n.path}if(n.expires){if("function"!=typeof n.expires.toUTCString)throw TypeError("option expires is invalid");l+="; Expires="+n.expires.toUTCString()}if(n.httpOnly&&(l+="; HttpOnly"),n.secure&&(l+="; Secure"),n.sameSite)switch("string"==typeof n.sameSite?n.sameSite.toLowerCase():n.sameSite){case!0:case"strict":l+="; SameSite=Strict";break;case"lax":l+="; SameSite=Lax";break;case"none":l+="; SameSite=None";break;default:throw TypeError("option sameSite is invalid")}return l},e=decodeURIComponent,r=encodeURIComponent,i=/; */,a=/^[\u0009\u0020-\u007e\u0080-\u00ff]+$/,t.exports=n})()},47114,(e,t,r)=>{"use strict";function i(e,t,r){if(e){for(let i of(r&&(r=r.toLowerCase()),e))if(t===i.domain?.split(":",1)[0].toLowerCase()||r===i.defaultLocale.toLowerCase()||i.locales?.some(e=>e.toLowerCase()===r))return i}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"detectDomainLocale",{enumerable:!0,get:function(){return i}})},49084,(e,t,r)=>{"use strict";function i(e){return e.replace(/\/$/,"")||"/"}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"removeTrailingSlash",{enumerable:!0,get:function(){return i}})},97741,(e,t,r)=>{"use strict";function i(e){let t=e.indexOf("#"),r=e.indexOf("?"),i=r>-1&&(t<0||r<t);return i||t>-1?{pathname:e.substring(0,i?r:t),query:i?e.substring(r,t>-1?t:void 0):"",hash:t>-1?e.slice(t):""}:{pathname:e,query:"",hash:""}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"parsePath",{enumerable:!0,get:function(){return i}})},34292,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addPathPrefix",{enumerable:!0,get:function(){return a}});let i=e.r(97741);function a(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:a,hash:n}=(0,i.parsePath)(e);return`${t}${r}${a}${n}`}},87622,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addPathSuffix",{enumerable:!0,get:function(){return a}});let i=e.r(97741);function a(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:a,hash:n}=(0,i.parsePath)(e);return`${r}${t}${a}${n}`}},98389,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"pathHasPrefix",{enumerable:!0,get:function(){return a}});let i=e.r(97741);function a(e,t){if("string"!=typeof e)return!1;let{pathname:r}=(0,i.parsePath)(e);return r===t||r.startsWith(t+"/")}},95414,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"addLocale",{enumerable:!0,get:function(){return n}});let i=e.r(34292),a=e.r(98389);function n(e,t,r,n){if(!t||t===r)return e;let o=e.toLowerCase();return!n&&((0,a.pathHasPrefix)(o,"/api")||(0,a.pathHasPrefix)(o,`/${t.toLowerCase()}`))?e:(0,i.addPathPrefix)(e,`/${t}`)}},25627,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"formatNextPathnameInfo",{enumerable:!0,get:function(){return s}});let i=e.r(49084),a=e.r(34292),n=e.r(87622),o=e.r(95414);function s(e){let t=(0,o.addLocale)(e.pathname,e.locale,e.buildId?void 0:e.defaultLocale,e.ignorePrefix);return(e.buildId||!e.trailingSlash)&&(t=(0,i.removeTrailingSlash)(t)),e.buildId&&(t=(0,n.addPathSuffix)((0,a.addPathPrefix)(t,`/_next/data/${e.buildId}`),"/"===e.pathname?"index.json":".json")),t=(0,a.addPathPrefix)(t,e.basePath),!e.buildId&&e.trailingSlash?t.endsWith("/")?t:(0,n.addPathSuffix)(t,"/"):(0,i.removeTrailingSlash)(t)}},64512,(e,t,r)=>{"use strict";function i(e,t){let r;if(t?.host&&!Array.isArray(t.host))r=t.host.toString().split(":",1)[0];else{if(!e.hostname)return;r=e.hostname}return r.toLowerCase()}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"getHostname",{enumerable:!0,get:function(){return i}})},13545,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"normalizeLocalePath",{enumerable:!0,get:function(){return a}});let i=new WeakMap;function a(e,t){let r;if(!t)return{pathname:e};let a=i.get(t);a||(a=t.map(e=>e.toLowerCase()),i.set(t,a));let n=e.split("/",2);if(!n[1])return{pathname:e};let o=n[1].toLowerCase(),s=a.indexOf(o);return s<0?{pathname:e}:(r=t[s],{pathname:e=e.slice(r.length+1)||"/",detectedLocale:r})}},50955,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"removePathPrefix",{enumerable:!0,get:function(){return a}});let i=e.r(98389);function a(e,t){if(!(0,i.pathHasPrefix)(e,t))return e;let r=e.slice(t.length);return r.startsWith("/")?r:`/${r}`}},60622,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"getNextPathnameInfo",{enumerable:!0,get:function(){return o}});let i=e.r(13545),a=e.r(50955),n=e.r(98389);function o(e,t){let{basePath:r,i18n:o,trailingSlash:s}=t.nextConfig??{},l={pathname:e,trailingSlash:"/"!==e?e.endsWith("/"):s};r&&(0,n.pathHasPrefix)(l.pathname,r)&&(l.pathname=(0,a.removePathPrefix)(l.pathname,r),l.basePath=r);let c=l.pathname;if(l.pathname.startsWith("/_next/data/")&&l.pathname.endsWith(".json")){let e=l.pathname.replace(/^\/_next\/data\//,"").replace(/\.json$/,"").split("/");l.buildId=e[0],c="index"!==e[1]?`/${e.slice(1).join("/")}`:"/",!0===t.parseData&&(l.pathname=c)}if(o){let e=t.i18nProvider?t.i18nProvider.analyze(l.pathname):(0,i.normalizeLocalePath)(l.pathname,o.locales);l.locale=e.detectedLocale,l.pathname=e.pathname??l.pathname,!e.detectedLocale&&l.buildId&&(e=t.i18nProvider?t.i18nProvider.analyze(c):(0,i.normalizeLocalePath)(c,o.locales)).detectedLocale&&(l.locale=e.detectedLocale)}return l}},99536,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"NextURL",{enumerable:!0,get:function(){return u}});let i=e.r(47114),a=e.r(25627),n=e.r(64512),o=e.r(60622),s=/(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|\[::1\]|localhost)/;function l(e,t){return new URL(String(e).replace(s,"localhost"),t&&String(t).replace(s,"localhost"))}let c=Symbol("NextURLInternal");class u{constructor(e,t,r){let i,a;"object"==typeof t&&"pathname"in t||"string"==typeof t?(i=t,a=r||{}):a=r||t||{},this[c]={url:l(e,i??a.base),options:a,basePath:""},this.analyze()}analyze(){var e,t,r,a,s;let l=(0,o.getNextPathnameInfo)(this[c].url.pathname,{nextConfig:this[c].options.nextConfig,parseData:!0,i18nProvider:this[c].options.i18nProvider}),u=(0,n.getHostname)(this[c].url,this[c].options.headers);this[c].domainLocale=this[c].options.i18nProvider?this[c].options.i18nProvider.detectDomainLocale(u):(0,i.detectDomainLocale)(null==(t=this[c].options.nextConfig)||null==(e=t.i18n)?void 0:e.domains,u);let d=(null==(r=this[c].domainLocale)?void 0:r.defaultLocale)||(null==(s=this[c].options.nextConfig)||null==(a=s.i18n)?void 0:a.defaultLocale);this[c].url.pathname=l.pathname,this[c].defaultLocale=d,this[c].basePath=l.basePath??"",this[c].buildId=l.buildId,this[c].locale=l.locale??d,this[c].trailingSlash=l.trailingSlash}formatPathname(){return(0,a.formatNextPathnameInfo)({basePath:this[c].basePath,buildId:this[c].buildId,defaultLocale:this[c].options.forceLocale?void 0:this[c].defaultLocale,locale:this[c].locale,pathname:this[c].url.pathname,trailingSlash:this[c].trailingSlash})}formatSearch(){return this[c].url.search}get buildId(){return this[c].buildId}set buildId(e){this[c].buildId=e}get locale(){return this[c].locale??""}set locale(e){var t,r;if(!this[c].locale||!(null==(r=this[c].options.nextConfig)||null==(t=r.i18n)?void 0:t.locales.includes(e)))throw Object.defineProperty(TypeError(`The NextURL configuration includes no locale "${e}"`),"__NEXT_ERROR_CODE",{value:"E597",enumerable:!1,configurable:!0});this[c].locale=e}get defaultLocale(){return this[c].defaultLocale}get domainLocale(){return this[c].domainLocale}get searchParams(){return this[c].url.searchParams}get host(){return this[c].url.host}set host(e){this[c].url.host=e}get hostname(){return this[c].url.hostname}set hostname(e){this[c].url.hostname=e}get port(){return this[c].url.port}set port(e){this[c].url.port=e}get protocol(){return this[c].url.protocol}set protocol(e){this[c].url.protocol=e}get href(){let e=this.formatPathname(),t=this.formatSearch();return`${this.protocol}//${this.host}${e}${t}${this.hash}`}set href(e){this[c].url=l(e),this.analyze()}get origin(){return this[c].url.origin}get pathname(){return this[c].url.pathname}set pathname(e){this[c].url.pathname=e}get hash(){return this[c].url.hash}set hash(e){this[c].url.hash=e}get search(){return this[c].url.search}set search(e){this[c].url.search=e}get password(){return this[c].url.password}set password(e){this[c].url.password=e}get username(){return this[c].url.username}set username(e){this[c].url.username=e}get basePath(){return this[c].basePath}set basePath(e){this[c].basePath=e.startsWith("/")?e:`/${e}`}toString(){return this.href}toJSON(){return this.href}[Symbol.for("edge-runtime.inspect.custom")](){return{href:this.href,origin:this.origin,protocol:this.protocol,username:this.username,password:this.password,host:this.host,hostname:this.hostname,port:this.port,pathname:this.pathname,search:this.search,searchParams:this.searchParams,hash:this.hash}}clone(){return new u(String(this),this[c].options)}}},91401,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={ACTION_SUFFIX:function(){return f},APP_DIR_ALIAS:function(){return j},CACHE_ONE_YEAR:function(){return C},DOT_NEXT_ALIAS:function(){return B},ESLINT_DEFAULT_DIRS:function(){return ea},GSP_NO_RETURNED_VALUE:function(){return Q},GSSP_COMPONENT_MEMBER_ERROR:function(){return et},GSSP_NO_RETURNED_VALUE:function(){return Z},HTML_CONTENT_TYPE_HEADER:function(){return o},INFINITE_CACHE:function(){return A},INSTRUMENTATION_HOOK_FILENAME:function(){return D},JSON_CONTENT_TYPE_HEADER:function(){return s},MATCHED_PATH_HEADER:function(){return u},MIDDLEWARE_FILENAME:function(){return I},MIDDLEWARE_LOCATION_REGEXP:function(){return _},NEXT_BODY_SUFFIX:function(){return v},NEXT_CACHE_IMPLICIT_TAG_ID:function(){return E},NEXT_CACHE_REVALIDATED_TAGS_HEADER:function(){return T},NEXT_CACHE_REVALIDATE_TAG_TOKEN_HEADER:function(){return S},NEXT_CACHE_SOFT_TAG_MAX_LENGTH:function(){return R},NEXT_CACHE_TAGS_HEADER:function(){return w},NEXT_CACHE_TAG_MAX_ITEMS:function(){return P},NEXT_CACHE_TAG_MAX_LENGTH:function(){return x},NEXT_DATA_SUFFIX:function(){return y},NEXT_INTERCEPTION_MARKER_PREFIX:function(){return c},NEXT_META_SUFFIX:function(){return b},NEXT_QUERY_PARAM_PREFIX:function(){return l},NEXT_RESUME_HEADER:function(){return k},NON_STANDARD_NODE_ENV:function(){return er},PAGES_DIR_ALIAS:function(){return N},PRERENDER_REVALIDATE_HEADER:function(){return d},PRERENDER_REVALIDATE_ONLY_GENERATED_HEADER:function(){return h},PROXY_FILENAME:function(){return M},PROXY_LOCATION_REGEXP:function(){return O},PUBLIC_DIR_MIDDLEWARE_CONFLICT:function(){return z},ROOT_DIR_ALIAS:function(){return L},RSC_ACTION_CLIENT_WRAPPER_ALIAS:function(){return q},RSC_ACTION_ENCRYPTION_ALIAS:function(){return U},RSC_ACTION_PROXY_ALIAS:function(){return W},RSC_ACTION_VALIDATE_ALIAS:function(){return F},RSC_CACHE_WRAPPER_ALIAS:function(){return Y},RSC_DYNAMIC_IMPORT_WRAPPER_ALIAS:function(){return G},RSC_MOD_REF_PROXY_ALIAS:function(){return H},RSC_SEGMENTS_DIR_SUFFIX:function(){return g},RSC_SEGMENT_SUFFIX:function(){return p},RSC_SUFFIX:function(){return m},SERVER_PROPS_EXPORT_ERROR:function(){return J},SERVER_PROPS_GET_INIT_PROPS_CONFLICT:function(){return V},SERVER_PROPS_SSG_CONFLICT:function(){return X},SERVER_RUNTIME:function(){return en},SSG_FALLBACK_EXPORT_ERROR:function(){return ei},SSG_GET_INITIAL_PROPS_CONFLICT:function(){return $},STATIC_STATUS_PAGE_GET_INITIAL_PROPS_ERROR:function(){return K},TEXT_PLAIN_CONTENT_TYPE_HEADER:function(){return n},UNSTABLE_REVALIDATE_RENAME_ERROR:function(){return ee},WEBPACK_LAYERS:function(){return el},WEBPACK_RESOURCE_QUERIES:function(){return ec},WEB_SOCKET_MAX_RECONNECTIONS:function(){return eo}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n="text/plain",o="text/html; charset=utf-8",s="application/json; charset=utf-8",l="nxtP",c="nxtI",u="x-matched-path",d="x-prerender-revalidate",h="x-prerender-revalidate-if-generated",g=".segments",p=".segment.rsc",m=".rsc",f=".action",y=".json",b=".meta",v=".body",w="x-next-cache-tags",T="x-next-revalidated-tags",S="x-next-revalidate-tag-token",k="next-resume",P=128,x=256,R=1024,E="_N_T_",C=31536e3,A=0xfffffffe,I="middleware",_=`(?:src/)?${I}`,M="proxy",O=`(?:src/)?${M}`,D="instrumentation",N="private-next-pages",B="private-dot-next",L="private-next-root-dir",j="private-next-app-dir",H="private-next-rsc-mod-ref-proxy",F="private-next-rsc-action-validate",W="private-next-rsc-server-reference",Y="private-next-rsc-cache-wrapper",G="private-next-rsc-track-dynamic-import",U="private-next-rsc-action-encryption",q="private-next-rsc-action-client-wrapper",z="You can not have a '_next' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-next-folder-conflict",$="You can not use getInitialProps with getStaticProps. To use SSG, please remove your getInitialProps",V="You can not use getInitialProps with getServerSideProps. Please remove getInitialProps.",X="You can not use getStaticProps or getStaticPaths with getServerSideProps. To use SSG, please remove getServerSideProps",K="can not have getInitialProps/getServerSideProps, https://nextjs.org/docs/messages/404-get-initial-props",J="pages with `getServerSideProps` can not be exported. See more info here: https://nextjs.org/docs/messages/gssp-export",Q="Your `getStaticProps` function did not return an object. Did you forget to add a `return`?",Z="Your `getServerSideProps` function did not return an object. Did you forget to add a `return`?",ee="The `unstable_revalidate` property is available for general use.\nPlease use `revalidate` instead.",et="can not be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member",er='You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env',ei="Pages with `fallback` enabled in `getStaticPaths` can not be exported. See more info here: https://nextjs.org/docs/messages/ssg-fallback-true-export",ea=["app","pages","components","lib","src"],en={edge:"edge",experimentalEdge:"experimental-edge",nodejs:"nodejs"},eo=12,es={shared:"shared",reactServerComponents:"rsc",serverSideRendering:"ssr",actionBrowser:"action-browser",apiNode:"api-node",apiEdge:"api-edge",middleware:"middleware",instrument:"instrument",edgeAsset:"edge-asset",appPagesBrowser:"app-pages-browser",pagesDirBrowser:"pages-dir-browser",pagesDirEdge:"pages-dir-edge",pagesDirNode:"pages-dir-node"},el={...es,GROUP:{builtinReact:[es.reactServerComponents,es.actionBrowser],serverOnly:[es.reactServerComponents,es.actionBrowser,es.instrument,es.middleware],neutralTarget:[es.apiNode,es.apiEdge],clientOnly:[es.serverSideRendering,es.appPagesBrowser],bundled:[es.reactServerComponents,es.actionBrowser,es.serverSideRendering,es.appPagesBrowser,es.shared,es.instrument,es.middleware],appPages:[es.reactServerComponents,es.serverSideRendering,es.appPagesBrowser,es.actionBrowser]}},ec={edgeSSREntry:"__next_edge_ssr_entry__",metadata:"__next_metadata__",metadataRoute:"__next_metadata_route__",metadataImageMeta:"__next_metadata_image_meta__"}},80333,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={fromNodeOutgoingHttpHeaders:function(){return o},normalizeNextQueryParam:function(){return u},splitCookiesString:function(){return s},toNodeOutgoingHttpHeaders:function(){return l},validateURL:function(){return c}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e.r(91401);function o(e){let t=new Headers;for(let[r,i]of Object.entries(e))for(let e of Array.isArray(i)?i:[i])void 0!==e&&("number"==typeof e&&(e=e.toString()),t.append(r,e));return t}function s(e){var t,r,i,a,n,o=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(i=s,s+=1,l(),a=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=a,o.push(e.substring(t,i)),t=s):s=i+1}else s+=1;(!n||s>=e.length)&&o.push(e.substring(t,e.length))}return o}function l(e){let t={},r=[];if(e)for(let[i,a]of e.entries())"set-cookie"===i.toLowerCase()?(r.push(...s(a)),t[i]=1===r.length?r[0]:r):t[i]=a;return t}function c(e){try{return String(new URL(String(e)))}catch(t){throw Object.defineProperty(Error(`URL is malformed "${String(e)}". Please use only absolute URLs - https://nextjs.org/docs/messages/middleware-relative-urls`,{cause:t}),"__NEXT_ERROR_CODE",{value:"E61",enumerable:!1,configurable:!0})}}function u(e){for(let t of[n.NEXT_QUERY_PARAM_PREFIX,n.NEXT_INTERCEPTION_MARKER_PREFIX])if(e!==t&&e.startsWith(t))return e.substring(t.length);return null}},47389,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={PageSignatureError:function(){return n},RemovedPageError:function(){return o},RemovedUAError:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});class n extends Error{constructor({page:e}){super(`The middleware "${e}" accepts an async API directly with the form:
   
   export function middleware(request, event) {
     return NextResponse.redirect('/new-location')
   }
   
   Read more: https://nextjs.org/docs/messages/middleware-new-signature
-  `)}}class i extends Error{constructor(){super(`The request.page has been deprecated in favour of \`URLPattern\`.
+  `)}}class o extends Error{constructor(){super(`The request.page has been deprecated in favour of \`URLPattern\`.
   Read more: https://nextjs.org/docs/messages/middleware-request-page
   `)}}class s extends Error{constructor(){super(`The request.ua has been removed in favour of \`userAgent\` function.
   Read more: https://nextjs.org/docs/messages/middleware-parse-user-agent
-  `)}}},472,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={RequestCookies:function(){return n.RequestCookies},ResponseCookies:function(){return n.ResponseCookies},stringifyCookie:function(){return n.stringifyCookie}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e.r(19481)},29666,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={INTERNALS:function(){return u},NextRequest:function(){return c}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e.r(99536),i=e.r(80333),s=e.r(47389),l=e.r(472),u=Symbol("internal request");class c extends Request{constructor(e,t={}){const r="string"!=typeof e&&"url"in e?e.url:String(e);(0,i.validateURL)(r),t.body&&"half"!==t.duplex&&(t.duplex="half"),e instanceof Request?super(e,t):super(r,t);const a=new n.NextURL(r,{headers:(0,i.toNodeOutgoingHttpHeaders)(this.headers),nextConfig:t.nextConfig});this[u]={cookies:new l.RequestCookies(this.headers),nextUrl:a,url:a.toString()}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,nextUrl:this.nextUrl,url:this.url,bodyUsed:this.bodyUsed,cache:this.cache,credentials:this.credentials,destination:this.destination,headers:Object.fromEntries(this.headers),integrity:this.integrity,keepalive:this.keepalive,method:this.method,mode:this.mode,redirect:this.redirect,referrer:this.referrer,referrerPolicy:this.referrerPolicy,signal:this.signal}}get cookies(){return this[u].cookies}get nextUrl(){return this[u].nextUrl}get page(){throw new s.RemovedPageError}get ua(){throw new s.RemovedUAError}get url(){return this[u].url}}},30759,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"ReflectAdapter",{enumerable:!0,get:function(){return a}});class a{static get(e,t,r){let a=Reflect.get(e,t,r);return"function"==typeof a?a.bind(e):a}static set(e,t,r,a){return Reflect.set(e,t,r,a)}static has(e,t){return Reflect.has(e,t)}static deleteProperty(e,t){return Reflect.deleteProperty(e,t)}}},46633,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"NextResponse",{enumerable:!0,get:function(){return h}});let a=e.r(472),o=e.r(99536),n=e.r(80333),i=e.r(30759),s=e.r(472),l=Symbol("internal response"),u=new Set([301,302,303,307,308]);function c(e,t){var r;if(null==e||null==(r=e.request)?void 0:r.headers){if(!(e.request.headers instanceof Headers))throw Object.defineProperty(Error("request.headers must be an instance of Headers"),"__NEXT_ERROR_CODE",{value:"E119",enumerable:!1,configurable:!0});let r=[];for(let[a,o]of e.request.headers)t.set("x-middleware-request-"+a,o),r.push(a);t.set("x-middleware-override-headers",r.join(","))}}class h extends Response{constructor(e,t={}){super(e,t);const r=this.headers,u=new Proxy(new s.ResponseCookies(r),{get(e,o,n){switch(o){case"delete":case"set":return(...n)=>{let i=Reflect.apply(e[o],e,n),l=new Headers(r);return i instanceof s.ResponseCookies&&r.set("x-middleware-set-cookie",i.getAll().map(e=>(0,a.stringifyCookie)(e)).join(",")),c(t,l),i};default:return i.ReflectAdapter.get(e,o,n)}}});this[l]={cookies:u,url:t.url?new o.NextURL(t.url,{headers:(0,n.toNodeOutgoingHttpHeaders)(r),nextConfig:t.nextConfig}):void 0}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,url:this.url,body:this.body,bodyUsed:this.bodyUsed,headers:Object.fromEntries(this.headers),ok:this.ok,redirected:this.redirected,status:this.status,statusText:this.statusText,type:this.type}}get cookies(){return this[l].cookies}static json(e,t){let r=Response.json(e,t);return new h(r.body,r)}static redirect(e,t){let r="number"==typeof t?t:(null==t?void 0:t.status)??307;if(!u.has(r))throw Object.defineProperty(RangeError('Failed to execute "redirect" on "response": Invalid status code'),"__NEXT_ERROR_CODE",{value:"E529",enumerable:!1,configurable:!0});let a="object"==typeof t?t:{},o=new Headers(null==a?void 0:a.headers);return o.set("Location",(0,n.validateURL)(e)),new h(null,{...a,headers:o,status:r})}static rewrite(e,t){let r=new Headers(null==t?void 0:t.headers);return r.set("x-middleware-rewrite",(0,n.validateURL)(e)),c(t,r),new h(null,{...t,headers:r})}static next(e){let t=new Headers(null==e?void 0:e.headers);return t.set("x-middleware-next","1"),c(e,t),new h(null,{...e,headers:t})}}},87963,(e,t,r)=>{"use strict";function a(){throw Object.defineProperty(Error('ImageResponse moved from "next/server" to "next/og" since Next.js 14, please import from "next/og" instead'),"__NEXT_ERROR_CODE",{value:"E183",enumerable:!1,configurable:!0})}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"ImageResponse",{enumerable:!0,get:function(){return a}})},99299,(e,t,r)=>{var a={226:function(t,r){!function(a,o){"use strict";var n="function",i="undefined",s="object",l="string",u="major",c="model",h="name",d="type",g="vendor",p="version",m="architecture",f="console",y="mobile",b="tablet",v="smarttv",w="wearable",T="embedded",S="Amazon",P="Apple",k="ASUS",_="BlackBerry",E="Browser",R="Chrome",x="Firefox",I="Google",A="Huawei",C="Microsoft",O="Motorola",N="Opera",M="Samsung",D="Sharp",L="Sony",j="Xiaomi",B="Zebra",H="Facebook",F="Chromium OS",W="Mac OS",U=function(e,t){var r={};for(var a in e)t[a]&&t[a].length%2==0?r[a]=t[a].concat(e[a]):r[a]=e[a];return r},G=function(e){for(var t={},r=0;r<e.length;r++)t[e[r].toUpperCase()]=e[r];return t},Y=function(e,t){return typeof e===l&&-1!==$(t).indexOf($(e))},$=function(e){return e.toLowerCase()},V=function(e,t){if(typeof e===l)return e=e.replace(/^\s\s*/,""),typeof t===i?e:e.substring(0,350)},q=function(e,t){for(var r,a,o,i,l,u,c=0;c<t.length&&!l;){var h=t[c],d=t[c+1];for(r=a=0;r<h.length&&!l&&h[r];)if(l=h[r++].exec(e))for(o=0;o<d.length;o++)u=l[++a],typeof(i=d[o])===s&&i.length>0?2===i.length?typeof i[1]==n?this[i[0]]=i[1].call(this,u):this[i[0]]=i[1]:3===i.length?typeof i[1]!==n||i[1].exec&&i[1].test?this[i[0]]=u?u.replace(i[1],i[2]):void 0:this[i[0]]=u?i[1].call(this,u,i[2]):void 0:4===i.length&&(this[i[0]]=u?i[3].call(this,u.replace(i[1],i[2])):void 0):this[i]=u||void 0;c+=2}},z=function(e,t){for(var r in t)if(typeof t[r]===s&&t[r].length>0){for(var a=0;a<t[r].length;a++)if(Y(t[r][a],e))return"?"===r?void 0:r}else if(Y(t[r],e))return"?"===r?void 0:r;return e},X={ME:"4.90","NT 3.11":"NT3.51","NT 4.0":"NT4.0",2e3:"NT 5.0",XP:["NT 5.1","NT 5.2"],Vista:"NT 6.0",7:"NT 6.1",8:"NT 6.2",8.1:"NT 6.3",10:["NT 6.4","NT 10.0"],RT:"ARM"},K={browser:[[/\b(?:crmo|crios)\/([\w\.]+)/i],[p,[h,"Chrome"]],[/edg(?:e|ios|a)?\/([\w\.]+)/i],[p,[h,"Edge"]],[/(opera mini)\/([-\w\.]+)/i,/(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i,/(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i],[h,p],[/opios[\/ ]+([\w\.]+)/i],[p,[h,N+" Mini"]],[/\bopr\/([\w\.]+)/i],[p,[h,N]],[/(kindle)\/([\w\.]+)/i,/(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i,/(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i,/(ba?idubrowser)[\/ ]?([\w\.]+)/i,/(?:ms|\()(ie) ([\w\.]+)/i,/(flock|rockmelt|midori|epiphany|silk|skyfire|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale(?!.+naver)|qqbrowserlite|qq|duckduckgo)\/([-\w\.]+)/i,/(heytap|ovi)browser\/([\d\.]+)/i,/(weibo)__([\d\.]+)/i],[h,p],[/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],[p,[h,"UC"+E]],[/microm.+\bqbcore\/([\w\.]+)/i,/\bqbcore\/([\w\.]+).+microm/i],[p,[h,"WeChat(Win) Desktop"]],[/micromessenger\/([\w\.]+)/i],[p,[h,"WeChat"]],[/konqueror\/([\w\.]+)/i],[p,[h,"Konqueror"]],[/trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i],[p,[h,"IE"]],[/ya(?:search)?browser\/([\w\.]+)/i],[p,[h,"Yandex"]],[/(avast|avg)\/([\w\.]+)/i],[[h,/(.+)/,"$1 Secure "+E],p],[/\bfocus\/([\w\.]+)/i],[p,[h,x+" Focus"]],[/\bopt\/([\w\.]+)/i],[p,[h,N+" Touch"]],[/coc_coc\w+\/([\w\.]+)/i],[p,[h,"Coc Coc"]],[/dolfin\/([\w\.]+)/i],[p,[h,"Dolphin"]],[/coast\/([\w\.]+)/i],[p,[h,N+" Coast"]],[/miuibrowser\/([\w\.]+)/i],[p,[h,"MIUI "+E]],[/fxios\/([-\w\.]+)/i],[p,[h,x]],[/\bqihu|(qi?ho?o?|360)browser/i],[[h,"360 "+E]],[/(oculus|samsung|sailfish|huawei)browser\/([\w\.]+)/i],[[h,/(.+)/,"$1 "+E],p],[/(comodo_dragon)\/([\w\.]+)/i],[[h,/_/g," "],p],[/(electron)\/([\w\.]+) safari/i,/(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i,/m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i],[h,p],[/(metasr)[\/ ]?([\w\.]+)/i,/(lbbrowser)/i,/\[(linkedin)app\]/i],[h],[/((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i],[[h,H],p],[/(kakao(?:talk|story))[\/ ]([\w\.]+)/i,/(naver)\(.*?(\d+\.[\w\.]+).*\)/i,/safari (line)\/([\w\.]+)/i,/\b(line)\/([\w\.]+)\/iab/i,/(chromium|instagram)[\/ ]([-\w\.]+)/i],[h,p],[/\bgsa\/([\w\.]+) .*safari\//i],[p,[h,"GSA"]],[/musical_ly(?:.+app_?version\/|_)([\w\.]+)/i],[p,[h,"TikTok"]],[/headlesschrome(?:\/([\w\.]+)| )/i],[p,[h,R+" Headless"]],[/ wv\).+(chrome)\/([\w\.]+)/i],[[h,R+" WebView"],p],[/droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i],[p,[h,"Android "+E]],[/(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i],[h,p],[/version\/([\w\.\,]+) .*mobile\/\w+ (safari)/i],[p,[h,"Mobile Safari"]],[/version\/([\w(\.|\,)]+) .*(mobile ?safari|safari)/i],[p,h],[/webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i],[h,[p,z,{"1.0":"/8",1.2:"/1",1.3:"/3","2.0":"/412","2.0.2":"/416","2.0.3":"/417","2.0.4":"/419","?":"/"}]],[/(webkit|khtml)\/([\w\.]+)/i],[h,p],[/(navigator|netscape\d?)\/([-\w\.]+)/i],[[h,"Netscape"],p],[/mobile vr; rv:([\w\.]+)\).+firefox/i],[p,[h,x+" Reality"]],[/ekiohf.+(flow)\/([\w\.]+)/i,/(swiftfox)/i,/(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i,/(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i,/(firefox)\/([\w\.]+)/i,/(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i,/(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,/(links) \(([\w\.]+)/i,/panasonic;(viera)/i],[h,p],[/(cobalt)\/([\w\.]+)/i],[h,[p,/master.|lts./,""]]],cpu:[[/(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i],[[m,"amd64"]],[/(ia32(?=;))/i],[[m,$]],[/((?:i[346]|x)86)[;\)]/i],[[m,"ia32"]],[/\b(aarch64|arm(v?8e?l?|_?64))\b/i],[[m,"arm64"]],[/\b(arm(?:v[67])?ht?n?[fl]p?)\b/i],[[m,"armhf"]],[/windows (ce|mobile); ppc;/i],[[m,"arm"]],[/((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i],[[m,/ower/,"",$]],[/(sun4\w)[;\)]/i],[[m,"sparc"]],[/((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i],[[m,$]]],device:[[/\b(sch-i[89]0\d|shw-m380s|sm-[ptx]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i],[c,[g,M],[d,b]],[/\b((?:s[cgp]h|gt|sm)-\w+|sc[g-]?[\d]+a?|galaxy nexus)/i,/samsung[- ]([-\w]+)/i,/sec-(sgh\w+)/i],[c,[g,M],[d,y]],[/(?:\/|\()(ip(?:hone|od)[\w, ]*)(?:\/|;)/i],[c,[g,P],[d,y]],[/\((ipad);[-\w\),; ]+apple/i,/applecoremedia\/[\w\.]+ \((ipad)/i,/\b(ipad)\d\d?,\d\d?[;\]].+ios/i],[c,[g,P],[d,b]],[/(macintosh);/i],[c,[g,P]],[/\b(sh-?[altvz]?\d\d[a-ekm]?)/i],[c,[g,D],[d,y]],[/\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i],[c,[g,A],[d,b]],[/(?:huawei|honor)([-\w ]+)[;\)]/i,/\b(nexus 6p|\w{2,4}e?-[atu]?[ln][\dx][012359c][adn]?)\b(?!.+d\/s)/i],[c,[g,A],[d,y]],[/\b(poco[\w ]+)(?: bui|\))/i,/\b; (\w+) build\/hm\1/i,/\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i,/\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i,/\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max|cc)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i],[[c,/_/g," "],[g,j],[d,y]],[/\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i],[[c,/_/g," "],[g,j],[d,b]],[/; (\w+) bui.+ oppo/i,/\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i],[c,[g,"OPPO"],[d,y]],[/vivo (\w+)(?: bui|\))/i,/\b(v[12]\d{3}\w?[at])(?: bui|;)/i],[c,[g,"Vivo"],[d,y]],[/\b(rmx[12]\d{3})(?: bui|;|\))/i],[c,[g,"Realme"],[d,y]],[/\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i,/\bmot(?:orola)?[- ](\w*)/i,/((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i],[c,[g,O],[d,y]],[/\b(mz60\d|xoom[2 ]{0,2}) build\//i],[c,[g,O],[d,b]],[/((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i],[c,[g,"LG"],[d,b]],[/(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i,/\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i,/\blg-?([\d\w]+) bui/i],[c,[g,"LG"],[d,y]],[/(ideatab[-\w ]+)/i,/lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i],[c,[g,"Lenovo"],[d,b]],[/(?:maemo|nokia).*(n900|lumia \d+)/i,/nokia[-_ ]?([-\w\.]*)/i],[[c,/_/g," "],[g,"Nokia"],[d,y]],[/(pixel c)\b/i],[c,[g,I],[d,b]],[/droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i],[c,[g,I],[d,y]],[/droid.+ (a?\d[0-2]{2}so|[c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i],[c,[g,L],[d,y]],[/sony tablet [ps]/i,/\b(?:sony)?sgp\w+(?: bui|\))/i],[[c,"Xperia Tablet"],[g,L],[d,b]],[/ (kb2005|in20[12]5|be20[12][59])\b/i,/(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i],[c,[g,"OnePlus"],[d,y]],[/(alexa)webm/i,/(kf[a-z]{2}wi|aeo[c-r]{2})( bui|\))/i,/(kf[a-z]+)( bui|\)).+silk\//i],[c,[g,S],[d,b]],[/((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i],[[c,/(.+)/g,"Fire Phone $1"],[g,S],[d,y]],[/(playbook);[-\w\),; ]+(rim)/i],[c,g,[d,b]],[/\b((?:bb[a-f]|st[hv])100-\d)/i,/\(bb10; (\w+)/i],[c,[g,_],[d,y]],[/(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i],[c,[g,k],[d,b]],[/ (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i],[c,[g,k],[d,y]],[/(nexus 9)/i],[c,[g,"HTC"],[d,b]],[/(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i,/(zte)[- ]([\w ]+?)(?: bui|\/|\))/i,/(alcatel|geeksphone|nexian|panasonic(?!(?:;|\.))|sony(?!-bra))[-_ ]?([-\w]*)/i],[g,[c,/_/g," "],[d,y]],[/droid.+; ([ab][1-7]-?[0178a]\d\d?)/i],[c,[g,"Acer"],[d,b]],[/droid.+; (m[1-5] note) bui/i,/\bmz-([-\w]{2,})/i],[c,[g,"Meizu"],[d,y]],[/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i,/(hp) ([\w ]+\w)/i,/(asus)-?(\w+)/i,/(microsoft); (lumia[\w ]+)/i,/(lenovo)[-_ ]?([-\w]+)/i,/(jolla)/i,/(oppo) ?([\w ]+) bui/i],[g,c,[d,y]],[/(kobo)\s(ereader|touch)/i,/(archos) (gamepad2?)/i,/(hp).+(touchpad(?!.+tablet)|tablet)/i,/(kindle)\/([\w\.]+)/i,/(nook)[\w ]+build\/(\w+)/i,/(dell) (strea[kpr\d ]*[\dko])/i,/(le[- ]+pan)[- ]+(\w{1,9}) bui/i,/(trinity)[- ]*(t\d{3}) bui/i,/(gigaset)[- ]+(q\w{1,9}) bui/i,/(vodafone) ([\w ]+)(?:\)| bui)/i],[g,c,[d,b]],[/(surface duo)/i],[c,[g,C],[d,b]],[/droid [\d\.]+; (fp\du?)(?: b|\))/i],[c,[g,"Fairphone"],[d,y]],[/(u304aa)/i],[c,[g,"AT&T"],[d,y]],[/\bsie-(\w*)/i],[c,[g,"Siemens"],[d,y]],[/\b(rct\w+) b/i],[c,[g,"RCA"],[d,b]],[/\b(venue[\d ]{2,7}) b/i],[c,[g,"Dell"],[d,b]],[/\b(q(?:mv|ta)\w+) b/i],[c,[g,"Verizon"],[d,b]],[/\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i],[c,[g,"Barnes & Noble"],[d,b]],[/\b(tm\d{3}\w+) b/i],[c,[g,"NuVision"],[d,b]],[/\b(k88) b/i],[c,[g,"ZTE"],[d,b]],[/\b(nx\d{3}j) b/i],[c,[g,"ZTE"],[d,y]],[/\b(gen\d{3}) b.+49h/i],[c,[g,"Swiss"],[d,y]],[/\b(zur\d{3}) b/i],[c,[g,"Swiss"],[d,b]],[/\b((zeki)?tb.*\b) b/i],[c,[g,"Zeki"],[d,b]],[/\b([yr]\d{2}) b/i,/\b(dragon[- ]+touch |dt)(\w{5}) b/i],[[g,"Dragon Touch"],c,[d,b]],[/\b(ns-?\w{0,9}) b/i],[c,[g,"Insignia"],[d,b]],[/\b((nxa|next)-?\w{0,9}) b/i],[c,[g,"NextBook"],[d,b]],[/\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i],[[g,"Voice"],c,[d,y]],[/\b(lvtel\-)?(v1[12]) b/i],[[g,"LvTel"],c,[d,y]],[/\b(ph-1) /i],[c,[g,"Essential"],[d,y]],[/\b(v(100md|700na|7011|917g).*\b) b/i],[c,[g,"Envizen"],[d,b]],[/\b(trio[-\w\. ]+) b/i],[c,[g,"MachSpeed"],[d,b]],[/\btu_(1491) b/i],[c,[g,"Rotor"],[d,b]],[/(shield[\w ]+) b/i],[c,[g,"Nvidia"],[d,b]],[/(sprint) (\w+)/i],[g,c,[d,y]],[/(kin\.[onetw]{3})/i],[[c,/\./g," "],[g,C],[d,y]],[/droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i],[c,[g,B],[d,b]],[/droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i],[c,[g,B],[d,y]],[/smart-tv.+(samsung)/i],[g,[d,v]],[/hbbtv.+maple;(\d+)/i],[[c,/^/,"SmartTV"],[g,M],[d,v]],[/(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i],[[g,"LG"],[d,v]],[/(apple) ?tv/i],[g,[c,P+" TV"],[d,v]],[/crkey/i],[[c,R+"cast"],[g,I],[d,v]],[/droid.+aft(\w)( bui|\))/i],[c,[g,S],[d,v]],[/\(dtv[\);].+(aquos)/i,/(aquos-tv[\w ]+)\)/i],[c,[g,D],[d,v]],[/(bravia[\w ]+)( bui|\))/i],[c,[g,L],[d,v]],[/(mitv-\w{5}) bui/i],[c,[g,j],[d,v]],[/Hbbtv.*(technisat) (.*);/i],[g,c,[d,v]],[/\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i,/hbbtv\/\d+\.\d+\.\d+ +\([\w\+ ]*; *([\w\d][^;]*);([^;]*)/i],[[g,V],[c,V],[d,v]],[/\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i],[[d,v]],[/(ouya)/i,/(nintendo) ([wids3utch]+)/i],[g,c,[d,f]],[/droid.+; (shield) bui/i],[c,[g,"Nvidia"],[d,f]],[/(playstation [345portablevi]+)/i],[c,[g,L],[d,f]],[/\b(xbox(?: one)?(?!; xbox))[\); ]/i],[c,[g,C],[d,f]],[/((pebble))app/i],[g,c,[d,w]],[/(watch)(?: ?os[,\/]|\d,\d\/)[\d\.]+/i],[c,[g,P],[d,w]],[/droid.+; (glass) \d/i],[c,[g,I],[d,w]],[/droid.+; (wt63?0{2,3})\)/i],[c,[g,B],[d,w]],[/(quest( 2| pro)?)/i],[c,[g,H],[d,w]],[/(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i],[g,[d,T]],[/(aeobc)\b/i],[c,[g,S],[d,T]],[/droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i],[c,[d,y]],[/droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i],[c,[d,b]],[/\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i],[[d,b]],[/(phone|mobile(?:[;\/]| [ \w\/\.]*safari)|pda(?=.+windows ce))/i],[[d,y]],[/(android[-\w\. ]{0,9});.+buil/i],[c,[g,"Generic"]]],engine:[[/windows.+ edge\/([\w\.]+)/i],[p,[h,"EdgeHTML"]],[/webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i],[p,[h,"Blink"]],[/(presto)\/([\w\.]+)/i,/(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i,/ekioh(flow)\/([\w\.]+)/i,/(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i,/(icab)[\/ ]([23]\.[\d\.]+)/i,/\b(libweb)/i],[h,p],[/rv\:([\w\.]{1,9})\b.+(gecko)/i],[p,h]],os:[[/microsoft (windows) (vista|xp)/i],[h,p],[/(windows) nt 6\.2; (arm)/i,/(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i,/(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i],[h,[p,z,X]],[/(win(?=3|9|n)|win 9x )([nt\d\.]+)/i],[[h,"Windows"],[p,z,X]],[/ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i,/ios;fbsv\/([\d\.]+)/i,/cfnetwork\/.+darwin/i],[[p,/_/g,"."],[h,"iOS"]],[/(mac os x) ?([\w\. ]*)/i,/(macintosh|mac_powerpc\b)(?!.+haiku)/i],[[h,W],[p,/_/g,"."]],[/droid ([\w\.]+)\b.+(android[- ]x86|harmonyos)/i],[p,h],[/(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i,/(blackberry)\w*\/([\w\.]*)/i,/(tizen|kaios)[\/ ]([\w\.]+)/i,/\((series40);/i],[h,p],[/\(bb(10);/i],[p,[h,_]],[/(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i],[p,[h,"Symbian"]],[/mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i],[p,[h,x+" OS"]],[/web0s;.+rt(tv)/i,/\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i],[p,[h,"webOS"]],[/watch(?: ?os[,\/]|\d,\d\/)([\d\.]+)/i],[p,[h,"watchOS"]],[/crkey\/([\d\.]+)/i],[p,[h,R+"cast"]],[/(cros) [\w]+(?:\)| ([\w\.]+)\b)/i],[[h,F],p],[/panasonic;(viera)/i,/(netrange)mmh/i,/(nettv)\/(\d+\.[\w\.]+)/i,/(nintendo|playstation) ([wids345portablevuch]+)/i,/(xbox); +xbox ([^\);]+)/i,/\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,/(mint)[\/\(\) ]?(\w*)/i,/(mageia|vectorlinux)[; ]/i,/([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i,/(hurd|linux) ?([\w\.]*)/i,/(gnu) ?([\w\.]*)/i,/\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i,/(haiku) (\w+)/i],[h,p],[/(sunos) ?([\w\.\d]*)/i],[[h,"Solaris"],p],[/((?:open)?solaris)[-\/ ]?([\w\.]*)/i,/(aix) ((\d)(?=\.|\)| )[\w\.])*/i,/\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux|serenityos)/i,/(unix) ?([\w\.]*)/i],[h,p]]},J=function(e,t){if(typeof e===s&&(t=e,e=void 0),!(this instanceof J))return new J(e,t).getResult();var r=typeof a!==i&&a.navigator?a.navigator:void 0,o=e||(r&&r.userAgent?r.userAgent:""),f=r&&r.userAgentData?r.userAgentData:void 0,v=t?U(K,t):K,w=r&&r.userAgent==o;return this.getBrowser=function(){var e,t={};return t[h]=void 0,t[p]=void 0,q.call(t,o,v.browser),t[u]=typeof(e=t[p])===l?e.replace(/[^\d\.]/g,"").split(".")[0]:void 0,w&&r&&r.brave&&typeof r.brave.isBrave==n&&(t[h]="Brave"),t},this.getCPU=function(){var e={};return e[m]=void 0,q.call(e,o,v.cpu),e},this.getDevice=function(){var e={};return e[g]=void 0,e[c]=void 0,e[d]=void 0,q.call(e,o,v.device),w&&!e[d]&&f&&f.mobile&&(e[d]=y),w&&"Macintosh"==e[c]&&r&&typeof r.standalone!==i&&r.maxTouchPoints&&r.maxTouchPoints>2&&(e[c]="iPad",e[d]=b),e},this.getEngine=function(){var e={};return e[h]=void 0,e[p]=void 0,q.call(e,o,v.engine),e},this.getOS=function(){var e={};return e[h]=void 0,e[p]=void 0,q.call(e,o,v.os),w&&!e[h]&&f&&"Unknown"!=f.platform&&(e[h]=f.platform.replace(/chrome os/i,F).replace(/macos/i,W)),e},this.getResult=function(){return{ua:this.getUA(),browser:this.getBrowser(),engine:this.getEngine(),os:this.getOS(),device:this.getDevice(),cpu:this.getCPU()}},this.getUA=function(){return o},this.setUA=function(e){return o=typeof e===l&&e.length>350?V(e,350):e,this},this.setUA(o),this};if(J.VERSION="1.0.35",J.BROWSER=G([h,p,u]),J.CPU=G([m]),J.DEVICE=G([c,g,d,f,y,v,b,w,T]),J.ENGINE=J.OS=G([h,p]),typeof r!==i)t.exports&&(r=t.exports=J),r.UAParser=J;else if(typeof define===n&&define.amd)e.r,void 0!==J&&e.v(J);else typeof a!==i&&(a.UAParser=J);var Q=typeof a!==i&&(a.jQuery||a.Zepto);if(Q&&!Q.ua){var Z=new J;Q.ua=Z.getResult(),Q.ua.get=function(){return Z.getUA()},Q.ua.set=function(e){Z.setUA(e);var t=Z.getResult();for(var r in t)Q.ua[r]=t[r]}}}(this)}},o={};function n(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}},i=!0;try{a[e].call(r.exports,r,r.exports,n),i=!1}finally{i&&delete o[e]}return r.exports}n.ab="/ROOT/node_modules/next/dist/compiled/ua-parser-js/",t.exports=n(226)},4386,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a,o={isBot:function(){return s},userAgent:function(){return u},userAgentFromString:function(){return l}};for(var n in o)Object.defineProperty(r,n,{enumerable:!0,get:o[n]});let i=(a=e.r(99299))&&a.__esModule?a:{default:a};function s(e){return/Googlebot|Mediapartners-Google|AdsBot-Google|googleweblight|Storebot-Google|Google-PageRenderer|Google-InspectionTool|Bingbot|BingPreview|Slurp|DuckDuckBot|baiduspider|yandex|sogou|LinkedInBot|bitlybot|tumblr|vkShare|quora link preview|facebookexternalhit|facebookcatalog|Twitterbot|applebot|redditbot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|ia_archiver/i.test(e)}function l(e){return{...(0,i.default)(e),isBot:void 0!==e&&s(e)}}function u({headers:e}){return l(e.get("user-agent")||void 0)}},79187,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"URLPattern",{enumerable:!0,get:function(){return a}});let a="undefined"==typeof URLPattern?void 0:URLPattern},53309,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"after",{enumerable:!0,get:function(){return o}});let a=e.r(56704);function o(e){let t=a.workAsyncStorage.getStore();if(!t)throw Object.defineProperty(Error("`after` was called outside a request scope. Read more: https://nextjs.org/docs/messages/next-dynamic-api-wrong-context"),"__NEXT_ERROR_CODE",{value:"E468",enumerable:!1,configurable:!0});let{afterContext:r}=t;return r.after(e)}},81053,(e,t,r)=>{"use strict";var a,o;Object.defineProperty(r,"__esModule",{value:!0}),a=e.r(53309),o=r,Object.keys(a).forEach(function(e){"default"===e||Object.prototype.hasOwnProperty.call(o,e)||Object.defineProperty(o,e,{enumerable:!0,get:function(){return a[e]}})})},65252,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={DynamicServerError:function(){return i},isDynamicServerError:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n="DYNAMIC_SERVER_USAGE";class i extends Error{constructor(e){super(`Dynamic server usage: ${e}`),this.description=e,this.digest=n}}function s(e){return"object"==typeof e&&null!==e&&"digest"in e&&"string"==typeof e.digest&&e.digest===n}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},97573,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={StaticGenBailoutError:function(){return i},isStaticGenBailoutError:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n="NEXT_STATIC_GEN_BAILOUT";class i extends Error{constructor(...e){super(...e),this.code=n}}function s(e){return"object"==typeof e&&null!==e&&"code"in e&&e.code===n}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},4642,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={isHangingPromiseRejectionError:function(){return n},makeDevtoolsIOAwarePromise:function(){return h},makeHangingPromise:function(){return u}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});function n(e){return"object"==typeof e&&null!==e&&"digest"in e&&e.digest===i}let i="HANGING_PROMISE_REJECTION";class s extends Error{constructor(e,t){super(`During prerendering, ${t} rejects when the prerender is complete. Typically these errors are handled by React but if you move ${t} to a different context by using \`setTimeout\`, \`after\`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "${e}".`),this.route=e,this.expression=t,this.digest=i}}let l=new WeakMap;function u(e,t,r){if(e.aborted)return Promise.reject(new s(t,r));{let a=new Promise((a,o)=>{let n=o.bind(null,new s(t,r)),i=l.get(e);if(i)i.push(n);else{let t=[n];l.set(e,t),e.addEventListener("abort",()=>{for(let e=0;e<t.length;e++)t[e]()},{once:!0})}});return a.catch(c),a}}function c(){}function h(e,t,r){return t.stagedRendering?t.stagedRendering.delayUntilStage(r,void 0,e):new Promise(t=>{setTimeout(()=>{t(e)},0)})}},96306,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={METADATA_BOUNDARY_NAME:function(){return n},OUTLET_BOUNDARY_NAME:function(){return s},ROOT_LAYOUT_BOUNDARY_NAME:function(){return l},VIEWPORT_BOUNDARY_NAME:function(){return i}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n="__next_metadata_boundary__",i="__next_viewport_boundary__",s="__next_outlet_boundary__",l="__next_root_layout_boundary__"},38244,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={atLeastOneTask:function(){return s},scheduleImmediate:function(){return i},scheduleOnNextTick:function(){return n},waitAtLeastOneReactRenderTask:function(){return l}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e=>{Promise.resolve().then(()=>{process.nextTick(e)})},i=e=>{setImmediate(e)};function s(){return new Promise(e=>i(e))}function l(){return new Promise(e=>setImmediate(e))}},31584,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={BailoutToCSRError:function(){return i},isBailoutToCSRError:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n="BAILOUT_TO_CLIENT_SIDE_RENDERING";class i extends Error{constructor(e){super(`Bail out to client-side rendering: ${e}`),this.reason=e,this.digest=n}}function s(e){return"object"==typeof e&&null!==e&&"digest"in e&&e.digest===n}},76414,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"InvariantError",{enumerable:!0,get:function(){return a}});class a extends Error{constructor(e,t){super(`Invariant: ${e.endsWith(".")?e:e+"."} This is a bug in Next.js.`,t),this.name="InvariantError"}}},68665,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a,o,n={Postpone:function(){return R},PreludeState:function(){return Q},abortAndThrowOnSynchronousRequestDataAccess:function(){return E},abortOnSynchronousPlatformIOAccess:function(){return _},accessedDynamicData:function(){return D},annotateDynamicAccess:function(){return F},consumeDynamicAccess:function(){return L},createDynamicTrackingState:function(){return b},createDynamicValidationState:function(){return v},createHangingInputAbortSignal:function(){return H},createRenderInBrowserAbortSignal:function(){return B},delayUntilRuntimeStage:function(){return er},formatDynamicAPIAccesses:function(){return j},getFirstDynamicReason:function(){return w},getStaticShellDisallowedDynamicReasons:function(){return et},isDynamicPostpone:function(){return A},isPrerenderInterruptedError:function(){return M},logDisallowedDynamicError:function(){return Z},markCurrentScopeAsDynamic:function(){return T},postponeWithTracking:function(){return x},throwIfDisallowedDynamic:function(){return ee},throwToInterruptStaticGeneration:function(){return S},trackAllowedDynamicAccess:function(){return z},trackDynamicDataInDynamicRender:function(){return P},trackDynamicHoleInRuntimeShell:function(){return X},trackDynamicHoleInStaticShell:function(){return K},useDynamicRouteParams:function(){return W},useDynamicSearchParams:function(){return U}};for(var i in n)Object.defineProperty(r,i,{enumerable:!0,get:n[i]});let s=(a=e.r(47540))&&a.__esModule?a:{default:a},l=e.r(65252),u=e.r(97573),c=e.r(32319),h=e.r(56704),d=e.r(4642),g=e.r(96306),p=e.r(38244),m=e.r(31584),f=e.r(76414),y="function"==typeof s.default.unstable_postpone;function b(e){return{isDebugDynamicAccesses:e,dynamicAccesses:[],syncDynamicErrorWithStack:null}}function v(){return{hasSuspenseAboveBody:!1,hasDynamicMetadata:!1,dynamicMetadata:null,hasDynamicViewport:!1,hasAllowedDynamic:!1,dynamicErrors:[]}}function w(e){var t;return null==(t=e.dynamicAccesses[0])?void 0:t.expression}function T(e,t,r){if(t)switch(t.type){case"cache":case"unstable-cache":case"private-cache":return}if(!e.forceDynamic&&!e.forceStatic){if(e.dynamicShouldError)throw Object.defineProperty(new u.StaticGenBailoutError(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`${r}\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E553",enumerable:!1,configurable:!0});if(t)switch(t.type){case"prerender-ppr":return x(e.route,r,t.dynamicTracking);case"prerender-legacy":t.revalidate=0;let a=Object.defineProperty(new l.DynamicServerError(`Route ${e.route} couldn't be rendered statically because it used ${r}. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E550",enumerable:!1,configurable:!0});throw e.dynamicUsageDescription=r,e.dynamicUsageStack=a.stack,a}}}function S(e,t,r){let a=Object.defineProperty(new l.DynamicServerError(`Route ${t.route} couldn't be rendered statically because it used \`${e}\`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E558",enumerable:!1,configurable:!0});throw r.revalidate=0,t.dynamicUsageDescription=e,t.dynamicUsageStack=a.stack,a}function P(e){switch(e.type){case"cache":case"unstable-cache":case"private-cache":return}}function k(e,t,r){let a=N(`Route ${e} needs to bail out of prerendering at this point because it used ${t}.`);r.controller.abort(a);let o=r.dynamicTracking;o&&o.dynamicAccesses.push({stack:o.isDebugDynamicAccesses?Error().stack:void 0,expression:t})}function _(e,t,r,a){let o=a.dynamicTracking;k(e,t,a),o&&null===o.syncDynamicErrorWithStack&&(o.syncDynamicErrorWithStack=r)}function E(e,t,r,a){if(!1===a.controller.signal.aborted){k(e,t,a);let o=a.dynamicTracking;o&&null===o.syncDynamicErrorWithStack&&(o.syncDynamicErrorWithStack=r)}throw N(`Route ${e} needs to bail out of prerendering at this point because it used ${t}.`)}function R({reason:e,route:t}){let r=c.workUnitAsyncStorage.getStore();x(t,e,r&&"prerender-ppr"===r.type?r.dynamicTracking:null)}function x(e,t,r){(function(){if(!y)throw Object.defineProperty(Error("Invariant: React.unstable_postpone is not defined. This suggests the wrong version of React was loaded. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E224",enumerable:!1,configurable:!0})})(),r&&r.dynamicAccesses.push({stack:r.isDebugDynamicAccesses?Error().stack:void 0,expression:t}),s.default.unstable_postpone(I(e,t))}function I(e,t){return`Route ${e} needs to bail out of prerendering at this point because it used ${t}. React throws this special object to indicate where. It should not be caught by your own try/catch. Learn more: https://nextjs.org/docs/messages/ppr-caught-error`}function A(e){return"object"==typeof e&&null!==e&&"string"==typeof e.message&&C(e.message)}function C(e){return e.includes("needs to bail out of prerendering at this point because it used")&&e.includes("Learn more: https://nextjs.org/docs/messages/ppr-caught-error")}if(!1===C(I("%%%","^^^")))throw Object.defineProperty(Error("Invariant: isDynamicPostpone misidentified a postpone reason. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E296",enumerable:!1,configurable:!0});let O="NEXT_PRERENDER_INTERRUPTED";function N(e){let t=Object.defineProperty(Error(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});return t.digest=O,t}function M(e){return"object"==typeof e&&null!==e&&e.digest===O&&"name"in e&&"message"in e&&e instanceof Error}function D(e){return e.length>0}function L(e,t){return e.dynamicAccesses.push(...t.dynamicAccesses),e.dynamicAccesses}function j(e){return e.filter(e=>"string"==typeof e.stack&&e.stack.length>0).map(({expression:e,stack:t})=>(t=t.split("\n").slice(4).filter(e=>!(e.includes("node_modules/next/")||e.includes(" (<anonymous>)")||e.includes(" (node:"))).join("\n"),`Dynamic API Usage Debug - ${e}:
-${t}`))}function B(){let e=new AbortController;return e.abort(Object.defineProperty(new m.BailoutToCSRError("Render in Browser"),"__NEXT_ERROR_CODE",{value:"E721",enumerable:!1,configurable:!0})),e.signal}function H(e){switch(e.type){case"prerender":case"prerender-runtime":let t=new AbortController;if(e.cacheSignal)e.cacheSignal.inputReady().then(()=>{t.abort()});else{let r=(0,c.getRuntimeStagePromise)(e);r?r.then(()=>(0,p.scheduleOnNextTick)(()=>t.abort())):(0,p.scheduleOnNextTick)(()=>t.abort())}return t.signal;case"prerender-client":case"prerender-ppr":case"prerender-legacy":case"request":case"cache":case"private-cache":case"unstable-cache":return}}function F(e,t){let r=t.dynamicTracking;r&&r.dynamicAccesses.push({stack:r.isDebugDynamicAccesses?Error().stack:void 0,expression:e})}function W(e){let t=h.workAsyncStorage.getStore(),r=c.workUnitAsyncStorage.getStore();if(t&&r)switch(r.type){case"prerender-client":case"prerender":{let a=r.fallbackRouteParams;a&&a.size>0&&s.default.use((0,d.makeHangingPromise)(r.renderSignal,t.route,e));break}case"prerender-ppr":{let a=r.fallbackRouteParams;if(a&&a.size>0)return x(t.route,e,r.dynamicTracking);break}case"prerender-runtime":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called during a runtime prerender. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E771",enumerable:!1,configurable:!0});case"cache":case"private-cache":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called inside a cache scope. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E745",enumerable:!1,configurable:!0})}}function U(e){let t=h.workAsyncStorage.getStore(),r=c.workUnitAsyncStorage.getStore();if(t)switch(!r&&(0,c.throwForMissingRequestStore)(e),r.type){case"prerender-client":s.default.use((0,d.makeHangingPromise)(r.renderSignal,t.route,e));break;case"prerender-legacy":case"prerender-ppr":if(t.forceStatic)return;throw Object.defineProperty(new m.BailoutToCSRError(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});case"prerender":case"prerender-runtime":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called from a Server Component. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E795",enumerable:!1,configurable:!0});case"cache":case"unstable-cache":case"private-cache":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called inside a cache scope. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E745",enumerable:!1,configurable:!0});case"request":return}}let G=/\n\s+at Suspense \(<anonymous>\)/,Y=RegExp(`\\n\\s+at Suspense \\(<anonymous>\\)(?:(?!\\n\\s+at (?:body|div|main|section|article|aside|header|footer|nav|form|p|span|h1|h2|h3|h4|h5|h6) \\(<anonymous>\\))[\\s\\S])*?\\n\\s+at ${g.ROOT_LAYOUT_BOUNDARY_NAME} \\([^\\n]*\\)`),$=RegExp(`\\n\\s+at ${g.METADATA_BOUNDARY_NAME}[\\n\\s]`),V=RegExp(`\\n\\s+at ${g.VIEWPORT_BOUNDARY_NAME}[\\n\\s]`),q=RegExp(`\\n\\s+at ${g.OUTLET_BOUNDARY_NAME}[\\n\\s]`);function z(e,t,r,a){if(!q.test(t)){if($.test(t)){r.hasDynamicMetadata=!0;return}if(V.test(t)){r.hasDynamicViewport=!0;return}if(Y.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(a.syncDynamicErrorWithStack)return void r.dynamicErrors.push(a.syncDynamicErrorWithStack);let o=J(`Route "${e.route}": Uncached data was accessed outside of <Suspense>. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(o)}}}function X(e,t,r,a){if(!q.test(t)){if($.test(t)){r.dynamicMetadata=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed inside \`generateMetadata\`. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`,t);return}if(V.test(t)){let a=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`,t);r.dynamicErrors.push(a);return}if(Y.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(a.syncDynamicErrorWithStack)return void r.dynamicErrors.push(a.syncDynamicErrorWithStack);let o=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(o)}}}function K(e,t,r,a){if(!q.test(t)){if($.test(t)){r.dynamicMetadata=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateMetadata\` or you have file-based metadata such as icons that depend on dynamic params segments. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`,t);return}if(V.test(t)){let a=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`,t);r.dynamicErrors.push(a);return}if(Y.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(a.syncDynamicErrorWithStack)return void r.dynamicErrors.push(a.syncDynamicErrorWithStack);let o=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(o)}}}function J(e,t){let r=Object.defineProperty(Error(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});return r.stack=r.name+": "+e+t,r}var Q=((o={})[o.Full=0]="Full",o[o.Empty=1]="Empty",o[o.Errored=2]="Errored",o);function Z(e,t){console.error(t),e.dev||(e.hasReadableErrorStacks?console.error(`To get a more detailed stack trace and pinpoint the issue, start the app in development mode by running \`next dev\`, then open "${e.route}" in your browser to investigate the error.`):console.error(`To get a more detailed stack trace and pinpoint the issue, try one of the following:
+  `)}}},472,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={RequestCookies:function(){return n.RequestCookies},ResponseCookies:function(){return n.ResponseCookies},stringifyCookie:function(){return n.stringifyCookie}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e.r(19481)},29666,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={INTERNALS:function(){return c},NextRequest:function(){return u}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e.r(99536),o=e.r(80333),s=e.r(47389),l=e.r(472),c=Symbol("internal request");class u extends Request{constructor(e,t={}){const r="string"!=typeof e&&"url"in e?e.url:String(e);(0,o.validateURL)(r),t.body&&"half"!==t.duplex&&(t.duplex="half"),e instanceof Request?super(e,t):super(r,t);const i=new n.NextURL(r,{headers:(0,o.toNodeOutgoingHttpHeaders)(this.headers),nextConfig:t.nextConfig});this[c]={cookies:new l.RequestCookies(this.headers),nextUrl:i,url:i.toString()}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,nextUrl:this.nextUrl,url:this.url,bodyUsed:this.bodyUsed,cache:this.cache,credentials:this.credentials,destination:this.destination,headers:Object.fromEntries(this.headers),integrity:this.integrity,keepalive:this.keepalive,method:this.method,mode:this.mode,redirect:this.redirect,referrer:this.referrer,referrerPolicy:this.referrerPolicy,signal:this.signal}}get cookies(){return this[c].cookies}get nextUrl(){return this[c].nextUrl}get page(){throw new s.RemovedPageError}get ua(){throw new s.RemovedUAError}get url(){return this[c].url}}},30759,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"ReflectAdapter",{enumerable:!0,get:function(){return i}});class i{static get(e,t,r){let i=Reflect.get(e,t,r);return"function"==typeof i?i.bind(e):i}static set(e,t,r,i){return Reflect.set(e,t,r,i)}static has(e,t){return Reflect.has(e,t)}static deleteProperty(e,t){return Reflect.deleteProperty(e,t)}}},46633,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"NextResponse",{enumerable:!0,get:function(){return d}});let i=e.r(472),a=e.r(99536),n=e.r(80333),o=e.r(30759),s=e.r(472),l=Symbol("internal response"),c=new Set([301,302,303,307,308]);function u(e,t){var r;if(null==e||null==(r=e.request)?void 0:r.headers){if(!(e.request.headers instanceof Headers))throw Object.defineProperty(Error("request.headers must be an instance of Headers"),"__NEXT_ERROR_CODE",{value:"E119",enumerable:!1,configurable:!0});let r=[];for(let[i,a]of e.request.headers)t.set("x-middleware-request-"+i,a),r.push(i);t.set("x-middleware-override-headers",r.join(","))}}class d extends Response{constructor(e,t={}){super(e,t);const r=this.headers,c=new Proxy(new s.ResponseCookies(r),{get(e,a,n){switch(a){case"delete":case"set":return(...n)=>{let o=Reflect.apply(e[a],e,n),l=new Headers(r);return o instanceof s.ResponseCookies&&r.set("x-middleware-set-cookie",o.getAll().map(e=>(0,i.stringifyCookie)(e)).join(",")),u(t,l),o};default:return o.ReflectAdapter.get(e,a,n)}}});this[l]={cookies:c,url:t.url?new a.NextURL(t.url,{headers:(0,n.toNodeOutgoingHttpHeaders)(r),nextConfig:t.nextConfig}):void 0}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,url:this.url,body:this.body,bodyUsed:this.bodyUsed,headers:Object.fromEntries(this.headers),ok:this.ok,redirected:this.redirected,status:this.status,statusText:this.statusText,type:this.type}}get cookies(){return this[l].cookies}static json(e,t){let r=Response.json(e,t);return new d(r.body,r)}static redirect(e,t){let r="number"==typeof t?t:(null==t?void 0:t.status)??307;if(!c.has(r))throw Object.defineProperty(RangeError('Failed to execute "redirect" on "response": Invalid status code'),"__NEXT_ERROR_CODE",{value:"E529",enumerable:!1,configurable:!0});let i="object"==typeof t?t:{},a=new Headers(null==i?void 0:i.headers);return a.set("Location",(0,n.validateURL)(e)),new d(null,{...i,headers:a,status:r})}static rewrite(e,t){let r=new Headers(null==t?void 0:t.headers);return r.set("x-middleware-rewrite",(0,n.validateURL)(e)),u(t,r),new d(null,{...t,headers:r})}static next(e){let t=new Headers(null==e?void 0:e.headers);return t.set("x-middleware-next","1"),u(e,t),new d(null,{...e,headers:t})}}},87963,(e,t,r)=>{"use strict";function i(){throw Object.defineProperty(Error('ImageResponse moved from "next/server" to "next/og" since Next.js 14, please import from "next/og" instead'),"__NEXT_ERROR_CODE",{value:"E183",enumerable:!1,configurable:!0})}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"ImageResponse",{enumerable:!0,get:function(){return i}})},99299,(e,t,r)=>{var i={226:function(t,r){!function(i,a){"use strict";var n="function",o="undefined",s="object",l="string",c="major",u="model",d="name",h="type",g="vendor",p="version",m="architecture",f="console",y="mobile",b="tablet",v="smarttv",w="wearable",T="embedded",S="Amazon",k="Apple",P="ASUS",x="BlackBerry",R="Browser",E="Chrome",C="Firefox",A="Google",I="Huawei",_="Microsoft",M="Motorola",O="Opera",D="Samsung",N="Sharp",B="Sony",L="Xiaomi",j="Zebra",H="Facebook",F="Chromium OS",W="Mac OS",Y=function(e,t){var r={};for(var i in e)t[i]&&t[i].length%2==0?r[i]=t[i].concat(e[i]):r[i]=e[i];return r},G=function(e){for(var t={},r=0;r<e.length;r++)t[e[r].toUpperCase()]=e[r];return t},U=function(e,t){return typeof e===l&&-1!==q(t).indexOf(q(e))},q=function(e){return e.toLowerCase()},z=function(e,t){if(typeof e===l)return e=e.replace(/^\s\s*/,""),typeof t===o?e:e.substring(0,350)},$=function(e,t){for(var r,i,a,o,l,c,u=0;u<t.length&&!l;){var d=t[u],h=t[u+1];for(r=i=0;r<d.length&&!l&&d[r];)if(l=d[r++].exec(e))for(a=0;a<h.length;a++)c=l[++i],typeof(o=h[a])===s&&o.length>0?2===o.length?typeof o[1]==n?this[o[0]]=o[1].call(this,c):this[o[0]]=o[1]:3===o.length?typeof o[1]!==n||o[1].exec&&o[1].test?this[o[0]]=c?c.replace(o[1],o[2]):void 0:this[o[0]]=c?o[1].call(this,c,o[2]):void 0:4===o.length&&(this[o[0]]=c?o[3].call(this,c.replace(o[1],o[2])):void 0):this[o]=c||void 0;u+=2}},V=function(e,t){for(var r in t)if(typeof t[r]===s&&t[r].length>0){for(var i=0;i<t[r].length;i++)if(U(t[r][i],e))return"?"===r?void 0:r}else if(U(t[r],e))return"?"===r?void 0:r;return e},X={ME:"4.90","NT 3.11":"NT3.51","NT 4.0":"NT4.0",2e3:"NT 5.0",XP:["NT 5.1","NT 5.2"],Vista:"NT 6.0",7:"NT 6.1",8:"NT 6.2",8.1:"NT 6.3",10:["NT 6.4","NT 10.0"],RT:"ARM"},K={browser:[[/\b(?:crmo|crios)\/([\w\.]+)/i],[p,[d,"Chrome"]],[/edg(?:e|ios|a)?\/([\w\.]+)/i],[p,[d,"Edge"]],[/(opera mini)\/([-\w\.]+)/i,/(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i,/(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i],[d,p],[/opios[\/ ]+([\w\.]+)/i],[p,[d,O+" Mini"]],[/\bopr\/([\w\.]+)/i],[p,[d,O]],[/(kindle)\/([\w\.]+)/i,/(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i,/(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i,/(ba?idubrowser)[\/ ]?([\w\.]+)/i,/(?:ms|\()(ie) ([\w\.]+)/i,/(flock|rockmelt|midori|epiphany|silk|skyfire|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale(?!.+naver)|qqbrowserlite|qq|duckduckgo)\/([-\w\.]+)/i,/(heytap|ovi)browser\/([\d\.]+)/i,/(weibo)__([\d\.]+)/i],[d,p],[/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],[p,[d,"UC"+R]],[/microm.+\bqbcore\/([\w\.]+)/i,/\bqbcore\/([\w\.]+).+microm/i],[p,[d,"WeChat(Win) Desktop"]],[/micromessenger\/([\w\.]+)/i],[p,[d,"WeChat"]],[/konqueror\/([\w\.]+)/i],[p,[d,"Konqueror"]],[/trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i],[p,[d,"IE"]],[/ya(?:search)?browser\/([\w\.]+)/i],[p,[d,"Yandex"]],[/(avast|avg)\/([\w\.]+)/i],[[d,/(.+)/,"$1 Secure "+R],p],[/\bfocus\/([\w\.]+)/i],[p,[d,C+" Focus"]],[/\bopt\/([\w\.]+)/i],[p,[d,O+" Touch"]],[/coc_coc\w+\/([\w\.]+)/i],[p,[d,"Coc Coc"]],[/dolfin\/([\w\.]+)/i],[p,[d,"Dolphin"]],[/coast\/([\w\.]+)/i],[p,[d,O+" Coast"]],[/miuibrowser\/([\w\.]+)/i],[p,[d,"MIUI "+R]],[/fxios\/([-\w\.]+)/i],[p,[d,C]],[/\bqihu|(qi?ho?o?|360)browser/i],[[d,"360 "+R]],[/(oculus|samsung|sailfish|huawei)browser\/([\w\.]+)/i],[[d,/(.+)/,"$1 "+R],p],[/(comodo_dragon)\/([\w\.]+)/i],[[d,/_/g," "],p],[/(electron)\/([\w\.]+) safari/i,/(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i,/m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i],[d,p],[/(metasr)[\/ ]?([\w\.]+)/i,/(lbbrowser)/i,/\[(linkedin)app\]/i],[d],[/((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i],[[d,H],p],[/(kakao(?:talk|story))[\/ ]([\w\.]+)/i,/(naver)\(.*?(\d+\.[\w\.]+).*\)/i,/safari (line)\/([\w\.]+)/i,/\b(line)\/([\w\.]+)\/iab/i,/(chromium|instagram)[\/ ]([-\w\.]+)/i],[d,p],[/\bgsa\/([\w\.]+) .*safari\//i],[p,[d,"GSA"]],[/musical_ly(?:.+app_?version\/|_)([\w\.]+)/i],[p,[d,"TikTok"]],[/headlesschrome(?:\/([\w\.]+)| )/i],[p,[d,E+" Headless"]],[/ wv\).+(chrome)\/([\w\.]+)/i],[[d,E+" WebView"],p],[/droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i],[p,[d,"Android "+R]],[/(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i],[d,p],[/version\/([\w\.\,]+) .*mobile\/\w+ (safari)/i],[p,[d,"Mobile Safari"]],[/version\/([\w(\.|\,)]+) .*(mobile ?safari|safari)/i],[p,d],[/webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i],[d,[p,V,{"1.0":"/8",1.2:"/1",1.3:"/3","2.0":"/412","2.0.2":"/416","2.0.3":"/417","2.0.4":"/419","?":"/"}]],[/(webkit|khtml)\/([\w\.]+)/i],[d,p],[/(navigator|netscape\d?)\/([-\w\.]+)/i],[[d,"Netscape"],p],[/mobile vr; rv:([\w\.]+)\).+firefox/i],[p,[d,C+" Reality"]],[/ekiohf.+(flow)\/([\w\.]+)/i,/(swiftfox)/i,/(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i,/(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i,/(firefox)\/([\w\.]+)/i,/(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i,/(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,/(links) \(([\w\.]+)/i,/panasonic;(viera)/i],[d,p],[/(cobalt)\/([\w\.]+)/i],[d,[p,/master.|lts./,""]]],cpu:[[/(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i],[[m,"amd64"]],[/(ia32(?=;))/i],[[m,q]],[/((?:i[346]|x)86)[;\)]/i],[[m,"ia32"]],[/\b(aarch64|arm(v?8e?l?|_?64))\b/i],[[m,"arm64"]],[/\b(arm(?:v[67])?ht?n?[fl]p?)\b/i],[[m,"armhf"]],[/windows (ce|mobile); ppc;/i],[[m,"arm"]],[/((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i],[[m,/ower/,"",q]],[/(sun4\w)[;\)]/i],[[m,"sparc"]],[/((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i],[[m,q]]],device:[[/\b(sch-i[89]0\d|shw-m380s|sm-[ptx]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i],[u,[g,D],[h,b]],[/\b((?:s[cgp]h|gt|sm)-\w+|sc[g-]?[\d]+a?|galaxy nexus)/i,/samsung[- ]([-\w]+)/i,/sec-(sgh\w+)/i],[u,[g,D],[h,y]],[/(?:\/|\()(ip(?:hone|od)[\w, ]*)(?:\/|;)/i],[u,[g,k],[h,y]],[/\((ipad);[-\w\),; ]+apple/i,/applecoremedia\/[\w\.]+ \((ipad)/i,/\b(ipad)\d\d?,\d\d?[;\]].+ios/i],[u,[g,k],[h,b]],[/(macintosh);/i],[u,[g,k]],[/\b(sh-?[altvz]?\d\d[a-ekm]?)/i],[u,[g,N],[h,y]],[/\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i],[u,[g,I],[h,b]],[/(?:huawei|honor)([-\w ]+)[;\)]/i,/\b(nexus 6p|\w{2,4}e?-[atu]?[ln][\dx][012359c][adn]?)\b(?!.+d\/s)/i],[u,[g,I],[h,y]],[/\b(poco[\w ]+)(?: bui|\))/i,/\b; (\w+) build\/hm\1/i,/\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i,/\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i,/\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max|cc)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i],[[u,/_/g," "],[g,L],[h,y]],[/\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i],[[u,/_/g," "],[g,L],[h,b]],[/; (\w+) bui.+ oppo/i,/\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i],[u,[g,"OPPO"],[h,y]],[/vivo (\w+)(?: bui|\))/i,/\b(v[12]\d{3}\w?[at])(?: bui|;)/i],[u,[g,"Vivo"],[h,y]],[/\b(rmx[12]\d{3})(?: bui|;|\))/i],[u,[g,"Realme"],[h,y]],[/\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i,/\bmot(?:orola)?[- ](\w*)/i,/((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i],[u,[g,M],[h,y]],[/\b(mz60\d|xoom[2 ]{0,2}) build\//i],[u,[g,M],[h,b]],[/((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i],[u,[g,"LG"],[h,b]],[/(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i,/\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i,/\blg-?([\d\w]+) bui/i],[u,[g,"LG"],[h,y]],[/(ideatab[-\w ]+)/i,/lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i],[u,[g,"Lenovo"],[h,b]],[/(?:maemo|nokia).*(n900|lumia \d+)/i,/nokia[-_ ]?([-\w\.]*)/i],[[u,/_/g," "],[g,"Nokia"],[h,y]],[/(pixel c)\b/i],[u,[g,A],[h,b]],[/droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i],[u,[g,A],[h,y]],[/droid.+ (a?\d[0-2]{2}so|[c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i],[u,[g,B],[h,y]],[/sony tablet [ps]/i,/\b(?:sony)?sgp\w+(?: bui|\))/i],[[u,"Xperia Tablet"],[g,B],[h,b]],[/ (kb2005|in20[12]5|be20[12][59])\b/i,/(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i],[u,[g,"OnePlus"],[h,y]],[/(alexa)webm/i,/(kf[a-z]{2}wi|aeo[c-r]{2})( bui|\))/i,/(kf[a-z]+)( bui|\)).+silk\//i],[u,[g,S],[h,b]],[/((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i],[[u,/(.+)/g,"Fire Phone $1"],[g,S],[h,y]],[/(playbook);[-\w\),; ]+(rim)/i],[u,g,[h,b]],[/\b((?:bb[a-f]|st[hv])100-\d)/i,/\(bb10; (\w+)/i],[u,[g,x],[h,y]],[/(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i],[u,[g,P],[h,b]],[/ (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i],[u,[g,P],[h,y]],[/(nexus 9)/i],[u,[g,"HTC"],[h,b]],[/(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i,/(zte)[- ]([\w ]+?)(?: bui|\/|\))/i,/(alcatel|geeksphone|nexian|panasonic(?!(?:;|\.))|sony(?!-bra))[-_ ]?([-\w]*)/i],[g,[u,/_/g," "],[h,y]],[/droid.+; ([ab][1-7]-?[0178a]\d\d?)/i],[u,[g,"Acer"],[h,b]],[/droid.+; (m[1-5] note) bui/i,/\bmz-([-\w]{2,})/i],[u,[g,"Meizu"],[h,y]],[/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i,/(hp) ([\w ]+\w)/i,/(asus)-?(\w+)/i,/(microsoft); (lumia[\w ]+)/i,/(lenovo)[-_ ]?([-\w]+)/i,/(jolla)/i,/(oppo) ?([\w ]+) bui/i],[g,u,[h,y]],[/(kobo)\s(ereader|touch)/i,/(archos) (gamepad2?)/i,/(hp).+(touchpad(?!.+tablet)|tablet)/i,/(kindle)\/([\w\.]+)/i,/(nook)[\w ]+build\/(\w+)/i,/(dell) (strea[kpr\d ]*[\dko])/i,/(le[- ]+pan)[- ]+(\w{1,9}) bui/i,/(trinity)[- ]*(t\d{3}) bui/i,/(gigaset)[- ]+(q\w{1,9}) bui/i,/(vodafone) ([\w ]+)(?:\)| bui)/i],[g,u,[h,b]],[/(surface duo)/i],[u,[g,_],[h,b]],[/droid [\d\.]+; (fp\du?)(?: b|\))/i],[u,[g,"Fairphone"],[h,y]],[/(u304aa)/i],[u,[g,"AT&T"],[h,y]],[/\bsie-(\w*)/i],[u,[g,"Siemens"],[h,y]],[/\b(rct\w+) b/i],[u,[g,"RCA"],[h,b]],[/\b(venue[\d ]{2,7}) b/i],[u,[g,"Dell"],[h,b]],[/\b(q(?:mv|ta)\w+) b/i],[u,[g,"Verizon"],[h,b]],[/\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i],[u,[g,"Barnes & Noble"],[h,b]],[/\b(tm\d{3}\w+) b/i],[u,[g,"NuVision"],[h,b]],[/\b(k88) b/i],[u,[g,"ZTE"],[h,b]],[/\b(nx\d{3}j) b/i],[u,[g,"ZTE"],[h,y]],[/\b(gen\d{3}) b.+49h/i],[u,[g,"Swiss"],[h,y]],[/\b(zur\d{3}) b/i],[u,[g,"Swiss"],[h,b]],[/\b((zeki)?tb.*\b) b/i],[u,[g,"Zeki"],[h,b]],[/\b([yr]\d{2}) b/i,/\b(dragon[- ]+touch |dt)(\w{5}) b/i],[[g,"Dragon Touch"],u,[h,b]],[/\b(ns-?\w{0,9}) b/i],[u,[g,"Insignia"],[h,b]],[/\b((nxa|next)-?\w{0,9}) b/i],[u,[g,"NextBook"],[h,b]],[/\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i],[[g,"Voice"],u,[h,y]],[/\b(lvtel\-)?(v1[12]) b/i],[[g,"LvTel"],u,[h,y]],[/\b(ph-1) /i],[u,[g,"Essential"],[h,y]],[/\b(v(100md|700na|7011|917g).*\b) b/i],[u,[g,"Envizen"],[h,b]],[/\b(trio[-\w\. ]+) b/i],[u,[g,"MachSpeed"],[h,b]],[/\btu_(1491) b/i],[u,[g,"Rotor"],[h,b]],[/(shield[\w ]+) b/i],[u,[g,"Nvidia"],[h,b]],[/(sprint) (\w+)/i],[g,u,[h,y]],[/(kin\.[onetw]{3})/i],[[u,/\./g," "],[g,_],[h,y]],[/droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i],[u,[g,j],[h,b]],[/droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i],[u,[g,j],[h,y]],[/smart-tv.+(samsung)/i],[g,[h,v]],[/hbbtv.+maple;(\d+)/i],[[u,/^/,"SmartTV"],[g,D],[h,v]],[/(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i],[[g,"LG"],[h,v]],[/(apple) ?tv/i],[g,[u,k+" TV"],[h,v]],[/crkey/i],[[u,E+"cast"],[g,A],[h,v]],[/droid.+aft(\w)( bui|\))/i],[u,[g,S],[h,v]],[/\(dtv[\);].+(aquos)/i,/(aquos-tv[\w ]+)\)/i],[u,[g,N],[h,v]],[/(bravia[\w ]+)( bui|\))/i],[u,[g,B],[h,v]],[/(mitv-\w{5}) bui/i],[u,[g,L],[h,v]],[/Hbbtv.*(technisat) (.*);/i],[g,u,[h,v]],[/\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i,/hbbtv\/\d+\.\d+\.\d+ +\([\w\+ ]*; *([\w\d][^;]*);([^;]*)/i],[[g,z],[u,z],[h,v]],[/\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i],[[h,v]],[/(ouya)/i,/(nintendo) ([wids3utch]+)/i],[g,u,[h,f]],[/droid.+; (shield) bui/i],[u,[g,"Nvidia"],[h,f]],[/(playstation [345portablevi]+)/i],[u,[g,B],[h,f]],[/\b(xbox(?: one)?(?!; xbox))[\); ]/i],[u,[g,_],[h,f]],[/((pebble))app/i],[g,u,[h,w]],[/(watch)(?: ?os[,\/]|\d,\d\/)[\d\.]+/i],[u,[g,k],[h,w]],[/droid.+; (glass) \d/i],[u,[g,A],[h,w]],[/droid.+; (wt63?0{2,3})\)/i],[u,[g,j],[h,w]],[/(quest( 2| pro)?)/i],[u,[g,H],[h,w]],[/(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i],[g,[h,T]],[/(aeobc)\b/i],[u,[g,S],[h,T]],[/droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i],[u,[h,y]],[/droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i],[u,[h,b]],[/\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i],[[h,b]],[/(phone|mobile(?:[;\/]| [ \w\/\.]*safari)|pda(?=.+windows ce))/i],[[h,y]],[/(android[-\w\. ]{0,9});.+buil/i],[u,[g,"Generic"]]],engine:[[/windows.+ edge\/([\w\.]+)/i],[p,[d,"EdgeHTML"]],[/webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i],[p,[d,"Blink"]],[/(presto)\/([\w\.]+)/i,/(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i,/ekioh(flow)\/([\w\.]+)/i,/(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i,/(icab)[\/ ]([23]\.[\d\.]+)/i,/\b(libweb)/i],[d,p],[/rv\:([\w\.]{1,9})\b.+(gecko)/i],[p,d]],os:[[/microsoft (windows) (vista|xp)/i],[d,p],[/(windows) nt 6\.2; (arm)/i,/(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i,/(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i],[d,[p,V,X]],[/(win(?=3|9|n)|win 9x )([nt\d\.]+)/i],[[d,"Windows"],[p,V,X]],[/ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i,/ios;fbsv\/([\d\.]+)/i,/cfnetwork\/.+darwin/i],[[p,/_/g,"."],[d,"iOS"]],[/(mac os x) ?([\w\. ]*)/i,/(macintosh|mac_powerpc\b)(?!.+haiku)/i],[[d,W],[p,/_/g,"."]],[/droid ([\w\.]+)\b.+(android[- ]x86|harmonyos)/i],[p,d],[/(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i,/(blackberry)\w*\/([\w\.]*)/i,/(tizen|kaios)[\/ ]([\w\.]+)/i,/\((series40);/i],[d,p],[/\(bb(10);/i],[p,[d,x]],[/(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i],[p,[d,"Symbian"]],[/mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i],[p,[d,C+" OS"]],[/web0s;.+rt(tv)/i,/\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i],[p,[d,"webOS"]],[/watch(?: ?os[,\/]|\d,\d\/)([\d\.]+)/i],[p,[d,"watchOS"]],[/crkey\/([\d\.]+)/i],[p,[d,E+"cast"]],[/(cros) [\w]+(?:\)| ([\w\.]+)\b)/i],[[d,F],p],[/panasonic;(viera)/i,/(netrange)mmh/i,/(nettv)\/(\d+\.[\w\.]+)/i,/(nintendo|playstation) ([wids345portablevuch]+)/i,/(xbox); +xbox ([^\);]+)/i,/\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,/(mint)[\/\(\) ]?(\w*)/i,/(mageia|vectorlinux)[; ]/i,/([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i,/(hurd|linux) ?([\w\.]*)/i,/(gnu) ?([\w\.]*)/i,/\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i,/(haiku) (\w+)/i],[d,p],[/(sunos) ?([\w\.\d]*)/i],[[d,"Solaris"],p],[/((?:open)?solaris)[-\/ ]?([\w\.]*)/i,/(aix) ((\d)(?=\.|\)| )[\w\.])*/i,/\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux|serenityos)/i,/(unix) ?([\w\.]*)/i],[d,p]]},J=function(e,t){if(typeof e===s&&(t=e,e=void 0),!(this instanceof J))return new J(e,t).getResult();var r=typeof i!==o&&i.navigator?i.navigator:void 0,a=e||(r&&r.userAgent?r.userAgent:""),f=r&&r.userAgentData?r.userAgentData:void 0,v=t?Y(K,t):K,w=r&&r.userAgent==a;return this.getBrowser=function(){var e,t={};return t[d]=void 0,t[p]=void 0,$.call(t,a,v.browser),t[c]=typeof(e=t[p])===l?e.replace(/[^\d\.]/g,"").split(".")[0]:void 0,w&&r&&r.brave&&typeof r.brave.isBrave==n&&(t[d]="Brave"),t},this.getCPU=function(){var e={};return e[m]=void 0,$.call(e,a,v.cpu),e},this.getDevice=function(){var e={};return e[g]=void 0,e[u]=void 0,e[h]=void 0,$.call(e,a,v.device),w&&!e[h]&&f&&f.mobile&&(e[h]=y),w&&"Macintosh"==e[u]&&r&&typeof r.standalone!==o&&r.maxTouchPoints&&r.maxTouchPoints>2&&(e[u]="iPad",e[h]=b),e},this.getEngine=function(){var e={};return e[d]=void 0,e[p]=void 0,$.call(e,a,v.engine),e},this.getOS=function(){var e={};return e[d]=void 0,e[p]=void 0,$.call(e,a,v.os),w&&!e[d]&&f&&"Unknown"!=f.platform&&(e[d]=f.platform.replace(/chrome os/i,F).replace(/macos/i,W)),e},this.getResult=function(){return{ua:this.getUA(),browser:this.getBrowser(),engine:this.getEngine(),os:this.getOS(),device:this.getDevice(),cpu:this.getCPU()}},this.getUA=function(){return a},this.setUA=function(e){return a=typeof e===l&&e.length>350?z(e,350):e,this},this.setUA(a),this};if(J.VERSION="1.0.35",J.BROWSER=G([d,p,c]),J.CPU=G([m]),J.DEVICE=G([u,g,h,f,y,v,b,w,T]),J.ENGINE=J.OS=G([d,p]),typeof r!==o)t.exports&&(r=t.exports=J),r.UAParser=J;else if(typeof define===n&&define.amd)e.r,void 0!==J&&e.v(J);else typeof i!==o&&(i.UAParser=J);var Q=typeof i!==o&&(i.jQuery||i.Zepto);if(Q&&!Q.ua){var Z=new J;Q.ua=Z.getResult(),Q.ua.get=function(){return Z.getUA()},Q.ua.set=function(e){Z.setUA(e);var t=Z.getResult();for(var r in t)Q.ua[r]=t[r]}}}(this)}},a={};function n(e){var t=a[e];if(void 0!==t)return t.exports;var r=a[e]={exports:{}},o=!0;try{i[e].call(r.exports,r,r.exports,n),o=!1}finally{o&&delete a[e]}return r.exports}n.ab="/ROOT/node_modules/next/dist/compiled/ua-parser-js/",t.exports=n(226)},4386,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i,a={isBot:function(){return s},userAgent:function(){return c},userAgentFromString:function(){return l}};for(var n in a)Object.defineProperty(r,n,{enumerable:!0,get:a[n]});let o=(i=e.r(99299))&&i.__esModule?i:{default:i};function s(e){return/Googlebot|Mediapartners-Google|AdsBot-Google|googleweblight|Storebot-Google|Google-PageRenderer|Google-InspectionTool|Bingbot|BingPreview|Slurp|DuckDuckBot|baiduspider|yandex|sogou|LinkedInBot|bitlybot|tumblr|vkShare|quora link preview|facebookexternalhit|facebookcatalog|Twitterbot|applebot|redditbot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|ia_archiver/i.test(e)}function l(e){return{...(0,o.default)(e),isBot:void 0!==e&&s(e)}}function c({headers:e}){return l(e.get("user-agent")||void 0)}},79187,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"URLPattern",{enumerable:!0,get:function(){return i}});let i="undefined"==typeof URLPattern?void 0:URLPattern},53309,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"after",{enumerable:!0,get:function(){return a}});let i=e.r(56704);function a(e){let t=i.workAsyncStorage.getStore();if(!t)throw Object.defineProperty(Error("`after` was called outside a request scope. Read more: https://nextjs.org/docs/messages/next-dynamic-api-wrong-context"),"__NEXT_ERROR_CODE",{value:"E468",enumerable:!1,configurable:!0});let{afterContext:r}=t;return r.after(e)}},81053,(e,t,r)=>{"use strict";var i,a;Object.defineProperty(r,"__esModule",{value:!0}),i=e.r(53309),a=r,Object.keys(i).forEach(function(e){"default"===e||Object.prototype.hasOwnProperty.call(a,e)||Object.defineProperty(a,e,{enumerable:!0,get:function(){return i[e]}})})},65252,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={DynamicServerError:function(){return o},isDynamicServerError:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n="DYNAMIC_SERVER_USAGE";class o extends Error{constructor(e){super(`Dynamic server usage: ${e}`),this.description=e,this.digest=n}}function s(e){return"object"==typeof e&&null!==e&&"digest"in e&&"string"==typeof e.digest&&e.digest===n}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},97573,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={StaticGenBailoutError:function(){return o},isStaticGenBailoutError:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n="NEXT_STATIC_GEN_BAILOUT";class o extends Error{constructor(...e){super(...e),this.code=n}}function s(e){return"object"==typeof e&&null!==e&&"code"in e&&e.code===n}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},4642,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={isHangingPromiseRejectionError:function(){return n},makeDevtoolsIOAwarePromise:function(){return d},makeHangingPromise:function(){return c}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});function n(e){return"object"==typeof e&&null!==e&&"digest"in e&&e.digest===o}let o="HANGING_PROMISE_REJECTION";class s extends Error{constructor(e,t){super(`During prerendering, ${t} rejects when the prerender is complete. Typically these errors are handled by React but if you move ${t} to a different context by using \`setTimeout\`, \`after\`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "${e}".`),this.route=e,this.expression=t,this.digest=o}}let l=new WeakMap;function c(e,t,r){if(e.aborted)return Promise.reject(new s(t,r));{let i=new Promise((i,a)=>{let n=a.bind(null,new s(t,r)),o=l.get(e);if(o)o.push(n);else{let t=[n];l.set(e,t),e.addEventListener("abort",()=>{for(let e=0;e<t.length;e++)t[e]()},{once:!0})}});return i.catch(u),i}}function u(){}function d(e,t,r){return t.stagedRendering?t.stagedRendering.delayUntilStage(r,void 0,e):new Promise(t=>{setTimeout(()=>{t(e)},0)})}},96306,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={METADATA_BOUNDARY_NAME:function(){return n},OUTLET_BOUNDARY_NAME:function(){return s},ROOT_LAYOUT_BOUNDARY_NAME:function(){return l},VIEWPORT_BOUNDARY_NAME:function(){return o}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n="__next_metadata_boundary__",o="__next_viewport_boundary__",s="__next_outlet_boundary__",l="__next_root_layout_boundary__"},38244,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={atLeastOneTask:function(){return s},scheduleImmediate:function(){return o},scheduleOnNextTick:function(){return n},waitAtLeastOneReactRenderTask:function(){return l}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e=>{Promise.resolve().then(()=>{process.nextTick(e)})},o=e=>{setImmediate(e)};function s(){return new Promise(e=>o(e))}function l(){return new Promise(e=>setImmediate(e))}},31584,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={BailoutToCSRError:function(){return o},isBailoutToCSRError:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n="BAILOUT_TO_CLIENT_SIDE_RENDERING";class o extends Error{constructor(e){super(`Bail out to client-side rendering: ${e}`),this.reason=e,this.digest=n}}function s(e){return"object"==typeof e&&null!==e&&"digest"in e&&e.digest===n}},76414,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"InvariantError",{enumerable:!0,get:function(){return i}});class i extends Error{constructor(e,t){super(`Invariant: ${e.endsWith(".")?e:e+"."} This is a bug in Next.js.`,t),this.name="InvariantError"}}},68665,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i,a,n={Postpone:function(){return E},PreludeState:function(){return Q},abortAndThrowOnSynchronousRequestDataAccess:function(){return R},abortOnSynchronousPlatformIOAccess:function(){return x},accessedDynamicData:function(){return N},annotateDynamicAccess:function(){return F},consumeDynamicAccess:function(){return B},createDynamicTrackingState:function(){return b},createDynamicValidationState:function(){return v},createHangingInputAbortSignal:function(){return H},createRenderInBrowserAbortSignal:function(){return j},delayUntilRuntimeStage:function(){return er},formatDynamicAPIAccesses:function(){return L},getFirstDynamicReason:function(){return w},getStaticShellDisallowedDynamicReasons:function(){return et},isDynamicPostpone:function(){return I},isPrerenderInterruptedError:function(){return D},logDisallowedDynamicError:function(){return Z},markCurrentScopeAsDynamic:function(){return T},postponeWithTracking:function(){return C},throwIfDisallowedDynamic:function(){return ee},throwToInterruptStaticGeneration:function(){return S},trackAllowedDynamicAccess:function(){return V},trackDynamicDataInDynamicRender:function(){return k},trackDynamicHoleInRuntimeShell:function(){return X},trackDynamicHoleInStaticShell:function(){return K},useDynamicRouteParams:function(){return W},useDynamicSearchParams:function(){return Y}};for(var o in n)Object.defineProperty(r,o,{enumerable:!0,get:n[o]});let s=(i=e.r(47540))&&i.__esModule?i:{default:i},l=e.r(65252),c=e.r(97573),u=e.r(32319),d=e.r(56704),h=e.r(4642),g=e.r(96306),p=e.r(38244),m=e.r(31584),f=e.r(76414),y="function"==typeof s.default.unstable_postpone;function b(e){return{isDebugDynamicAccesses:e,dynamicAccesses:[],syncDynamicErrorWithStack:null}}function v(){return{hasSuspenseAboveBody:!1,hasDynamicMetadata:!1,dynamicMetadata:null,hasDynamicViewport:!1,hasAllowedDynamic:!1,dynamicErrors:[]}}function w(e){var t;return null==(t=e.dynamicAccesses[0])?void 0:t.expression}function T(e,t,r){if(t)switch(t.type){case"cache":case"unstable-cache":case"private-cache":return}if(!e.forceDynamic&&!e.forceStatic){if(e.dynamicShouldError)throw Object.defineProperty(new c.StaticGenBailoutError(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`${r}\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E553",enumerable:!1,configurable:!0});if(t)switch(t.type){case"prerender-ppr":return C(e.route,r,t.dynamicTracking);case"prerender-legacy":t.revalidate=0;let i=Object.defineProperty(new l.DynamicServerError(`Route ${e.route} couldn't be rendered statically because it used ${r}. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E550",enumerable:!1,configurable:!0});throw e.dynamicUsageDescription=r,e.dynamicUsageStack=i.stack,i}}}function S(e,t,r){let i=Object.defineProperty(new l.DynamicServerError(`Route ${t.route} couldn't be rendered statically because it used \`${e}\`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E558",enumerable:!1,configurable:!0});throw r.revalidate=0,t.dynamicUsageDescription=e,t.dynamicUsageStack=i.stack,i}function k(e){switch(e.type){case"cache":case"unstable-cache":case"private-cache":return}}function P(e,t,r){let i=O(`Route ${e} needs to bail out of prerendering at this point because it used ${t}.`);r.controller.abort(i);let a=r.dynamicTracking;a&&a.dynamicAccesses.push({stack:a.isDebugDynamicAccesses?Error().stack:void 0,expression:t})}function x(e,t,r,i){let a=i.dynamicTracking;P(e,t,i),a&&null===a.syncDynamicErrorWithStack&&(a.syncDynamicErrorWithStack=r)}function R(e,t,r,i){if(!1===i.controller.signal.aborted){P(e,t,i);let a=i.dynamicTracking;a&&null===a.syncDynamicErrorWithStack&&(a.syncDynamicErrorWithStack=r)}throw O(`Route ${e} needs to bail out of prerendering at this point because it used ${t}.`)}function E({reason:e,route:t}){let r=u.workUnitAsyncStorage.getStore();C(t,e,r&&"prerender-ppr"===r.type?r.dynamicTracking:null)}function C(e,t,r){(function(){if(!y)throw Object.defineProperty(Error("Invariant: React.unstable_postpone is not defined. This suggests the wrong version of React was loaded. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E224",enumerable:!1,configurable:!0})})(),r&&r.dynamicAccesses.push({stack:r.isDebugDynamicAccesses?Error().stack:void 0,expression:t}),s.default.unstable_postpone(A(e,t))}function A(e,t){return`Route ${e} needs to bail out of prerendering at this point because it used ${t}. React throws this special object to indicate where. It should not be caught by your own try/catch. Learn more: https://nextjs.org/docs/messages/ppr-caught-error`}function I(e){return"object"==typeof e&&null!==e&&"string"==typeof e.message&&_(e.message)}function _(e){return e.includes("needs to bail out of prerendering at this point because it used")&&e.includes("Learn more: https://nextjs.org/docs/messages/ppr-caught-error")}if(!1===_(A("%%%","^^^")))throw Object.defineProperty(Error("Invariant: isDynamicPostpone misidentified a postpone reason. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E296",enumerable:!1,configurable:!0});let M="NEXT_PRERENDER_INTERRUPTED";function O(e){let t=Object.defineProperty(Error(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});return t.digest=M,t}function D(e){return"object"==typeof e&&null!==e&&e.digest===M&&"name"in e&&"message"in e&&e instanceof Error}function N(e){return e.length>0}function B(e,t){return e.dynamicAccesses.push(...t.dynamicAccesses),e.dynamicAccesses}function L(e){return e.filter(e=>"string"==typeof e.stack&&e.stack.length>0).map(({expression:e,stack:t})=>(t=t.split("\n").slice(4).filter(e=>!(e.includes("node_modules/next/")||e.includes(" (<anonymous>)")||e.includes(" (node:"))).join("\n"),`Dynamic API Usage Debug - ${e}:
+${t}`))}function j(){let e=new AbortController;return e.abort(Object.defineProperty(new m.BailoutToCSRError("Render in Browser"),"__NEXT_ERROR_CODE",{value:"E721",enumerable:!1,configurable:!0})),e.signal}function H(e){switch(e.type){case"prerender":case"prerender-runtime":let t=new AbortController;if(e.cacheSignal)e.cacheSignal.inputReady().then(()=>{t.abort()});else{let r=(0,u.getRuntimeStagePromise)(e);r?r.then(()=>(0,p.scheduleOnNextTick)(()=>t.abort())):(0,p.scheduleOnNextTick)(()=>t.abort())}return t.signal;case"prerender-client":case"prerender-ppr":case"prerender-legacy":case"request":case"cache":case"private-cache":case"unstable-cache":return}}function F(e,t){let r=t.dynamicTracking;r&&r.dynamicAccesses.push({stack:r.isDebugDynamicAccesses?Error().stack:void 0,expression:e})}function W(e){let t=d.workAsyncStorage.getStore(),r=u.workUnitAsyncStorage.getStore();if(t&&r)switch(r.type){case"prerender-client":case"prerender":{let i=r.fallbackRouteParams;i&&i.size>0&&s.default.use((0,h.makeHangingPromise)(r.renderSignal,t.route,e));break}case"prerender-ppr":{let i=r.fallbackRouteParams;if(i&&i.size>0)return C(t.route,e,r.dynamicTracking);break}case"prerender-runtime":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called during a runtime prerender. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E771",enumerable:!1,configurable:!0});case"cache":case"private-cache":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called inside a cache scope. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E745",enumerable:!1,configurable:!0})}}function Y(e){let t=d.workAsyncStorage.getStore(),r=u.workUnitAsyncStorage.getStore();if(t)switch(!r&&(0,u.throwForMissingRequestStore)(e),r.type){case"prerender-client":s.default.use((0,h.makeHangingPromise)(r.renderSignal,t.route,e));break;case"prerender-legacy":case"prerender-ppr":if(t.forceStatic)return;throw Object.defineProperty(new m.BailoutToCSRError(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});case"prerender":case"prerender-runtime":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called from a Server Component. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E795",enumerable:!1,configurable:!0});case"cache":case"unstable-cache":case"private-cache":throw Object.defineProperty(new f.InvariantError(`\`${e}\` was called inside a cache scope. Next.js should be preventing ${e} from being included in server components statically, but did not in this case.`),"__NEXT_ERROR_CODE",{value:"E745",enumerable:!1,configurable:!0});case"request":return}}let G=/\n\s+at Suspense \(<anonymous>\)/,U=RegExp(`\\n\\s+at Suspense \\(<anonymous>\\)(?:(?!\\n\\s+at (?:body|div|main|section|article|aside|header|footer|nav|form|p|span|h1|h2|h3|h4|h5|h6) \\(<anonymous>\\))[\\s\\S])*?\\n\\s+at ${g.ROOT_LAYOUT_BOUNDARY_NAME} \\([^\\n]*\\)`),q=RegExp(`\\n\\s+at ${g.METADATA_BOUNDARY_NAME}[\\n\\s]`),z=RegExp(`\\n\\s+at ${g.VIEWPORT_BOUNDARY_NAME}[\\n\\s]`),$=RegExp(`\\n\\s+at ${g.OUTLET_BOUNDARY_NAME}[\\n\\s]`);function V(e,t,r,i){if(!$.test(t)){if(q.test(t)){r.hasDynamicMetadata=!0;return}if(z.test(t)){r.hasDynamicViewport=!0;return}if(U.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(i.syncDynamicErrorWithStack)return void r.dynamicErrors.push(i.syncDynamicErrorWithStack);let a=J(`Route "${e.route}": Uncached data was accessed outside of <Suspense>. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(a)}}}function X(e,t,r,i){if(!$.test(t)){if(q.test(t)){r.dynamicMetadata=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed inside \`generateMetadata\`. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`,t);return}if(z.test(t)){let i=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`,t);r.dynamicErrors.push(i);return}if(U.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(i.syncDynamicErrorWithStack)return void r.dynamicErrors.push(i.syncDynamicErrorWithStack);let a=J(`Route "${e.route}": Uncached data or \`connection()\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(a)}}}function K(e,t,r,i){if(!$.test(t)){if(q.test(t)){r.dynamicMetadata=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateMetadata\` or you have file-based metadata such as icons that depend on dynamic params segments. Except for this instance, the page would have been entirely prerenderable which may have been the intended behavior. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`,t);return}if(z.test(t)){let i=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed inside \`generateViewport\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`,t);r.dynamicErrors.push(i);return}if(U.test(t)){r.hasAllowedDynamic=!0,r.hasSuspenseAboveBody=!0;return}else if(G.test(t)){r.hasAllowedDynamic=!0;return}else{if(i.syncDynamicErrorWithStack)return void r.dynamicErrors.push(i.syncDynamicErrorWithStack);let a=J(`Route "${e.route}": Runtime data such as \`cookies()\`, \`headers()\`, \`params\`, or \`searchParams\` was accessed outside of \`<Suspense>\`. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route`,t);return void r.dynamicErrors.push(a)}}}function J(e,t){let r=Object.defineProperty(Error(e),"__NEXT_ERROR_CODE",{value:"E394",enumerable:!1,configurable:!0});return r.stack=r.name+": "+e+t,r}var Q=((a={})[a.Full=0]="Full",a[a.Empty=1]="Empty",a[a.Errored=2]="Errored",a);function Z(e,t){console.error(t),e.dev||(e.hasReadableErrorStacks?console.error(`To get a more detailed stack trace and pinpoint the issue, start the app in development mode by running \`next dev\`, then open "${e.route}" in your browser to investigate the error.`):console.error(`To get a more detailed stack trace and pinpoint the issue, try one of the following:
   - Start the app in development mode by running \`next dev\`, then open "${e.route}" in your browser to investigate the error.
-  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.`))}function ee(e,t,r,a){if(a.syncDynamicErrorWithStack)throw Z(e,a.syncDynamicErrorWithStack),new u.StaticGenBailoutError;if(0!==t){if(r.hasSuspenseAboveBody)return;let a=r.dynamicErrors;if(a.length>0){for(let t=0;t<a.length;t++)Z(e,a[t]);throw new u.StaticGenBailoutError}if(r.hasDynamicViewport)throw console.error(`Route "${e.route}" has a \`generateViewport\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) without explicitly allowing fully dynamic rendering. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`),new u.StaticGenBailoutError;if(1===t)throw console.error(`Route "${e.route}" did not produce a static shell and Next.js was unable to determine a reason. This is a bug in Next.js.`),new u.StaticGenBailoutError}else if(!1===r.hasAllowedDynamic&&r.hasDynamicMetadata)throw console.error(`Route "${e.route}" has a \`generateMetadata\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) when the rest of the route does not. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`),new u.StaticGenBailoutError}function et(e,t,r){if(r.hasSuspenseAboveBody)return[];if(0!==t){let a=r.dynamicErrors;if(a.length>0)return a;if(1===t)return[Object.defineProperty(new f.InvariantError(`Route "${e.route}" did not produce a static shell and Next.js was unable to determine a reason.`),"__NEXT_ERROR_CODE",{value:"E936",enumerable:!1,configurable:!0})]}else if(!1===r.hasAllowedDynamic&&0===r.dynamicErrors.length&&r.dynamicMetadata)return[r.dynamicMetadata];return[]}function er(e,t){return e.runtimeStagePromise?e.runtimeStagePromise.then(()=>t):t}},43824,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={isRequestAPICallableInsideAfter:function(){return u},throwForSearchParamsAccessInUseCache:function(){return l},throwWithStaticGenerationBailoutErrorWithDynamicError:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e.r(97573),i=e.r(24725);function s(e,t){throw Object.defineProperty(new n.StaticGenBailoutError(`Route ${e} with \`dynamic = "error"\` couldn't be rendered statically because it used ${t}. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E543",enumerable:!1,configurable:!0})}function l(e,t){let r=Object.defineProperty(Error(`Route ${e.route} used \`searchParams\` inside "use cache". Accessing dynamic request data inside a cache scope is not supported. If you need some search params inside a cached function await \`searchParams\` outside of the cached function and pass only the required search params as arguments to the cached function. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E842",enumerable:!1,configurable:!0});throw Error.captureStackTrace(r,t),e.invalidDynamicUsageError??=r,r}function u(){let e=i.afterTaskAsyncStorage.getStore();return(null==e?void 0:e.rootTaskSpawnPhase)==="action"}},8211,(e,t,r)=>{"use strict";function a(){let e,t,r=new Promise((r,a)=>{e=r,t=a});return{resolve:e,reject:t,promise:r}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"createPromiseWithResolvers",{enumerable:!0,get:function(){return a}})},18185,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a,o={RenderStage:function(){return l},StagedRenderingController:function(){return u}};for(var n in o)Object.defineProperty(r,n,{enumerable:!0,get:o[n]});let i=e.r(76414),s=e.r(8211);var l=((a={})[a.Before=1]="Before",a[a.Static=2]="Static",a[a.Runtime=3]="Runtime",a[a.Dynamic=4]="Dynamic",a[a.Abandoned=5]="Abandoned",a);class u{constructor(e=null,t){this.abortSignal=e,this.hasRuntimePrefetch=t,this.currentStage=1,this.staticInterruptReason=null,this.runtimeInterruptReason=null,this.staticStageEndTime=1/0,this.runtimeStageEndTime=1/0,this.runtimeStageListeners=[],this.dynamicStageListeners=[],this.runtimeStagePromise=(0,s.createPromiseWithResolvers)(),this.dynamicStagePromise=(0,s.createPromiseWithResolvers)(),this.mayAbandon=!1,e&&(e.addEventListener("abort",()=>{let{reason:t}=e;this.currentStage<3&&(this.runtimeStagePromise.promise.catch(c),this.runtimeStagePromise.reject(t)),(this.currentStage<4||5===this.currentStage)&&(this.dynamicStagePromise.promise.catch(c),this.dynamicStagePromise.reject(t))},{once:!0}),this.mayAbandon=!0)}onStage(e,t){if(this.currentStage>=e)t();else if(3===e)this.runtimeStageListeners.push(t);else if(4===e)this.dynamicStageListeners.push(t);else throw Object.defineProperty(new i.InvariantError(`Invalid render stage: ${e}`),"__NEXT_ERROR_CODE",{value:"E881",enumerable:!1,configurable:!0})}canSyncInterrupt(){if(1===this.currentStage)return!1;let e=this.hasRuntimePrefetch?4:3;return this.currentStage<e}syncInterruptCurrentStageWithReason(e){if(1!==this.currentStage){if(this.mayAbandon)return this.abandonRenderImpl();switch(this.currentStage){case 2:this.staticInterruptReason=e,this.advanceStage(4);return;case 3:this.hasRuntimePrefetch&&(this.runtimeInterruptReason=e,this.advanceStage(4));return}}}getStaticInterruptReason(){return this.staticInterruptReason}getRuntimeInterruptReason(){return this.runtimeInterruptReason}getStaticStageEndTime(){return this.staticStageEndTime}getRuntimeStageEndTime(){return this.runtimeStageEndTime}abandonRender(){if(!this.mayAbandon)throw Object.defineProperty(new i.InvariantError("`abandonRender` called on a stage controller that cannot be abandoned."),"__NEXT_ERROR_CODE",{value:"E938",enumerable:!1,configurable:!0});this.abandonRenderImpl()}abandonRenderImpl(){let{currentStage:e}=this;switch(e){case 2:this.currentStage=5,this.resolveRuntimeStage();return;case 3:this.currentStage=5;return}}advanceStage(e){if(e<=this.currentStage)return;let t=this.currentStage;if(this.currentStage=e,t<3&&e>=3&&(this.staticStageEndTime=performance.now()+performance.timeOrigin,this.resolveRuntimeStage()),t<4&&e>=4){this.runtimeStageEndTime=performance.now()+performance.timeOrigin,this.resolveDynamicStage();return}}resolveRuntimeStage(){let e=this.runtimeStageListeners;for(let t=0;t<e.length;t++)e[t]();e.length=0,this.runtimeStagePromise.resolve()}resolveDynamicStage(){let e=this.dynamicStageListeners;for(let t=0;t<e.length;t++)e[t]();e.length=0,this.dynamicStagePromise.resolve()}getStagePromise(e){switch(e){case 3:return this.runtimeStagePromise.promise;case 4:return this.dynamicStagePromise.promise;default:throw Object.defineProperty(new i.InvariantError(`Invalid render stage: ${e}`),"__NEXT_ERROR_CODE",{value:"E881",enumerable:!1,configurable:!0})}}waitForStage(e){return this.getStagePromise(e)}delayUntilStage(e,t,r){var a,o,n;let i,s=(a=this.getStagePromise(e),o=t,n=r,i=new Promise((e,t)=>{a.then(e.bind(null,n),t)}),void 0!==o&&(i.displayName=o),i);return this.abortSignal&&s.catch(c),s}}function c(){}},75674,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"connection",{enumerable:!0,get:function(){return u}});let a=e.r(56704),o=e.r(32319),n=e.r(68665),i=e.r(97573),s=e.r(4642),l=e.r(43824);function u(){let e=a.workAsyncStorage.getStore(),t=o.workUnitAsyncStorage.getStore();if(e){if(t&&"after"===t.phase&&!(0,l.isRequestAPICallableInsideAfter)())throw Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside \`after()\`. The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual Request, but \`after()\` executes after the request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/canary/app/api-reference/functions/after`),"__NEXT_ERROR_CODE",{value:"E827",enumerable:!1,configurable:!0});if(e.forceStatic)return Promise.resolve(void 0);if(e.dynamicShouldError)throw Object.defineProperty(new i.StaticGenBailoutError(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`connection()\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E847",enumerable:!1,configurable:!0});if(t)switch(t.type){case"cache":{let t=Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside "use cache". The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual request, but caches must be able to be produced before a request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E841",enumerable:!1,configurable:!0});throw Error.captureStackTrace(t,u),e.invalidDynamicUsageError??=t,t}case"private-cache":{let t=Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside "use cache: private". The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual navigation request, but caches must be able to be produced before a navigation request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E837",enumerable:!1,configurable:!0});throw Error.captureStackTrace(t,u),e.invalidDynamicUsageError??=t,t}case"unstable-cache":throw Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside a function cached with \`unstable_cache()\`. The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual Request, but caches must be able to be produced before a Request so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/app/api-reference/functions/unstable_cache`),"__NEXT_ERROR_CODE",{value:"E840",enumerable:!1,configurable:!0});case"prerender":case"prerender-client":case"prerender-runtime":return(0,s.makeHangingPromise)(t.renderSignal,e.route,"`connection()`");case"prerender-ppr":return(0,n.postponeWithTracking)(e.route,"connection",t.dynamicTracking);case"prerender-legacy":return(0,n.throwToInterruptStaticGeneration)("connection",e,t);case"request":return(0,n.trackDynamicDataInDynamicRender)(t),Promise.resolve(void 0)}}(0,o.throwForMissingRequestStore)("connection")}e.r(18185)},89171,(e,t,r)=>{let a={NextRequest:e.r(29666).NextRequest,NextResponse:e.r(46633).NextResponse,ImageResponse:e.r(87963).ImageResponse,userAgentFromString:e.r(4386).userAgentFromString,userAgent:e.r(4386).userAgent,URLPattern:e.r(79187).URLPattern,after:e.r(81053).after,connection:e.r(75674).connection};t.exports=a,r.NextRequest=a.NextRequest,r.NextResponse=a.NextResponse,r.ImageResponse=a.ImageResponse,r.userAgentFromString=a.userAgentFromString,r.userAgent=a.userAgent,r.URLPattern=a.URLPattern,r.after=a.after,r.connection=a.connection},70943,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={getOrigin:function(){return s},resolveArray:function(){return n},resolveAsArrayOrUndefined:function(){return i}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});function n(e){return Array.isArray(e)?e:[e]}function i(e){if(null!=e)return n(e)}function s(e){let t;if("string"==typeof e)try{t=(e=new URL(e)).origin}catch{}return t}},73853,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a={resolveManifest:function(){return l},resolveRobots:function(){return i},resolveRouteData:function(){return u},resolveSitemap:function(){return s}};for(var o in a)Object.defineProperty(r,o,{enumerable:!0,get:a[o]});let n=e.r(70943);function i(e){let t="";for(let r of Array.isArray(e.rules)?e.rules:[e.rules]){for(let e of(0,n.resolveArray)(r.userAgent||["*"]))t+=`User-Agent: ${e}
+  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.`))}function ee(e,t,r,i){if(i.syncDynamicErrorWithStack)throw Z(e,i.syncDynamicErrorWithStack),new c.StaticGenBailoutError;if(0!==t){if(r.hasSuspenseAboveBody)return;let i=r.dynamicErrors;if(i.length>0){for(let t=0;t<i.length;t++)Z(e,i[t]);throw new c.StaticGenBailoutError}if(r.hasDynamicViewport)throw console.error(`Route "${e.route}" has a \`generateViewport\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) without explicitly allowing fully dynamic rendering. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-viewport`),new c.StaticGenBailoutError;if(1===t)throw console.error(`Route "${e.route}" did not produce a static shell and Next.js was unable to determine a reason. This is a bug in Next.js.`),new c.StaticGenBailoutError}else if(!1===r.hasAllowedDynamic&&r.hasDynamicMetadata)throw console.error(`Route "${e.route}" has a \`generateMetadata\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) when the rest of the route does not. See more info here: https://nextjs.org/docs/messages/next-prerender-dynamic-metadata`),new c.StaticGenBailoutError}function et(e,t,r){if(r.hasSuspenseAboveBody)return[];if(0!==t){let i=r.dynamicErrors;if(i.length>0)return i;if(1===t)return[Object.defineProperty(new f.InvariantError(`Route "${e.route}" did not produce a static shell and Next.js was unable to determine a reason.`),"__NEXT_ERROR_CODE",{value:"E936",enumerable:!1,configurable:!0})]}else if(!1===r.hasAllowedDynamic&&0===r.dynamicErrors.length&&r.dynamicMetadata)return[r.dynamicMetadata];return[]}function er(e,t){return e.runtimeStagePromise?e.runtimeStagePromise.then(()=>t):t}},43824,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={isRequestAPICallableInsideAfter:function(){return c},throwForSearchParamsAccessInUseCache:function(){return l},throwWithStaticGenerationBailoutErrorWithDynamicError:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e.r(97573),o=e.r(24725);function s(e,t){throw Object.defineProperty(new n.StaticGenBailoutError(`Route ${e} with \`dynamic = "error"\` couldn't be rendered statically because it used ${t}. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E543",enumerable:!1,configurable:!0})}function l(e,t){let r=Object.defineProperty(Error(`Route ${e.route} used \`searchParams\` inside "use cache". Accessing dynamic request data inside a cache scope is not supported. If you need some search params inside a cached function await \`searchParams\` outside of the cached function and pass only the required search params as arguments to the cached function. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E842",enumerable:!1,configurable:!0});throw Error.captureStackTrace(r,t),e.invalidDynamicUsageError??=r,r}function c(){let e=o.afterTaskAsyncStorage.getStore();return(null==e?void 0:e.rootTaskSpawnPhase)==="action"}},8211,(e,t,r)=>{"use strict";function i(){let e,t,r=new Promise((r,i)=>{e=r,t=i});return{resolve:e,reject:t,promise:r}}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"createPromiseWithResolvers",{enumerable:!0,get:function(){return i}})},18185,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i,a={RenderStage:function(){return l},StagedRenderingController:function(){return c}};for(var n in a)Object.defineProperty(r,n,{enumerable:!0,get:a[n]});let o=e.r(76414),s=e.r(8211);var l=((i={})[i.Before=1]="Before",i[i.Static=2]="Static",i[i.Runtime=3]="Runtime",i[i.Dynamic=4]="Dynamic",i[i.Abandoned=5]="Abandoned",i);class c{constructor(e=null,t){this.abortSignal=e,this.hasRuntimePrefetch=t,this.currentStage=1,this.staticInterruptReason=null,this.runtimeInterruptReason=null,this.staticStageEndTime=1/0,this.runtimeStageEndTime=1/0,this.runtimeStageListeners=[],this.dynamicStageListeners=[],this.runtimeStagePromise=(0,s.createPromiseWithResolvers)(),this.dynamicStagePromise=(0,s.createPromiseWithResolvers)(),this.mayAbandon=!1,e&&(e.addEventListener("abort",()=>{let{reason:t}=e;this.currentStage<3&&(this.runtimeStagePromise.promise.catch(u),this.runtimeStagePromise.reject(t)),(this.currentStage<4||5===this.currentStage)&&(this.dynamicStagePromise.promise.catch(u),this.dynamicStagePromise.reject(t))},{once:!0}),this.mayAbandon=!0)}onStage(e,t){if(this.currentStage>=e)t();else if(3===e)this.runtimeStageListeners.push(t);else if(4===e)this.dynamicStageListeners.push(t);else throw Object.defineProperty(new o.InvariantError(`Invalid render stage: ${e}`),"__NEXT_ERROR_CODE",{value:"E881",enumerable:!1,configurable:!0})}canSyncInterrupt(){if(1===this.currentStage)return!1;let e=this.hasRuntimePrefetch?4:3;return this.currentStage<e}syncInterruptCurrentStageWithReason(e){if(1!==this.currentStage){if(this.mayAbandon)return this.abandonRenderImpl();switch(this.currentStage){case 2:this.staticInterruptReason=e,this.advanceStage(4);return;case 3:this.hasRuntimePrefetch&&(this.runtimeInterruptReason=e,this.advanceStage(4));return}}}getStaticInterruptReason(){return this.staticInterruptReason}getRuntimeInterruptReason(){return this.runtimeInterruptReason}getStaticStageEndTime(){return this.staticStageEndTime}getRuntimeStageEndTime(){return this.runtimeStageEndTime}abandonRender(){if(!this.mayAbandon)throw Object.defineProperty(new o.InvariantError("`abandonRender` called on a stage controller that cannot be abandoned."),"__NEXT_ERROR_CODE",{value:"E938",enumerable:!1,configurable:!0});this.abandonRenderImpl()}abandonRenderImpl(){let{currentStage:e}=this;switch(e){case 2:this.currentStage=5,this.resolveRuntimeStage();return;case 3:this.currentStage=5;return}}advanceStage(e){if(e<=this.currentStage)return;let t=this.currentStage;if(this.currentStage=e,t<3&&e>=3&&(this.staticStageEndTime=performance.now()+performance.timeOrigin,this.resolveRuntimeStage()),t<4&&e>=4){this.runtimeStageEndTime=performance.now()+performance.timeOrigin,this.resolveDynamicStage();return}}resolveRuntimeStage(){let e=this.runtimeStageListeners;for(let t=0;t<e.length;t++)e[t]();e.length=0,this.runtimeStagePromise.resolve()}resolveDynamicStage(){let e=this.dynamicStageListeners;for(let t=0;t<e.length;t++)e[t]();e.length=0,this.dynamicStagePromise.resolve()}getStagePromise(e){switch(e){case 3:return this.runtimeStagePromise.promise;case 4:return this.dynamicStagePromise.promise;default:throw Object.defineProperty(new o.InvariantError(`Invalid render stage: ${e}`),"__NEXT_ERROR_CODE",{value:"E881",enumerable:!1,configurable:!0})}}waitForStage(e){return this.getStagePromise(e)}delayUntilStage(e,t,r){var i,a,n;let o,s=(i=this.getStagePromise(e),a=t,n=r,o=new Promise((e,t)=>{i.then(e.bind(null,n),t)}),void 0!==a&&(o.displayName=a),o);return this.abortSignal&&s.catch(u),s}}function u(){}},75674,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"connection",{enumerable:!0,get:function(){return c}});let i=e.r(56704),a=e.r(32319),n=e.r(68665),o=e.r(97573),s=e.r(4642),l=e.r(43824);function c(){let e=i.workAsyncStorage.getStore(),t=a.workUnitAsyncStorage.getStore();if(e){if(t&&"after"===t.phase&&!(0,l.isRequestAPICallableInsideAfter)())throw Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside \`after()\`. The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual Request, but \`after()\` executes after the request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/canary/app/api-reference/functions/after`),"__NEXT_ERROR_CODE",{value:"E827",enumerable:!1,configurable:!0});if(e.forceStatic)return Promise.resolve(void 0);if(e.dynamicShouldError)throw Object.defineProperty(new o.StaticGenBailoutError(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`connection()\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E847",enumerable:!1,configurable:!0});if(t)switch(t.type){case"cache":{let t=Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside "use cache". The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual request, but caches must be able to be produced before a request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E841",enumerable:!1,configurable:!0});throw Error.captureStackTrace(t,c),e.invalidDynamicUsageError??=t,t}case"private-cache":{let t=Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside "use cache: private". The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual navigation request, but caches must be able to be produced before a navigation request, so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/messages/next-request-in-use-cache`),"__NEXT_ERROR_CODE",{value:"E837",enumerable:!1,configurable:!0});throw Error.captureStackTrace(t,c),e.invalidDynamicUsageError??=t,t}case"unstable-cache":throw Object.defineProperty(Error(`Route ${e.route} used \`connection()\` inside a function cached with \`unstable_cache()\`. The \`connection()\` function is used to indicate the subsequent code must only run when there is an actual Request, but caches must be able to be produced before a Request so this function is not allowed in this scope. See more info here: https://nextjs.org/docs/app/api-reference/functions/unstable_cache`),"__NEXT_ERROR_CODE",{value:"E840",enumerable:!1,configurable:!0});case"prerender":case"prerender-client":case"prerender-runtime":return(0,s.makeHangingPromise)(t.renderSignal,e.route,"`connection()`");case"prerender-ppr":return(0,n.postponeWithTracking)(e.route,"connection",t.dynamicTracking);case"prerender-legacy":return(0,n.throwToInterruptStaticGeneration)("connection",e,t);case"request":return(0,n.trackDynamicDataInDynamicRender)(t),Promise.resolve(void 0)}}(0,a.throwForMissingRequestStore)("connection")}e.r(18185)},89171,(e,t,r)=>{let i={NextRequest:e.r(29666).NextRequest,NextResponse:e.r(46633).NextResponse,ImageResponse:e.r(87963).ImageResponse,userAgentFromString:e.r(4386).userAgentFromString,userAgent:e.r(4386).userAgent,URLPattern:e.r(79187).URLPattern,after:e.r(81053).after,connection:e.r(75674).connection};t.exports=i,r.NextRequest=i.NextRequest,r.NextResponse=i.NextResponse,r.ImageResponse=i.ImageResponse,r.userAgentFromString=i.userAgentFromString,r.userAgent=i.userAgent,r.URLPattern=i.URLPattern,r.after=i.after,r.connection=i.connection},70943,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={getOrigin:function(){return s},resolveArray:function(){return n},resolveAsArrayOrUndefined:function(){return o}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});function n(e){return Array.isArray(e)?e:[e]}function o(e){if(null!=e)return n(e)}function s(e){let t;if("string"==typeof e)try{t=(e=new URL(e)).origin}catch{}return t}},73853,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={resolveManifest:function(){return l},resolveRobots:function(){return o},resolveRouteData:function(){return c},resolveSitemap:function(){return s}};for(var a in i)Object.defineProperty(r,a,{enumerable:!0,get:i[a]});let n=e.r(70943);function o(e){let t="";for(let r of Array.isArray(e.rules)?e.rules:[e.rules]){for(let e of(0,n.resolveArray)(r.userAgent||["*"]))t+=`User-Agent: ${e}
 `;if(r.allow)for(let e of(0,n.resolveArray)(r.allow))t+=`Allow: ${e}
 `;if(r.disallow)for(let e of(0,n.resolveArray)(r.disallow))t+=`Disallow: ${e}
 `;r.crawlDelay&&(t+=`Crawl-delay: ${r.crawlDelay}
 `),t+="\n"}return e.host&&(t+=`Host: ${e.host}
 `),e.sitemap&&(0,n.resolveArray)(e.sitemap).forEach(e=>{t+=`Sitemap: ${e}
-`}),t}function s(e){let t=e.some(e=>Object.keys(e.alternates??{}).length>0),r=e.some(e=>{var t;return!!(null==(t=e.images)?void 0:t.length)}),a=e.some(e=>{var t;return!!(null==(t=e.videos)?void 0:t.length)}),o="";for(let l of(o+='<?xml version="1.0" encoding="UTF-8"?>\n',o+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',r&&(o+=' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'),a&&(o+=' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"'),t?o+=' xmlns:xhtml="http://www.w3.org/1999/xhtml">\n':o+=">\n",e)){var n,i,s;o+="<url>\n",o+=`<loc>${l.url}</loc>
-`;let e=null==(n=l.alternates)?void 0:n.languages;if(e&&Object.keys(e).length)for(let t in e)o+=`<xhtml:link rel="alternate" hreflang="${t}" href="${e[t]}" />
-`;if(null==(i=l.images)?void 0:i.length)for(let e of l.images)o+=`<image:image>
+`}),t}function s(e){let t=e.some(e=>Object.keys(e.alternates??{}).length>0),r=e.some(e=>{var t;return!!(null==(t=e.images)?void 0:t.length)}),i=e.some(e=>{var t;return!!(null==(t=e.videos)?void 0:t.length)}),a="";for(let l of(a+='<?xml version="1.0" encoding="UTF-8"?>\n',a+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',r&&(a+=' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'),i&&(a+=' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"'),t?a+=' xmlns:xhtml="http://www.w3.org/1999/xhtml">\n':a+=">\n",e)){var n,o,s;a+="<url>\n",a+=`<loc>${l.url}</loc>
+`;let e=null==(n=l.alternates)?void 0:n.languages;if(e&&Object.keys(e).length)for(let t in e)a+=`<xhtml:link rel="alternate" hreflang="${t}" href="${e[t]}" />
+`;if(null==(o=l.images)?void 0:o.length)for(let e of l.images)a+=`<image:image>
 <image:loc>${e}</image:loc>
 </image:image>
-`;if(null==(s=l.videos)?void 0:s.length)for(let e of l.videos)o+=["<video:video>",`<video:title>${e.title}</video:title>`,`<video:thumbnail_loc>${e.thumbnail_loc}</video:thumbnail_loc>`,`<video:description>${e.description}</video:description>`,e.content_loc&&`<video:content_loc>${e.content_loc}</video:content_loc>`,e.player_loc&&`<video:player_loc>${e.player_loc}</video:player_loc>`,e.duration&&`<video:duration>${e.duration}</video:duration>`,e.view_count&&`<video:view_count>${e.view_count}</video:view_count>`,e.tag&&`<video:tag>${e.tag}</video:tag>`,e.rating&&`<video:rating>${e.rating}</video:rating>`,e.expiration_date&&`<video:expiration_date>${e.expiration_date}</video:expiration_date>`,e.publication_date&&`<video:publication_date>${e.publication_date}</video:publication_date>`,e.family_friendly&&`<video:family_friendly>${e.family_friendly}</video:family_friendly>`,e.requires_subscription&&`<video:requires_subscription>${e.requires_subscription}</video:requires_subscription>`,e.live&&`<video:live>${e.live}</video:live>`,e.restriction&&`<video:restriction relationship="${e.restriction.relationship}">${e.restriction.content}</video:restriction>`,e.platform&&`<video:platform relationship="${e.platform.relationship}">${e.platform.content}</video:platform>`,e.uploader&&`<video:uploader${e.uploader.info&&` info="${e.uploader.info}"`}>${e.uploader.content}</video:uploader>`,`</video:video>
-`].filter(Boolean).join("\n");if(l.lastModified){let e=l.lastModified instanceof Date?l.lastModified.toISOString():l.lastModified;o+=`<lastmod>${e}</lastmod>
-`}l.changeFrequency&&(o+=`<changefreq>${l.changeFrequency}</changefreq>
-`),"number"==typeof l.priority&&(o+=`<priority>${l.priority}</priority>
-`),o+="</url>\n"}return o+"</urlset>\n"}function l(e){return JSON.stringify(e)}function u(e,t){return"robots"===t?i(e):"sitemap"===t?s(e):"manifest"===t?l(e):""}},8922,e=>{"use strict";let t,r,a;var o,n,i,s,l,u,c,h,d,g,p,m,f,y,b,v,w,T,S=e.i(47909),P=((o={}).PAGES="PAGES",o.PAGES_API="PAGES_API",o.APP_PAGE="APP_PAGE",o.APP_ROUTE="APP_ROUTE",o.IMAGE="IMAGE",o),k=((n=k||{}).handleRequest="BaseServer.handleRequest",n.run="BaseServer.run",n.pipe="BaseServer.pipe",n.getStaticHTML="BaseServer.getStaticHTML",n.render="BaseServer.render",n.renderToResponseWithComponents="BaseServer.renderToResponseWithComponents",n.renderToResponse="BaseServer.renderToResponse",n.renderToHTML="BaseServer.renderToHTML",n.renderError="BaseServer.renderError",n.renderErrorToResponse="BaseServer.renderErrorToResponse",n.renderErrorToHTML="BaseServer.renderErrorToHTML",n.render404="BaseServer.render404",n),_=((i=_||{}).loadDefaultErrorComponents="LoadComponents.loadDefaultErrorComponents",i.loadComponents="LoadComponents.loadComponents",i),E=((s=E||{}).getRequestHandler="NextServer.getRequestHandler",s.getRequestHandlerWithMetadata="NextServer.getRequestHandlerWithMetadata",s.getServer="NextServer.getServer",s.getServerRequestHandler="NextServer.getServerRequestHandler",s.createServer="createServer.createServer",s),R=((l=R||{}).compression="NextNodeServer.compression",l.getBuildId="NextNodeServer.getBuildId",l.createComponentTree="NextNodeServer.createComponentTree",l.clientComponentLoading="NextNodeServer.clientComponentLoading",l.getLayoutOrPageModule="NextNodeServer.getLayoutOrPageModule",l.generateStaticRoutes="NextNodeServer.generateStaticRoutes",l.generateFsStaticRoutes="NextNodeServer.generateFsStaticRoutes",l.generatePublicRoutes="NextNodeServer.generatePublicRoutes",l.generateImageRoutes="NextNodeServer.generateImageRoutes.route",l.sendRenderResult="NextNodeServer.sendRenderResult",l.proxyRequest="NextNodeServer.proxyRequest",l.runApi="NextNodeServer.runApi",l.render="NextNodeServer.render",l.renderHTML="NextNodeServer.renderHTML",l.imageOptimizer="NextNodeServer.imageOptimizer",l.getPagePath="NextNodeServer.getPagePath",l.getRoutesManifest="NextNodeServer.getRoutesManifest",l.findPageComponents="NextNodeServer.findPageComponents",l.getFontManifest="NextNodeServer.getFontManifest",l.getServerComponentManifest="NextNodeServer.getServerComponentManifest",l.getRequestHandler="NextNodeServer.getRequestHandler",l.renderToHTML="NextNodeServer.renderToHTML",l.renderError="NextNodeServer.renderError",l.renderErrorToHTML="NextNodeServer.renderErrorToHTML",l.render404="NextNodeServer.render404",l.startResponse="NextNodeServer.startResponse",l.route="route",l.onProxyReq="onProxyReq",l.apiResolver="apiResolver",l.internalFetch="internalFetch",l),x=((u=x||{}).startServer="startServer.startServer",u),I=((c=I||{}).getServerSideProps="Render.getServerSideProps",c.getStaticProps="Render.getStaticProps",c.renderToString="Render.renderToString",c.renderDocument="Render.renderDocument",c.createBodyResult="Render.createBodyResult",c),A=((h=A||{}).renderToString="AppRender.renderToString",h.renderToReadableStream="AppRender.renderToReadableStream",h.getBodyResult="AppRender.getBodyResult",h.fetch="AppRender.fetch",h),C=((d=C||{}).executeRoute="Router.executeRoute",d),O=((g=O||{}).runHandler="Node.runHandler",g),N=((p=N||{}).runHandler="AppRouteRouteHandlers.runHandler",p),M=((m=M||{}).generateMetadata="ResolveMetadata.generateMetadata",m.generateViewport="ResolveMetadata.generateViewport",m),D=((f=D||{}).execute="Middleware.execute",f);let L=new Set(["Middleware.execute","BaseServer.handleRequest","Render.getServerSideProps","Render.getStaticProps","AppRender.fetch","AppRender.getBodyResult","Render.renderDocument","Node.runHandler","AppRouteRouteHandlers.runHandler","ResolveMetadata.generateMetadata","ResolveMetadata.generateViewport","NextNodeServer.createComponentTree","NextNodeServer.findPageComponents","NextNodeServer.getLayoutOrPageModule","NextNodeServer.startResponse","NextNodeServer.clientComponentLoading"]),j=new Set(["NextNodeServer.findPageComponents","NextNodeServer.createComponentTree","NextNodeServer.clientComponentLoading"]),B=process.env.NEXT_OTEL_PERFORMANCE_PREFIX;try{t=e.r(70406)}catch(r){t=e.r(17413)}let{context:H,propagation:F,trace:W,SpanStatusCode:U,SpanKind:G,ROOT_CONTEXT:Y}=t;class $ extends Error{constructor(e,t){super(),this.bubble=e,this.result=t}}let V=(e,t)=>{"object"==typeof t&&null!==t&&t instanceof $&&t.bubble?e.setAttribute("next.bubble",!0):(t&&(e.recordException(t),e.setAttribute("error.type",t.name)),e.setStatus({code:U.ERROR,message:null==t?void 0:t.message})),e.end()},q=new Map,z=t.createContextKey("next.rootSpanId"),X=0,K={set(e,t,r){e.push({key:t,value:r})}},J=(a=new class e{getTracerInstance(){return W.getTracer("next.js","0.0.1")}getContext(){return H}getTracePropagationData(){let e=H.active(),t=[];return F.inject(e,t,K),t}getActiveScopeSpan(){return W.getSpan(null==H?void 0:H.active())}withPropagatedContext(e,t,r){let a=H.active();if(W.getSpanContext(a))return t();let o=F.extract(a,e,r);return H.with(o,t)}trace(...e){let[t,r,a]=e,{fn:o,options:n}="function"==typeof r?{fn:r,options:{}}:{fn:a,options:{...r}},i=n.spanName??t;if(!L.has(t)&&"1"!==process.env.NEXT_OTEL_VERBOSE||n.hideSpan)return o();let s=this.getSpanContext((null==n?void 0:n.parentSpan)??this.getActiveScopeSpan());s||(s=(null==H?void 0:H.active())??Y);let l=s.getValue(z),u="number"!=typeof l||!q.has(l),c=X++;return n.attributes={"next.span_name":i,"next.span_type":t,...n.attributes},H.with(s.setValue(z,c),()=>this.getTracerInstance().startActiveSpan(i,n,e=>{let r;B&&t&&j.has(t)&&(r="performance"in globalThis&&"measure"in performance?globalThis.performance.now():void 0);let a=!1,i=()=>{!a&&(a=!0,q.delete(c),r&&performance.measure(`${B}:next-${(t.split(".").pop()||"").replace(/[A-Z]/g,e=>"-"+e.toLowerCase())}`,{start:r,end:performance.now()}))};if(u&&q.set(c,new Map(Object.entries(n.attributes??{}))),o.length>1)try{return o(e,t=>V(e,t))}catch(t){throw V(e,t),t}finally{i()}try{let t=o(e);if(null!==t&&"object"==typeof t&&"then"in t&&"function"==typeof t.then)return t.then(t=>(e.end(),t)).catch(t=>{throw V(e,t),t}).finally(i);return e.end(),i(),t}catch(t){throw V(e,t),i(),t}}))}wrap(...e){let t=this,[r,a,o]=3===e.length?e:[e[0],{},e[1]];return L.has(r)||"1"===process.env.NEXT_OTEL_VERBOSE?function(){let e=a;"function"==typeof e&&"function"==typeof o&&(e=e.apply(this,arguments));let n=arguments.length-1,i=arguments[n];if("function"!=typeof i)return t.trace(r,e,()=>o.apply(this,arguments));{let a=t.getContext().bind(H.active(),i);return t.trace(r,e,(e,t)=>(arguments[n]=function(e){return null==t||t(e),a.apply(this,arguments)},o.apply(this,arguments)))}}:o}startSpan(...e){let[t,r]=e,a=this.getSpanContext((null==r?void 0:r.parentSpan)??this.getActiveScopeSpan());return this.getTracerInstance().startSpan(t,r,a)}getSpanContext(e){return e?W.setSpan(H.active(),e):void 0}getRootSpanAttributes(){let e=H.active().getValue(z);return q.get(e)}setRootSpanAttribute(e,t){let r=H.active().getValue(z),a=q.get(r);a&&!a.has(e)&&a.set(e,t)}withSpan(e,t){let r=W.setSpan(H.active(),e);return H.with(r,t)}},()=>a),Q="x-next-cache-tags",Z={shared:"shared",reactServerComponents:"rsc",serverSideRendering:"ssr",actionBrowser:"action-browser",apiNode:"api-node",apiEdge:"api-edge",middleware:"middleware",instrument:"instrument",edgeAsset:"edge-asset",appPagesBrowser:"app-pages-browser",pagesDirBrowser:"pages-dir-browser",pagesDirEdge:"pages-dir-edge",pagesDirNode:"pages-dir-node"};({...Z,GROUP:{builtinReact:[Z.reactServerComponents,Z.actionBrowser],serverOnly:[Z.reactServerComponents,Z.actionBrowser,Z.instrument,Z.middleware],neutralTarget:[Z.apiNode,Z.apiEdge],clientOnly:[Z.serverSideRendering,Z.appPagesBrowser],bundled:[Z.reactServerComponents,Z.actionBrowser,Z.serverSideRendering,Z.appPagesBrowser,Z.shared,Z.instrument,Z.middleware],appPages:[Z.reactServerComponents,Z.serverSideRendering,Z.appPagesBrowser,Z.actionBrowser]}});var ee=e.i(47540);class et extends Error{constructor(e){super(`Dynamic server usage: ${e}`),this.description=e,this.digest="DYNAMIC_SERVER_USAGE"}}class er extends Error{constructor(...e){super(...e),this.code="NEXT_STATIC_GEN_BAILOUT"}}var ea=e.i(32319),eo=e.i(56704);class en extends Error{constructor(e,t){super(`During prerendering, ${t} rejects when the prerender is complete. Typically these errors are handled by React but if you move ${t} to a different context by using \`setTimeout\`, \`after\`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "${e}".`),this.route=e,this.expression=t,this.digest="HANGING_PROMISE_REJECTION"}}let ei=new WeakMap;function es(e,t,r){if(e.aborted)return Promise.reject(new en(t,r));{let a=new Promise((a,o)=>{let n=o.bind(null,new en(t,r)),i=ei.get(e);if(i)i.push(n);else{let t=[n];ei.set(e,t),e.addEventListener("abort",()=>{for(let e=0;e<t.length;e++)t[e]()},{once:!0})}});return a.catch(el),a}}function el(){}class eu extends Error{constructor(e,t){super(`Invariant: ${e.endsWith(".")?e:e+"."} This is a bug in Next.js.`,t),this.name="InvariantError"}}let ec="function"==typeof ee.default.unstable_postpone;function eh(e,t,r){if(t)switch(t.type){case"cache":case"unstable-cache":case"private-cache":return}if(!e.forceDynamic&&!e.forceStatic){if(e.dynamicShouldError)throw Object.defineProperty(new er(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`${r}\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E553",enumerable:!1,configurable:!0});if(t)switch(t.type){case"prerender-ppr":var a,o,n;return a=e.route,o=r,n=t.dynamicTracking,void(function(){if(!ec)throw Object.defineProperty(Error("Invariant: React.unstable_postpone is not defined. This suggests the wrong version of React was loaded. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E224",enumerable:!1,configurable:!0})}(),n&&n.dynamicAccesses.push({stack:n.isDebugDynamicAccesses?Error().stack:void 0,expression:o}),ee.default.unstable_postpone(ed(a,o)));case"prerender-legacy":t.revalidate=0;let i=Object.defineProperty(new et(`Route ${e.route} couldn't be rendered statically because it used ${r}. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E550",enumerable:!1,configurable:!0});throw e.dynamicUsageDescription=r,e.dynamicUsageStack=i.stack,i}}}function ed(e,t){return`Route ${e} needs to bail out of prerendering at this point because it used ${t}. React throws this special object to indicate where. It should not be caught by your own try/catch. Learn more: https://nextjs.org/docs/messages/ppr-caught-error`}if(!1===((y=ed("%%%","^^^")).includes("needs to bail out of prerendering at this point because it used")&&y.includes("Learn more: https://nextjs.org/docs/messages/ppr-caught-error")))throw Object.defineProperty(Error("Invariant: isDynamicPostpone misidentified a postpone reason. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E296",enumerable:!1,configurable:!0});RegExp(`\\n\\s+at Suspense \\(<anonymous>\\)(?:(?!\\n\\s+at (?:body|div|main|section|article|aside|header|footer|nav|form|p|span|h1|h2|h3|h4|h5|h6) \\(<anonymous>\\))[\\s\\S])*?\\n\\s+at __next_root_layout_boundary__ \\([^\\n]*\\)`),RegExp(`\\n\\s+at __next_metadata_boundary__[\\n\\s]`),RegExp(`\\n\\s+at __next_viewport_boundary__[\\n\\s]`),RegExp(`\\n\\s+at __next_outlet_boundary__[\\n\\s]`);let eg=()=>{};function ep(e){if(!e.body)return[e,e];let[t,a]=e.body.tee(),o=new Response(t,{status:e.status,statusText:e.statusText,headers:e.headers});Object.defineProperty(o,"url",{value:e.url,configurable:!0,enumerable:!0,writable:!1}),r&&o.body&&r.register(o,new WeakRef(o.body));let n=new Response(a,{status:e.status,statusText:e.statusText,headers:e.headers});return Object.defineProperty(n,"url",{value:e.url,configurable:!0,enumerable:!0,writable:!1}),[o,n]}globalThis.FinalizationRegistry&&(r=new FinalizationRegistry(e=>{let t=e.deref();t&&!t.locked&&t.cancel("Response object has been garbage collected").then(eg)}));let em=new Set(["traceparent","tracestate"]);class ef{constructor(){let e,t;this.promise=new Promise((r,a)=>{e=r,t=a}),this.resolve=e,this.reject=t}}var ey=((b={}).APP_PAGE="APP_PAGE",b.APP_ROUTE="APP_ROUTE",b.PAGES="PAGES",b.FETCH="FETCH",b.REDIRECT="REDIRECT",b.IMAGE="IMAGE",b),eb=((v={}).APP_PAGE="APP_PAGE",v.APP_ROUTE="APP_ROUTE",v.PAGES="PAGES",v.FETCH="FETCH",v.IMAGE="IMAGE",v);function ev(){}new Uint8Array([60,104,116,109,108]),new Uint8Array([60,98,111,100,121]),new Uint8Array([60,47,104,101,97,100,62]),new Uint8Array([60,47,98,111,100,121,62]),new Uint8Array([60,47,104,116,109,108,62]),new Uint8Array([60,47,98,111,100,121,62,60,47,104,116,109,108,62]),new Uint8Array([60,109,101,116,97,32,110,97,109,101,61,34,194,171,110,120,116,45,105,99,111,110,194,187,34]);let ew=new TextEncoder;function eT(e){return new ReadableStream({start(t){t.enqueue(ew.encode(e)),t.close()}})}function eS(e){return new ReadableStream({start(t){t.enqueue(e),t.close()}})}async function eP(e,t){let r=new TextDecoder("utf-8",{fatal:!0}),a="";for await(let o of e){if(null==t?void 0:t.aborted)return a;a+=r.decode(o,{stream:!0})}return a+r.decode()}let ek=Symbol.for("NextInternalRequestMeta");function e_(e,t){let r=e[ek]||{};return"string"==typeof t?r[t]:r}function eE(e){let t=new Headers;for(let[r,a]of Object.entries(e))for(let e of Array.isArray(a)?a:[a])void 0!==e&&("number"==typeof e&&(e=e.toString()),t.append(r,e));return t}function eR(e){var t,r,a,o,n,i=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(a=s,s+=1,l(),o=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=o,i.push(e.substring(t,a)),t=s):s=a+1}else s+=1;(!n||s>=e.length)&&i.push(e.substring(t,e.length))}return i}function ex(e){let t={},r=[];if(e)for(let[a,o]of e.entries())"set-cookie"===a.toLowerCase()?(r.push(...eR(o)),t[a]=1===r.length?r[0]:r):t[a]=o;return t}function eI(e){return e.replace(/\/$/,"")||"/"}function eA(e){let t=e.indexOf("#"),r=e.indexOf("?"),a=r>-1&&(t<0||r<t);return a||t>-1?{pathname:e.substring(0,a?r:t),query:a?e.substring(r,t>-1?t:void 0):"",hash:t>-1?e.slice(t):""}:{pathname:e,query:"",hash:""}}function eC(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:a,hash:o}=eA(e);return`${t}${r}${a}${o}`}function eO(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:a,hash:o}=eA(e);return`${r}${t}${a}${o}`}function eN(e,t){if("string"!=typeof e)return!1;let{pathname:r}=eA(e);return r===t||r.startsWith(t+"/")}let eM=new WeakMap;function eD(e,t){let r;if(!t)return{pathname:e};let a=eM.get(t);a||(a=t.map(e=>e.toLowerCase()),eM.set(t,a));let o=e.split("/",2);if(!o[1])return{pathname:e};let n=o[1].toLowerCase(),i=a.indexOf(n);return i<0?{pathname:e}:(r=t[i],{pathname:e=e.slice(r.length+1)||"/",detectedLocale:r})}let eL=/(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|\[::1\]|localhost)/;function ej(e,t){return new URL(String(e).replace(eL,"localhost"),t&&String(t).replace(eL,"localhost"))}let eB=Symbol("NextURLInternal");class eH{constructor(e,t,r){let a,o;"object"==typeof t&&"pathname"in t||"string"==typeof t?(a=t,o=r||{}):o=r||t||{},this[eB]={url:ej(e,a??o.base),options:o,basePath:""},this.analyze()}analyze(){var e,t,r,a,o;let n=function(e,t){let{basePath:r,i18n:a,trailingSlash:o}=t.nextConfig??{},n={pathname:e,trailingSlash:"/"!==e?e.endsWith("/"):o};r&&eN(n.pathname,r)&&(n.pathname=function(e,t){if(!eN(e,t))return e;let r=e.slice(t.length);return r.startsWith("/")?r:`/${r}`}(n.pathname,r),n.basePath=r);let i=n.pathname;if(n.pathname.startsWith("/_next/data/")&&n.pathname.endsWith(".json")){let e=n.pathname.replace(/^\/_next\/data\//,"").replace(/\.json$/,"").split("/");n.buildId=e[0],i="index"!==e[1]?`/${e.slice(1).join("/")}`:"/",!0===t.parseData&&(n.pathname=i)}if(a){let e=t.i18nProvider?t.i18nProvider.analyze(n.pathname):eD(n.pathname,a.locales);n.locale=e.detectedLocale,n.pathname=e.pathname??n.pathname,!e.detectedLocale&&n.buildId&&(e=t.i18nProvider?t.i18nProvider.analyze(i):eD(i,a.locales)).detectedLocale&&(n.locale=e.detectedLocale)}return n}(this[eB].url.pathname,{nextConfig:this[eB].options.nextConfig,parseData:!0,i18nProvider:this[eB].options.i18nProvider}),i=function(e,t){let r;if(t?.host&&!Array.isArray(t.host))r=t.host.toString().split(":",1)[0];else{if(!e.hostname)return;r=e.hostname}return r.toLowerCase()}(this[eB].url,this[eB].options.headers);this[eB].domainLocale=this[eB].options.i18nProvider?this[eB].options.i18nProvider.detectDomainLocale(i):function(e,t,r){if(e){for(let a of(r&&(r=r.toLowerCase()),e))if(t===a.domain?.split(":",1)[0].toLowerCase()||r===a.defaultLocale.toLowerCase()||a.locales?.some(e=>e.toLowerCase()===r))return a}}(null==(t=this[eB].options.nextConfig)||null==(e=t.i18n)?void 0:e.domains,i);let s=(null==(r=this[eB].domainLocale)?void 0:r.defaultLocale)||(null==(o=this[eB].options.nextConfig)||null==(a=o.i18n)?void 0:a.defaultLocale);this[eB].url.pathname=n.pathname,this[eB].defaultLocale=s,this[eB].basePath=n.basePath??"",this[eB].buildId=n.buildId,this[eB].locale=n.locale??s,this[eB].trailingSlash=n.trailingSlash}formatPathname(){var e;let t;return t=function(e,t,r,a){if(!t||t===r)return e;let o=e.toLowerCase();return!a&&(eN(o,"/api")||eN(o,`/${t.toLowerCase()}`))?e:eC(e,`/${t}`)}((e={basePath:this[eB].basePath,buildId:this[eB].buildId,defaultLocale:this[eB].options.forceLocale?void 0:this[eB].defaultLocale,locale:this[eB].locale,pathname:this[eB].url.pathname,trailingSlash:this[eB].trailingSlash}).pathname,e.locale,e.buildId?void 0:e.defaultLocale,e.ignorePrefix),(e.buildId||!e.trailingSlash)&&(t=eI(t)),e.buildId&&(t=eO(eC(t,`/_next/data/${e.buildId}`),"/"===e.pathname?"index.json":".json")),t=eC(t,e.basePath),!e.buildId&&e.trailingSlash?t.endsWith("/")?t:eO(t,"/"):eI(t)}formatSearch(){return this[eB].url.search}get buildId(){return this[eB].buildId}set buildId(e){this[eB].buildId=e}get locale(){return this[eB].locale??""}set locale(e){var t,r;if(!this[eB].locale||!(null==(r=this[eB].options.nextConfig)||null==(t=r.i18n)?void 0:t.locales.includes(e)))throw Object.defineProperty(TypeError(`The NextURL configuration includes no locale "${e}"`),"__NEXT_ERROR_CODE",{value:"E597",enumerable:!1,configurable:!0});this[eB].locale=e}get defaultLocale(){return this[eB].defaultLocale}get domainLocale(){return this[eB].domainLocale}get searchParams(){return this[eB].url.searchParams}get host(){return this[eB].url.host}set host(e){this[eB].url.host=e}get hostname(){return this[eB].url.hostname}set hostname(e){this[eB].url.hostname=e}get port(){return this[eB].url.port}set port(e){this[eB].url.port=e}get protocol(){return this[eB].url.protocol}set protocol(e){this[eB].url.protocol=e}get href(){let e=this.formatPathname(),t=this.formatSearch();return`${this.protocol}//${this.host}${e}${t}${this.hash}`}set href(e){this[eB].url=ej(e),this.analyze()}get origin(){return this[eB].url.origin}get pathname(){return this[eB].url.pathname}set pathname(e){this[eB].url.pathname=e}get hash(){return this[eB].url.hash}set hash(e){this[eB].url.hash=e}get search(){return this[eB].url.search}set search(e){this[eB].url.search=e}get password(){return this[eB].url.password}set password(e){this[eB].url.password=e}get username(){return this[eB].url.username}set username(e){this[eB].url.username=e}get basePath(){return this[eB].basePath}set basePath(e){this[eB].basePath=e.startsWith("/")?e:`/${e}`}toString(){return this.href}toJSON(){return this.href}[Symbol.for("edge-runtime.inspect.custom")](){return{href:this.href,origin:this.origin,protocol:this.protocol,username:this.username,password:this.password,host:this.host,hostname:this.hostname,port:this.port,pathname:this.pathname,search:this.search,searchParams:this.searchParams,hash:this.hash}}clone(){return new eH(String(this),this[eB].options)}}class eF extends Error{constructor(){super(`The request.page has been deprecated in favour of \`URLPattern\`.
+`;if(null==(s=l.videos)?void 0:s.length)for(let e of l.videos)a+=["<video:video>",`<video:title>${e.title}</video:title>`,`<video:thumbnail_loc>${e.thumbnail_loc}</video:thumbnail_loc>`,`<video:description>${e.description}</video:description>`,e.content_loc&&`<video:content_loc>${e.content_loc}</video:content_loc>`,e.player_loc&&`<video:player_loc>${e.player_loc}</video:player_loc>`,e.duration&&`<video:duration>${e.duration}</video:duration>`,e.view_count&&`<video:view_count>${e.view_count}</video:view_count>`,e.tag&&`<video:tag>${e.tag}</video:tag>`,e.rating&&`<video:rating>${e.rating}</video:rating>`,e.expiration_date&&`<video:expiration_date>${e.expiration_date}</video:expiration_date>`,e.publication_date&&`<video:publication_date>${e.publication_date}</video:publication_date>`,e.family_friendly&&`<video:family_friendly>${e.family_friendly}</video:family_friendly>`,e.requires_subscription&&`<video:requires_subscription>${e.requires_subscription}</video:requires_subscription>`,e.live&&`<video:live>${e.live}</video:live>`,e.restriction&&`<video:restriction relationship="${e.restriction.relationship}">${e.restriction.content}</video:restriction>`,e.platform&&`<video:platform relationship="${e.platform.relationship}">${e.platform.content}</video:platform>`,e.uploader&&`<video:uploader${e.uploader.info&&` info="${e.uploader.info}"`}>${e.uploader.content}</video:uploader>`,`</video:video>
+`].filter(Boolean).join("\n");if(l.lastModified){let e=l.lastModified instanceof Date?l.lastModified.toISOString():l.lastModified;a+=`<lastmod>${e}</lastmod>
+`}l.changeFrequency&&(a+=`<changefreq>${l.changeFrequency}</changefreq>
+`),"number"==typeof l.priority&&(a+=`<priority>${l.priority}</priority>
+`),a+="</url>\n"}return a+"</urlset>\n"}function l(e){return JSON.stringify(e)}function c(e,t){return"robots"===t?o(e):"sitemap"===t?s(e):"manifest"===t?l(e):""}},8922,e=>{"use strict";let t,r,i;var a,n,o,s,l,c,u,d,h,g,p,m,f,y,b,v,w,T,S=e.i(47909),k=((a={}).PAGES="PAGES",a.PAGES_API="PAGES_API",a.APP_PAGE="APP_PAGE",a.APP_ROUTE="APP_ROUTE",a.IMAGE="IMAGE",a),P=((n=P||{}).handleRequest="BaseServer.handleRequest",n.run="BaseServer.run",n.pipe="BaseServer.pipe",n.getStaticHTML="BaseServer.getStaticHTML",n.render="BaseServer.render",n.renderToResponseWithComponents="BaseServer.renderToResponseWithComponents",n.renderToResponse="BaseServer.renderToResponse",n.renderToHTML="BaseServer.renderToHTML",n.renderError="BaseServer.renderError",n.renderErrorToResponse="BaseServer.renderErrorToResponse",n.renderErrorToHTML="BaseServer.renderErrorToHTML",n.render404="BaseServer.render404",n),x=((o=x||{}).loadDefaultErrorComponents="LoadComponents.loadDefaultErrorComponents",o.loadComponents="LoadComponents.loadComponents",o),R=((s=R||{}).getRequestHandler="NextServer.getRequestHandler",s.getRequestHandlerWithMetadata="NextServer.getRequestHandlerWithMetadata",s.getServer="NextServer.getServer",s.getServerRequestHandler="NextServer.getServerRequestHandler",s.createServer="createServer.createServer",s),E=((l=E||{}).compression="NextNodeServer.compression",l.getBuildId="NextNodeServer.getBuildId",l.createComponentTree="NextNodeServer.createComponentTree",l.clientComponentLoading="NextNodeServer.clientComponentLoading",l.getLayoutOrPageModule="NextNodeServer.getLayoutOrPageModule",l.generateStaticRoutes="NextNodeServer.generateStaticRoutes",l.generateFsStaticRoutes="NextNodeServer.generateFsStaticRoutes",l.generatePublicRoutes="NextNodeServer.generatePublicRoutes",l.generateImageRoutes="NextNodeServer.generateImageRoutes.route",l.sendRenderResult="NextNodeServer.sendRenderResult",l.proxyRequest="NextNodeServer.proxyRequest",l.runApi="NextNodeServer.runApi",l.render="NextNodeServer.render",l.renderHTML="NextNodeServer.renderHTML",l.imageOptimizer="NextNodeServer.imageOptimizer",l.getPagePath="NextNodeServer.getPagePath",l.getRoutesManifest="NextNodeServer.getRoutesManifest",l.findPageComponents="NextNodeServer.findPageComponents",l.getFontManifest="NextNodeServer.getFontManifest",l.getServerComponentManifest="NextNodeServer.getServerComponentManifest",l.getRequestHandler="NextNodeServer.getRequestHandler",l.renderToHTML="NextNodeServer.renderToHTML",l.renderError="NextNodeServer.renderError",l.renderErrorToHTML="NextNodeServer.renderErrorToHTML",l.render404="NextNodeServer.render404",l.startResponse="NextNodeServer.startResponse",l.route="route",l.onProxyReq="onProxyReq",l.apiResolver="apiResolver",l.internalFetch="internalFetch",l),C=((c=C||{}).startServer="startServer.startServer",c),A=((u=A||{}).getServerSideProps="Render.getServerSideProps",u.getStaticProps="Render.getStaticProps",u.renderToString="Render.renderToString",u.renderDocument="Render.renderDocument",u.createBodyResult="Render.createBodyResult",u),I=((d=I||{}).renderToString="AppRender.renderToString",d.renderToReadableStream="AppRender.renderToReadableStream",d.getBodyResult="AppRender.getBodyResult",d.fetch="AppRender.fetch",d),_=((h=_||{}).executeRoute="Router.executeRoute",h),M=((g=M||{}).runHandler="Node.runHandler",g),O=((p=O||{}).runHandler="AppRouteRouteHandlers.runHandler",p),D=((m=D||{}).generateMetadata="ResolveMetadata.generateMetadata",m.generateViewport="ResolveMetadata.generateViewport",m),N=((f=N||{}).execute="Middleware.execute",f);let B=new Set(["Middleware.execute","BaseServer.handleRequest","Render.getServerSideProps","Render.getStaticProps","AppRender.fetch","AppRender.getBodyResult","Render.renderDocument","Node.runHandler","AppRouteRouteHandlers.runHandler","ResolveMetadata.generateMetadata","ResolveMetadata.generateViewport","NextNodeServer.createComponentTree","NextNodeServer.findPageComponents","NextNodeServer.getLayoutOrPageModule","NextNodeServer.startResponse","NextNodeServer.clientComponentLoading"]),L=new Set(["NextNodeServer.findPageComponents","NextNodeServer.createComponentTree","NextNodeServer.clientComponentLoading"]),j=process.env.NEXT_OTEL_PERFORMANCE_PREFIX;try{t=e.r(70406)}catch(r){t=e.r(17413)}let{context:H,propagation:F,trace:W,SpanStatusCode:Y,SpanKind:G,ROOT_CONTEXT:U}=t;class q extends Error{constructor(e,t){super(),this.bubble=e,this.result=t}}let z=(e,t)=>{"object"==typeof t&&null!==t&&t instanceof q&&t.bubble?e.setAttribute("next.bubble",!0):(t&&(e.recordException(t),e.setAttribute("error.type",t.name)),e.setStatus({code:Y.ERROR,message:null==t?void 0:t.message})),e.end()},$=new Map,V=t.createContextKey("next.rootSpanId"),X=0,K={set(e,t,r){e.push({key:t,value:r})}},J=(i=new class e{getTracerInstance(){return W.getTracer("next.js","0.0.1")}getContext(){return H}getTracePropagationData(){let e=H.active(),t=[];return F.inject(e,t,K),t}getActiveScopeSpan(){return W.getSpan(null==H?void 0:H.active())}withPropagatedContext(e,t,r){let i=H.active();if(W.getSpanContext(i))return t();let a=F.extract(i,e,r);return H.with(a,t)}trace(...e){let[t,r,i]=e,{fn:a,options:n}="function"==typeof r?{fn:r,options:{}}:{fn:i,options:{...r}},o=n.spanName??t;if(!B.has(t)&&"1"!==process.env.NEXT_OTEL_VERBOSE||n.hideSpan)return a();let s=this.getSpanContext((null==n?void 0:n.parentSpan)??this.getActiveScopeSpan());s||(s=(null==H?void 0:H.active())??U);let l=s.getValue(V),c="number"!=typeof l||!$.has(l),u=X++;return n.attributes={"next.span_name":o,"next.span_type":t,...n.attributes},H.with(s.setValue(V,u),()=>this.getTracerInstance().startActiveSpan(o,n,e=>{let r;j&&t&&L.has(t)&&(r="performance"in globalThis&&"measure"in performance?globalThis.performance.now():void 0);let i=!1,o=()=>{!i&&(i=!0,$.delete(u),r&&performance.measure(`${j}:next-${(t.split(".").pop()||"").replace(/[A-Z]/g,e=>"-"+e.toLowerCase())}`,{start:r,end:performance.now()}))};if(c&&$.set(u,new Map(Object.entries(n.attributes??{}))),a.length>1)try{return a(e,t=>z(e,t))}catch(t){throw z(e,t),t}finally{o()}try{let t=a(e);if(null!==t&&"object"==typeof t&&"then"in t&&"function"==typeof t.then)return t.then(t=>(e.end(),t)).catch(t=>{throw z(e,t),t}).finally(o);return e.end(),o(),t}catch(t){throw z(e,t),o(),t}}))}wrap(...e){let t=this,[r,i,a]=3===e.length?e:[e[0],{},e[1]];return B.has(r)||"1"===process.env.NEXT_OTEL_VERBOSE?function(){let e=i;"function"==typeof e&&"function"==typeof a&&(e=e.apply(this,arguments));let n=arguments.length-1,o=arguments[n];if("function"!=typeof o)return t.trace(r,e,()=>a.apply(this,arguments));{let i=t.getContext().bind(H.active(),o);return t.trace(r,e,(e,t)=>(arguments[n]=function(e){return null==t||t(e),i.apply(this,arguments)},a.apply(this,arguments)))}}:a}startSpan(...e){let[t,r]=e,i=this.getSpanContext((null==r?void 0:r.parentSpan)??this.getActiveScopeSpan());return this.getTracerInstance().startSpan(t,r,i)}getSpanContext(e){return e?W.setSpan(H.active(),e):void 0}getRootSpanAttributes(){let e=H.active().getValue(V);return $.get(e)}setRootSpanAttribute(e,t){let r=H.active().getValue(V),i=$.get(r);i&&!i.has(e)&&i.set(e,t)}withSpan(e,t){let r=W.setSpan(H.active(),e);return H.with(r,t)}},()=>i),Q="x-next-cache-tags",Z={shared:"shared",reactServerComponents:"rsc",serverSideRendering:"ssr",actionBrowser:"action-browser",apiNode:"api-node",apiEdge:"api-edge",middleware:"middleware",instrument:"instrument",edgeAsset:"edge-asset",appPagesBrowser:"app-pages-browser",pagesDirBrowser:"pages-dir-browser",pagesDirEdge:"pages-dir-edge",pagesDirNode:"pages-dir-node"};({...Z,GROUP:{builtinReact:[Z.reactServerComponents,Z.actionBrowser],serverOnly:[Z.reactServerComponents,Z.actionBrowser,Z.instrument,Z.middleware],neutralTarget:[Z.apiNode,Z.apiEdge],clientOnly:[Z.serverSideRendering,Z.appPagesBrowser],bundled:[Z.reactServerComponents,Z.actionBrowser,Z.serverSideRendering,Z.appPagesBrowser,Z.shared,Z.instrument,Z.middleware],appPages:[Z.reactServerComponents,Z.serverSideRendering,Z.appPagesBrowser,Z.actionBrowser]}});var ee=e.i(47540);class et extends Error{constructor(e){super(`Dynamic server usage: ${e}`),this.description=e,this.digest="DYNAMIC_SERVER_USAGE"}}class er extends Error{constructor(...e){super(...e),this.code="NEXT_STATIC_GEN_BAILOUT"}}var ei=e.i(32319),ea=e.i(56704);class en extends Error{constructor(e,t){super(`During prerendering, ${t} rejects when the prerender is complete. Typically these errors are handled by React but if you move ${t} to a different context by using \`setTimeout\`, \`after\`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "${e}".`),this.route=e,this.expression=t,this.digest="HANGING_PROMISE_REJECTION"}}let eo=new WeakMap;function es(e,t,r){if(e.aborted)return Promise.reject(new en(t,r));{let i=new Promise((i,a)=>{let n=a.bind(null,new en(t,r)),o=eo.get(e);if(o)o.push(n);else{let t=[n];eo.set(e,t),e.addEventListener("abort",()=>{for(let e=0;e<t.length;e++)t[e]()},{once:!0})}});return i.catch(el),i}}function el(){}class ec extends Error{constructor(e,t){super(`Invariant: ${e.endsWith(".")?e:e+"."} This is a bug in Next.js.`,t),this.name="InvariantError"}}let eu="function"==typeof ee.default.unstable_postpone;function ed(e,t,r){if(t)switch(t.type){case"cache":case"unstable-cache":case"private-cache":return}if(!e.forceDynamic&&!e.forceStatic){if(e.dynamicShouldError)throw Object.defineProperty(new er(`Route ${e.route} with \`dynamic = "error"\` couldn't be rendered statically because it used \`${r}\`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`),"__NEXT_ERROR_CODE",{value:"E553",enumerable:!1,configurable:!0});if(t)switch(t.type){case"prerender-ppr":var i,a,n;return i=e.route,a=r,n=t.dynamicTracking,void(function(){if(!eu)throw Object.defineProperty(Error("Invariant: React.unstable_postpone is not defined. This suggests the wrong version of React was loaded. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E224",enumerable:!1,configurable:!0})}(),n&&n.dynamicAccesses.push({stack:n.isDebugDynamicAccesses?Error().stack:void 0,expression:a}),ee.default.unstable_postpone(eh(i,a)));case"prerender-legacy":t.revalidate=0;let o=Object.defineProperty(new et(`Route ${e.route} couldn't be rendered statically because it used ${r}. See more info here: https://nextjs.org/docs/messages/dynamic-server-error`),"__NEXT_ERROR_CODE",{value:"E550",enumerable:!1,configurable:!0});throw e.dynamicUsageDescription=r,e.dynamicUsageStack=o.stack,o}}}function eh(e,t){return`Route ${e} needs to bail out of prerendering at this point because it used ${t}. React throws this special object to indicate where. It should not be caught by your own try/catch. Learn more: https://nextjs.org/docs/messages/ppr-caught-error`}if(!1===((y=eh("%%%","^^^")).includes("needs to bail out of prerendering at this point because it used")&&y.includes("Learn more: https://nextjs.org/docs/messages/ppr-caught-error")))throw Object.defineProperty(Error("Invariant: isDynamicPostpone misidentified a postpone reason. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E296",enumerable:!1,configurable:!0});RegExp(`\\n\\s+at Suspense \\(<anonymous>\\)(?:(?!\\n\\s+at (?:body|div|main|section|article|aside|header|footer|nav|form|p|span|h1|h2|h3|h4|h5|h6) \\(<anonymous>\\))[\\s\\S])*?\\n\\s+at __next_root_layout_boundary__ \\([^\\n]*\\)`),RegExp(`\\n\\s+at __next_metadata_boundary__[\\n\\s]`),RegExp(`\\n\\s+at __next_viewport_boundary__[\\n\\s]`),RegExp(`\\n\\s+at __next_outlet_boundary__[\\n\\s]`);let eg=()=>{};function ep(e){if(!e.body)return[e,e];let[t,i]=e.body.tee(),a=new Response(t,{status:e.status,statusText:e.statusText,headers:e.headers});Object.defineProperty(a,"url",{value:e.url,configurable:!0,enumerable:!0,writable:!1}),r&&a.body&&r.register(a,new WeakRef(a.body));let n=new Response(i,{status:e.status,statusText:e.statusText,headers:e.headers});return Object.defineProperty(n,"url",{value:e.url,configurable:!0,enumerable:!0,writable:!1}),[a,n]}globalThis.FinalizationRegistry&&(r=new FinalizationRegistry(e=>{let t=e.deref();t&&!t.locked&&t.cancel("Response object has been garbage collected").then(eg)}));let em=new Set(["traceparent","tracestate"]);class ef{constructor(){let e,t;this.promise=new Promise((r,i)=>{e=r,t=i}),this.resolve=e,this.reject=t}}var ey=((b={}).APP_PAGE="APP_PAGE",b.APP_ROUTE="APP_ROUTE",b.PAGES="PAGES",b.FETCH="FETCH",b.REDIRECT="REDIRECT",b.IMAGE="IMAGE",b),eb=((v={}).APP_PAGE="APP_PAGE",v.APP_ROUTE="APP_ROUTE",v.PAGES="PAGES",v.FETCH="FETCH",v.IMAGE="IMAGE",v);function ev(){}new Uint8Array([60,104,116,109,108]),new Uint8Array([60,98,111,100,121]),new Uint8Array([60,47,104,101,97,100,62]),new Uint8Array([60,47,98,111,100,121,62]),new Uint8Array([60,47,104,116,109,108,62]),new Uint8Array([60,47,98,111,100,121,62,60,47,104,116,109,108,62]),new Uint8Array([60,109,101,116,97,32,110,97,109,101,61,34,194,171,110,120,116,45,105,99,111,110,194,187,34]);let ew=new TextEncoder;function eT(e){return new ReadableStream({start(t){t.enqueue(ew.encode(e)),t.close()}})}function eS(e){return new ReadableStream({start(t){t.enqueue(e),t.close()}})}async function ek(e,t){let r=new TextDecoder("utf-8",{fatal:!0}),i="";for await(let a of e){if(null==t?void 0:t.aborted)return i;i+=r.decode(a,{stream:!0})}return i+r.decode()}let eP=Symbol.for("NextInternalRequestMeta");function ex(e,t){let r=e[eP]||{};return"string"==typeof t?r[t]:r}function eR(e){let t=new Headers;for(let[r,i]of Object.entries(e))for(let e of Array.isArray(i)?i:[i])void 0!==e&&("number"==typeof e&&(e=e.toString()),t.append(r,e));return t}function eE(e){var t,r,i,a,n,o=[],s=0;function l(){for(;s<e.length&&/\s/.test(e.charAt(s));)s+=1;return s<e.length}for(;s<e.length;){for(t=s,n=!1;l();)if(","===(r=e.charAt(s))){for(i=s,s+=1,l(),a=s;s<e.length&&"="!==(r=e.charAt(s))&&";"!==r&&","!==r;)s+=1;s<e.length&&"="===e.charAt(s)?(n=!0,s=a,o.push(e.substring(t,i)),t=s):s=i+1}else s+=1;(!n||s>=e.length)&&o.push(e.substring(t,e.length))}return o}function eC(e){let t={},r=[];if(e)for(let[i,a]of e.entries())"set-cookie"===i.toLowerCase()?(r.push(...eE(a)),t[i]=1===r.length?r[0]:r):t[i]=a;return t}function eA(e){return e.replace(/\/$/,"")||"/"}function eI(e){let t=e.indexOf("#"),r=e.indexOf("?"),i=r>-1&&(t<0||r<t);return i||t>-1?{pathname:e.substring(0,i?r:t),query:i?e.substring(r,t>-1?t:void 0):"",hash:t>-1?e.slice(t):""}:{pathname:e,query:"",hash:""}}function e_(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:i,hash:a}=eI(e);return`${t}${r}${i}${a}`}function eM(e,t){if(!e.startsWith("/")||!t)return e;let{pathname:r,query:i,hash:a}=eI(e);return`${r}${t}${i}${a}`}function eO(e,t){if("string"!=typeof e)return!1;let{pathname:r}=eI(e);return r===t||r.startsWith(t+"/")}let eD=new WeakMap;function eN(e,t){let r;if(!t)return{pathname:e};let i=eD.get(t);i||(i=t.map(e=>e.toLowerCase()),eD.set(t,i));let a=e.split("/",2);if(!a[1])return{pathname:e};let n=a[1].toLowerCase(),o=i.indexOf(n);return o<0?{pathname:e}:(r=t[o],{pathname:e=e.slice(r.length+1)||"/",detectedLocale:r})}let eB=/(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|\[::1\]|localhost)/;function eL(e,t){return new URL(String(e).replace(eB,"localhost"),t&&String(t).replace(eB,"localhost"))}let ej=Symbol("NextURLInternal");class eH{constructor(e,t,r){let i,a;"object"==typeof t&&"pathname"in t||"string"==typeof t?(i=t,a=r||{}):a=r||t||{},this[ej]={url:eL(e,i??a.base),options:a,basePath:""},this.analyze()}analyze(){var e,t,r,i,a;let n=function(e,t){let{basePath:r,i18n:i,trailingSlash:a}=t.nextConfig??{},n={pathname:e,trailingSlash:"/"!==e?e.endsWith("/"):a};r&&eO(n.pathname,r)&&(n.pathname=function(e,t){if(!eO(e,t))return e;let r=e.slice(t.length);return r.startsWith("/")?r:`/${r}`}(n.pathname,r),n.basePath=r);let o=n.pathname;if(n.pathname.startsWith("/_next/data/")&&n.pathname.endsWith(".json")){let e=n.pathname.replace(/^\/_next\/data\//,"").replace(/\.json$/,"").split("/");n.buildId=e[0],o="index"!==e[1]?`/${e.slice(1).join("/")}`:"/",!0===t.parseData&&(n.pathname=o)}if(i){let e=t.i18nProvider?t.i18nProvider.analyze(n.pathname):eN(n.pathname,i.locales);n.locale=e.detectedLocale,n.pathname=e.pathname??n.pathname,!e.detectedLocale&&n.buildId&&(e=t.i18nProvider?t.i18nProvider.analyze(o):eN(o,i.locales)).detectedLocale&&(n.locale=e.detectedLocale)}return n}(this[ej].url.pathname,{nextConfig:this[ej].options.nextConfig,parseData:!0,i18nProvider:this[ej].options.i18nProvider}),o=function(e,t){let r;if(t?.host&&!Array.isArray(t.host))r=t.host.toString().split(":",1)[0];else{if(!e.hostname)return;r=e.hostname}return r.toLowerCase()}(this[ej].url,this[ej].options.headers);this[ej].domainLocale=this[ej].options.i18nProvider?this[ej].options.i18nProvider.detectDomainLocale(o):function(e,t,r){if(e){for(let i of(r&&(r=r.toLowerCase()),e))if(t===i.domain?.split(":",1)[0].toLowerCase()||r===i.defaultLocale.toLowerCase()||i.locales?.some(e=>e.toLowerCase()===r))return i}}(null==(t=this[ej].options.nextConfig)||null==(e=t.i18n)?void 0:e.domains,o);let s=(null==(r=this[ej].domainLocale)?void 0:r.defaultLocale)||(null==(a=this[ej].options.nextConfig)||null==(i=a.i18n)?void 0:i.defaultLocale);this[ej].url.pathname=n.pathname,this[ej].defaultLocale=s,this[ej].basePath=n.basePath??"",this[ej].buildId=n.buildId,this[ej].locale=n.locale??s,this[ej].trailingSlash=n.trailingSlash}formatPathname(){var e;let t;return t=function(e,t,r,i){if(!t||t===r)return e;let a=e.toLowerCase();return!i&&(eO(a,"/api")||eO(a,`/${t.toLowerCase()}`))?e:e_(e,`/${t}`)}((e={basePath:this[ej].basePath,buildId:this[ej].buildId,defaultLocale:this[ej].options.forceLocale?void 0:this[ej].defaultLocale,locale:this[ej].locale,pathname:this[ej].url.pathname,trailingSlash:this[ej].trailingSlash}).pathname,e.locale,e.buildId?void 0:e.defaultLocale,e.ignorePrefix),(e.buildId||!e.trailingSlash)&&(t=eA(t)),e.buildId&&(t=eM(e_(t,`/_next/data/${e.buildId}`),"/"===e.pathname?"index.json":".json")),t=e_(t,e.basePath),!e.buildId&&e.trailingSlash?t.endsWith("/")?t:eM(t,"/"):eA(t)}formatSearch(){return this[ej].url.search}get buildId(){return this[ej].buildId}set buildId(e){this[ej].buildId=e}get locale(){return this[ej].locale??""}set locale(e){var t,r;if(!this[ej].locale||!(null==(r=this[ej].options.nextConfig)||null==(t=r.i18n)?void 0:t.locales.includes(e)))throw Object.defineProperty(TypeError(`The NextURL configuration includes no locale "${e}"`),"__NEXT_ERROR_CODE",{value:"E597",enumerable:!1,configurable:!0});this[ej].locale=e}get defaultLocale(){return this[ej].defaultLocale}get domainLocale(){return this[ej].domainLocale}get searchParams(){return this[ej].url.searchParams}get host(){return this[ej].url.host}set host(e){this[ej].url.host=e}get hostname(){return this[ej].url.hostname}set hostname(e){this[ej].url.hostname=e}get port(){return this[ej].url.port}set port(e){this[ej].url.port=e}get protocol(){return this[ej].url.protocol}set protocol(e){this[ej].url.protocol=e}get href(){let e=this.formatPathname(),t=this.formatSearch();return`${this.protocol}//${this.host}${e}${t}${this.hash}`}set href(e){this[ej].url=eL(e),this.analyze()}get origin(){return this[ej].url.origin}get pathname(){return this[ej].url.pathname}set pathname(e){this[ej].url.pathname=e}get hash(){return this[ej].url.hash}set hash(e){this[ej].url.hash=e}get search(){return this[ej].url.search}set search(e){this[ej].url.search=e}get password(){return this[ej].url.password}set password(e){this[ej].url.password=e}get username(){return this[ej].url.username}set username(e){this[ej].url.username=e}get basePath(){return this[ej].basePath}set basePath(e){this[ej].basePath=e.startsWith("/")?e:`/${e}`}toString(){return this.href}toJSON(){return this.href}[Symbol.for("edge-runtime.inspect.custom")](){return{href:this.href,origin:this.origin,protocol:this.protocol,username:this.username,password:this.password,host:this.host,hostname:this.hostname,port:this.port,pathname:this.pathname,search:this.search,searchParams:this.searchParams,hash:this.hash}}clone(){return new eH(String(this),this[ej].options)}}class eF extends Error{constructor(){super(`The request.page has been deprecated in favour of \`URLPattern\`.
   Read more: https://nextjs.org/docs/messages/middleware-request-page
   `)}}class eW extends Error{constructor(){super(`The request.ua has been removed in favour of \`userAgent\` function.
   Read more: https://nextjs.org/docs/messages/middleware-parse-user-agent
-  `)}}var eU=e.i(19481);let eG=Symbol("internal request");class eY extends Request{constructor(e,t={}){const r="string"!=typeof e&&"url"in e?e.url:String(e);!function(e){try{String(new URL(String(e)))}catch(t){throw Object.defineProperty(Error(`URL is malformed "${String(e)}". Please use only absolute URLs - https://nextjs.org/docs/messages/middleware-relative-urls`,{cause:t}),"__NEXT_ERROR_CODE",{value:"E61",enumerable:!1,configurable:!0})}}(r),t.body&&"half"!==t.duplex&&(t.duplex="half"),e instanceof Request?super(e,t):super(r,t);const a=new eH(r,{headers:ex(this.headers),nextConfig:t.nextConfig});this[eG]={cookies:new eU.RequestCookies(this.headers),nextUrl:a,url:a.toString()}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,nextUrl:this.nextUrl,url:this.url,bodyUsed:this.bodyUsed,cache:this.cache,credentials:this.credentials,destination:this.destination,headers:Object.fromEntries(this.headers),integrity:this.integrity,keepalive:this.keepalive,method:this.method,mode:this.mode,redirect:this.redirect,referrer:this.referrer,referrerPolicy:this.referrerPolicy,signal:this.signal}}get cookies(){return this[eG].cookies}get nextUrl(){return this[eG].nextUrl}get page(){throw new eF}get ua(){throw new eW}get url(){return this[eG].url}}let e$="ResponseAborted";class eV extends Error{constructor(...e){super(...e),this.name=e$}}function eq(e){let t=new AbortController;return e.once("close",()=>{e.writableFinished||t.abort(new eV)}),t}class ez{static fromBaseNextRequest(e,t){return ez.fromNodeNextRequest(e,t)}static fromNodeNextRequest(e,t){let r,a=null;if("GET"!==e.method&&"HEAD"!==e.method&&e.body&&(a=e.body),e.url.startsWith("http"))r=new URL(e.url);else{let t=e_(e,"initURL");r=t&&t.startsWith("http")?new URL(e.url,t):new URL(e.url,"http://n")}return new eY(r,{method:e.method,headers:eE(e.headers),duplex:"half",signal:t,...t.aborted?{}:{body:a}})}static fromWebNextRequest(e){let t=null;return"GET"!==e.method&&"HEAD"!==e.method&&(t=e.body),new eY(e.url,{method:e.method,headers:eE(e.headers),duplex:"half",signal:e.request.signal,...e.request.signal.aborted?{}:{body:t}})}}let eX=0,eK=0,eJ=0;function eQ(e){return(null==e?void 0:e.name)==="AbortError"||(null==e?void 0:e.name)===e$}async function eZ(e,t,r){try{let{errored:a,destroyed:o}=t;if(a||o)return;let n=eq(t),i=function(e,t){let r=!1,a=new ef;function o(){a.resolve()}e.on("drain",o),e.once("close",()=>{e.off("drain",o),a.resolve()});let n=new ef;return e.once("finish",()=>{n.resolve()}),new WritableStream({write:async t=>{if(!r){if(r=!0,"performance"in globalThis&&process.env.NEXT_OTEL_PERFORMANCE_PREFIX){let e=function(e={}){let t=0===eX?void 0:{clientComponentLoadStart:eX,clientComponentLoadTimes:eK,clientComponentLoadCount:eJ};return e.reset&&(eX=0,eK=0,eJ=0),t}();e&&performance.measure(`${process.env.NEXT_OTEL_PERFORMANCE_PREFIX}:next-client-component-loading`,{start:e.clientComponentLoadStart,end:e.clientComponentLoadStart+e.clientComponentLoadTimes})}e.flushHeaders(),J().trace(R.startResponse,{spanName:"start response"},()=>void 0)}try{let r=e.write(t);"flush"in e&&"function"==typeof e.flush&&e.flush(),r||(await a.promise,a=new ef)}catch(t){throw e.end(),Object.defineProperty(Error("failed to write chunk to response",{cause:t}),"__NEXT_ERROR_CODE",{value:"E321",enumerable:!1,configurable:!0})}},abort:t=>{e.writableFinished||e.destroy(t)},close:async()=>{if(t&&await t,!e.writableFinished)return e.end(),n.promise}})}(t,r);await e.pipeTo(i,{signal:n.signal})}catch(e){if(eQ(e))return;throw Object.defineProperty(Error("failed to pipe response",{cause:e}),"__NEXT_ERROR_CODE",{value:"E180",enumerable:!1,configurable:!0})}}class e0{static #e=this.EMPTY=new e0(null,{metadata:{},contentType:null});static fromStatic(e,t){return new e0(e,{metadata:{},contentType:t})}constructor(e,{contentType:t,waitUntil:r,metadata:a}){this.response=e,this.contentType=t,this.metadata=a,this.waitUntil=r}assignMetadata(e){Object.assign(this.metadata,e)}get isNull(){return null===this.response}get isDynamic(){return"string"!=typeof this.response}toUnchunkedString(e=!1){if(null===this.response)return"";if("string"!=typeof this.response){if(!e)throw Object.defineProperty(new eu("dynamic responses cannot be unchunked. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E732",enumerable:!1,configurable:!0});return eP(this.readable)}return this.response}get readable(){return null===this.response?new ReadableStream({start(e){e.close()}}):"string"==typeof this.response?eT(this.response):Buffer.isBuffer(this.response)?eS(this.response):Array.isArray(this.response)?function(...e){if(0===e.length)return new ReadableStream({start(e){e.close()}});if(1===e.length)return e[0];let{readable:t,writable:r}=new TransformStream,a=e[0].pipeTo(r,{preventClose:!0}),o=1;for(;o<e.length-1;o++){let t=e[o];a=a.then(()=>t.pipeTo(r,{preventClose:!0}))}let n=e[o];return(a=a.then(()=>n.pipeTo(r))).catch(ev),t}(...this.response):this.response}coerce(){return null===this.response?[]:"string"==typeof this.response?[eT(this.response)]:Array.isArray(this.response)?this.response:Buffer.isBuffer(this.response)?[eS(this.response)]:[this.response]}unshift(e){this.response=this.coerce(),this.response.unshift(e)}push(e){this.response=this.coerce(),this.response.push(e)}async pipeTo(e){try{await this.readable.pipeTo(e,{preventClose:!0}),this.waitUntil&&await this.waitUntil,await e.close()}catch(t){if(eQ(t))return void await e.abort(t);throw t}}async pipeToNodeResponse(e){await eZ(this.readable,e,this.waitUntil)}}let e1=Symbol.for("next-patch");function e2(e,t){e.shouldTrackFetchMetrics&&(e.fetchMetrics??=[],e.fetchMetrics.push({...t,end:performance.timeOrigin+performance.now(),idx:e.nextFetchId||0}))}async function e3(e,t,r,a,o,n){let i=await e.arrayBuffer(),s={headers:Object.fromEntries(e.headers.entries()),body:Buffer.from(i).toString("base64"),status:e.status,url:e.url};return r&&await a.set(t,{kind:ey.FETCH,data:s,revalidate:o},r),await n(),new Response(i,{headers:e.headers,status:e.status,statusText:e.statusText})}async function e4(e,t,r,a,o,n,i,s,l){let[u,c]=ep(t),h=u.arrayBuffer().then(async e=>{let t=Buffer.from(e),s={headers:Object.fromEntries(u.headers.entries()),body:t.toString("base64"),status:u.status,url:u.url};null==n||n.set(r,s),a&&await o.set(r,{kind:ey.FETCH,data:s,revalidate:i},a)}).catch(e=>console.warn("Failed to set fetch cache",s,e)).finally(l),d=`cache-set-${r}`,g=e.pendingRevalidates??={},p=Promise.resolve();return d in g&&(p=g[d]),g[d]=p.then(()=>h).finally(()=>{(null==g?void 0:g[d])&&delete g[d]}),c}let e6=null;function e5(e){var t;return(t=e.split("/").reduce((e,t,r,a)=>t?"("===t[0]&&t.endsWith(")")||"@"===t[0]||("page"===t||"route"===t)&&r===a.length-1?e:`${e}/${t}`:e,"")).startsWith("/")?t:`/${t}`}let e9=Symbol.for("next.server.manifests"),e8=globalThis;class e7{static get(e,t,r){let a=Reflect.get(e,t,r);return"function"==typeof a?a.bind(e):a}static set(e,t,r,a){return Reflect.set(e,t,r,a)}static has(e,t){return Reflect.has(e,t)}static deleteProperty(e,t){return Reflect.deleteProperty(e,t)}}class te extends Error{constructor(){super("Headers cannot be modified. Read more: https://nextjs.org/docs/app/api-reference/functions/headers")}static callable(){throw new te}}class tt extends Headers{constructor(e){super(),this.headers=new Proxy(e,{get(t,r,a){if("symbol"==typeof r)return e7.get(t,r,a);let o=r.toLowerCase(),n=Object.keys(e).find(e=>e.toLowerCase()===o);if(void 0!==n)return e7.get(t,n,a)},set(t,r,a,o){if("symbol"==typeof r)return e7.set(t,r,a,o);let n=r.toLowerCase(),i=Object.keys(e).find(e=>e.toLowerCase()===n);return e7.set(t,i??r,a,o)},has(t,r){if("symbol"==typeof r)return e7.has(t,r);let a=r.toLowerCase(),o=Object.keys(e).find(e=>e.toLowerCase()===a);return void 0!==o&&e7.has(t,o)},deleteProperty(t,r){if("symbol"==typeof r)return e7.deleteProperty(t,r);let a=r.toLowerCase(),o=Object.keys(e).find(e=>e.toLowerCase()===a);return void 0===o||e7.deleteProperty(t,o)}})}static seal(e){return new Proxy(e,{get(e,t,r){switch(t){case"append":case"delete":case"set":return te.callable;default:return e7.get(e,t,r)}}})}merge(e){return Array.isArray(e)?e.join(", "):e}static from(e){return e instanceof Headers?e:new tt(e)}append(e,t){let r=this.headers[e];"string"==typeof r?this.headers[e]=[r,t]:Array.isArray(r)?r.push(t):this.headers[e]=t}delete(e){delete this.headers[e]}get(e){let t=this.headers[e];return void 0!==t?this.merge(t):null}has(e){return void 0!==this.headers[e]}set(e,t){this.headers[e]=t}forEach(e,t){for(let[r,a]of this.entries())e.call(t,a,r,this)}*entries(){for(let e of Object.keys(this.headers)){let t=e.toLowerCase(),r=this.get(t);yield[t,r]}}*keys(){for(let e of Object.keys(this.headers)){let t=e.toLowerCase();yield t}}*values(){for(let e of Object.keys(this.headers)){let t=this.get(e);yield t}}[Symbol.iterator](){return this.entries()}}Symbol("__next_preview_data");let tr=Symbol("__prerender_bypass");var ta=((w={})[w.SeeOther=303]="SeeOther",w[w.TemporaryRedirect=307]="TemporaryRedirect",w[w.PermanentRedirect=308]="PermanentRedirect",w);class to{constructor(e,t,r){this.method=e,this.url=t,this.body=r}get cookies(){var t;return this._cookies?this._cookies:this._cookies=(t=this.headers,function(){let{cookie:r}=t;if(!r)return{};let{parse:a}=e.r(93118);return a(Array.isArray(r)?r.join("; "):r)})()}}class tn{constructor(e){this.destination=e}redirect(e,t){return this.setHeader("Location",e),this.statusCode=t,t===ta.PermanentRedirect&&this.setHeader("Refresh",`0;url=${e}`),this}}class ti extends to{static #e=T=ek;constructor(e){var t;super(e.method.toUpperCase(),e.url,e),this._req=e,this.headers=this._req.headers,this.fetchMetrics=null==(t=this._req)?void 0:t.fetchMetrics,this[T]=this._req[ek]||{},this.streaming=!1}get originalRequest(){return this._req[ek]=this[ek],this._req.url=this.url,this._req.cookies=this.cookies,this._req}set originalRequest(e){this._req=e}stream(){if(this.streaming)throw Object.defineProperty(Error("Invariant: NodeNextRequest.stream() can only be called once"),"__NEXT_ERROR_CODE",{value:"E467",enumerable:!1,configurable:!0});return this.streaming=!0,new ReadableStream({start:e=>{this._req.on("data",t=>{e.enqueue(new Uint8Array(t))}),this._req.on("end",()=>{e.close()}),this._req.on("error",t=>{e.error(t)})}})}}class ts extends tn{get originalResponse(){return tr in this&&(this._res[tr]=this[tr]),this._res}constructor(e){super(e),this._res=e,this.textBody=void 0}get sent(){return this._res.finished||this._res.headersSent}get statusCode(){return this._res.statusCode}set statusCode(e){this._res.statusCode=e}get statusMessage(){return this._res.statusMessage}set statusMessage(e){this._res.statusMessage=e}setHeader(e,t){return this._res.setHeader(e,t),this}removeHeader(e){return this._res.removeHeader(e),this}getHeaderValues(e){let t=this._res.getHeader(e);if(void 0!==t)return(Array.isArray(t)?t:[t]).map(e=>e.toString())}hasHeader(e){return this._res.hasHeader(e)}getHeader(e){let t=this.getHeaderValues(e);return Array.isArray(t)?t.join(","):void 0}getHeaders(){return this._res.getHeaders()}appendHeader(e,t){let r=this.getHeaderValues(e)??[];return r.includes(t)||this._res.setHeader(e,[...r,t]),this}body(e){return this.textBody=e,this}send(){this._res.end(this.textBody)}onClose(e){this.originalResponse.on("close",e)}}function tl(e){return e.isOnDemandRevalidate?"on-demand":e.isStaticGeneration?"stale":void 0}async function tu(e,t,r,a){{var o;t.statusCode=r.status,t.statusMessage=r.statusText;let n=["set-cookie","www-authenticate","proxy-authenticate","vary"];null==(o=r.headers)||o.forEach((e,r)=>{if("x-middleware-set-cookie"!==r.toLowerCase())if("set-cookie"===r.toLowerCase())for(let a of eR(e))t.appendHeader(r,a);else{let a=void 0!==t.getHeader(r);(n.includes(r.toLowerCase())||!a)&&t.appendHeader(r,e)}});let{originalResponse:i}=t;r.body&&"HEAD"!==e.method?await eZ(r.body,i,a):i.end()}}var tc=e.i(93695),th=e.i(89171);let td=[{slug:"spark-of-life-weeks-1-4",title:"The Ultimate Guide to Conception & Weeks 1-4: What to Expect in 2026",excerpt:"The masterclass on conception. From optimizing egg quality and sperm health to the subtle signs of implantation. A 2000-word comprehensive guide.",category:"Health",author:"NexaWell Team",date:"January 4, 2026",readTime:"15 min read",heroImage:"/images/blog/pregnancy-week-1-4.png",content:`
+  `)}}var eY=e.i(19481);let eG=Symbol("internal request");class eU extends Request{constructor(e,t={}){const r="string"!=typeof e&&"url"in e?e.url:String(e);!function(e){try{String(new URL(String(e)))}catch(t){throw Object.defineProperty(Error(`URL is malformed "${String(e)}". Please use only absolute URLs - https://nextjs.org/docs/messages/middleware-relative-urls`,{cause:t}),"__NEXT_ERROR_CODE",{value:"E61",enumerable:!1,configurable:!0})}}(r),t.body&&"half"!==t.duplex&&(t.duplex="half"),e instanceof Request?super(e,t):super(r,t);const i=new eH(r,{headers:eC(this.headers),nextConfig:t.nextConfig});this[eG]={cookies:new eY.RequestCookies(this.headers),nextUrl:i,url:i.toString()}}[Symbol.for("edge-runtime.inspect.custom")](){return{cookies:this.cookies,nextUrl:this.nextUrl,url:this.url,bodyUsed:this.bodyUsed,cache:this.cache,credentials:this.credentials,destination:this.destination,headers:Object.fromEntries(this.headers),integrity:this.integrity,keepalive:this.keepalive,method:this.method,mode:this.mode,redirect:this.redirect,referrer:this.referrer,referrerPolicy:this.referrerPolicy,signal:this.signal}}get cookies(){return this[eG].cookies}get nextUrl(){return this[eG].nextUrl}get page(){throw new eF}get ua(){throw new eW}get url(){return this[eG].url}}let eq="ResponseAborted";class ez extends Error{constructor(...e){super(...e),this.name=eq}}function e$(e){let t=new AbortController;return e.once("close",()=>{e.writableFinished||t.abort(new ez)}),t}class eV{static fromBaseNextRequest(e,t){return eV.fromNodeNextRequest(e,t)}static fromNodeNextRequest(e,t){let r,i=null;if("GET"!==e.method&&"HEAD"!==e.method&&e.body&&(i=e.body),e.url.startsWith("http"))r=new URL(e.url);else{let t=ex(e,"initURL");r=t&&t.startsWith("http")?new URL(e.url,t):new URL(e.url,"http://n")}return new eU(r,{method:e.method,headers:eR(e.headers),duplex:"half",signal:t,...t.aborted?{}:{body:i}})}static fromWebNextRequest(e){let t=null;return"GET"!==e.method&&"HEAD"!==e.method&&(t=e.body),new eU(e.url,{method:e.method,headers:eR(e.headers),duplex:"half",signal:e.request.signal,...e.request.signal.aborted?{}:{body:t}})}}let eX=0,eK=0,eJ=0;function eQ(e){return(null==e?void 0:e.name)==="AbortError"||(null==e?void 0:e.name)===eq}async function eZ(e,t,r){try{let{errored:i,destroyed:a}=t;if(i||a)return;let n=e$(t),o=function(e,t){let r=!1,i=new ef;function a(){i.resolve()}e.on("drain",a),e.once("close",()=>{e.off("drain",a),i.resolve()});let n=new ef;return e.once("finish",()=>{n.resolve()}),new WritableStream({write:async t=>{if(!r){if(r=!0,"performance"in globalThis&&process.env.NEXT_OTEL_PERFORMANCE_PREFIX){let e=function(e={}){let t=0===eX?void 0:{clientComponentLoadStart:eX,clientComponentLoadTimes:eK,clientComponentLoadCount:eJ};return e.reset&&(eX=0,eK=0,eJ=0),t}();e&&performance.measure(`${process.env.NEXT_OTEL_PERFORMANCE_PREFIX}:next-client-component-loading`,{start:e.clientComponentLoadStart,end:e.clientComponentLoadStart+e.clientComponentLoadTimes})}e.flushHeaders(),J().trace(E.startResponse,{spanName:"start response"},()=>void 0)}try{let r=e.write(t);"flush"in e&&"function"==typeof e.flush&&e.flush(),r||(await i.promise,i=new ef)}catch(t){throw e.end(),Object.defineProperty(Error("failed to write chunk to response",{cause:t}),"__NEXT_ERROR_CODE",{value:"E321",enumerable:!1,configurable:!0})}},abort:t=>{e.writableFinished||e.destroy(t)},close:async()=>{if(t&&await t,!e.writableFinished)return e.end(),n.promise}})}(t,r);await e.pipeTo(o,{signal:n.signal})}catch(e){if(eQ(e))return;throw Object.defineProperty(Error("failed to pipe response",{cause:e}),"__NEXT_ERROR_CODE",{value:"E180",enumerable:!1,configurable:!0})}}class e0{static #e=this.EMPTY=new e0(null,{metadata:{},contentType:null});static fromStatic(e,t){return new e0(e,{metadata:{},contentType:t})}constructor(e,{contentType:t,waitUntil:r,metadata:i}){this.response=e,this.contentType=t,this.metadata=i,this.waitUntil=r}assignMetadata(e){Object.assign(this.metadata,e)}get isNull(){return null===this.response}get isDynamic(){return"string"!=typeof this.response}toUnchunkedString(e=!1){if(null===this.response)return"";if("string"!=typeof this.response){if(!e)throw Object.defineProperty(new ec("dynamic responses cannot be unchunked. This is a bug in Next.js"),"__NEXT_ERROR_CODE",{value:"E732",enumerable:!1,configurable:!0});return ek(this.readable)}return this.response}get readable(){return null===this.response?new ReadableStream({start(e){e.close()}}):"string"==typeof this.response?eT(this.response):Buffer.isBuffer(this.response)?eS(this.response):Array.isArray(this.response)?function(...e){if(0===e.length)return new ReadableStream({start(e){e.close()}});if(1===e.length)return e[0];let{readable:t,writable:r}=new TransformStream,i=e[0].pipeTo(r,{preventClose:!0}),a=1;for(;a<e.length-1;a++){let t=e[a];i=i.then(()=>t.pipeTo(r,{preventClose:!0}))}let n=e[a];return(i=i.then(()=>n.pipeTo(r))).catch(ev),t}(...this.response):this.response}coerce(){return null===this.response?[]:"string"==typeof this.response?[eT(this.response)]:Array.isArray(this.response)?this.response:Buffer.isBuffer(this.response)?[eS(this.response)]:[this.response]}unshift(e){this.response=this.coerce(),this.response.unshift(e)}push(e){this.response=this.coerce(),this.response.push(e)}async pipeTo(e){try{await this.readable.pipeTo(e,{preventClose:!0}),this.waitUntil&&await this.waitUntil,await e.close()}catch(t){if(eQ(t))return void await e.abort(t);throw t}}async pipeToNodeResponse(e){await eZ(this.readable,e,this.waitUntil)}}let e1=Symbol.for("next-patch");function e2(e,t){e.shouldTrackFetchMetrics&&(e.fetchMetrics??=[],e.fetchMetrics.push({...t,end:performance.timeOrigin+performance.now(),idx:e.nextFetchId||0}))}async function e3(e,t,r,i,a,n){let o=await e.arrayBuffer(),s={headers:Object.fromEntries(e.headers.entries()),body:Buffer.from(o).toString("base64"),status:e.status,url:e.url};return r&&await i.set(t,{kind:ey.FETCH,data:s,revalidate:a},r),await n(),new Response(o,{headers:e.headers,status:e.status,statusText:e.statusText})}async function e4(e,t,r,i,a,n,o,s,l){let[c,u]=ep(t),d=c.arrayBuffer().then(async e=>{let t=Buffer.from(e),s={headers:Object.fromEntries(c.headers.entries()),body:t.toString("base64"),status:c.status,url:c.url};null==n||n.set(r,s),i&&await a.set(r,{kind:ey.FETCH,data:s,revalidate:o},i)}).catch(e=>console.warn("Failed to set fetch cache",s,e)).finally(l),h=`cache-set-${r}`,g=e.pendingRevalidates??={},p=Promise.resolve();return h in g&&(p=g[h]),g[h]=p.then(()=>d).finally(()=>{(null==g?void 0:g[h])&&delete g[h]}),u}let e6=null;function e5(e){var t;return(t=e.split("/").reduce((e,t,r,i)=>t?"("===t[0]&&t.endsWith(")")||"@"===t[0]||("page"===t||"route"===t)&&r===i.length-1?e:`${e}/${t}`:e,"")).startsWith("/")?t:`/${t}`}let e9=Symbol.for("next.server.manifests"),e8=globalThis;class e7{static get(e,t,r){let i=Reflect.get(e,t,r);return"function"==typeof i?i.bind(e):i}static set(e,t,r,i){return Reflect.set(e,t,r,i)}static has(e,t){return Reflect.has(e,t)}static deleteProperty(e,t){return Reflect.deleteProperty(e,t)}}class te extends Error{constructor(){super("Headers cannot be modified. Read more: https://nextjs.org/docs/app/api-reference/functions/headers")}static callable(){throw new te}}class tt extends Headers{constructor(e){super(),this.headers=new Proxy(e,{get(t,r,i){if("symbol"==typeof r)return e7.get(t,r,i);let a=r.toLowerCase(),n=Object.keys(e).find(e=>e.toLowerCase()===a);if(void 0!==n)return e7.get(t,n,i)},set(t,r,i,a){if("symbol"==typeof r)return e7.set(t,r,i,a);let n=r.toLowerCase(),o=Object.keys(e).find(e=>e.toLowerCase()===n);return e7.set(t,o??r,i,a)},has(t,r){if("symbol"==typeof r)return e7.has(t,r);let i=r.toLowerCase(),a=Object.keys(e).find(e=>e.toLowerCase()===i);return void 0!==a&&e7.has(t,a)},deleteProperty(t,r){if("symbol"==typeof r)return e7.deleteProperty(t,r);let i=r.toLowerCase(),a=Object.keys(e).find(e=>e.toLowerCase()===i);return void 0===a||e7.deleteProperty(t,a)}})}static seal(e){return new Proxy(e,{get(e,t,r){switch(t){case"append":case"delete":case"set":return te.callable;default:return e7.get(e,t,r)}}})}merge(e){return Array.isArray(e)?e.join(", "):e}static from(e){return e instanceof Headers?e:new tt(e)}append(e,t){let r=this.headers[e];"string"==typeof r?this.headers[e]=[r,t]:Array.isArray(r)?r.push(t):this.headers[e]=t}delete(e){delete this.headers[e]}get(e){let t=this.headers[e];return void 0!==t?this.merge(t):null}has(e){return void 0!==this.headers[e]}set(e,t){this.headers[e]=t}forEach(e,t){for(let[r,i]of this.entries())e.call(t,i,r,this)}*entries(){for(let e of Object.keys(this.headers)){let t=e.toLowerCase(),r=this.get(t);yield[t,r]}}*keys(){for(let e of Object.keys(this.headers)){let t=e.toLowerCase();yield t}}*values(){for(let e of Object.keys(this.headers)){let t=this.get(e);yield t}}[Symbol.iterator](){return this.entries()}}Symbol("__next_preview_data");let tr=Symbol("__prerender_bypass");var ti=((w={})[w.SeeOther=303]="SeeOther",w[w.TemporaryRedirect=307]="TemporaryRedirect",w[w.PermanentRedirect=308]="PermanentRedirect",w);class ta{constructor(e,t,r){this.method=e,this.url=t,this.body=r}get cookies(){var t;return this._cookies?this._cookies:this._cookies=(t=this.headers,function(){let{cookie:r}=t;if(!r)return{};let{parse:i}=e.r(93118);return i(Array.isArray(r)?r.join("; "):r)})()}}class tn{constructor(e){this.destination=e}redirect(e,t){return this.setHeader("Location",e),this.statusCode=t,t===ti.PermanentRedirect&&this.setHeader("Refresh",`0;url=${e}`),this}}class to extends ta{static #e=T=eP;constructor(e){var t;super(e.method.toUpperCase(),e.url,e),this._req=e,this.headers=this._req.headers,this.fetchMetrics=null==(t=this._req)?void 0:t.fetchMetrics,this[T]=this._req[eP]||{},this.streaming=!1}get originalRequest(){return this._req[eP]=this[eP],this._req.url=this.url,this._req.cookies=this.cookies,this._req}set originalRequest(e){this._req=e}stream(){if(this.streaming)throw Object.defineProperty(Error("Invariant: NodeNextRequest.stream() can only be called once"),"__NEXT_ERROR_CODE",{value:"E467",enumerable:!1,configurable:!0});return this.streaming=!0,new ReadableStream({start:e=>{this._req.on("data",t=>{e.enqueue(new Uint8Array(t))}),this._req.on("end",()=>{e.close()}),this._req.on("error",t=>{e.error(t)})}})}}class ts extends tn{get originalResponse(){return tr in this&&(this._res[tr]=this[tr]),this._res}constructor(e){super(e),this._res=e,this.textBody=void 0}get sent(){return this._res.finished||this._res.headersSent}get statusCode(){return this._res.statusCode}set statusCode(e){this._res.statusCode=e}get statusMessage(){return this._res.statusMessage}set statusMessage(e){this._res.statusMessage=e}setHeader(e,t){return this._res.setHeader(e,t),this}removeHeader(e){return this._res.removeHeader(e),this}getHeaderValues(e){let t=this._res.getHeader(e);if(void 0!==t)return(Array.isArray(t)?t:[t]).map(e=>e.toString())}hasHeader(e){return this._res.hasHeader(e)}getHeader(e){let t=this.getHeaderValues(e);return Array.isArray(t)?t.join(","):void 0}getHeaders(){return this._res.getHeaders()}appendHeader(e,t){let r=this.getHeaderValues(e)??[];return r.includes(t)||this._res.setHeader(e,[...r,t]),this}body(e){return this.textBody=e,this}send(){this._res.end(this.textBody)}onClose(e){this.originalResponse.on("close",e)}}function tl(e){return e.isOnDemandRevalidate?"on-demand":e.isStaticGeneration?"stale":void 0}async function tc(e,t,r,i){{var a;t.statusCode=r.status,t.statusMessage=r.statusText;let n=["set-cookie","www-authenticate","proxy-authenticate","vary"];null==(a=r.headers)||a.forEach((e,r)=>{if("x-middleware-set-cookie"!==r.toLowerCase())if("set-cookie"===r.toLowerCase())for(let i of eE(e))t.appendHeader(r,i);else{let i=void 0!==t.getHeader(r);(n.includes(r.toLowerCase())||!i)&&t.appendHeader(r,e)}});let{originalResponse:o}=t;r.body&&"HEAD"!==e.method?await eZ(r.body,o,i):o.end()}}var tu=e.i(93695),td=e.i(89171);let th=[{slug:"spark-of-life-weeks-1-4",title:"The Ultimate Guide to Conception & Weeks 1-4: What to Expect in 2026",excerpt:"The masterclass on conception. From optimizing egg quality and sperm health to the subtle signs of implantation. A 2000-word comprehensive guide.",category:"Health",author:"NexaWell Team",date:"January 4, 2026",readTime:"15 min read",heroImage:"/images/blog/pregnancy-week-1-4.png",content:`
 ## The Hidden Journey: Before the Positive Test
 The journey of pregnancy begins famously *before* you are technically pregnant. In the medical world, "Week 1" actually starts on the first day of your last menstrual period (LMP). By the time you get that positive test, you are likely already 4 weeks pregnant!
 
@@ -666,6 +666,32 @@ The C2PA standard (Content Credentials) is becoming mandatory. Cameras will sign
 *   **Regulation**: The EU AI Act is now fully enforced, banning unacceptable risk categories like social scoring.
 
 We are entering an era of "Zero Trust" media. If it's not signed, assume it's synthetic.
+        `},{slug:"dopamine-scrolling-reset-2026",title:"The Dopamine Loop: Why You Can't Stop Scrolling (And How to Reset)",excerpt:"New 2026 research reveals how 'predictive feeds' hijack your amygdala. Here is the 3-step protocol to reset your receptors today.",category:"Health",author:"Dr. Sarah Vital",date:"January 24, 2026",readTime:"7 min read",heroImage:"/images/blog/dopamine-scrolling.png",content:`
+## The Amygdala Hijack
+It’s 11 PM. You picked up your phone to check the weather for tomorrow. It is now 1 AM, and you are deep in a thread about a controversy you don't even care about.
+
+In 2026, algorithms have evolved from "recommending" content to "predicting" emotional triggers. They don't just show you what you *like*; they show you what triggers a **fight-or-flight** response (Cortisol) followed by a **resolution** (Dopamine). This cycle is addictive.
+
+## The Science of " The Scroll"
+*   **Variable Reward Schedule**: It's the slot machine effect. You scroll because *maybe* the next post is good.
+*   **The "Stopping Cue" Extinction**: Infinite scroll removed "stopping cues" (like reaching the end of a page). In 2026, AR interfaces overlay notifications on our actual vision, making the feed inescapable.
+
+## The 3-Step Reset Protocol
+You don't need to throw away your phone. You need boundaries.
+
+### 1. Grayscale Mode (The Color Fast)
+Go to Settings > Accessibility > Display > Color Filters. Turn your phone Black & White.
+*   *Why*: Your brain craves the "candy crush" colors of notification badges. Graying them out reduces dopamine spikes by 40%.
+
+### 2. The "Friction" Rule
+Delete social apps from your home screen. Force yourself to search for them or log in via browser every time.
+*   *Why*: This adds 5 seconds of friction, enough for your prefrontal cortex to ask: "Do I actually want to do this?"
+
+### 3. Morning Sunlight BEFORE Pixel Light
+Getting 10 minutes of sunlight in your eyes before looking at a screen sets your Circadian rhythm and boosts baseline serotonin.
+*   *Benefit*: Higher serotonin means less impulse behavior later in the day.
+
+> **Challenge**: Try this protocol for 24 hours. Report back to us on Twitter/X @NexaWell.
         `},{slug:"breast-cancer-early-detection-symptoms-2026",title:"The Silent Whispers: Breast Cancer Early Detection & Symptoms in 2026",excerpt:"1 in 8 women will be diagnosed. A comprehensive 1500-word guide to subtle symptoms, self-exams, and the latest screening technology.",category:"Health",author:"NexaWell Medical Team",date:"February 2, 2026",readTime:"15 min read",heroImage:"/images/blog/breast-self-exam.png",content:`
 ## The Global Crisis: 2026 Statistics
 Breast cancer remains the most diagnosed cancer worldwide. As we step deeper into 2026, the numbers tell a compelling story:
@@ -1484,39 +1510,6 @@ If you mark "Yes" to any of these, see a specialist, not a general GP.
 4. [ ] Do you need to double up (pad + tampon)?
 
 **Advocacy Tip**: When a doctor dismisses you, say: *"Please document in my chart that you are refusing to order an ultrasound for my severe pelvic pain."* This usually changes the conversation.
-        `},{slug:"best-file-utility-website-2026-fileutilitypro",title:"The Best File Utility Website of 2026: Why FileUtilityPro Takes the Crown",excerpt:"We tested the top tools, and one stands out. For speed, privacy, and zero-upload security, FileUtilityPro is the definitive choice for 2026.",category:"Tech",author:"NexaWell Tech Team",date:"April 1, 2026",readTime:"8 min read",heroImage:"/images/blog/fileutilitypro-best-2026.png",content:`
-## The "Loading Bar" Era is Over
-It's 2026. Why are you still watching a spinning wheel while your W-2 uploads to a random server in Eastern Europe?
-
-For the last decade, we accepted a terrible trade-off: **Convenience for Privacy.** We realized that "free" online converters were paying their server bills by harvesting our metadata.
-
-Enter **FileUtilityPro** (https://fileutilitypro.com), the platform we are calling the Best File Utility Website of 2026.
-
----
-
-## 1. Zero-Upload Technology (Local-First)
-This is the feature that changes everything.
-*   **The Old Way**: You upload your 50MB PDF. It travels to a cloud server. The server processes it. You download it.
-*   **The FileUtilityPro Way**: You drop your file. The website loads a tiny Wasm (WebAssembly) engine *into your browser*. **Your file never leaves your computer.**
-*   **The Result**: Instant conversion. No loading bars. No privacy risk.
-
-## 2. A "Swiss Army Knife" for Documents
-Most sites do one thing well. FileUtilityPro does everything instantly.
-*   **Image Compression**: Shrink 5MB PNGs to 500KB WEBPs without visual loss.
-*   **PDF Tools**: Merge, Split, Compress, and Convert to Word.
-*   **QR Generator**: Create custom, trackable QR codes in seconds.
-
-## 3. The "Work-From-Anywhere" Advantage
-Because the processing happens on *your* device, it works even on spotty Wi-Fi. It's the perfect tool for digital nomads and remote workers who can't rely on gigabit fiber to upload massive video files.
-
----
-
-## The Verdict
-We don't give this title lightly. But in an era of data breaches and AI scraping, a tool that respects your privacy while working faster than the cloud is a unicorn.
-
-Stop uploading your life to the cloud. Keep it local. 
-
-Check it out: **[FileUtilityPro.com](https://fileutilitypro.com)**
         `},{slug:"hot-flashes-younger-women-causes-stress-thyroid",title:"Why Am I Burning? Hot Flashes in Your 20s & 30s Explained",excerpt:"You're 24, not 54. Why are you sweating through your silk blouse? Spoiler: It's probably not menopause. A guide to the 'Early Heat' triggers.",category:"Health",author:"NexaWell Medical Team",date:"April 5, 2026",readTime:"21 min read",heroImage:"/images/blog/hot-flashes-young-stress.png",content:`
 ## "I'm Too Young for This"
 It starts as a creep of warmth up your neck in a meeting. Then, your face feels like you opened an oven door. Finally, the sweat.
@@ -2081,6 +2074,2530 @@ If you are done having kids and just want the bleeding to stop *now*.
 
 ## Conclusion
 Perimenopause is a storm. You don't have to drown in it. Ask for Tranexamic Acid. Ask for an Ultrasound. Put on your rain boots and wade through.
-        `}],tg="force-static";function tp(){let e="https://nexawell.blog";return[...["","/about","/blog","/blog/health","/blog/tech"].map(t=>({url:`${e}${t}`,lastModified:new Date,changeFrequency:"daily",priority:1})),...td.map(t=>({url:`${e}/blog/${t.slug}`,lastModified:new Date(t.date),changeFrequency:"weekly",priority:.8}))]}e.s(["default",()=>tp,"dynamic",0,tg],89282);var tm=e.i(73853);async function tf(){let e=await tp(),t=(0,tm.resolveRouteData)(e,"sitemap");return new th.NextResponse(t,{headers:{"Content-Type":"application/xml","Cache-Control":"public, max-age=0, must-revalidate"}})}e.s(["GET",()=>tf],39248),e.i(39248),e.i(89282),e.s(["GET",()=>tf,"dynamic",0,tg],21330);var ty=e.i(21330);let tb=new S.AppRouteRouteModule({definition:{kind:P.APP_ROUTE,page:"/sitemap.xml/route",pathname:"/sitemap.xml",filename:"sitemap--route-entry",bundlePath:""},distDir:".next",relativeProjectDir:"",resolvedPagePath:"[project]/app/sitemap--route-entry.js",nextConfigOutput:"export",userland:ty}),{workAsyncStorage:tv,workUnitAsyncStorage:tw,serverHooks:tT}=tb;function tS(){return function(e){var t;let r;if(!0===globalThis[e1])return;let a=(t=globalThis.fetch,r=ee.cache(e=>[]),function(e,a){let o,n;if(a&&a.signal)return t(e,a);if("string"!=typeof e||a){let r,i="string"==typeof e||e instanceof URL?new Request(e,a):e;if("GET"!==i.method&&"HEAD"!==i.method||i.keepalive)return t(e,a);r=Array.from(i.headers.entries()).filter(([e])=>!em.has(e.toLowerCase())),n=JSON.stringify([i.method,r,i.mode,i.redirect,i.credentials,i.referrer,i.referrerPolicy,i.integrity]),o=i.url}else n='["GET",[],null,"follow",null,null,null,null]',o=e;let i=r(o);for(let e=0,t=i.length;e<t;e+=1){let[t,r]=i[e];if(t===n)return r.then(()=>{let t=i[e][2];if(!t)throw Object.defineProperty(new eu("No cached response"),"__NEXT_ERROR_CODE",{value:"E579",enumerable:!1,configurable:!0});let[r,a]=ep(t);return i[e][2]=a,r})}let s=t(e,a),l=[n,s,null];return i.push(l),s.then(e=>{let[t,r]=ep(e);return l[2]=r,t})});globalThis.fetch=function(e,{workAsyncStorage:t,workUnitAsyncStorage:r}){let a=async function(a,o){var n,i;let s;try{(s=new URL(a instanceof Request?a.url:a)).username="",s.password=""}catch{s=void 0}let l=(null==s?void 0:s.href)??"",u=(null==o||null==(n=o.method)?void 0:n.toUpperCase())||"GET",c=(null==o||null==(i=o.next)?void 0:i.internal)===!0,h="1"===process.env.NEXT_OTEL_FETCH_DISABLED,d=c?void 0:performance.timeOrigin+performance.now(),g=t.getStore(),p=r.getStore(),m=p?(0,ea.getCacheSignal)(p):null;m&&m.beginRead();let f=J().trace(c?R.internalFetch:A.fetch,{hideSpan:h,kind:G.CLIENT,spanName:["fetch",u,l].filter(Boolean).join(" "),attributes:{"http.url":l,"http.method":u,"net.peer.name":null==s?void 0:s.hostname,"net.peer.port":(null==s?void 0:s.port)||void 0}},async()=>{var t;let r,n,i,s,u,h;if(c||!g||g.isDraftMode)return e(a,o);let f=a&&"object"==typeof a&&"string"==typeof a.method,y=e=>(null==o?void 0:o[e])||(f?a[e]:null),b=e=>{var t,r,n;return void 0!==(null==o||null==(t=o.next)?void 0:t[e])?null==o||null==(r=o.next)?void 0:r[e]:f?null==(n=a.next)?void 0:n[e]:void 0},v=b("revalidate"),w=v,T=function(e,t){let r=[],a=[];for(let o=0;o<e.length;o++){let n=e[o];if("string"!=typeof n?a.push({tag:n,reason:"invalid type, must be a string"}):n.length>256?a.push({tag:n,reason:"exceeded max length of 256"}):r.push(n),r.length>128){console.warn(`Warning: exceeded max tag count for ${t}, dropped tags:`,e.slice(o).join(", "));break}}if(a.length>0)for(let{tag:e,reason:r}of(console.warn(`Warning: invalid tags passed to ${t}: `),a))console.log(`tag: "${e}" ${r}`);return r}(b("tags")||[],`fetch ${a.toString()}`);if(p)switch(p.type){case"prerender":case"prerender-runtime":case"prerender-client":case"prerender-ppr":case"prerender-legacy":case"cache":case"private-cache":r=p}if(r&&Array.isArray(T)){let e=r.tags??(r.tags=[]);for(let t of T)e.includes(t)||e.push(t)}let S=null==p?void 0:p.implicitTags,P=g.fetchCache;p&&"unstable-cache"===p.type&&(P="force-no-store");let k=!!g.isUnstableNoStore,_=y("cache"),E="";"string"==typeof _&&void 0!==w&&("force-cache"===_&&0===w||"no-store"===_&&(w>0||!1===w))&&(n=`Specified "cache: ${_}" and "revalidate: ${w}", only one should be specified.`,_=void 0,w=void 0);let R="no-cache"===_||"no-store"===_||"force-no-store"===P||"only-no-store"===P,x=!P&&!_&&!w&&g.forceDynamic;"force-cache"===_&&void 0===w?w=!1:(R||x)&&(w=0),("no-cache"===_||"no-store"===_)&&(E=`cache: ${_}`),h=function(e,t){try{let r;if(!1===e)r=0xfffffffe;else if("number"==typeof e&&!isNaN(e)&&e>-1)r=e;else if(void 0!==e)throw Object.defineProperty(Error(`Invalid revalidate value "${e}" on "${t}", must be a non-negative number or false`),"__NEXT_ERROR_CODE",{value:"E179",enumerable:!1,configurable:!0});return r}catch(e){if(e instanceof Error&&e.message.includes("Invalid revalidate"))throw e;return}}(w,g.route);let I=y("headers"),A="function"==typeof(null==I?void 0:I.get)?I:new Headers(I||{}),C=A.get("authorization")||A.get("cookie"),O=!["get","head"].includes((null==(t=y("method"))?void 0:t.toLowerCase())||"get"),N=void 0==P&&(void 0==_||"default"===_)&&void 0==w,M=!!((C||O)&&(null==r?void 0:r.revalidate)===0),D=!1;if(!M&&N&&(g.isBuildTimePrerendering?D=!0:M=!0),N&&void 0!==p)switch(p.type){case"prerender":case"prerender-runtime":case"prerender-client":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}switch(P){case"force-no-store":E="fetchCache = force-no-store";break;case"only-no-store":if("force-cache"===_||void 0!==h&&h>0)throw Object.defineProperty(Error(`cache: 'force-cache' used on fetch for ${l} with 'export const fetchCache = 'only-no-store'`),"__NEXT_ERROR_CODE",{value:"E448",enumerable:!1,configurable:!0});E="fetchCache = only-no-store";break;case"only-cache":if("no-store"===_)throw Object.defineProperty(Error(`cache: 'no-store' used on fetch for ${l} with 'export const fetchCache = 'only-cache'`),"__NEXT_ERROR_CODE",{value:"E521",enumerable:!1,configurable:!0});break;case"force-cache":(void 0===w||0===w)&&(E="fetchCache = force-cache",h=0xfffffffe)}if(void 0===h?"default-cache"!==P||k?"default-no-store"===P?(h=0,E="fetchCache = default-no-store"):k?(h=0,E="noStore call"):M?(h=0,E="auto no cache"):(E="auto cache",h=r?r.revalidate:0xfffffffe):(h=0xfffffffe,E="fetchCache = default-cache"):E||(E=`revalidate: ${h}`),!(g.forceStatic&&0===h)&&!M&&r&&h<r.revalidate){if(0===h){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}eh(g,p,`revalidate: 0 fetch ${a} ${g.route}`)}r&&v===h&&(r.revalidate=h)}let L="number"==typeof h&&h>0,{incrementalCache:j}=g,B=!1;if(p)switch(p.type){case"request":case"cache":case"private-cache":B=p.isHmrRefresh??!1,s=p.serverComponentsHmrCache}if(j&&(L||s))try{i=await j.generateCacheKey(l,f?a:o)}catch(e){console.error("Failed to generate cache key for",a)}let H=g.nextFetchId??1;g.nextFetchId=H+1;let F=()=>{},W=async(t,r)=>{let u=["cache","credentials","headers","integrity","keepalive","method","mode","redirect","referrer","referrerPolicy","window","duplex",...t?[]:["signal"]];if(f){let e=a,t={body:e._ogBody||e.body};for(let r of u)t[r]=e[r];a=new Request(e.url,t)}else if(o){let{_ogBody:e,body:r,signal:a,...n}=o;o={...n,body:e||r,signal:t?void 0:a}}let c={...o,next:{...null==o?void 0:o.next,fetchType:"origin",fetchIdx:H}};return e(a,c).then(async e=>{if(!t&&d&&e2(g,{start:d,url:l,cacheReason:r||E,cacheStatus:0===h||r?"skip":"miss",cacheWarning:n,status:e.status,method:c.method||"GET"}),200===e.status&&j&&i&&(L||s)){let t=h>=0xfffffffe?31536e3:h,r=L?{fetchCache:!0,fetchUrl:l,fetchIdx:H,tags:T,isImplicitBuildTimeCache:D}:void 0;switch(null==p?void 0:p.type){case"prerender":case"prerender-client":case"prerender-runtime":return e3(e,i,r,j,t,F);case"request":case"prerender-ppr":case"prerender-legacy":case"cache":case"private-cache":case"unstable-cache":case void 0:return e4(g,e,i,r,j,s,t,a,F)}}return await F(),e}).catch(e=>{throw F(),e})},U=!1,G=!1;if(i&&j){let e;if(B&&s&&(e=s.get(i),G=!0),L&&!e){F=await j.lock(i);let t=g.isOnDemandRevalidate?null:await j.get(i,{kind:eb.FETCH,revalidate:h,fetchUrl:l,fetchIdx:H,tags:T,softTags:null==S?void 0:S.tags});if(N&&p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":await (e6||(e6=new Promise(e=>{setTimeout(()=>{e6=null,e()},0)})),e6)}if(t?await F():u="cache-control: no-cache (hard refresh)",(null==t?void 0:t.value)&&t.value.kind===ey.FETCH)if(g.isStaticGeneration&&t.isStale)U=!0;else{if(t.isStale&&(g.pendingRevalidates??={},!g.pendingRevalidates[i])){let e=W(!0).then(async e=>({body:await e.arrayBuffer(),headers:e.headers,status:e.status,statusText:e.statusText})).finally(()=>{g.pendingRevalidates??={},delete g.pendingRevalidates[i||""]});e.catch(console.error),g.pendingRevalidates[i]=e}e=t.value.data}}if(e){d&&e2(g,{start:d,url:l,cacheReason:E,cacheStatus:G?"hmr":"hit",cacheWarning:n,status:e.status||200,method:(null==o?void 0:o.method)||"GET"});let t=new Response(Buffer.from(e.body,"base64"),{headers:e.headers,status:e.status});return Object.defineProperty(t,"url",{value:e.url}),t}}if(g.isStaticGeneration&&o&&"object"==typeof o){let{cache:e}=o;if("no-store"===e){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}eh(g,p,`no-store fetch ${a} ${g.route}`)}let t="next"in o,{next:n={}}=o;if("number"==typeof n.revalidate&&r&&n.revalidate<r.revalidate){if(0===n.revalidate){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return es(p.renderSignal,g.route,"fetch()")}eh(g,p,`revalidate: 0 fetch ${a} ${g.route}`)}g.forceStatic&&0===n.revalidate||(r.revalidate=n.revalidate)}t&&delete o.next}if(!i||!U)return W(!1,u);{let e=i;g.pendingRevalidates??={};let t=g.pendingRevalidates[e];if(t){let e=await t;return new Response(e.body,{headers:e.headers,status:e.status,statusText:e.statusText})}let r=W(!0,u).then(ep);return(t=r.then(async e=>{let t=e[0];return{body:await t.arrayBuffer(),headers:t.headers,status:t.status,statusText:t.statusText}}).finally(()=>{var t;(null==(t=g.pendingRevalidates)?void 0:t[e])&&delete g.pendingRevalidates[e]})).catch(()=>{}),g.pendingRevalidates[e]=t,r.then(e=>e[1])}});if(m)try{return await f}finally{m&&m.endRead()}return f};return a.__nextPatched=!0,a.__nextGetStaticStore=()=>t,a._nextOriginalFetch=e,globalThis[e1]=!0,Object.defineProperty(a,"name",{value:"fetch",writable:!1}),a}(a,e)}({workAsyncStorage:tv,workUnitAsyncStorage:tw})}async function tP(e,t,r){var a;let o;tb.isDev&&(a=process.hrtime.bigint(),(o=e_(e)).devRequestTimingInternalsEnd=a,e[ek]=o);let n="/sitemap.xml/route";n=n.replace(/\/index$/,"")||"/";let i=await tb.prepare(e,t,{srcPage:n,multiZoneDraftMode:!1});if(!i)return t.statusCode=400,t.end("Bad Request"),null==r.waitUntil||r.waitUntil.call(r,Promise.resolve()),null;let{buildId:s,params:l,nextConfig:u,parsedUrl:c,isDraftMode:h,prerenderManifest:d,routerServerContext:g,isOnDemandRevalidate:p,revalidateOnlyGenerated:m,resolvedPathname:f,clientReferenceManifest:y,serverActionsManifest:b}=i,v=e5(n),w=!!(d.dynamicRoutes[v]||d.routes[f]),T=async()=>((null==g?void 0:g.render404)?await g.render404(e,t,c,!1):t.end("This page could not be found"),null);if(w&&!h){let e=!!d.routes[f],t=d.dynamicRoutes[v];if(t&&!1===t.fallback&&!e){if(u.experimental.adapterPath)return await T();throw new tc.NoFallbackError}}let S=null;!w||tb.isDev||h||(S="/index"===(S=f)?"/":S);let _=!0===tb.isDev||!w,E=w&&!_;b&&y&&function({page:e,clientReferenceManifest:t,serverActionsManifest:r}){let a=e8[e9];if(a)a.clientReferenceManifestsPerRoute.set(e5(e),t),a.serverActionsManifest=r;else{let a,o=new Map([[e5(e),t]]),n=(a=new Map,new Proxy({},{get(e,t){let r=eo.workAsyncStorage.getStore();switch(t){case"moduleLoading":case"entryCSSFiles":case"entryJSFiles":{if(!r)throw Object.defineProperty(new eu(`Cannot access "${t}" without a work store.`),"__NEXT_ERROR_CODE",{value:"E952",enumerable:!1,configurable:!0});let e=o.get(r.route);if(!e)throw Object.defineProperty(new eu(`The client reference manifest for route "${r.route}" does not exist.`),"__NEXT_ERROR_CODE",{value:"E951",enumerable:!1,configurable:!0});return e[t]}case"clientModules":case"rscModuleMapping":case"edgeRscModuleMapping":case"ssrModuleMapping":case"edgeSSRModuleMapping":{let e=a.get(t);!e&&(e=new Proxy({},{get(e,r){let a=eo.workAsyncStorage.getStore();if(a){let e=o.get(a.route);if(null==e?void 0:e[t][r])return e[t][r]}else for(let e of o.values()){let a=e[t][r];if(void 0!==a)return a}}}),a.set(t,e));return e}default:throw Object.defineProperty(new eu(`This is a proxied client reference manifest. The property "${String(t)}" is not handled.`),"__NEXT_ERROR_CODE",{value:"E953",enumerable:!1,configurable:!0})}}}));e8[e9]={clientReferenceManifestsPerRoute:o,proxiedClientReferenceManifest:n,serverActionsManifest:r,serverModuleMap:new Proxy({},{get:(e,t)=>{var r,a,o;let n,i=null==(a=function(){let e=e8[e9];if(!e)throw Object.defineProperty(new eu("The manifests singleton was not initialized."),"__NEXT_ERROR_CODE",{value:"E950",enumerable:!1,configurable:!0});return e}().serverActionsManifest.node)||null==(r=a[t])?void 0:r.workers;if(!i)return;let s=eo.workAsyncStorage.getStore();if(!(n=s?i[eN(o=s.page,"app")?o:"app"+o]:Object.values(i).at(0)))return;let{moduleId:l,async:u}=n;return{id:l,name:t,chunks:[],async:u}}})}}}({page:n,clientReferenceManifest:y,serverActionsManifest:b});let R=e.method||"GET",x=J(),I=x.getActiveScopeSpan(),A={params:l,prerenderManifest:d,renderOpts:{experimental:{authInterrupts:!!u.experimental.authInterrupts},cacheComponents:!!u.cacheComponents,supportsDynamicResponse:_,incrementalCache:e_(e,"incrementalCache"),cacheLifeProfiles:u.cacheLife,waitUntil:r.waitUntil,onClose:e=>{t.on("close",e)},onAfterTaskError:void 0,onInstrumentationRequestError:(t,r,a,o)=>tb.onRequestError(e,t,a,o,g)},sharedContext:{buildId:s}},C=new ti(e),O=new ts(t),N=ez.fromNodeNextRequest(C,function(e){let{errored:t,destroyed:r}=e;if(t||r)return AbortSignal.abort(t??new eV);let{signal:a}=eq(e);return a}(t));try{let a=async e=>tb.handle(N,A).finally(()=>{if(!e)return;e.setAttributes({"http.status_code":t.statusCode,"next.rsc":!1});let r=x.getRootSpanAttributes();if(!r)return;if(r.get("next.span_type")!==k.handleRequest)return void console.warn(`Unexpected root span type '${r.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`);let a=r.get("next.route");if(a){let t=`${R} ${a}`;e.setAttributes({"next.route":a,"http.route":a,"next.span_name":t}),e.updateName(t)}else e.updateName(`${R} ${n}`)}),o=!!e_(e,"minimalMode"),i=async i=>{var s,l;let c=async({previousCacheEntry:s})=>{try{if(!o&&p&&m&&!s)return t.statusCode=404,t.setHeader("x-nextjs-cache","REVALIDATED"),t.end("This page could not be found"),null;let n=await a(i);e.fetchMetrics=A.renderOpts.fetchMetrics;let l=A.renderOpts.pendingWaitUntil;l&&r.waitUntil&&(r.waitUntil(l),l=void 0);let u=A.renderOpts.collectedTags;if(!w)return await tu(C,O,n,A.renderOpts.pendingWaitUntil),null;{let e=await n.blob(),t=ex(n.headers);u&&(t[Q]=u),!t["content-type"]&&e.type&&(t["content-type"]=e.type);let r=void 0!==A.renderOpts.collectedRevalidate&&!(A.renderOpts.collectedRevalidate>=0xfffffffe)&&A.renderOpts.collectedRevalidate,a=void 0===A.renderOpts.collectedExpire||A.renderOpts.collectedExpire>=0xfffffffe?void 0:A.renderOpts.collectedExpire;return{value:{kind:ey.APP_ROUTE,status:n.status,body:Buffer.from(await e.arrayBuffer()),headers:t},cacheControl:{revalidate:r,expire:a}}}}catch(t){throw(null==s?void 0:s.isStale)&&await tb.onRequestError(e,t,{routerKind:"App Router",routePath:n,routeType:"route",revalidateReason:tl({isStaticGeneration:E,isOnDemandRevalidate:p})},!1,g),t}},f=await tb.handleResponse({req:e,nextConfig:u,cacheKey:S,routeKind:P.APP_ROUTE,isFallback:!1,prerenderManifest:d,isRoutePPREnabled:!1,isOnDemandRevalidate:p,revalidateOnlyGenerated:m,responseGenerator:c,waitUntil:r.waitUntil,isMinimalMode:o});if(!w)return null;if((null==f||null==(s=f.value)?void 0:s.kind)!==ey.APP_ROUTE)throw Object.defineProperty(Error(`Invariant: app-route received invalid cache entry ${null==f||null==(l=f.value)?void 0:l.kind}`),"__NEXT_ERROR_CODE",{value:"E701",enumerable:!1,configurable:!0});o||t.setHeader("x-nextjs-cache",p?"REVALIDATED":f.isMiss?"MISS":f.isStale?"STALE":"HIT"),h&&t.setHeader("Cache-Control","private, no-cache, no-store, max-age=0, must-revalidate");let y=eE(f.value.headers);return o&&w||y.delete(Q),!f.cacheControl||t.getHeader("Cache-Control")||y.get("Cache-Control")||y.set("Cache-Control",function({revalidate:e,expire:t}){let r="number"==typeof e&&void 0!==t&&e<t?`, stale-while-revalidate=${t-e}`:"";return 0===e?"private, no-cache, no-store, max-age=0, must-revalidate":"number"==typeof e?`s-maxage=${e}${r}`:`s-maxage=31536000${r}`}(f.cacheControl)),await tu(C,O,new Response(f.value.body,{headers:y,status:f.value.status||200})),null};I?await i(I):await x.withPropagatedContext(e.headers,()=>x.trace(k.handleRequest,{spanName:`${R} ${n}`,kind:G.SERVER,attributes:{"http.method":R,"http.target":e.url}},i))}catch(t){if(t instanceof tc.NoFallbackError||await tb.onRequestError(e,t,{routerKind:"App Router",routePath:v,routeType:"route",revalidateReason:tl({isStaticGeneration:E,isOnDemandRevalidate:p})},!1,g),w)throw t;return await tu(C,O,new Response(null,{status:500})),null}}e.s(["handler",()=>tP,"patchFetch",()=>tS,"routeModule",()=>tb,"serverHooks",()=>tT,"workAsyncStorage",()=>tv,"workUnitAsyncStorage",()=>tw],8922)}];
+        `},{slug:"understanding-chronic-stress-management-strategies-2026",title:"Understanding Chronic Stress: Causes, Symptoms & Evidence-Based Management Strategies",excerpt:"A comprehensive 2000+ word guide to understanding the science of chronic stress, recognizing warning signs, and implementing proven strategies for lasting relief.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"18 min read",heroImage:"/images/blog/chronic-stress-management.png",content:`
+## The Silent Epidemic: Understanding Chronic Stress in 2026
+
+In the modern world, stress has become an unwelcome companion for billions of people. While acute stress—the kind you feel before a big presentation or during a near-miss on the highway—is a normal, even healthy response, **chronic stress** is a different beast entirely. It's the persistent, unrelenting pressure that never seems to lift, and it's wreaking havoc on our collective mental and physical health.
+
+According to the American Psychological Association's 2026 Stress in America survey, **84% of adults** report experiencing prolonged stress, with financial concerns, work pressures, and global uncertainty topping the list of stressors. This guide is your comprehensive roadmap to understanding what chronic stress really is, how it affects your body and mind, and most importantly, how to break free from its grip.
+
+---
+
+## Part 1: The Science of Stress - What Happens in Your Body
+
+### The Stress Response System
+
+When you perceive a threat—whether it's a tiger chasing you or an email from your boss—your body activates the **Hypothalamic-Pituitary-Adrenal (HPA) axis**. This is your body's central stress response system, and understanding it is crucial to managing stress effectively.
+
+1. **The Hypothalamus** (your brain's command center) detects the threat
+2. **The Pituitary Gland** releases ACTH (adrenocorticotropic hormone)
+3. **The Adrenal Glands** flood your body with cortisol and adrenaline
+
+This cascade creates the "fight or flight" response: your heart races, breathing quickens, muscles tense, and non-essential functions (like digestion and immune response) are temporarily suppressed.
+
+### When Acute Becomes Chronic
+
+The problem arises when this system never gets a chance to reset. In chronic stress:
+
+- **Cortisol levels remain elevated** for weeks, months, or even years
+- The HPA axis becomes dysregulated, either over-responding or under-responding
+- Your body stays in a perpetual state of "emergency mode"
+
+This is like leaving your car's engine running at high RPMs 24/7—eventually, something breaks down.
+
+---
+
+## Part 2: The Hidden Toll - How Chronic Stress Damages Your Health
+
+### Physical Health Impacts
+
+The research is clear: chronic stress is a major contributor to numerous health conditions.
+
+**Cardiovascular System**
+- Elevated cortisol increases blood pressure and heart rate
+- Chronic inflammation damages blood vessel walls
+- Risk of heart attack increases by **40%** in chronically stressed individuals
+
+**Immune System**
+- Short-term stress actually boosts immunity temporarily
+- Long-term stress suppresses immune function dramatically
+- Studies show stressed individuals are **3x more likely** to develop upper respiratory infections
+
+**Digestive System**
+- The gut-brain axis is heavily influenced by stress hormones
+- Chronic stress alters gut microbiome composition
+- Conditions like IBS, acid reflux, and ulcers are strongly correlated with stress levels
+
+**Metabolic Effects**
+- Cortisol promotes fat storage, especially visceral (belly) fat
+- Blood sugar regulation becomes impaired
+- Risk of Type 2 diabetes increases significantly
+
+### Mental Health Impacts
+
+The brain is particularly vulnerable to chronic stress exposure.
+
+**Structural Changes**
+- The hippocampus (memory center) actually **shrinks** under chronic stress
+- The prefrontal cortex (decision-making) becomes less active
+- The amygdala (fear center) becomes hyperactive and enlarged
+
+**Cognitive Effects**
+- Memory consolidation and retrieval become impaired
+- Concentration and focus suffer dramatically
+- Decision-making abilities decline
+
+**Emotional Effects**
+- Increased irritability and mood swings
+- Higher risk of depression and anxiety disorders
+- Emotional exhaustion and numbness
+
+---
+
+## Part 3: Recognizing Chronic Stress - The Warning Signs
+
+### Physical Symptoms
+
+Pay attention to these body signals:
+
+- **Persistent fatigue** that doesn't improve with rest
+- **Sleep disturbances**: difficulty falling asleep, staying asleep, or sleeping too much
+- **Frequent headaches** or migraines
+- **Muscle tension**, especially in the neck, shoulders, and jaw
+- **Digestive issues**: stomach aches, nausea, changes in appetite
+- **Weakened immunity**: getting sick more often
+- **Changes in libido**: decreased interest in intimacy
+- **Unexplained aches and pains**
+
+### Emotional and Behavioral Symptoms
+
+These are often the first signs others notice:
+
+- **Constant worry** or feeling overwhelmed
+- **Difficulty relaxing** even when you have time off
+- **Irritability** or short temper
+- **Feeling hopeless** or pessimistic about the future
+- **Social withdrawal** from friends and activities you once enjoyed
+- **Procrastination** or avoidance of responsibilities
+- **Increased use of alcohol, tobacco, or other substances** to cope
+- **Nervous habits**: nail biting, pacing, fidgeting
+
+### Cognitive Symptoms
+
+Your thinking patterns may change:
+
+- **Racing thoughts** that won't quiet down
+- **Difficulty concentrating** or making decisions
+- **Memory problems**: forgetting appointments, names, or tasks
+- **Constant negative self-talk**
+- **Catastrophic thinking**: assuming the worst will happen
+
+---
+
+## Part 4: Evidence-Based Strategies for Managing Chronic Stress
+
+### 1. Lifestyle Foundations
+
+**Sleep Optimization**
+Sleep is your body's primary recovery mechanism. Without adequate sleep, stress management becomes nearly impossible.
+
+- Aim for **7-9 hours** consistently
+- Maintain a regular sleep schedule (even on weekends)
+- Create a **"wind-down" routine** starting 1 hour before bed
+- Keep your bedroom cool (65-68\xb0F), dark, and quiet
+- Avoid screens for at least 30 minutes before sleep
+
+**Nutrition for Stress Resilience**
+What you eat directly impacts your stress response.
+
+- **Magnesium-rich foods**: leafy greens, nuts, seeds, dark chocolate
+- **Omega-3 fatty acids**: salmon, mackerel, walnuts, flaxseed
+- **Complex carbohydrates**: whole grains, sweet potatoes, legumes
+- **Probiotic foods**: yogurt, kefir, sauerkraut, kimchi
+- **Limit caffeine**: especially after noon
+- **Reduce refined sugars**: they cause blood sugar spikes and crashes
+
+**Movement as Medicine**
+Exercise is one of the most powerful stress-reduction tools available.
+
+- **30 minutes of moderate exercise** most days
+- **Yoga** combines movement with breathing and mindfulness
+- **Walking in nature** (Forest Bathing) has been shown to reduce cortisol by 16%
+- **Strength training** builds resilience and confidence
+- Find activities you genuinely enjoy—consistency matters more than intensity
+
+### 2. Mind-Body Techniques
+
+**Breathing Exercises**
+Your breath is a direct doorway to your nervous system.
+
+*The 4-7-8 Technique*:
+1. Inhale through your nose for **4 seconds**
+2. Hold your breath for **7 seconds**
+3. Exhale slowly through your mouth for **8 seconds**
+4. Repeat 4 times
+
+*Box Breathing*:
+1. Inhale for **4 seconds**
+2. Hold for **4 seconds**
+3. Exhale for **4 seconds**
+4. Hold for **4 seconds**
+5. Repeat 4-6 cycles
+
+**Meditation and Mindfulness**
+Consistent meditation practice literally rewires the brain.
+
+- Start with just **5 minutes daily**—consistency beats duration
+- Use guided apps like Headspace, Calm, or Insight Timer
+- Practice **body scan meditation** before sleep
+- Try **mindful moments** throughout the day: eating, walking, washing dishes
+
+**Progressive Muscle Relaxation (PMR)**
+This technique teaches you to recognize and release physical tension.
+
+1. Start at your feet, tensing muscles for 5 seconds
+2. Release suddenly and notice the contrast
+3. Move systematically up your body
+4. Practice for 15-20 minutes daily
+
+### 3. Cognitive Strategies
+
+**Cognitive Restructuring**
+Challenge and reframe stress-inducing thoughts.
+
+- **Identify the thought**: "I'm going to fail this project"
+- **Examine the evidence**: Is this based on facts or fears?
+- **Generate alternatives**: "I've handled difficult projects before"
+- **Choose a balanced perspective**: "This is challenging, but I have resources to help"
+
+**Worry Time**
+Rather than letting worry consume your day:
+
+- Schedule a specific **15-minute "worry window"** daily
+- Write down all your worries during this time
+- Outside this window, postpone worrying until the scheduled time
+- Many worries resolve themselves or seem smaller by the time your worry window arrives
+
+**Gratitude Practice**
+Shifting focus from threats to blessings reduces stress hormones.
+
+- Keep a **gratitude journal**: write 3 things daily
+- Practice **gratitude meditation**
+- Express appreciation to others regularly
+- Notice small moments of beauty or kindness
+
+### 4. Social and Environmental Strategies
+
+**Social Connection**
+Humans are wired for connection. Isolation amplifies stress.
+
+- **Quality over quantity**: deep relationships matter more than many acquaintances
+- **Regular check-ins** with friends and family
+- **Support groups** for specific stressors (caregiving, grief, chronic illness)
+- **Volunteer work** provides purpose and perspective
+
+**Boundary Setting**
+Learn to protect your time and energy.
+
+- Practice saying **"no"** without guilt
+- **Limit news and social media** consumption
+- Create **"sacred" time** that's non-negotiable
+- Communicate your limits clearly and consistently
+
+**Environment Optimization**
+Your surroundings influence your stress levels.
+
+- **Declutter** your living and working spaces
+- Add **plants**—they reduce cortisol and improve air quality
+- Ensure adequate **natural light**
+- Create a designated **relaxation space** in your home
+
+---
+
+## Part 5: When to Seek Professional Help
+
+Self-help strategies are powerful, but sometimes professional support is essential.
+
+### Consider Professional Help If:
+
+- Your stress is **significantly impairing** daily functioning
+- You're experiencing symptoms of **depression or anxiety**
+- You're using **substances** to cope
+- You're having thoughts of **self-harm**
+- Sleep problems persist despite good sleep hygiene
+- Physical symptoms are severe or worsening
+
+### Types of Professional Support
+
+**Therapists and Counselors**
+- **Cognitive Behavioral Therapy (CBT)** is highly effective for stress and anxiety
+- **Acceptance and Commitment Therapy (ACT)** builds psychological flexibility
+- **EMDR** can help process traumatic stressors
+
+**Medical Professionals**
+- Rule out underlying health conditions
+- Discuss medication options if appropriate
+- Monitor stress-related health impacts
+
+**Integrative Approaches**
+- Acupuncture has evidence for stress reduction
+- Massage therapy reduces cortisol
+- Biofeedback teaches physiological self-regulation
+
+---
+
+## Part 6: Building Long-Term Stress Resilience
+
+Managing chronic stress isn't just about coping with current pressures—it's about building a more resilient system for the future.
+
+### The Resilience Framework
+
+**Physical Resilience**
+- Consistent sleep, nutrition, and exercise habits
+- Regular preventive healthcare
+- Addressing chronic health issues proactively
+
+**Emotional Resilience**
+- Developing emotional vocabulary and awareness
+- Building healthy coping mechanisms
+- Processing difficult emotions rather than suppressing them
+
+**Cognitive Resilience**
+- Cultivating flexible, adaptive thinking patterns
+- Developing problem-solving skills
+- Maintaining perspective during challenges
+
+**Social Resilience**
+- Nurturing supportive relationships
+- Building community connections
+- Knowing when and how to ask for help
+
+### Creating Your Personal Stress Management Plan
+
+1. **Assess** your current stressors and symptoms
+2. **Identify** your stress signature—how stress shows up for you
+3. **Select** 2-3 strategies from each category to implement
+4. **Start small**—one new habit at a time
+5. **Track** your progress and adjust as needed
+6. **Seek support** when necessary
+
+---
+
+## Conclusion: Your Path Forward
+
+Chronic stress is not inevitable, nor is it something you must simply endure. By understanding the science behind stress, recognizing your personal warning signs, and implementing evidence-based strategies, you can break free from the grip of chronic stress and build a more resilient, balanced life.
+
+Remember: stress management is not a destination but a journey. Some days will be harder than others. The goal isn't perfection—it's progress. Start with one small change today, and build from there.
+
+Your body and mind have an incredible capacity for healing and adaptation. Give them the tools they need, and they will reward you with greater energy, clarity, and peace.
+
+*If you're struggling with chronic stress, please reach out to a mental health professional. You don't have to navigate this alone.*
+        `},{slug:"complete-guide-depression-warning-signs-treatment-2026",title:"The Complete Guide to Depression: Warning Signs, Diagnosis & Treatment Options in 2026",excerpt:"An in-depth 2000+ word exploration of clinical depression—from understanding the biological basis to navigating modern treatment options and supporting recovery.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"20 min read",heroImage:"/images/blog/depression-treatment-guide.png",content:`
+## Breaking the Silence: Understanding Depression in the Modern Age
+
+Depression is more than sadness. It's more than a bad day, a rough week, or even a difficult year. **Major Depressive Disorder (MDD)** is a serious medical condition that affects how you feel, think, and function. It's one of the most common mental health conditions worldwide, yet it remains shrouded in misconception and stigma.
+
+In 2026, we understand more about depression than ever before—the neurobiological changes, genetic factors, and environmental triggers that contribute to this complex condition. This comprehensive guide will walk you through everything you need to know: what depression really is, how to recognize it, what causes it, and most importantly, how it can be treated effectively.
+
+---
+
+## Part 1: What Is Clinical Depression?
+
+### Defining Depression
+
+Clinical depression, also known as Major Depressive Disorder, is characterized by:
+
+- **Persistent low mood** lasting at least two weeks
+- **Loss of interest or pleasure** in activities once enjoyed (anhedonia)
+- **Significant impairment** in daily functioning
+
+It's important to distinguish between:
+
+**Normal Sadness**
+- Triggered by specific events (loss, disappointment)
+- Usually time-limited
+- Doesn't severely impair functioning
+- Responds to support and self-care
+
+**Clinical Depression**
+- May occur without obvious trigger
+- Persists for weeks, months, or years
+- Significantly impairs work, relationships, and self-care
+- Requires professional intervention
+
+### The Depression Spectrum
+
+Depression isn't one-size-fits-all. There are several types:
+
+**Major Depressive Disorder (MDD)**
+The most common form. Episodes may be single or recurrent.
+
+**Persistent Depressive Disorder (Dysthymia)**
+A chronic, lower-grade depression lasting at least 2 years.
+
+**Bipolar Depression**
+Depressive episodes alternating with manic or hypomanic episodes.
+
+**Seasonal Affective Disorder (SAD)**
+Depression that follows seasonal patterns, typically worsening in winter.
+
+**Postpartum Depression**
+Depression occurring after childbirth, affecting up to 15% of new mothers.
+
+**Situational Depression (Adjustment Disorder)**
+Depression triggered by major life changes or stressors.
+
+---
+
+## Part 2: Recognizing the Warning Signs
+
+### Core Symptoms
+
+According to the DSM-5-TR (2022 revision), a diagnosis of MDD requires **five or more** of the following symptoms during the same 2-week period:
+
+1. **Depressed mood** most of the day, nearly every day
+2. **Markedly diminished interest** or pleasure in activities
+3. **Significant weight change** (loss or gain) without dieting
+4. **Sleep disturbance**: insomnia or hypersomnia
+5. **Psychomotor changes**: agitation or slowing observable by others
+6. **Fatigue** or loss of energy
+7. **Feelings of worthlessness** or excessive guilt
+8. **Difficulty thinking**, concentrating, or making decisions
+9. **Recurrent thoughts of death** or suicidal ideation
+
+At least one symptom must be depressed mood OR loss of interest/pleasure.
+
+### Physical Symptoms Often Overlooked
+
+Depression manifests in the body as much as the mind:
+
+- **Chronic pain**: headaches, back pain, muscle aches
+- **Digestive problems**: constipation, nausea, appetite changes
+- **Immune dysfunction**: frequent illnesses
+- **Sexual dysfunction**: decreased libido, erectile difficulties
+- **Cardiac symptoms**: palpitations, chest tightness
+
+### The "Invisible" Signs
+
+Some symptoms are internal and harder to detect:
+
+- **Emotional numbness**: feeling empty rather than sad
+- **Anhedonia**: food tastes bland, music feels flat, nothing brings joy
+- **Cognitive fog**: difficulty remembering, slow processing
+- **Time distortion**: days feel endless yet weeks disappear
+- **Existential despair**: questioning life's meaning and purpose
+
+### Gender Differences in Presentation
+
+**Women** are more likely to experience:
+- Sadness, tearfulness, guilt
+- Anxiety alongside depression
+- Seasonal patterns
+- Atypical symptoms (increased sleep, appetite)
+
+**Men** are more likely to experience:
+- Irritability, anger, aggression
+- Risk-taking behaviors
+- Substance use
+- Physical complaints
+- Workaholism as distraction
+
+---
+
+## Part 3: The Biology of Depression
+
+### The Brain on Depression
+
+Depression involves measurable changes in brain structure and function.
+
+**Neurotransmitter Imbalances**
+The "chemical imbalance" theory, while oversimplified, contains truth:
+- **Serotonin**: affects mood, sleep, appetite
+- **Norepinephrine**: affects energy, alertness, concentration
+- **Dopamine**: affects motivation, pleasure, reward
+
+Depression involves dysregulation of these systems, not simple "deficiency."
+
+**Structural Brain Changes**
+Neuroimaging studies reveal:
+- **Hippocampus** (memory): reduced volume in chronic depression
+- **Prefrontal cortex** (executive function): decreased activity
+- **Amygdala** (emotion): hyperactivity
+- **Anterior cingulate cortex** (error detection): altered function
+
+**Neuroplasticity**
+Depression reduces the brain's ability to form new neural connections. Effective treatments restore neuroplasticity.
+
+### Inflammation Connection
+
+Groundbreaking research in 2020s linked inflammation to depression:
+- Elevated inflammatory markers (CRP, IL-6, TNF-alpha) in depressed patients
+- Anti-inflammatory treatments showing antidepressant effects
+- The gut-brain axis: gut microbiome influences brain inflammation
+
+### Genetic Factors
+
+Depression has a **heritability of 40-50%**:
+- No single "depression gene" exists
+- Hundreds of genetic variants contribute small effects
+- Gene-environment interactions matter most
+- Family history increases risk but doesn't determine destiny
+
+### Hormonal Influences
+
+Several hormonal systems interact with depression:
+- **HPA axis dysfunction**: cortisol dysregulation
+- **Thyroid disorders**: often mimic or worsen depression
+- **Sex hormones**: explain some gender differences
+- **Insulin resistance**: emerging link with depression
+
+---
+
+## Part 4: What Causes Depression?
+
+### The Biopsychosocial Model
+
+Depression arises from the interaction of:
+
+**Biological Factors**
+- Genetics and family history
+- Brain chemistry and structure
+- Chronic medical conditions
+- Medications (some cause depressive side effects)
+- Hormonal changes
+
+**Psychological Factors**
+- Negative thinking patterns
+- Low self-esteem
+- Perfectionism
+- Trauma history
+- Poor coping skills
+
+**Social/Environmental Factors**
+- Childhood adversity
+- Chronic stress
+- Social isolation
+- Poverty and inequality
+- Major life transitions
+
+### The Kindling Effect
+
+Early depressive episodes are often triggered by clear stressors. Over time, the brain becomes "kindled"—more sensitive to depression—and episodes may occur with smaller triggers or spontaneously. This is why early, effective treatment is crucial.
+
+---
+
+## Part 5: Diagnosis and Assessment
+
+### How Depression Is Diagnosed
+
+There's no blood test for depression. Diagnosis relies on:
+
+**Clinical Interview**
+A mental health professional will explore:
+- Symptom history and severity
+- Functional impairment
+- Medical history and medications
+- Family psychiatric history
+- Substance use
+- Trauma history
+
+**Standardized Assessments**
+Common tools include:
+- **PHQ-9** (Patient Health Questionnaire): 9 items, widely used
+- **Beck Depression Inventory (BDI)**
+- **Hamilton Depression Rating Scale (HAM-D)**
+- **Montgomery-\xc5sberg Depression Rating Scale (MADRS)**
+
+**Medical Workup**
+To rule out medical causes, your doctor may order:
+- Thyroid function tests
+- Complete blood count
+- Vitamin D and B12 levels
+- Metabolic panel
+
+---
+
+## Part 6: Treatment Options in 2026
+
+### The Treatment Landscape
+
+Effective depression treatment typically combines multiple approaches.
+
+### Psychotherapy
+
+**Cognitive Behavioral Therapy (CBT)**
+The gold standard, with decades of evidence:
+- Identifies and challenges negative thought patterns
+- Behavioral activation increases rewarding activities
+- Typically 12-20 sessions
+- Equally effective as medication for mild-moderate depression
+
+**Interpersonal Therapy (IPT)**
+Focuses on relationship issues that maintain depression:
+- Role transitions
+- Grief and loss
+- Interpersonal conflicts
+- Social isolation
+
+**Behavioral Activation (BA)**
+A streamlined approach focusing on action:
+- Depression leads to withdrawal → withdrawal deepens depression
+- Breaking the cycle through scheduled activities
+- Particularly effective and efficient
+
+**Psychodynamic Therapy**
+Explores unconscious patterns and early experiences:
+- Understanding the roots of depression
+- Processing grief and trauma
+- Typically longer-term
+
+**Mindfulness-Based Cognitive Therapy (MBCT)**
+Combines CBT with mindfulness:
+- Prevents depressive relapse
+- Develops meta-awareness of thoughts
+- Particularly effective for recurrent depression
+
+### Medication
+
+**SSRIs (Selective Serotonin Reuptake Inhibitors)**
+First-line treatment:
+- Fluoxetine (Prozac), Sertraline (Zoloft), Escitalopram (Lexapro)
+- Generally well-tolerated
+- Take 4-6 weeks for full effect
+
+**SNRIs (Serotonin-Norepinephrine Reuptake Inhibitors)**
+- Venlafaxine (Effexor), Duloxetine (Cymbalta)
+- May help with fatigue and concentration
+- Also treats co-occurring pain
+
+**Atypical Antidepressants**
+- Bupropion (Wellbutrin): activating, helps motivation
+- Mirtazapine (Remeron): helps with sleep and appetite
+
+**Newer Treatments (2024-2026)**
+- **Esketamine (Spravato)**: FDA-approved for treatment-resistant depression
+- **Psilocybin therapy**: breakthrough therapy designation, expanding availability
+- **MDMA-assisted therapy**: Phase 3 trials showing promise
+
+### Brain Stimulation
+
+For treatment-resistant cases:
+
+**Electroconvulsive Therapy (ECT)**
+Despite stigma, ECT is highly effective:
+- 70-90% response rate in severe depression
+- Modern ECT is safe with brief anesthesia
+- Memory side effects usually temporary
+
+**Transcranial Magnetic Stimulation (TMS)**
+Non-invasive option:
+- Uses magnetic pulses to stimulate prefrontal cortex
+- 20-30 sessions over 4-6 weeks
+- No sedation required
+
+**Deep Brain Stimulation (DBS)**
+Experimental for severe, treatment-resistant cases:
+- Surgical implantation of electrodes
+- Showing promise in research settings
+
+### Lifestyle Interventions
+
+Often undervalued but powerful:
+
+**Exercise**
+- As effective as medication for mild-moderate depression
+- 150 minutes moderate activity per week recommended
+- Any movement helps—start small
+
+**Sleep Optimization**
+- Bidirectional relationship with depression
+- Sleep deprivation can trigger episodes
+- CBT-I (Cognitive Behavioral Therapy for Insomnia) is highly effective
+
+**Nutrition**
+- Mediterranean diet associated with lower depression rates
+- Omega-3 fatty acids show modest benefits
+- Reduce processed foods and added sugars
+
+**Light Therapy**
+- Effective for SAD and non-seasonal depression
+- 10,000 lux light box for 30 minutes each morning
+- Helps regulate circadian rhythms
+
+---
+
+## Part 7: Supporting Recovery
+
+### For Those Experiencing Depression
+
+**Be Patient with Yourself**
+Recovery isn't linear. Good days and bad days are normal.
+
+**Maintain Treatment**
+Don't stop medication abruptly. Work with your provider on any changes.
+
+**Build Your Toolkit**
+- Identify your warning signs
+- Know your coping strategies
+- Have a relapse prevention plan
+
+**Stay Connected**
+Isolation worsens depression. Even small social contacts help.
+
+### For Loved Ones
+
+**What Helps**
+- Listen without judgment
+- Validate their experience ("This sounds really hard")
+- Offer practical support (meals, errands)
+- Encourage treatment without nagging
+- Take care of yourself too
+
+**What Doesn't Help**
+- "Just think positive" or "Snap out of it"
+- Comparing their struggles to others
+- Taking their symptoms personally
+- Enabling avoidance behaviors
+
+---
+
+## Part 8: Crisis Resources
+
+If you or someone you know is in immediate danger:
+
+- **988 Suicide & Crisis Lifeline**: Call or text 988 (US)
+- **Crisis Text Line**: Text HOME to 741741
+- **International Association for Suicide Prevention**: https://www.iasp.info/resources/Crisis_Centres/
+- **Emergency Services**: Call your local emergency number
+
+**Warning Signs of Suicide:**
+- Talking about wanting to die
+- Giving away possessions
+- Saying goodbye to loved ones
+- Obtaining means (weapons, medications)
+- Sudden calmness after severe depression
+
+---
+
+## Conclusion: Hope Is Real
+
+Depression is a formidable opponent, but it is not invincible. With proper understanding, timely intervention, and comprehensive treatment, recovery is possible for the vast majority of people.
+
+The key messages to remember:
+- **Depression is a real medical condition**, not a character flaw
+- **Effective treatments exist** and continue to improve
+- **Early intervention** leads to better outcomes
+- **Recovery is possible**, even after years of struggle
+
+If you're currently experiencing depression, please reach out to a mental health professional. You deserve support, and help is available.
+
+*The darkness you're experiencing is temporary. The light will return.*
+        `},{slug:"anxiety-disorders-explained-types-triggers-coping-2026",title:"Anxiety Disorders Explained: Types, Triggers & Proven Coping Mechanisms",excerpt:"A comprehensive 2000+ word guide to understanding anxiety disorders—from distinguishing normal worry from clinical anxiety to mastering evidence-based coping strategies.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"19 min read",heroImage:"/images/blog/anxiety-disorders-guide.png",content:`
+## The Age of Anxiety: Understanding and Overcoming Anxiety Disorders
+
+We live in what many mental health professionals call "the age of anxiety." With constant connectivity, information overload, economic uncertainty, and a global pandemic still echoing in our collective consciousness, anxiety has become the most prevalent mental health condition worldwide. But here's the crucial distinction: **worry is normal; an anxiety disorder is not**.
+
+This comprehensive guide will help you understand the difference between everyday anxiety and clinical anxiety disorders, explore the various types of anxiety conditions, identify your triggers, and master proven coping mechanisms that can transform your relationship with anxiety.
+
+---
+
+## Part 1: Anxiety - Friend or Foe?
+
+### The Purpose of Anxiety
+
+Believe it or not, anxiety evolved to keep us alive. It's part of our ancient survival system:
+
+**The Adaptive Function**
+- Alerts us to potential threats
+- Prepares the body for action (fight-flight-freeze)
+- Motivates preparation (studying for exams, preparing for presentations)
+- Enhances performance in challenging situations (the Yerkes-Dodson curve)
+
+**When Anxiety Becomes Disorder**
+Anxiety crosses into disorder territory when it:
+- Is **disproportionate** to the actual threat
+- Is **persistent** rather than situational
+- **Interferes** with daily functioning
+- Causes **significant distress**
+- Is **resistant** to reassurance or logic
+
+### The Anxiety Spectrum
+
+Think of anxiety on a continuum:
+
+**Healthy Anxiety** → **Excessive Worry** → **Anxiety Disorder** → **Severe/Disabling Anxiety**
+
+Everyone experiences the first two at times. It's when anxiety becomes persistent, disproportionate, and impairing that it qualifies as a clinical disorder requiring intervention.
+
+---
+
+## Part 2: Types of Anxiety Disorders
+
+### Generalized Anxiety Disorder (GAD)
+
+**The Chronic Worrier**
+
+GAD is characterized by excessive, uncontrollable worry about multiple areas of life (health, finances, family, work, minor matters) occurring more days than not for at least 6 months.
+
+**Key Features:**
+- Difficulty controlling worry
+- Restlessness or feeling "keyed up"
+- Fatigue
+- Difficulty concentrating
+- Irritability
+- Muscle tension
+- Sleep disturbances
+
+**The Numbers:** Affects approximately 6.8 million adults in the US, with women twice as likely as men.
+
+### Panic Disorder
+
+**The Terror Storm**
+
+Panic disorder involves recurrent, unexpected panic attacks—intense episodes of overwhelming fear that peak within minutes.
+
+**Panic Attack Symptoms:**
+- Pounding heart or accelerated heart rate
+- Sweating
+- Trembling or shaking
+- Shortness of breath or smothering sensation
+- Feelings of choking
+- Chest pain or discomfort
+- Nausea or abdominal distress
+- Dizziness or lightheadedness
+- Chills or heat sensations
+- Numbness or tingling
+- Derealization (feeling unreal) or depersonalization
+- Fear of losing control or "going crazy"
+- Fear of dying
+
+**The Vicious Cycle:** Fear of having another panic attack leads to avoidance, which reinforces the fear.
+
+### Social Anxiety Disorder (Social Phobia)
+
+**The Fear of Judgment**
+
+More than shyness, social anxiety disorder involves intense fear of social situations where one might be scrutinized, judged, or embarrassed.
+
+**Common Feared Situations:**
+- Public speaking
+- Meeting new people
+- Being observed eating or drinking
+- Performing in front of others
+- Making small talk
+- Being the center of attention
+- Expressing disagreement
+
+**Physical Manifestations:** Blushing, sweating, trembling, difficulty speaking, mind going blank.
+
+### Specific Phobias
+
+**Targeted Terror**
+
+Specific phobias involve intense, irrational fear of specific objects or situations that pose little actual danger.
+
+**Common Categories:**
+- **Natural Environment:** Heights, storms, water
+- **Animal:** Spiders, snakes, dogs
+- **Blood-Injection-Injury:** Needles, medical procedures
+- **Situational:** Flying, elevators, enclosed spaces
+- **Other:** Choking, vomiting, loud sounds
+
+### Agoraphobia
+
+**The Avoidance Trap**
+
+Often misunderstood as simply "fear of open spaces," agoraphobia is actually fear of situations where escape might be difficult or help unavailable during a panic attack.
+
+**Commonly Avoided:**
+- Public transportation
+- Open spaces (parking lots, markets)
+- Enclosed spaces (shops, theaters)
+- Standing in line or being in crowds
+- Being outside the home alone
+
+In severe cases, individuals become housebound.
+
+### Separation Anxiety Disorder
+
+**Not Just for Children**
+
+While common in children, separation anxiety can persist or develop in adults, involving excessive fear about separation from attachment figures.
+
+### Other Related Conditions
+
+- **Selective Mutism:** Consistent failure to speak in specific social situations
+- **Substance/Medication-Induced Anxiety**
+- **Anxiety Due to Another Medical Condition**
+
+---
+
+## Part 3: The Neuroscience of Anxiety
+
+### What Happens in an Anxious Brain
+
+**The Amygdala: Your Alarm System**
+The amygdala is a small, almond-shaped structure that processes fear and threat. In anxiety disorders, it becomes:
+- Hyperactive (fires too easily)
+- Hypersensitive (detects threats that aren't there)
+- Slower to calm down after activation
+
+**The Prefrontal Cortex: Your Brake Pedal**
+The PFC normally regulates the amygdala, providing rational assessment of threats. In anxiety:
+- Communication between PFC and amygdala is impaired
+- The "brake pedal" becomes less effective
+- Rational thought can't override fear signals
+
+**Neurotransmitter Involvement**
+- **GABA (gamma-aminobutyric acid):** The brain's primary inhibitory neurotransmitter. Low GABA = difficulty calming down.
+- **Serotonin:** Regulates mood, sleep, and anxiety. Dysregulation common in anxiety disorders.
+- **Norepinephrine:** Involved in the stress response. Overactivity contributes to anxiety symptoms.
+
+### The Body's Response
+
+The autonomic nervous system has two branches:
+
+**Sympathetic: The Gas Pedal**
+- Increases heart rate
+- Dilates pupils
+- Inhibits digestion
+- Releases stress hormones
+
+**Parasympathetic: The Brake Pedal**
+- Slows heart rate
+- Promotes digestion
+- Calms the body
+
+In anxiety disorders, the sympathetic system dominates, and the parasympathetic has difficulty regaining control.
+
+---
+
+## Part 4: Identifying Your Anxiety Triggers
+
+### Common Trigger Categories
+
+**Environmental Triggers**
+- Stressful life events (job loss, divorce, moving)
+- Conflict in relationships
+- Financial pressures
+- Work demands
+- Crowded or confined spaces
+- Loud noises or bright lights
+
+**Cognitive Triggers**
+- Negative self-talk
+- Catastrophic thinking
+- Perfectionism
+- Uncertainty about the future
+- Rumination about the past
+
+**Physical Triggers**
+- Caffeine and stimulants
+- Lack of sleep
+- Poor nutrition
+- Lack of exercise
+- Illness or chronic pain
+- Hormonal changes
+
+**Social Triggers**
+- Performance situations
+- Confrontation or conflict
+- Judgment or criticism
+- Rejection
+- Being the center of attention
+
+### Creating Your Personal Trigger Map
+
+**Step 1: Track Your Anxiety**
+For 2 weeks, note:
+- When anxiety occurred
+- Where you were
+- What you were doing
+- Who you were with
+- What you were thinking
+- Physical state (sleep, caffeine, etc.)
+- Intensity (1-10)
+
+**Step 2: Identify Patterns**
+Look for common themes across your highest-anxiety episodes.
+
+**Step 3: Categorize**
+Group triggers into:
+- Avoidable (can reduce exposure)
+- Manageable (can develop coping strategies)
+- Unavoidable (must build tolerance)
+
+---
+
+## Part 5: Evidence-Based Coping Strategies
+
+### Immediate Relief Techniques
+
+**Grounding: The 5-4-3-2-1 Technique**
+When anxiety spikes, reconnect with the present:
+- **5 things** you can SEE
+- **4 things** you can TOUCH
+- **3 things** you can HEAR
+- **2 things** you can SMELL
+- **1 thing** you can TASTE
+
+**Physiological Sigh**
+The fastest way to calm your nervous system:
+1. Take a deep breath in through your nose
+2. Take a second, smaller breath on top (double inhale)
+3. Long, slow exhale through your mouth
+4. Repeat 2-3 times
+
+**Cold Exposure**
+Activates the diving reflex, slowing heart rate:
+- Splash cold water on your face
+- Hold ice cubes
+- Take a cold shower
+
+**Movement**
+Burns off stress hormones:
+- Walk briskly
+- Jump in place
+- Shake your hands vigorously
+
+### Cognitive Strategies
+
+**Cognitive Restructuring**
+Challenge anxious thoughts with evidence:
+
+1. **Identify the thought:** "Everyone will think I'm stupid if I speak up."
+2. **Examine evidence for:** Have people actually thought you're stupid before?
+3. **Examine evidence against:** Times when people responded positively?
+4. **Generate alternatives:** "Most people are focused on themselves, not judging me."
+5. **Rate your anxiety:** Did it decrease?
+
+**Worry Time**
+Contain worry to a specific period:
+- Schedule 20 minutes daily for worrying
+- When worries arise outside this time, note them and postpone
+- During Worry Time, worry intensely if you wish
+- When time's up, move on
+
+**The Worst Case Scenario**
+Paradoxically, facing your fears mentally reduces them:
+- What's the worst that could happen?
+- How would you cope if it did?
+- What's most likely to happen?
+- What's the best that could happen?
+
+### Behavioral Strategies
+
+**Exposure Therapy Principles**
+The gold standard for anxiety treatment:
+
+1. **Create a fear hierarchy:** List feared situations from least to most anxiety-provoking.
+2. **Start at the bottom:** Face the least scary situation first.
+3. **Stay until anxiety drops:** Don't escape. Wait for habituation.
+4. **Move up gradually:** As each level becomes manageable, progress to the next.
+5. **Repeat frequently:** Consistency beats intensity.
+
+**Behavioral Activation**
+Don't wait to feel better to do things; do things to feel better:
+- Schedule meaningful activities
+- Start small and build
+- Use the "5-minute rule"—commit to just 5 minutes
+- Track mood before and after activities
+
+### Lifestyle Foundations
+
+**Sleep**
+Sleep deprivation amplifies anxiety significantly:
+- Maintain consistent sleep/wake times
+- Create a wind-down routine
+- Limit screens before bed
+- Address sleep disorders (insomnia, sleep apnea)
+
+**Exercise**
+Regular physical activity is as effective as medication for many:
+- Aim for 150 minutes/week moderate intensity
+- Both cardio and strength training help
+- Yoga combines movement with mindfulness
+- Even a 10-minute walk helps in the moment
+
+**Nutrition**
+What you eat affects how you feel:
+- Limit caffeine (anxiety's fuel)
+- Reduce alcohol (rebounds as anxiety)
+- Eat regularly (blood sugar crashes trigger anxiety)
+- Include omega-3s, magnesium, and B vitamins
+
+**Mindfulness Meditation**
+Regular practice changes the brain:
+- Reduces amygdala reactivity
+- Strengthens PFC-amygdala communication
+- Builds distress tolerance
+- Start with 5-10 minutes daily
+
+---
+
+## Part 6: Professional Treatment Options
+
+### When to Seek Help
+
+Consider professional help if:
+- Anxiety significantly impairs work, relationships, or daily functioning
+- You're avoiding important activities due to fear
+- You're using substances to cope
+- You're experiencing panic attacks
+- Self-help strategies aren't sufficient
+- You're having thoughts of self-harm
+
+### Psychotherapy
+
+**Cognitive Behavioral Therapy (CBT)**
+The most researched and effective treatment:
+- Identifies and challenges anxious thoughts
+- Uses gradual exposure to feared situations
+- Teaches coping skills
+- Typically 12-16 sessions
+
+**Acceptance and Commitment Therapy (ACT)**
+Focuses on changing your relationship with anxiety:
+- Accept uncomfortable thoughts and feelings
+- Be present in the moment
+- Identify core values
+- Take committed action toward values
+
+**Exposure and Response Prevention (ERP)**
+Specifically for OCD and specific phobias:
+- Face feared situations
+- Prevent avoidance/safety behaviors
+- Learn that anxiety decreases naturally
+
+### Medication
+
+**SSRIs (Selective Serotonin Reuptake Inhibitors)**
+First-line medication treatment:
+- Sertraline, Escitalopram, Paroxetine, Fluoxetine
+- Take 4-6 weeks for full effect
+- Generally well-tolerated
+
+**SNRIs (Serotonin-Norepinephrine Reuptake Inhibitors)**
+- Venlafaxine, Duloxetine
+- Also effective for anxiety
+
+**Benzodiazepines**
+For short-term or as-needed use:
+- Alprazolam, Lorazepam, Clonazepam
+- Work quickly but carry dependency risk
+- Not recommended for long-term use
+
+**Buspirone**
+For generalized anxiety:
+- Non-addictive
+- Takes 2-4 weeks to work
+- Fewer side effects than SSRIs
+
+**Beta-Blockers**
+For performance anxiety:
+- Propranolol
+- Reduces physical symptoms (heart racing, trembling)
+- Used situationally
+
+---
+
+## Part 7: Building Long-Term Resilience
+
+### Developing an Anti-Anxiety Lifestyle
+
+**Daily Practice**
+- Morning meditation (5-10 minutes)
+- Regular exercise
+- Adequate sleep
+- Balanced nutrition
+- Limited caffeine and alcohol
+
+**Weekly Practice**
+- Social connection
+- Time in nature
+- Hobby engagement
+- Rest and recovery
+
+**Ongoing**
+- Regular therapy or check-ins
+- Continued exposure to fears
+- Values-based living
+- Self-compassion practice
+
+### Preventing Relapse
+
+**Know Your Warning Signs**
+- Increased avoidance
+- Sleep disruption
+- Physical tension
+- Irritability
+- Social withdrawal
+
+**Have a Plan**
+- Return to basic practices
+- Reach out for support
+- Re-engage coping strategies
+- Contact therapist if needed
+
+---
+
+## Conclusion: From Surviving to Thriving
+
+Anxiety disorders are treatable. With proper understanding, evidence-based strategies, and when needed, professional help, you can move from merely surviving anxiety to genuinely thriving.
+
+Remember these key principles:
+- **Anxiety is not your enemy**—it's a misguided protector
+- **Avoidance feeds anxiety**—exposure starves it
+- **Small steps add up**—consistency beats intensity
+- **You are not alone**—millions share this struggle
+- **Recovery is possible**—and closer than you think
+
+Your anxiety does not define you. It's something you experience, not something you are. With patience, practice, and support, you can reclaim your life from anxiety's grip.
+
+*If you're struggling with anxiety, please reach out to a mental health professional. You deserve to feel at peace.*
+        `},{slug:"breaking-stress-anxiety-depression-cycle-holistic-recovery-2026",title:"Breaking the Stress-Anxiety-Depression Cycle: A Holistic Recovery Framework",excerpt:"A comprehensive 2000+ word guide to understanding the interconnected nature of stress, anxiety, and depression, and implementing a holistic framework for lasting recovery.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"18 min read",heroImage:"/images/blog/breaking-mental-cycle.png",content:`
+## The Interconnected Web: Understanding the Stress-Anxiety-Depression Cycle
+
+If you've ever felt trapped in a spiral where stress makes you anxious, anxiety drains your energy, and exhaustion leads to depression—only to have depression make everything more stressful—you've experienced the **stress-anxiety-depression cycle**. This vicious loop affects millions of people, and understanding it is the first step to breaking free.
+
+This comprehensive guide explores the science behind how these three conditions feed into each other, identifies the key intervention points, and provides a holistic framework for recovery that addresses mind, body, and lifestyle together.
+
+---
+
+## Part 1: The Triangle of Suffering
+
+### How They're Connected
+
+Stress, anxiety, and depression aren't three separate issues—they're deeply interconnected, often co-occurring and reinforcing each other.
+
+**The Neurobiological Overlap**
+All three conditions involve:
+- **HPA axis dysregulation**: The stress response system becomes chronically activated
+- **Neurotransmitter imbalances**: Serotonin, norepinephrine, and dopamine are affected
+- **Inflammation**: Elevated inflammatory markers are found in all three
+- **Brain structure changes**: The hippocampus, prefrontal cortex, and amygdala are impacted
+
+**The Psychological Overlap**
+Common cognitive patterns include:
+- Negative thinking and rumination
+- Catastrophic predictions
+- Feelings of helplessness
+- Difficulty concentrating
+- Memory problems
+
+**The Behavioral Overlap**
+Shared behavioral patterns include:
+- Social withdrawal
+- Sleep disturbances
+- Appetite changes
+- Reduced physical activity
+- Avoidance behaviors
+
+### The Cycle in Motion
+
+**Stage 1: Stress Ignites the Fire**
+Chronic stress (work pressure, relationship conflict, financial worry) activates the stress response:
+- Cortisol floods the system
+- The amygdala becomes hyperactive
+- The prefrontal cortex becomes less effective
+
+**Stage 2: Anxiety Takes Hold**
+Prolonged stress sensitizes the threat detection system:
+- You become hypervigilant
+- The body stays in "alarm mode"
+- Worry becomes chronic
+- Physical symptoms emerge (racing heart, tension, insomnia)
+
+**Stage 3: Depression Follows**
+Eventually, the system becomes exhausted:
+- Energy depletes
+- Motivation vanishes
+- Pleasure disappears (anhedonia)
+- Hopelessness sets in
+
+**Stage 4: Depression Amplifies Stress**
+Depression creates new stressors:
+- Work performance suffers
+- Relationships strain
+- Self-care declines
+- Problems accumulate
+
+And the cycle repeats, often intensifying with each rotation.
+
+---
+
+## Part 2: Identifying Your Entry Point
+
+### Where Did Your Cycle Begin?
+
+Understanding your personal pattern helps target interventions effectively.
+
+**Stress-Initiated Pattern**
+- External pressures came first
+- You "ran on adrenaline" for too long
+- Burnout led to anxiety and depression
+- Common in high-achievers and caregivers
+
+**Anxiety-Initiated Pattern**
+- Worry has always been your default
+- Constant vigilance is exhausting
+- The fear of fear creates more fear
+- Depression follows chronic worry
+
+**Depression-Initiated Pattern**
+- Low mood is your baseline
+- Lack of motivation creates stressful consequences
+- Anxiety about falling behind compounds the problem
+- Often linked to early life experiences
+
+### Assessment Questions
+
+Ask yourself:
+1. When did I first notice something was wrong?
+2. What came first: the stress, the worry, or the low mood?
+3. What situations trigger the worst episodes?
+4. What helps, even temporarily?
+5. When was I last truly well?
+
+---
+
+## Part 3: Breaking the Cycle - A Holistic Framework
+
+### The Five Pillars of Recovery
+
+True healing requires addressing multiple domains simultaneously. This isn't about adding more to your plate—it's about making strategic changes that create positive feedback loops.
+
+---
+
+## Pillar 1: Regulating the Nervous System
+
+The foundation of recovery is calming the chronically activated stress response.
+
+**Vagal Toning**
+The vagus nerve is your "relaxation highway." Strengthening vagal tone helps shift from sympathetic (fight-flight) to parasympathetic (rest-digest) dominance.
+
+*Daily Practices:*
+- **Slow, deep breathing**: 5-7 breaths per minute activates the parasympathetic system
+- **Cold exposure**: Cold showers or face immersion
+- **Humming/chanting**: Vibrates the vagus nerve
+- **Gargling**: Activates vagal pathways
+- **Social connection**: Safe relationships calm the nervous system
+
+**Somatic Awareness**
+Trauma and chronic stress get stored in the body. Reconnecting with physical sensations helps release them.
+
+*Techniques:*
+- **Body scan meditation**: Systematically notice sensations throughout the body
+- **Progressive muscle relaxation**: Tense and release muscle groups
+- **Somatic Experiencing**: Work with a trained therapist
+- **Yoga**: Combines movement with breath awareness
+
+**Safe Space Creation**
+Your environment affects your nervous system. Create physical spaces that signal safety.
+
+*Elements:*
+- Comfortable temperature
+- Soft lighting
+- Calming colors
+- Pleasant scents
+- Minimal clutter
+- Nature elements (plants, natural materials)
+
+---
+
+## Pillar 2: Rewiring Thought Patterns
+
+The mind can be both the source of suffering and the vehicle for healing.
+
+**Cognitive Restructuring**
+Systematically challenge the distorted thinking that maintains the cycle.
+
+*Common Distortions to Address:*
+- **Catastrophizing**: "This will be a disaster"
+- **Mind reading**: "They think I'm pathetic"
+- **Fortune telling**: "It will never get better"
+- **Black-and-white thinking**: "I'm either perfect or worthless"
+- **Emotional reasoning**: "I feel hopeless, so things are hopeless"
+
+*The ABCDE Method:*
+- **A**ctivating event: What happened?
+- **B**elief: What did you think about it?
+- **C**onsequence: How did you feel/behave?
+- **D**ispute: What's the evidence? What's an alternative view?
+- **E**ffective new belief: What's a more balanced perspective?
+
+**Mindfulness and Defusion**
+Sometimes the goal isn't to change thoughts but to change your relationship with them.
+
+*Techniques:*
+- **Observing thoughts**: "I notice I'm having the thought that..."
+- **Leaves on a stream**: Visualize thoughts floating by
+- **Thought labeling**: "There's a worry thought. There's a self-criticism thought."
+- **Present moment focus**: Return attention to the here and now
+
+**Values Clarification**
+When you know what matters most, you can act despite difficult feelings.
+
+*Questions to explore:*
+- What kind of person do I want to be?
+- What relationships do I want to nurture?
+- What contributions do I want to make?
+- What experiences do I want to have?
+- What will I regret not doing?
+
+---
+
+## Pillar 3: Restoring Physical Foundations
+
+The body and mind are not separate. Physical health directly impacts mental health.
+
+**Sleep Restoration**
+Sleep deprivation worsens stress, anxiety, and depression. Prioritizing sleep is non-negotiable.
+
+*Sleep Hygiene Essentials:*
+- Consistent sleep/wake times (even weekends)
+- Cool, dark, quiet bedroom
+- No screens 30-60 minutes before bed
+- Wind-down routine
+- Limit caffeine after noon
+- Address underlying sleep disorders
+
+**Movement as Medicine**
+Exercise is one of the most powerful antidepressants and anxiolytics available.
+
+*The Evidence:*
+- 30 minutes of moderate exercise 3x/week matches antidepressant medication for mild-moderate depression
+- Exercise reduces anxiety sensitivity
+- Movement burns off stress hormones
+- Physical activity promotes neurogenesis (new brain cell growth)
+
+*Recommendations:*
+- Start where you are (even 5 minutes counts)
+- Choose activities you enjoy
+- Include both cardio and strength training
+- Consider yoga for combined benefits
+- Walk in nature when possible
+
+**Anti-Inflammatory Nutrition**
+Inflammation links stress, anxiety, and depression. An anti-inflammatory diet supports mental health.
+
+*Foods to Emphasize:*
+- Fatty fish (salmon, mackerel, sardines)
+- Leafy greens
+- Colorful vegetables
+- Berries and fruits
+- Nuts and seeds
+- Olive oil
+- Fermented foods (yogurt, kefir, sauerkraut)
+
+*Foods to Minimize:*
+- Processed foods
+- Added sugars
+- Refined carbohydrates
+- Excessive alcohol
+- Artificial additives
+
+**Gut-Brain Connection**
+The gut microbiome directly influences brain function and mood.
+
+*Support Your Gut:*
+- Eat fiber-rich foods (feed beneficial bacteria)
+- Include fermented foods
+- Consider probiotics (specific strains like Lactobacillus and Bifidobacterium show mental health benefits)
+- Reduce antibiotic use when not necessary
+- Manage stress (stress disrupts the microbiome)
+
+---
+
+## Pillar 4: Rebuilding Social Connections
+
+Humans are wired for connection. Isolation perpetuates the cycle; connection helps break it.
+
+**The Science of Social Support**
+- Safe social connection activates the parasympathetic nervous system
+- Oxytocin (the "bonding hormone") counteracts stress hormones
+- Social support is one of the strongest predictors of resilience
+- Loneliness is as damaging to health as smoking 15 cigarettes daily
+
+**Rebuilding When You've Withdrawn**
+Depression and anxiety often lead to social isolation. Reconnecting takes intentional effort.
+
+*Start Small:*
+- Text a friend rather than call (lower barrier)
+- Attend for 30 minutes, then leave if needed
+- Accept invitations even when you don't feel like it
+- Join structured groups (classes, clubs, volunteer work)
+
+*Quality Over Quantity:*
+- Deep relationships matter more than many acquaintances
+- Vulnerability builds intimacy
+- Give and receive support
+
+**Setting Boundaries**
+Not all social contact is helpful. Protect yourself from toxic relationships.
+
+*Healthy Boundaries:*
+- Learn to say no without guilt
+- Limit time with draining people
+- Communicate your needs clearly
+- Walk away from abusive situations
+
+---
+
+## Pillar 5: Creating Meaning and Purpose
+
+Meaning provides a buffer against stress and a reason to recover.
+
+**Finding Purpose**
+People with a strong sense of purpose show better mental health outcomes across the board.
+
+*Sources of Meaning:*
+- **Contribution**: Helping others, volunteering
+- **Creation**: Making art, building things, solving problems
+- **Connection**: Deep relationships, community
+- **Growth**: Learning, developing, becoming
+- **Experience**: Beauty, joy, awe, adventure
+
+**Values-Based Action**
+Don't wait to feel better to live meaningfully. Act according to your values even when you don't feel like it.
+
+*Daily Practice:*
+- Identify one small action aligned with your values
+- Take that action regardless of mood
+- Notice how it feels afterward
+- Build gradually
+
+**Post-Traumatic Growth**
+Many people who recover from mental health challenges find they've grown in meaningful ways.
+
+*Areas of Growth:*
+- Greater appreciation for life
+- Deeper relationships
+- Increased personal strength
+- Recognition of new possibilities
+- Spiritual development
+
+---
+
+## Part 4: The Recovery Roadmap
+
+### Phase 1: Stabilization (Weeks 1-4)
+**Focus**: Calming the nervous system and establishing basics
+
+*Priority Actions:*
+- Begin daily breathing practice (5 minutes)
+- Establish consistent sleep routine
+- Move your body daily (even briefly)
+- Reduce caffeine and alcohol
+- Reach out to one supportive person
+
+### Phase 2: Foundation Building (Weeks 5-12)
+**Focus**: Establishing sustainable habits and beginning cognitive work
+
+*Priority Actions:*
+- Expand movement to 30 minutes most days
+- Begin cognitive restructuring practice
+- Improve nutrition gradually
+- Continue expanding social connections
+- Consider professional support if needed
+
+### Phase 3: Deepening (Months 3-6)
+**Focus**: Addressing root causes and building resilience
+
+*Priority Actions:*
+- Explore therapy for deeper patterns
+- Develop mindfulness practice
+- Clarify values and purpose
+- Create meaningful goals
+- Build robust support system
+
+### Phase 4: Maintenance and Growth (Ongoing)
+**Focus**: Preventing relapse and continuing to thrive
+
+*Priority Actions:*
+- Maintain core habits
+- Regular check-ins with yourself
+- Adjust strategies as needed
+- Continue learning and growing
+- Give back to others in similar struggles
+
+---
+
+## Part 5: When Professional Help Is Essential
+
+### Seek Help If:
+- Symptoms are severe or worsening
+- Functioning is significantly impaired
+- You're having thoughts of self-harm
+- Substance use is increasing
+- Self-help isn't working
+
+### Types of Professional Support
+
+**Psychotherapy**
+- CBT (Cognitive Behavioral Therapy)
+- ACT (Acceptance and Commitment Therapy)
+- DBT (Dialectical Behavior Therapy)
+- EMDR (Eye Movement Desensitization and Reprocessing)
+- Somatic therapies
+
+**Medication**
+May be appropriate to:
+- Provide relief while building skills
+- Address biological factors
+- Enable participation in therapy
+- Manage severe symptoms
+
+**Integrative Approaches**
+- Acupuncture
+- Massage therapy
+- Nutritional counseling
+- Functional medicine
+
+---
+
+## Conclusion: The Cycle Can Be Broken
+
+The stress-anxiety-depression cycle is powerful, but it's not unbreakable. By understanding how these conditions interconnect and addressing them holistically—through nervous system regulation, cognitive rewiring, physical foundations, social connection, and meaningful purpose—you can interrupt the cycle and create new, positive feedback loops.
+
+Recovery is not linear. There will be setbacks. The goal is progress, not perfection. Each small step in the right direction weakens the old patterns and strengthens new ones.
+
+You are not your stress, your anxiety, or your depression. You are a person who experiences these challenges—and you have the capacity to overcome them.
+
+*If you're caught in the cycle, please reach out for support. You don't have to break free alone.*
+        `},{slug:"natural-remedies-anxiety-depression-science-backed-2026",title:"Natural Remedies for Anxiety & Depression: Science-Backed Lifestyle Interventions",excerpt:"A comprehensive 2000+ word guide to evidence-based natural approaches for managing anxiety and depression, from supplements and herbs to lifestyle modifications.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"17 min read",heroImage:"/images/blog/natural-mental-remedies.png",content:`
+## The Natural Path: Evidence-Based Alternatives for Mental Health
+
+In an era of increasing awareness about mental health, many people are seeking natural approaches to complement or, in mild cases, replace conventional treatments for anxiety and depression. The good news is that science has validated numerous natural interventions that can make a meaningful difference.
+
+This comprehensive guide separates fact from fiction, presenting only those natural remedies with solid scientific evidence behind them. We'll explore supplements, herbs, lifestyle modifications, and mind-body practices that can support your mental health journey.
+
+**Important Disclaimer**: Natural doesn't mean risk-free. Always consult with a healthcare provider before starting any supplement, especially if you're on medications. These approaches work best alongside, not instead of, professional mental health care for moderate to severe conditions.
+
+---
+
+## Part 1: Evidence-Based Supplements
+
+### Omega-3 Fatty Acids
+
+**The Evidence**
+Omega-3s (EPA and DHA) are among the most researched supplements for mental health:
+- Meta-analyses show significant antidepressant effects, particularly for EPA-dominant formulas
+- Benefits are strongest when omega-3s are used alongside conventional treatment
+- May also reduce anxiety symptoms
+
+**How They Work**
+- Reduce neuroinflammation
+- Support cell membrane fluidity in the brain
+- Influence serotonin and dopamine transmission
+- Protect brain structure
+
+**Dosing Guidelines**
+- **For depression**: 1-2 grams EPA daily (look for EPA:DHA ratio of 2:1 or higher)
+- **For general wellness**: 250-500mg combined EPA/DHA daily
+- Choose purified, third-party tested fish oil or algae-based alternatives
+
+**Food Sources**
+- Fatty fish (salmon, mackerel, sardines, anchovies)
+- Walnuts
+- Flaxseeds and chia seeds
+- Algae (for vegans)
+
+### Vitamin D
+
+**The Evidence**
+Vitamin D deficiency is strongly associated with depression and anxiety:
+- Multiple studies show improvement in depression with supplementation in deficient individuals
+- The relationship between vitamin D and mood is well-established
+- Most effective when correcting actual deficiency
+
+**How It Works**
+- Vitamin D receptors exist throughout the brain
+- Influences serotonin synthesis
+- Reduces inflammation
+- Supports immune function
+
+**Testing and Dosing**
+- Get tested: optimal levels are 40-60 ng/mL
+- **If deficient**: 2,000-5,000 IU daily (higher doses may be needed initially under medical supervision)
+- **For maintenance**: 1,000-2,000 IU daily
+- Take with dietary fat for absorption
+
+**Natural Sources**
+- Sunlight (15-30 minutes, midday, skin exposed)
+- Fatty fish
+- Egg yolks
+- Fortified foods
+
+### Magnesium
+
+**The Evidence**
+Magnesium is crucial for nervous system function:
+- Studies show supplementation can improve depression and anxiety symptoms
+- Many people are deficient due to soil depletion and processed diets
+- Particularly effective for stress-related symptoms
+
+**How It Works**
+- Regulates the HPA axis (stress response system)
+- Modulates GABA activity (calming neurotransmitter)
+- Reduces inflammation
+- Supports sleep quality
+
+**Dosing Guidelines**
+- **For anxiety/stress**: 200-400mg daily
+- Best forms: magnesium glycinate (calming), magnesium threonate (brain-specific), magnesium citrate (general)
+- Avoid magnesium oxide (poorly absorbed)
+
+**Food Sources**
+- Dark leafy greens
+- Nuts and seeds
+- Dark chocolate
+- Legumes
+- Whole grains
+
+### B Vitamins
+
+**The Evidence**
+B vitamins are essential for neurotransmitter production:
+- B12 and folate deficiency are linked to depression
+- B complex supplementation may reduce stress and improve mood
+- Methylated forms are better absorbed (methylcobalamin, methylfolate)
+
+**Key B Vitamins for Mental Health**
+- **B12**: Essential for nerve function; deficiency mimics depression
+- **B6**: Required for serotonin synthesis
+- **Folate (B9)**: Critical for methylation and neurotransmitter production
+- **B1 (Thiamine)**: Important for nervous system function
+
+**Dosing**
+- B-complex supplement covering 100% daily values
+- Or test for specific deficiencies
+- Methylated forms recommended, especially for those with MTHFR variants
+
+### Probiotics
+
+**The Evidence**
+The gut-brain axis is a hot area of research:
+- Specific probiotic strains show antidepressant and anxiolytic effects
+- The gut microbiome influences inflammation and neurotransmitter production
+- "Psychobiotics" is a growing field
+
+**Key Strains**
+- **Lactobacillus rhamnosus**: Reduces anxiety and stress-induced cortisol
+- **Bifidobacterium longum**: Shows antidepressant effects
+- **Lactobacillus helveticus + Bifidobacterium longum**: Reduces psychological distress
+
+**Dosing**
+- Multi-strain probiotic with at least 10 billion CFU
+- Include psychobiotic strains
+- Combine with prebiotic foods (fiber) to feed beneficial bacteria
+
+---
+
+## Part 2: Herbal Remedies
+
+### St. John's Wort (Hypericum perforatum)
+
+**The Evidence**
+One of the most researched herbs for depression:
+- Meta-analyses show effectiveness comparable to SSRIs for mild-moderate depression
+- May be less effective for severe depression
+- Mechanism involves multiple neurotransmitter systems
+
+**Dosing**
+- 300mg standardized extract (0.3% hypericin) three times daily
+- Effects take 4-6 weeks to appear
+
+**Critical Warnings**
+- Interacts with MANY medications (birth control, blood thinners, other antidepressants, some heart medications)
+- Causes photosensitivity
+- Should NOT be combined with prescription antidepressants (risk of serotonin syndrome)
+- Not for bipolar disorder
+
+### Ashwagandha (Withania somnifera)
+
+**The Evidence**
+An adaptogenic herb from Ayurvedic medicine:
+- Multiple studies show significant reduction in stress and anxiety
+- Lowers cortisol levels
+- May improve sleep quality
+
+**How It Works**
+- Modulates the HPA axis
+- GABA-mimetic activity
+- Anti-inflammatory and antioxidant effects
+
+**Dosing**
+- 300-600mg root extract daily
+- KSM-66 and Sensoril are well-researched standardized extracts
+- Can take 4-8 weeks for full effect
+
+**Considerations**
+- May not be suitable for thyroid conditions
+- Can interact with immunosuppressants
+- Generally well-tolerated
+
+### Lavender (Lavandula angustifolia)
+
+**The Evidence**
+Lavender has anxiolytic properties:
+- Silexan (a standardized extract) shows effectiveness comparable to benzodiazepines for anxiety
+- Essential oil inhalation reduces acute anxiety
+- Particularly effective for generalized anxiety
+
+**Methods of Use**
+- **Oral supplement**: 80-160mg Silexan daily
+- **Aromatherapy**: Inhale from bottle or diffuser during anxious moments
+- **Bath**: Add essential oil to warm bath water
+
+**Safety**
+- Oral supplements may cause digestive upset initially
+- Topical use can cause skin irritation in some
+- Generally very safe
+
+### Saffron (Crocus sativus)
+
+**The Evidence**
+An emerging star in mental health research:
+- Studies show antidepressant effects comparable to fluoxetine
+- Also shows anxiolytic properties
+- Small but growing evidence base
+
+**How It Works**
+- Increases serotonin and dopamine in the brain
+- Antioxidant and anti-inflammatory effects
+- Neuroprotective properties
+
+**Dosing**
+- 15-30mg standardized extract daily
+- Look for products standardized to safranal and crocin
+
+**Considerations**
+- High quality saffron is expensive (beware of adulterated products)
+- May interact with antidepressants
+- Not for pregnancy
+
+### Rhodiola Rosea
+
+**The Evidence**
+An adaptogen traditionally used for fatigue and stress:
+- Improves stress resilience and reduces fatigue
+- May have antidepressant effects
+- Particularly helpful for burnout
+
+**Dosing**
+- 200-600mg daily
+- Standardized to 3% rosavins and 1% salidroside
+- Best taken early in the day (can be stimulating)
+
+---
+
+## Part 3: Lifestyle Interventions
+
+### Exercise
+
+**The Evidence**
+Exercise is among the most powerful natural interventions:
+- Matches antidepressant medication effectiveness for mild-moderate depression
+- Significantly reduces anxiety symptoms
+- Benefits appear with as little as 30 minutes, 3x weekly
+
+**How It Works**
+- Releases endorphins (natural mood elevators)
+- Reduces cortisol and inflammation
+- Promotes neurogenesis (new brain cell growth)
+- Improves sleep quality
+- Increases self-efficacy
+
+**Recommendations**
+- **Aerobic exercise**: 150 minutes/week moderate intensity (walking, swimming, cycling)
+- **Strength training**: 2 sessions/week provides additional benefits
+- **Yoga**: Combines movement with mindfulness; excellent for anxiety
+- **Nature-based exercise**: Walking in green spaces amplifies benefits
+
+### Sleep Optimization
+
+**The Evidence**
+Sleep and mental health are bidirectionally linked:
+- Insomnia triples the risk of depression
+- Sleep deprivation worsens anxiety
+- Improving sleep often improves mood
+
+**Sleep Hygiene Essentials**
+- Consistent sleep/wake times (even weekends)
+- Cool, dark, quiet bedroom (65-68\xb0F)
+- No screens 60 minutes before bed (or use blue light filters)
+- Limit caffeine after noon
+- Avoid alcohol before bed (disrupts deep sleep)
+- Wind-down routine (reading, stretching, bath)
+
+**Natural Sleep Aids**
+- **Magnesium glycinate**: 200-400mg before bed
+- **Glycine**: 3g before bed
+- **Tart cherry juice**: Natural melatonin source
+- **Chamomile tea**: Mild sedative effect
+- **Melatonin**: 0.5-3mg, 30 minutes before bed (for timing, not sedation)
+
+### Mindfulness and Meditation
+
+**The Evidence**
+Mindfulness has robust evidence for mental health:
+- Reduces anxiety and depression symptoms
+- Prevents depressive relapse
+- Changes brain structure with regular practice
+
+**Types of Practice**
+- **Mindfulness-Based Stress Reduction (MBSR)**: 8-week structured program
+- **Mindfulness-Based Cognitive Therapy (MBCT)**: Combines mindfulness with CBT
+- **Daily meditation**: Even 10 minutes shows benefits
+- **Mindful activities**: Eating, walking, breathing
+
+**Getting Started**
+- Begin with 5-10 minutes daily
+- Use apps like Headspace, Calm, or Insight Timer
+- Join a local class for guidance
+- Consistency matters more than duration
+
+### Light Exposure
+
+**The Evidence**
+Light affects mood through circadian rhythm regulation:
+- Light therapy shows effectiveness for seasonal and non-seasonal depression
+- Morning light exposure supports healthy circadian rhythms
+- Important for those with limited outdoor time
+
+**Implementation**
+- **Morning sunlight**: 15-30 minutes within an hour of waking
+- **Light therapy box**: 10,000 lux for 20-30 minutes each morning
+- **Dawn simulator**: Gradual light increase for easier waking
+- Avoid bright light in the evening
+
+### Cold Exposure
+
+**The Evidence**
+An emerging area of research:
+- Cold showers increase norepinephrine and endorphins
+- May reduce depression symptoms
+- Builds stress tolerance
+
+**Methods**
+- **Cold showers**: End with 1-3 minutes of cold water
+- **Cold plunge**: 1-5 minutes in cold water (50-60\xb0F)
+- **Facial immersion**: Activate the diving reflex for quick calm
+
+**Caution**
+- Start gradually
+- Not suitable for those with heart conditions
+- Listen to your body
+
+### Breathwork
+
+**The Evidence**
+Breathing techniques directly influence the nervous system:
+- Slow breathing activates the parasympathetic nervous system
+- Specific techniques reduce anxiety acutely
+- Regular practice builds resilience
+
+**Techniques**
+- **Box breathing**: 4-4-4-4 (inhale, hold, exhale, hold)
+- **4-7-8 breathing**: Inhale 4, hold 7, exhale 8
+- **Physiological sigh**: Double inhale through nose, long exhale through mouth
+- **Coherent breathing**: 5-6 breaths per minute
+
+---
+
+## Part 4: Diet and Nutrition
+
+### The Anti-Inflammatory Diet
+
+**The Evidence**
+Diet quality is strongly linked to mental health:
+- Mediterranean diet reduces depression risk by 30%
+- Processed food consumption increases depression risk
+- Dietary intervention improves depression symptoms
+
+**Key Principles**
+- Emphasize whole, unprocessed foods
+- Include abundant vegetables and fruits
+- Choose whole grains over refined
+- Include healthy fats (olive oil, nuts, fish)
+- Limit added sugars and processed foods
+- Moderate alcohol consumption
+
+### Specific Foods for Mental Health
+
+**Fatty Fish**
+Rich in omega-3s; eat 2-3 servings weekly
+
+**Fermented Foods**
+Support gut health; include yogurt, kefir, sauerkraut, kimchi
+
+**Leafy Greens**
+High in folate and magnesium; eat daily
+
+**Nuts and Seeds**
+Provide magnesium, zinc, and healthy fats
+
+**Berries**
+High in antioxidants; protect brain health
+
+**Dark Chocolate**
+Contains flavonoids; improves mood (in moderation)
+
+### Foods to Limit
+
+**Added Sugars**
+Cause blood sugar spikes and crashes; worsen mood instability
+
+**Processed Foods**
+High in inflammatory ingredients
+
+**Excessive Caffeine**
+Can worsen anxiety; limit to morning hours
+
+**Alcohol**
+Depressant effect; disrupts sleep; avoid if struggling with depression
+
+---
+
+## Part 5: Creating Your Natural Mental Health Plan
+
+### Assessment
+
+Before starting, consider:
+1. Current severity of symptoms
+2. Whether professional care is needed
+3. Any medications or conditions that might interact
+4. Which approaches appeal to you
+5. Your budget and time constraints
+
+### Building Your Foundation
+
+**Start with basics** (everyone should do these):
+- Regular movement (30 min most days)
+- Sleep optimization (7-9 hours)
+- Whole foods diet
+- Daily outdoor time
+- Social connection
+
+### Adding Targeted Interventions
+
+**For Anxiety**:
+- Magnesium glycinate
+- Ashwagandha or lavender
+- Breathwork practice
+- Cold exposure
+
+**For Depression**:
+- Omega-3 fatty acids (EPA-dominant)
+- Vitamin D (if deficient)
+- Exercise (especially aerobic)
+- Light therapy
+
+**For Stress**:
+- Adaptogens (ashwagandha, rhodiola)
+- Mindfulness practice
+- Vagal toning techniques
+- Nature exposure
+
+### Timeline for Results
+
+**Immediate** (same day):
+- Breathwork
+- Exercise
+- Cold exposure
+- Bright light
+
+**Short-term** (1-2 weeks):
+- Sleep improvements
+- Dietary changes
+- Some supplements begin working
+
+**Medium-term** (4-8 weeks):
+- Herbal remedies reach full effect
+- Omega-3s build up
+- Mindfulness practice deepens
+
+**Long-term** (3+ months):
+- Lifestyle changes become habits
+- Brain changes consolidate
+- Full benefits realized
+
+---
+
+## Conclusion: Nature as Medicine
+
+Natural approaches to mental health are not fringe alternatives—they're evidence-based interventions that can make a meaningful difference. The key is to approach them with the same rigor you'd apply to any treatment: start with the best evidence, track your response, and adjust as needed.
+
+Remember that natural doesn't mean "instead of" professional care. For moderate to severe conditions, these approaches work best alongside therapy and/or medication. For mild symptoms or as preventive measures, they may be sufficient on their own.
+
+The most powerful natural intervention of all? Living in alignment with human biology—moving our bodies, eating real food, sleeping adequately, connecting with others, spending time in nature, and finding meaning and purpose. These aren't quick fixes; they're the foundation of lasting mental wellness.
+
+*Always consult with a healthcare provider before starting supplements, especially if you're taking medications or have health conditions.*
+        `},{slug:"building-mental-resilience-prevent-stress-decline-2026",title:"Building Mental Resilience: Strategies to Prevent Stress-Related Mental Health Decline",excerpt:"A comprehensive 2000+ word guide to building psychological resilience—the capacity to withstand adversity, recover from setbacks, and thrive despite life's challenges.",category:"Health",author:"NexaWell Mental Health Team",date:"January 17, 2026",readTime:"19 min read",heroImage:"/images/blog/mental-resilience.png",content:`
+## The Unbreakable Mind: Building Psychological Resilience for Life
+
+Some people seem to weather life's storms with remarkable grace, while others are devastated by far smaller challenges. The difference often isn't luck or circumstances—it's **resilience**. And here's the empowering truth: resilience isn't a fixed trait you're born with or without. It's a set of skills and mindsets that can be developed, strengthened, and maintained throughout life.
+
+This comprehensive guide explores the science of resilience, identifies its core components, and provides actionable strategies to build your capacity to not just survive adversity but grow from it.
+
+---
+
+## Part 1: Understanding Resilience
+
+### What Resilience Really Means
+
+**Resilience is not:**
+- Never experiencing stress or difficulty
+- Being emotionally numb or unaffected
+- "Toughing it out" without support
+- Pretending everything is fine
+- A personality trait you either have or don't
+
+**Resilience is:**
+- The capacity to adapt positively to adversity
+- The ability to recover from setbacks
+- Maintaining equilibrium during stress
+- Growing stronger through challenges
+- A dynamic process, not a fixed state
+
+### The Resilience Research
+
+Decades of research, including studies of trauma survivors, disaster victims, and high-stress professionals, reveal consistent patterns:
+
+**Key Findings:**
+- Approximately 65% of people show natural resilience after trauma
+- Resilience can be learned and improved at any age
+- Social connection is the strongest predictor of resilience
+- Meaning and purpose provide powerful protection
+- Multiple small protective factors compound over time
+
+### The Neuroscience of Resilience
+
+Resilient brains show distinct patterns:
+
+**Prefrontal Cortex Activity**
+- Better regulation of emotional responses
+- More effective executive function under stress
+- Faster return to baseline after stressors
+
+**Stress Response Calibration**
+- Appropriate cortisol response (not over- or under-reactive)
+- Efficient recovery after stress activation
+- Healthy HPA axis function
+
+**Neuroplasticity**
+- Resilience can literally reshape brain structure
+- Practices that build resilience increase prefrontal cortex volume
+- Stress-protective neural pathways can be strengthened
+
+---
+
+## Part 2: The Five Pillars of Resilience
+
+### Pillar 1: Connection - The Social Safety Net
+
+**Why It Matters**
+Humans are fundamentally social creatures. Our nervous systems are designed to co-regulate with others. Isolation is one of the strongest risk factors for mental health decline, while strong social connections are the most consistent predictor of resilience.
+
+**Building Your Connection Pillar**
+
+*Deepen Existing Relationships:*
+- Schedule regular quality time with loved ones
+- Practice vulnerability—share struggles as well as successes
+- Be fully present (put away phones)
+- Express appreciation and gratitude
+- Offer and accept help
+
+*Expand Your Circle:*
+- Join communities aligned with your interests
+- Volunteer for causes you care about
+- Attend local events and groups
+- Reconnect with old friends
+- Be the inviter—don't wait for invitations
+
+*Seek Professional Support:*
+- Therapist or counselor for ongoing support
+- Support groups for specific challenges
+- Coaches or mentors for guidance
+- Peer support networks
+
+### Pillar 2: Regulation - Mastering Your Nervous System
+
+**Why It Matters**
+Stress resilience depends on the ability to regulate your physiological and emotional responses. Without regulation skills, stress compounds and overwhelms coping capacity.
+
+**Building Your Regulation Pillar**
+
+*Physiological Regulation:*
+- **Breathwork**: Practice daily (even 5 minutes helps)
+  - Box breathing: 4-4-4-4 pattern
+  - Physiological sigh: Double inhale, long exhale
+  - Coherent breathing: 5-6 breaths per minute
+- **Movement**: Regular exercise regulates stress hormones
+- **Sleep**: Non-negotiable for emotional regulation
+- **Vagal toning**: Cold exposure, humming, gargling
+
+*Emotional Regulation:*
+- **Name it to tame it**: Label emotions precisely
+- **RAIN technique**: Recognize → Allow → Investigate → Nurture
+- **Distress tolerance**: Build capacity to sit with discomfort
+- **Healthy expression**: Process emotions through journaling, art, conversation
+
+*Cognitive Regulation:*
+- **Thought defusion**: "I notice I'm having the thought that..."
+- **Attention training**: Redirect focus deliberately
+- **Perspective-taking**: How will this matter in 5 years?
+- **Reappraisal**: Find alternative interpretations
+
+### Pillar 3: Competence - Building Mastery and Self-Efficacy
+
+**Why It Matters**
+Believing you can handle challenges is a self-fulfilling prophecy. Self-efficacy—the belief in your ability to influence outcomes—is a core resilience factor.
+
+**Building Your Competence Pillar**
+
+*Develop Mastery:*
+- Set and achieve incremental goals
+- Take on challenges slightly beyond your current ability
+- Celebrate small wins
+- Track your progress
+- Learn from failures without catastrophizing
+
+*Build Skills:*
+- **Problem-solving**: Practice structured approaches to challenges
+- **Decision-making**: Improve your ability to choose under uncertainty
+- **Communication**: Learn to express needs and boundaries
+- **Conflict resolution**: Develop skills for navigating disagreements
+
+*Expand Your Comfort Zone:*
+- Regularly do things that scare you slightly
+- Embrace discomfort as a growth signal
+- Try new activities
+- Travel, meet new people, take classes
+
+### Pillar 4: Meaning - Purpose and Values
+
+**Why It Matters**
+Viktor Frankl, the psychiatrist who survived the Holocaust, observed that those who found meaning in their suffering were most likely to survive. Purpose provides a "why" that makes the "how" bearable.
+
+**Building Your Meaning Pillar**
+
+*Clarify Your Values:*
+- What matters most to you?
+- What do you want to stand for?
+- How do you want to be remembered?
+- What would you regret not doing?
+
+*Live Your Values:*
+- Align daily actions with what matters
+- Make values-based decisions
+- Let values guide through difficult times
+- Regularly audit your alignment
+
+*Find Purpose:*
+- **Contribution**: How can you help others?
+- **Creation**: What do you want to bring into existence?
+- **Experience**: What do you want to experience fully?
+- **Legacy**: What do you want to leave behind?
+
+*Create Meaning from Adversity:*
+- What can this experience teach you?
+- How might you grow from this challenge?
+- How can your suffering help others?
+- What strength is this revealing?
+
+### Pillar 5: Hope - Optimism and Future Orientation
+
+**Why It Matters**
+Hope is not naive positivity—it's the belief that the future can be different and that your actions matter. Without hope, there's no motivation to persist through difficulty.
+
+**Building Your Hope Pillar**
+
+*Realistic Optimism:*
+- Acknowledge challenges honestly
+- Believe in your capacity to cope
+- Look for evidence of progress
+- Focus on what you can control
+
+*Future Visualization:*
+- Imagine positive outcomes
+- Create vivid mental pictures of your goals
+- Practice "best possible self" exercises
+- Write about your ideal future
+
+*Goal Setting:*
+- Set meaningful, achievable goals
+- Break big goals into small steps
+- Track progress visibly
+- Celebrate milestones
+
+*Inspiration Sources:*
+- Read biographies of people who overcame adversity
+- Spend time with hopeful people
+- Consume uplifting media mindfully
+- Keep evidence of past successes visible
+
+---
+
+## Part 3: Daily Practices for Resilience
+
+### Morning Resilience Routine (15-20 minutes)
+
+**1. Breathing (3 minutes)**
+Start with coherent breathing or physiological sighs to set your nervous system tone.
+
+**2. Movement (5-10 minutes)**
+Stretch, walk, or do light exercise to wake up your body.
+
+**3. Intention Setting (2 minutes)**
+- What's important today?
+- What value will you embody?
+- What's one challenge you'll embrace?
+
+**4. Gratitude (2 minutes)**
+Write or mentally note 3 things you're grateful for.
+
+### Throughout the Day
+
+**Stress Inoculation Moments:**
+- Take brief uncomfortable challenges (cold water, difficult conversation)
+- Pause before reacting to stressors
+- Practice grounding during transitions
+
+**Micro-Recovery Breaks:**
+- 60-second breathing exercises
+- Brief walks
+- Moments of mindfulness
+- Connection check-ins
+
+**Cognitive Resets:**
+- Challenge negative thoughts
+- Reframe challenges as opportunities
+- Focus on what's in your control
+
+### Evening Resilience Routine (10-15 minutes)
+
+**1. Process the Day (5 minutes)**
+- What went well?
+- What was challenging?
+- What did you learn?
+
+**2. Tomorrow Planning (3 minutes)**
+- Identify top priorities
+- Anticipate challenges
+- Plan for obstacles
+
+**3. Wind Down (5+ minutes)**
+- Relaxation practice
+- Reduce stimulation
+- Prepare for quality sleep
+
+---
+
+## Part 4: Building Resilience in Specific Domains
+
+### Work and Career Resilience
+
+**Protect Against Burnout:**
+- Set clear boundaries between work and rest
+- Take all your vacation time
+- Disconnect after hours
+- Say no to unsustainable demands
+
+**Build Professional Resilience:**
+- Diversify your skills and income streams
+- Maintain a network outside your current role
+- Keep learning and growing
+- Document your achievements
+
+**Navigate Workplace Stress:**
+- Focus on what you can control
+- Build alliances with supportive colleagues
+- Manage energy, not just time
+- Find meaning in your work
+
+### Relationship Resilience
+
+**Build Strong Foundations:**
+- Prioritize quality time
+- Practice healthy communication
+- Express appreciation regularly
+- Address conflicts promptly
+
+**Weather Relationship Storms:**
+- See challenges as "we vs. the problem"
+- Repair ruptures quickly
+- Seek couples support when needed
+- Maintain individual identities
+
+**Recover from Loss:**
+- Allow yourself to grieve
+- Maintain connections with others
+- Seek support when needed
+- Eventually find meaning
+
+### Financial Resilience
+
+**Build Security:**
+- Emergency fund (3-6 months expenses)
+- Diversified income sources
+- Insurance for catastrophic events
+- Living below your means
+
+**Mental Approach:**
+- Separate self-worth from net worth
+- Focus on enough, not more
+- Find joy in non-material sources
+- Prepare for uncertainty
+
+### Health Resilience
+
+**Prevention:**
+- Regular exercise and movement
+- Adequate sleep
+- Balanced nutrition
+- Preventive medical care
+
+**Coping with Illness:**
+- Accept support from others
+- Focus on what's possible
+- Find meaning in the journey
+- Advocate for yourself
+
+---
+
+## Part 5: Resilience Through Different Life Stages
+
+### Young Adults (18-35)
+
+**Key Challenges:**
+- Identity formation
+- Career establishment
+- Relationship building
+- Financial independence
+
+**Resilience Focus:**
+- Build diverse coping skills
+- Establish healthy habits early
+- Create strong social networks
+- Develop financial literacy
+
+### Mid-Life (35-55)
+
+**Key Challenges:**
+- Career pressures
+- Family responsibilities
+- Aging parents
+- Identity reassessment
+
+**Resilience Focus:**
+- Manage competing demands
+- Prioritize self-care despite obligations
+- Cultivate deep friendships
+- Find renewed purpose
+
+### Later Life (55+)
+
+**Key Challenges:**
+- Health changes
+- Loss of loved ones
+- Role transitions
+- Mortality awareness
+
+**Resilience Focus:**
+- Maintain social connections actively
+- Find new sources of meaning
+- Accept help when needed
+- Pass on wisdom to others
+
+---
+
+## Part 6: When Resilience Isn't Enough
+
+### Recognizing When You Need More Help
+
+Resilience strategies are powerful, but they have limits. Seek professional help if:
+
+- You're experiencing symptoms of depression or anxiety
+- Traumatic experiences are affecting daily functioning
+- Coping strategies aren't working
+- You're using substances to cope
+- You're having thoughts of self-harm
+- Daily functioning is significantly impaired
+
+### Types of Professional Support
+
+**Therapy:**
+- CBT (Cognitive Behavioral Therapy)
+- ACT (Acceptance and Commitment Therapy)
+- EMDR (for trauma)
+- IPT (Interpersonal Therapy)
+
+**Psychiatric Care:**
+- Medication evaluation
+- Medication management
+- Complex case consultation
+
+**Specialized Programs:**
+- Intensive outpatient programs
+- Residential treatment
+- Support groups
+- Retreats and workshops
+
+---
+
+## Part 7: The Resilience Mindset
+
+### Core Beliefs of Resilient People
+
+**"I can handle hard things."**
+Not "nothing bad will happen," but "I can cope when it does."
+
+**"Setbacks are temporary."**
+This too shall pass. Difficult times don't last forever.
+
+**"I learn from everything."**
+Every experience, good or bad, offers growth opportunities.
+
+**"I'm not alone."**
+Help is available, and asking for it is strength.
+
+**"I have value beyond my circumstances."**
+My worth isn't determined by what happens to me.
+
+### The Growth Mindset
+
+Resilient people embrace a growth mindset:
+- Challenges are opportunities to learn
+- Effort leads to mastery
+- Criticism is useful feedback
+- Others' success is inspiring, not threatening
+- Abilities can be developed
+
+### Self-Compassion
+
+Paradoxically, being kind to yourself builds resilience:
+- Treat yourself as you'd treat a good friend
+- Acknowledge suffering without drowning in it
+- Remember that struggle is part of the human experience
+- Balance validation with growth
+
+---
+
+## Conclusion: Becoming Unbreakable
+
+Resilience is not about never falling down—it's about always getting back up. It's not about avoiding pain—it's about moving through it with grace. It's not about going it alone—it's about building the connections and skills that help you weather any storm.
+
+The research is clear: resilience can be built. Every practice in this guide, no matter how small, contributes to your capacity to handle whatever life brings. The key is consistency—not perfection.
+
+Start where you are. Pick one pillar that resonates. Choose one practice to begin. Small steps, taken consistently, lead to profound transformation.
+
+You are more capable than you know. And with intentional effort, you can become even more so.
+
+**The truly unbreakable mind isn't one that never bends—it's one that always bounces back.**
+
+*If you're struggling and these strategies feel overwhelming, please reach out for professional support. Building resilience often begins with asking for help.*
+        `}],tg="force-static";function tp(){let e="https://nexawell.blog";return[...["","/about","/blog","/blog/health","/blog/tech"].map(t=>({url:`${e}${t}`,lastModified:new Date,changeFrequency:"daily",priority:1})),...th.map(t=>({url:`${e}/blog/${t.slug}`,lastModified:new Date(t.date),changeFrequency:"weekly",priority:.8}))]}e.s(["default",()=>tp,"dynamic",0,tg],89282);var tm=e.i(73853);async function tf(){let e=await tp(),t=(0,tm.resolveRouteData)(e,"sitemap");return new td.NextResponse(t,{headers:{"Content-Type":"application/xml","Cache-Control":"public, max-age=0, must-revalidate"}})}e.s(["GET",()=>tf],39248),e.i(39248),e.i(89282),e.s(["GET",()=>tf,"dynamic",0,tg],21330);var ty=e.i(21330);let tb=new S.AppRouteRouteModule({definition:{kind:k.APP_ROUTE,page:"/sitemap.xml/route",pathname:"/sitemap.xml",filename:"sitemap--route-entry",bundlePath:""},distDir:".next",relativeProjectDir:"",resolvedPagePath:"[project]/app/sitemap--route-entry.js",nextConfigOutput:"export",userland:ty}),{workAsyncStorage:tv,workUnitAsyncStorage:tw,serverHooks:tT}=tb;function tS(){return function(e){var t;let r;if(!0===globalThis[e1])return;let i=(t=globalThis.fetch,r=ee.cache(e=>[]),function(e,i){let a,n;if(i&&i.signal)return t(e,i);if("string"!=typeof e||i){let r,o="string"==typeof e||e instanceof URL?new Request(e,i):e;if("GET"!==o.method&&"HEAD"!==o.method||o.keepalive)return t(e,i);r=Array.from(o.headers.entries()).filter(([e])=>!em.has(e.toLowerCase())),n=JSON.stringify([o.method,r,o.mode,o.redirect,o.credentials,o.referrer,o.referrerPolicy,o.integrity]),a=o.url}else n='["GET",[],null,"follow",null,null,null,null]',a=e;let o=r(a);for(let e=0,t=o.length;e<t;e+=1){let[t,r]=o[e];if(t===n)return r.then(()=>{let t=o[e][2];if(!t)throw Object.defineProperty(new ec("No cached response"),"__NEXT_ERROR_CODE",{value:"E579",enumerable:!1,configurable:!0});let[r,i]=ep(t);return o[e][2]=i,r})}let s=t(e,i),l=[n,s,null];return o.push(l),s.then(e=>{let[t,r]=ep(e);return l[2]=r,t})});globalThis.fetch=function(e,{workAsyncStorage:t,workUnitAsyncStorage:r}){let i=async function(i,a){var n,o;let s;try{(s=new URL(i instanceof Request?i.url:i)).username="",s.password=""}catch{s=void 0}let l=(null==s?void 0:s.href)??"",c=(null==a||null==(n=a.method)?void 0:n.toUpperCase())||"GET",u=(null==a||null==(o=a.next)?void 0:o.internal)===!0,d="1"===process.env.NEXT_OTEL_FETCH_DISABLED,h=u?void 0:performance.timeOrigin+performance.now(),g=t.getStore(),p=r.getStore(),m=p?(0,ei.getCacheSignal)(p):null;m&&m.beginRead();let f=J().trace(u?E.internalFetch:I.fetch,{hideSpan:d,kind:G.CLIENT,spanName:["fetch",c,l].filter(Boolean).join(" "),attributes:{"http.url":l,"http.method":c,"net.peer.name":null==s?void 0:s.hostname,"net.peer.port":(null==s?void 0:s.port)||void 0}},async()=>{var t;let r,n,o,s,c,d;if(u||!g||g.isDraftMode)return e(i,a);let f=i&&"object"==typeof i&&"string"==typeof i.method,y=e=>(null==a?void 0:a[e])||(f?i[e]:null),b=e=>{var t,r,n;return void 0!==(null==a||null==(t=a.next)?void 0:t[e])?null==a||null==(r=a.next)?void 0:r[e]:f?null==(n=i.next)?void 0:n[e]:void 0},v=b("revalidate"),w=v,T=function(e,t){let r=[],i=[];for(let a=0;a<e.length;a++){let n=e[a];if("string"!=typeof n?i.push({tag:n,reason:"invalid type, must be a string"}):n.length>256?i.push({tag:n,reason:"exceeded max length of 256"}):r.push(n),r.length>128){console.warn(`Warning: exceeded max tag count for ${t}, dropped tags:`,e.slice(a).join(", "));break}}if(i.length>0)for(let{tag:e,reason:r}of(console.warn(`Warning: invalid tags passed to ${t}: `),i))console.log(`tag: "${e}" ${r}`);return r}(b("tags")||[],`fetch ${i.toString()}`);if(p)switch(p.type){case"prerender":case"prerender-runtime":case"prerender-client":case"prerender-ppr":case"prerender-legacy":case"cache":case"private-cache":r=p}if(r&&Array.isArray(T)){let e=r.tags??(r.tags=[]);for(let t of T)e.includes(t)||e.push(t)}let S=null==p?void 0:p.implicitTags,k=g.fetchCache;p&&"unstable-cache"===p.type&&(k="force-no-store");let P=!!g.isUnstableNoStore,x=y("cache"),R="";"string"==typeof x&&void 0!==w&&("force-cache"===x&&0===w||"no-store"===x&&(w>0||!1===w))&&(n=`Specified "cache: ${x}" and "revalidate: ${w}", only one should be specified.`,x=void 0,w=void 0);let E="no-cache"===x||"no-store"===x||"force-no-store"===k||"only-no-store"===k,C=!k&&!x&&!w&&g.forceDynamic;"force-cache"===x&&void 0===w?w=!1:(E||C)&&(w=0),("no-cache"===x||"no-store"===x)&&(R=`cache: ${x}`),d=function(e,t){try{let r;if(!1===e)r=0xfffffffe;else if("number"==typeof e&&!isNaN(e)&&e>-1)r=e;else if(void 0!==e)throw Object.defineProperty(Error(`Invalid revalidate value "${e}" on "${t}", must be a non-negative number or false`),"__NEXT_ERROR_CODE",{value:"E179",enumerable:!1,configurable:!0});return r}catch(e){if(e instanceof Error&&e.message.includes("Invalid revalidate"))throw e;return}}(w,g.route);let A=y("headers"),I="function"==typeof(null==A?void 0:A.get)?A:new Headers(A||{}),_=I.get("authorization")||I.get("cookie"),M=!["get","head"].includes((null==(t=y("method"))?void 0:t.toLowerCase())||"get"),O=void 0==k&&(void 0==x||"default"===x)&&void 0==w,D=!!((_||M)&&(null==r?void 0:r.revalidate)===0),N=!1;if(!D&&O&&(g.isBuildTimePrerendering?N=!0:D=!0),O&&void 0!==p)switch(p.type){case"prerender":case"prerender-runtime":case"prerender-client":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}switch(k){case"force-no-store":R="fetchCache = force-no-store";break;case"only-no-store":if("force-cache"===x||void 0!==d&&d>0)throw Object.defineProperty(Error(`cache: 'force-cache' used on fetch for ${l} with 'export const fetchCache = 'only-no-store'`),"__NEXT_ERROR_CODE",{value:"E448",enumerable:!1,configurable:!0});R="fetchCache = only-no-store";break;case"only-cache":if("no-store"===x)throw Object.defineProperty(Error(`cache: 'no-store' used on fetch for ${l} with 'export const fetchCache = 'only-cache'`),"__NEXT_ERROR_CODE",{value:"E521",enumerable:!1,configurable:!0});break;case"force-cache":(void 0===w||0===w)&&(R="fetchCache = force-cache",d=0xfffffffe)}if(void 0===d?"default-cache"!==k||P?"default-no-store"===k?(d=0,R="fetchCache = default-no-store"):P?(d=0,R="noStore call"):D?(d=0,R="auto no cache"):(R="auto cache",d=r?r.revalidate:0xfffffffe):(d=0xfffffffe,R="fetchCache = default-cache"):R||(R=`revalidate: ${d}`),!(g.forceStatic&&0===d)&&!D&&r&&d<r.revalidate){if(0===d){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}ed(g,p,`revalidate: 0 fetch ${i} ${g.route}`)}r&&v===d&&(r.revalidate=d)}let B="number"==typeof d&&d>0,{incrementalCache:L}=g,j=!1;if(p)switch(p.type){case"request":case"cache":case"private-cache":j=p.isHmrRefresh??!1,s=p.serverComponentsHmrCache}if(L&&(B||s))try{o=await L.generateCacheKey(l,f?i:a)}catch(e){console.error("Failed to generate cache key for",i)}let H=g.nextFetchId??1;g.nextFetchId=H+1;let F=()=>{},W=async(t,r)=>{let c=["cache","credentials","headers","integrity","keepalive","method","mode","redirect","referrer","referrerPolicy","window","duplex",...t?[]:["signal"]];if(f){let e=i,t={body:e._ogBody||e.body};for(let r of c)t[r]=e[r];i=new Request(e.url,t)}else if(a){let{_ogBody:e,body:r,signal:i,...n}=a;a={...n,body:e||r,signal:t?void 0:i}}let u={...a,next:{...null==a?void 0:a.next,fetchType:"origin",fetchIdx:H}};return e(i,u).then(async e=>{if(!t&&h&&e2(g,{start:h,url:l,cacheReason:r||R,cacheStatus:0===d||r?"skip":"miss",cacheWarning:n,status:e.status,method:u.method||"GET"}),200===e.status&&L&&o&&(B||s)){let t=d>=0xfffffffe?31536e3:d,r=B?{fetchCache:!0,fetchUrl:l,fetchIdx:H,tags:T,isImplicitBuildTimeCache:N}:void 0;switch(null==p?void 0:p.type){case"prerender":case"prerender-client":case"prerender-runtime":return e3(e,o,r,L,t,F);case"request":case"prerender-ppr":case"prerender-legacy":case"cache":case"private-cache":case"unstable-cache":case void 0:return e4(g,e,o,r,L,s,t,i,F)}}return await F(),e}).catch(e=>{throw F(),e})},Y=!1,G=!1;if(o&&L){let e;if(j&&s&&(e=s.get(o),G=!0),B&&!e){F=await L.lock(o);let t=g.isOnDemandRevalidate?null:await L.get(o,{kind:eb.FETCH,revalidate:d,fetchUrl:l,fetchIdx:H,tags:T,softTags:null==S?void 0:S.tags});if(O&&p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":await (e6||(e6=new Promise(e=>{setTimeout(()=>{e6=null,e()},0)})),e6)}if(t?await F():c="cache-control: no-cache (hard refresh)",(null==t?void 0:t.value)&&t.value.kind===ey.FETCH)if(g.isStaticGeneration&&t.isStale)Y=!0;else{if(t.isStale&&(g.pendingRevalidates??={},!g.pendingRevalidates[o])){let e=W(!0).then(async e=>({body:await e.arrayBuffer(),headers:e.headers,status:e.status,statusText:e.statusText})).finally(()=>{g.pendingRevalidates??={},delete g.pendingRevalidates[o||""]});e.catch(console.error),g.pendingRevalidates[o]=e}e=t.value.data}}if(e){h&&e2(g,{start:h,url:l,cacheReason:R,cacheStatus:G?"hmr":"hit",cacheWarning:n,status:e.status||200,method:(null==a?void 0:a.method)||"GET"});let t=new Response(Buffer.from(e.body,"base64"),{headers:e.headers,status:e.status});return Object.defineProperty(t,"url",{value:e.url}),t}}if(g.isStaticGeneration&&a&&"object"==typeof a){let{cache:e}=a;if("no-store"===e){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return m&&(m.endRead(),m=null),es(p.renderSignal,g.route,"fetch()")}ed(g,p,`no-store fetch ${i} ${g.route}`)}let t="next"in a,{next:n={}}=a;if("number"==typeof n.revalidate&&r&&n.revalidate<r.revalidate){if(0===n.revalidate){if(p)switch(p.type){case"prerender":case"prerender-client":case"prerender-runtime":return es(p.renderSignal,g.route,"fetch()")}ed(g,p,`revalidate: 0 fetch ${i} ${g.route}`)}g.forceStatic&&0===n.revalidate||(r.revalidate=n.revalidate)}t&&delete a.next}if(!o||!Y)return W(!1,c);{let e=o;g.pendingRevalidates??={};let t=g.pendingRevalidates[e];if(t){let e=await t;return new Response(e.body,{headers:e.headers,status:e.status,statusText:e.statusText})}let r=W(!0,c).then(ep);return(t=r.then(async e=>{let t=e[0];return{body:await t.arrayBuffer(),headers:t.headers,status:t.status,statusText:t.statusText}}).finally(()=>{var t;(null==(t=g.pendingRevalidates)?void 0:t[e])&&delete g.pendingRevalidates[e]})).catch(()=>{}),g.pendingRevalidates[e]=t,r.then(e=>e[1])}});if(m)try{return await f}finally{m&&m.endRead()}return f};return i.__nextPatched=!0,i.__nextGetStaticStore=()=>t,i._nextOriginalFetch=e,globalThis[e1]=!0,Object.defineProperty(i,"name",{value:"fetch",writable:!1}),i}(i,e)}({workAsyncStorage:tv,workUnitAsyncStorage:tw})}async function tk(e,t,r){var i;let a;tb.isDev&&(i=process.hrtime.bigint(),(a=ex(e)).devRequestTimingInternalsEnd=i,e[eP]=a);let n="/sitemap.xml/route";n=n.replace(/\/index$/,"")||"/";let o=await tb.prepare(e,t,{srcPage:n,multiZoneDraftMode:!1});if(!o)return t.statusCode=400,t.end("Bad Request"),null==r.waitUntil||r.waitUntil.call(r,Promise.resolve()),null;let{buildId:s,params:l,nextConfig:c,parsedUrl:u,isDraftMode:d,prerenderManifest:h,routerServerContext:g,isOnDemandRevalidate:p,revalidateOnlyGenerated:m,resolvedPathname:f,clientReferenceManifest:y,serverActionsManifest:b}=o,v=e5(n),w=!!(h.dynamicRoutes[v]||h.routes[f]),T=async()=>((null==g?void 0:g.render404)?await g.render404(e,t,u,!1):t.end("This page could not be found"),null);if(w&&!d){let e=!!h.routes[f],t=h.dynamicRoutes[v];if(t&&!1===t.fallback&&!e){if(c.experimental.adapterPath)return await T();throw new tu.NoFallbackError}}let S=null;!w||tb.isDev||d||(S="/index"===(S=f)?"/":S);let x=!0===tb.isDev||!w,R=w&&!x;b&&y&&function({page:e,clientReferenceManifest:t,serverActionsManifest:r}){let i=e8[e9];if(i)i.clientReferenceManifestsPerRoute.set(e5(e),t),i.serverActionsManifest=r;else{let i,a=new Map([[e5(e),t]]),n=(i=new Map,new Proxy({},{get(e,t){let r=ea.workAsyncStorage.getStore();switch(t){case"moduleLoading":case"entryCSSFiles":case"entryJSFiles":{if(!r)throw Object.defineProperty(new ec(`Cannot access "${t}" without a work store.`),"__NEXT_ERROR_CODE",{value:"E952",enumerable:!1,configurable:!0});let e=a.get(r.route);if(!e)throw Object.defineProperty(new ec(`The client reference manifest for route "${r.route}" does not exist.`),"__NEXT_ERROR_CODE",{value:"E951",enumerable:!1,configurable:!0});return e[t]}case"clientModules":case"rscModuleMapping":case"edgeRscModuleMapping":case"ssrModuleMapping":case"edgeSSRModuleMapping":{let e=i.get(t);!e&&(e=new Proxy({},{get(e,r){let i=ea.workAsyncStorage.getStore();if(i){let e=a.get(i.route);if(null==e?void 0:e[t][r])return e[t][r]}else for(let e of a.values()){let i=e[t][r];if(void 0!==i)return i}}}),i.set(t,e));return e}default:throw Object.defineProperty(new ec(`This is a proxied client reference manifest. The property "${String(t)}" is not handled.`),"__NEXT_ERROR_CODE",{value:"E953",enumerable:!1,configurable:!0})}}}));e8[e9]={clientReferenceManifestsPerRoute:a,proxiedClientReferenceManifest:n,serverActionsManifest:r,serverModuleMap:new Proxy({},{get:(e,t)=>{var r,i,a;let n,o=null==(i=function(){let e=e8[e9];if(!e)throw Object.defineProperty(new ec("The manifests singleton was not initialized."),"__NEXT_ERROR_CODE",{value:"E950",enumerable:!1,configurable:!0});return e}().serverActionsManifest.node)||null==(r=i[t])?void 0:r.workers;if(!o)return;let s=ea.workAsyncStorage.getStore();if(!(n=s?o[eO(a=s.page,"app")?a:"app"+a]:Object.values(o).at(0)))return;let{moduleId:l,async:c}=n;return{id:l,name:t,chunks:[],async:c}}})}}}({page:n,clientReferenceManifest:y,serverActionsManifest:b});let E=e.method||"GET",C=J(),A=C.getActiveScopeSpan(),I={params:l,prerenderManifest:h,renderOpts:{experimental:{authInterrupts:!!c.experimental.authInterrupts},cacheComponents:!!c.cacheComponents,supportsDynamicResponse:x,incrementalCache:ex(e,"incrementalCache"),cacheLifeProfiles:c.cacheLife,waitUntil:r.waitUntil,onClose:e=>{t.on("close",e)},onAfterTaskError:void 0,onInstrumentationRequestError:(t,r,i,a)=>tb.onRequestError(e,t,i,a,g)},sharedContext:{buildId:s}},_=new to(e),M=new ts(t),O=eV.fromNodeNextRequest(_,function(e){let{errored:t,destroyed:r}=e;if(t||r)return AbortSignal.abort(t??new ez);let{signal:i}=e$(e);return i}(t));try{let i=async e=>tb.handle(O,I).finally(()=>{if(!e)return;e.setAttributes({"http.status_code":t.statusCode,"next.rsc":!1});let r=C.getRootSpanAttributes();if(!r)return;if(r.get("next.span_type")!==P.handleRequest)return void console.warn(`Unexpected root span type '${r.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`);let i=r.get("next.route");if(i){let t=`${E} ${i}`;e.setAttributes({"next.route":i,"http.route":i,"next.span_name":t}),e.updateName(t)}else e.updateName(`${E} ${n}`)}),a=!!ex(e,"minimalMode"),o=async o=>{var s,l;let u=async({previousCacheEntry:s})=>{try{if(!a&&p&&m&&!s)return t.statusCode=404,t.setHeader("x-nextjs-cache","REVALIDATED"),t.end("This page could not be found"),null;let n=await i(o);e.fetchMetrics=I.renderOpts.fetchMetrics;let l=I.renderOpts.pendingWaitUntil;l&&r.waitUntil&&(r.waitUntil(l),l=void 0);let c=I.renderOpts.collectedTags;if(!w)return await tc(_,M,n,I.renderOpts.pendingWaitUntil),null;{let e=await n.blob(),t=eC(n.headers);c&&(t[Q]=c),!t["content-type"]&&e.type&&(t["content-type"]=e.type);let r=void 0!==I.renderOpts.collectedRevalidate&&!(I.renderOpts.collectedRevalidate>=0xfffffffe)&&I.renderOpts.collectedRevalidate,i=void 0===I.renderOpts.collectedExpire||I.renderOpts.collectedExpire>=0xfffffffe?void 0:I.renderOpts.collectedExpire;return{value:{kind:ey.APP_ROUTE,status:n.status,body:Buffer.from(await e.arrayBuffer()),headers:t},cacheControl:{revalidate:r,expire:i}}}}catch(t){throw(null==s?void 0:s.isStale)&&await tb.onRequestError(e,t,{routerKind:"App Router",routePath:n,routeType:"route",revalidateReason:tl({isStaticGeneration:R,isOnDemandRevalidate:p})},!1,g),t}},f=await tb.handleResponse({req:e,nextConfig:c,cacheKey:S,routeKind:k.APP_ROUTE,isFallback:!1,prerenderManifest:h,isRoutePPREnabled:!1,isOnDemandRevalidate:p,revalidateOnlyGenerated:m,responseGenerator:u,waitUntil:r.waitUntil,isMinimalMode:a});if(!w)return null;if((null==f||null==(s=f.value)?void 0:s.kind)!==ey.APP_ROUTE)throw Object.defineProperty(Error(`Invariant: app-route received invalid cache entry ${null==f||null==(l=f.value)?void 0:l.kind}`),"__NEXT_ERROR_CODE",{value:"E701",enumerable:!1,configurable:!0});a||t.setHeader("x-nextjs-cache",p?"REVALIDATED":f.isMiss?"MISS":f.isStale?"STALE":"HIT"),d&&t.setHeader("Cache-Control","private, no-cache, no-store, max-age=0, must-revalidate");let y=eR(f.value.headers);return a&&w||y.delete(Q),!f.cacheControl||t.getHeader("Cache-Control")||y.get("Cache-Control")||y.set("Cache-Control",function({revalidate:e,expire:t}){let r="number"==typeof e&&void 0!==t&&e<t?`, stale-while-revalidate=${t-e}`:"";return 0===e?"private, no-cache, no-store, max-age=0, must-revalidate":"number"==typeof e?`s-maxage=${e}${r}`:`s-maxage=31536000${r}`}(f.cacheControl)),await tc(_,M,new Response(f.value.body,{headers:y,status:f.value.status||200})),null};A?await o(A):await C.withPropagatedContext(e.headers,()=>C.trace(P.handleRequest,{spanName:`${E} ${n}`,kind:G.SERVER,attributes:{"http.method":E,"http.target":e.url}},o))}catch(t){if(t instanceof tu.NoFallbackError||await tb.onRequestError(e,t,{routerKind:"App Router",routePath:v,routeType:"route",revalidateReason:tl({isStaticGeneration:R,isOnDemandRevalidate:p})},!1,g),w)throw t;return await tc(_,M,new Response(null,{status:500})),null}}e.s(["handler",()=>tk,"patchFetch",()=>tS,"routeModule",()=>tb,"serverHooks",()=>tT,"workAsyncStorage",()=>tv,"workUnitAsyncStorage",()=>tw],8922)}];
 
 //# sourceMappingURL=%5Broot-of-the-server%5D__2c89763a._.js.map

@@ -74,6 +74,12 @@
       "namedRegex": "^/blog/tech(?:/)?$"
     },
     {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
       "page": "/sitemap.xml",
       "regex": "^/sitemap\\.xml(?:/)?$",
       "routeKeys": {},

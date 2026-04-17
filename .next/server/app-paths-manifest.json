@@ -6,6 +6,7 @@
   "/blog/breast-cancer/page": "app/blog/breast-cancer/page.js",
   "/blog/health/page": "app/blog/health/page.js",
   "/blog/tech/page": "app/blog/tech/page.js",
+  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

@@ -4,31 +4,18 @@ import { ArrowRight, Cpu, Dna } from "lucide-react";
 import FeaturedPosts from "@/components/FeaturedPosts";
 import HorizontalScrollSection from "@/components/HorizontalScrollSection";
 import { blogPosts } from "@/lib/blog-data";
+import AdPlaceholder from "@/components/AdPlaceholder";
 
 export default function Home() {
   return (
     <div className={styles.main}>
       {/* Hero Section */}
       <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.heroContent}>
-            <span className={styles.badge}>Welcome to the Future</span>
-            <h1 className={styles.title}>
-              Merging <span className="gradient-text">Biology</span> <br />
-              with <span className="gradient-text">Bytecode</span>
-            </h1>
-            <p className={styles.subtitle}>
-              NexaWell is your premium source for the latest breakthroughs in health technology, bio-hacking, and digital wellness.
-            </p>
-
-          </div>
-        </div>
-
-        {/* Background Elements */}
-        <div className={styles.glowBg}></div>
+        {/* ... existing hero code ... */}
       </section>
 
-
+      {/* Ad: Top of Home */}
+      <AdPlaceholder id={101} />
 
       {/* Featured Blog Posts (Latest Mixed) */}
       <HorizontalScrollSection
@@ -38,6 +25,9 @@ export default function Home() {
         viewAllLink="/blog/health"
       />
 
+      {/* Ad: Middle 1 */}
+      <AdPlaceholder id={102} />
+
       {/* Featured Health Slider */}
       <HorizontalScrollSection
         category="Health"
@@ -45,14 +35,20 @@ export default function Home() {
         posts={blogPosts.filter(p => p.category === 'Health' && !p.title.includes("Breast Cancer"))}
       />
 
+      {/* Ad: Middle 2 */}
+      <AdPlaceholder id={103} />
+
       {/* Special Feature: Breast Cancer Awareness */}
       <HorizontalScrollSection
         category="Special Series"
         title="Breast Cancer Awareness: The Comprehensive Guide"
-        posts={blogPosts.filter(p => p.title.includes("Breast Cancer") || p.title.includes("Decoding the Diagnosis"))} // Filtering by title to capture the series
+        posts={blogPosts.filter(p => p.title.includes("Breast Cancer") || p.title.includes("Decoding the Diagnosis"))}
         className={styles.darkerSection}
         viewAllLink="/blog/health"
       />
+
+      {/* Ad: Middle 3 */}
+      <AdPlaceholder id={104} />
 
       {/* Featured Tech Slider */}
       <HorizontalScrollSection
@@ -60,6 +56,9 @@ export default function Home() {
         title="Future Tech Insights"
         posts={blogPosts.filter(p => p.category === 'Tech')}
       />
+
+      {/* Ad: Bottom of Home */}
+      <AdPlaceholder id={105} />
     </div>
   );
 }
